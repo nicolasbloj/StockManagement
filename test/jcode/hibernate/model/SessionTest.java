@@ -50,12 +50,11 @@ public class SessionTest {
      * Test of getStatus method, of class Session.
      */
     @Test
-    public void testGetStatus() {
+    public void testisOpen() {
         System.out.println("getStatus");
-        Session instance = new Session("Y", usr);
-        String expResult = "Y";
-        String result = instance.getStatus();
-        assertEquals(expResult, result);
+        Session instance = new Session(true, usr);
+        Boolean result = instance.isOpen();
+        assertTrue(result);
     }
 
     /**
@@ -64,7 +63,7 @@ public class SessionTest {
     @Test
     public void testGetUser_id() {
         System.out.println("getUser");
-        Session instance = new Session("Y", usr);
+        Session instance = new Session(true, usr);
         UserEmployee result = instance.getUser_id();
         assertNotNull(result);
     }

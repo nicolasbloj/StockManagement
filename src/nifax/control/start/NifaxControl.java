@@ -2,7 +2,7 @@ package nifax.control.start;
 
 import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
-import nifax.control.exception.InvalidCredentials;
+import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.Employee;
 import nifax.control.model.UserEmployee;
@@ -15,7 +15,7 @@ import nifax.control.model.handler.UserOperation;
  */
 
 public class NifaxControl {
-        public static void main(String[] args) throws InvalidCredentials, InitializeSessionException {
+        public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {
         try {
             UserEmployee usr;
             ModelOperation a = new ModelOperation();

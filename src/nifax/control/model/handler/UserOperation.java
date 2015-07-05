@@ -2,7 +2,7 @@ package nifax.control.model.handler;
 
 import java.util.Iterator;
 import java.util.List;
-import nifax.control.exception.InvalidCredentials;
+import nifax.control.exception.InvalidCredentialsException;
 
 /**
  *
@@ -20,7 +20,7 @@ public class UserOperation extends ModelOperation implements IQueries{
         return instance;
     }
     
-    public Object Login(String username, String password) throws InvalidCredentials{
+    public Object Login(String username, String password) throws InvalidCredentialsException{
         Object obj =  Select(userLogin)
             .setParameter("username", username)
             .setParameter("password", password)
@@ -29,7 +29,7 @@ public class UserOperation extends ModelOperation implements IQueries{
         if(obj != null)
             return obj;
         else
-            throw new InvalidCredentials();
+            throw new InvalidCredentialsException();
     }
     //to delete
     public void showList(List list){
