@@ -17,7 +17,7 @@ public class Authentication {
     }
     public void initSession(UserEmployee usr) {
         if(SID == null) {
-           SID = new Session("Y", usr);
+           SID = new Session(true, usr);
         }
     }
     public static Authentication getInstance(){

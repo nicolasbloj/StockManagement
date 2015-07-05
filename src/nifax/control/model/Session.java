@@ -23,8 +23,8 @@ public class Session implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "session_id")
     private Long id;
-    @Column(name = "status")
-    private String status;
+    @Column(name = "open")
+    private Boolean open;
     @JoinColumn(name = "user_id") 
     @OneToOne
     private UserEmployee user_id;
@@ -32,17 +32,17 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Session(String status, UserEmployee user_id) throws IllegalArgumentException {
+    public Session(Boolean status, UserEmployee user_id) throws IllegalArgumentException {
         if(user_id != null){
-            this.status = status;
+            this.open = status;
             this.user_id = user_id;
         } else {
             throw new IllegalArgumentException();
         }
     }
     
-    public String getStatus() {
-        return status;
+    public Boolean isOpen() {
+        return open;
     }
 
     public UserEmployee getUser_id() {
