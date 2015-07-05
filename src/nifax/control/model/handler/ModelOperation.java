@@ -3,7 +3,7 @@ package nifax.control.model.handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nifax.control.hibernate.IOperation;
-import nifax.control.hibernate.PersonFactory;
+import nifax.control.hibernate.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,7 +19,7 @@ public class ModelOperation implements IOperation{
     @Override
     public void Insert(Object obj) {
         try {
-            session = PersonFactory.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             logger.info("Insertando registro");
             Transaction tx = session.beginTransaction();
             session.save(obj);
@@ -37,7 +37,7 @@ public class ModelOperation implements IOperation{
     public Query Select(String AQuery) {
         Query slist = null;
         try {
-            session = PersonFactory.getSessionFactory().getCurrentSession();
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             logger.info("Listando registros");
             slist = session.createQuery(AQuery);

@@ -3,7 +3,7 @@ package nifax.control.start;
 import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentials;
-import nifax.control.hibernate.PersonFactory;
+import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.Employee;
 import nifax.control.model.UserEmployee;
 import nifax.control.model.handler.ModelOperation;
@@ -34,7 +34,7 @@ public class NifaxControl {
             auth.initSession((UserEmployee) op.Login("f4ka", "1234"));
             a.Insert(auth.getSession());
         } finally {
-            PersonFactory.getSessionFactory().close();
+            HibernateUtil.getSessionFactory().close();
         }
     }
 }
