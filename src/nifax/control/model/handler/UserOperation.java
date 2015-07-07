@@ -3,6 +3,7 @@ package nifax.control.model.handler;
 import java.util.Iterator;
 import java.util.List;
 import nifax.control.exception.InvalidCredentialsException;
+import nifax.control.model.Session;
 
 /**
  *
@@ -39,4 +40,10 @@ public class UserOperation extends ModelOperation implements IQueries{
         }
     }
     
+    public Boolean CloseSession(Session obj){
+        obj.setOpen(Boolean.FALSE);
+        Update(obj);
+        return true;
+    }
+            
 }

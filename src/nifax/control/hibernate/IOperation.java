@@ -9,4 +9,5 @@ import org.hibernate.Query;
 public interface IOperation {
     void Insert(Object obj);
     Query Select(String AQuery);
+    Boolean Update(Object obj);
 }

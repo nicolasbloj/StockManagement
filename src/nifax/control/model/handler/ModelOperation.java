@@ -47,4 +47,14 @@ public class ModelOperation implements IOperation{
         }
         return slist;
     }    
+    
+    @Override    
+    public Boolean Update(Object obj){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(obj);
+        tx.commit();
+        session.close();
+        return true;
+    }
 }

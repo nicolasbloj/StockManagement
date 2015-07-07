@@ -15,7 +15,8 @@ import nifax.control.model.handler.UserOperation;
  */
 
 public class NifaxControl {
-        public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {
+    public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {
+        Authentication auth = Authentication.getInstance();
         try {
             UserEmployee usr;
             ModelOperation a = new ModelOperation();
@@ -30,10 +31,10 @@ public class NifaxControl {
                 )
             );
             op.Insert(usr);       
-            Authentication auth = Authentication.getInstance();
             auth.initSession((UserEmployee) op.Login("f4ka", "1234"));
             a.Insert(auth.getSession());
         } finally {
+            UserOperation.getInstance().CloseSession(Authentication.getInstance().getSession());                
             HibernateUtil.getSessionFactory().close();
         }
     }

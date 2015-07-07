@@ -45,6 +45,10 @@ public class Session implements Serializable {
         return open;
     }
 
+    public void setOpen(Boolean open) {
+        this.open = open;
+    }
+
     public UserEmployee getUser_id() {
         return user_id;
     }
