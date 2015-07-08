@@ -1,4 +1,4 @@
-package nifax.control.hibernate;
+package nifax.control.model.modeler;
 
 import org.hibernate.Query;
 

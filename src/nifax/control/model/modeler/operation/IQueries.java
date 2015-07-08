@@ -1,9 +1,9 @@
-package nifax.control.model.handler;
+package nifax.control.model.modeler.operation;
 
 /**
  *
  * @author faka
  */
-interface IQueries {
+public interface IQueries {
     final String userLogin = "from UserEmployee where username = :username and password = :password";
 }
