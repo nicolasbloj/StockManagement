@@ -1,6 +1,7 @@
 package nifax.control.start;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
@@ -15,6 +16,7 @@ import nifax.control.model.modeler.ModelOperation;
  */
 
 public class NifaxControl {
+    private static final Logger logger = Logger.getLogger(NifaxControl.class.getName());
     public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {
         Authentication auth = Authentication.getInstance();
         try {
@@ -36,10 +38,13 @@ public class NifaxControl {
             Scanner in = new Scanner(System.in);
             String user;
             String pass;
-            do {
+            do {               
+               logger.info("Ingresar Usuario");
                user = in.next();
+               logger.info("Ingresar Password");
                pass = in.next();
             }while(!auth.LogIn(user, pass));
+            logger.info("El Usuario fue logueado con éxito");
             a.Insert(auth.getSession()); 
         }
         finally {
