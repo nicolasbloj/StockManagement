@@ -3,12 +3,16 @@ package nifax.control.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
-
-
-/**
- *
- * @author faka
- */
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDefs;
+import org.jasypt.hibernate4.type.EncryptedStringType;
+@TypeDefs({
+  @org.hibernate.annotations.TypeDef(name="EncryptedString",
+  typeClass=EncryptedStringType.class,
+  parameters={@Parameter(name="algorithm",value="PBEWithMD5AndDES"),
+      @Parameter(name="password",value="123456"),@Parameter(name="keyObtentionIterations",value="1000")})
+})
 
 @Entity
 @Table(name = "USEREMPLOYEE")
@@ -30,6 +34,7 @@ import static javax.persistence.GenerationType.IDENTITY;
     @Column(name = "username")
     private String username;
     @Column(name = "password")
+    @Type(type="EncryptedString")
     private String password;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id")    

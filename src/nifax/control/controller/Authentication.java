@@ -13,37 +13,47 @@ import nifax.control.model.modeler.operation.IQueries;
  *
  * @author faka
  */
+public class Authentication extends ModelOperation implements IUserOperation, IQueries {
 
-public class Authentication extends ModelOperation implements IUserOperation, IQueries {    
     private static Authentication instance = null;
     private static Session SID = null;
+
     protected Authentication() {
-      // Exists only to defeat instantiation.
+        // Exists only to defeat instantiation.
     }
-    
-    public static Authentication getInstance(){
-        if(instance == null)
+
+    public static Authentication getInstance() {
+        if (instance == null) {
             instance = new Authentication();
+        }
         return instance;
     }
-    public Session getSession() throws InitializeSessionException{
-        if(SID != null)
+
+    public Session getSession() throws InitializeSessionException {
+        if (SID != null) {
             return SID;
-        else
-            throw new InitializeSessionException();        
+        } else {
+            throw new InitializeSessionException();
+        }
     }
 
     @Override
-    public Boolean LogIn(String username, String password) throws InvalidCredentialsException{
+    public Boolean LogIn(String username, String password) throws InvalidCredentialsException {
         List obj = Select(userLogin)
-            .setParameter("username", username)
-            .setParameter("password", password)
-            .list();
-        if(!obj.isEmpty()){
-            SID = new Session(Boolean.TRUE, (UserEmployee) obj.get(0));
-            return Boolean.TRUE;            
-        } else
+                .setParameter("username", username)
+                .list();
+        if (!obj.isEmpty()) {
+            final UserEmployee userEmployee = (UserEmployee) obj.get(0);
+            if (userEmployee.getPassword().equals(password)) {
+                SID = new Session(Boolean.TRUE, userEmployee);
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } else {
             return Boolean.FALSE;
+        }
+
     }
 
     @Override
@@ -52,13 +62,9 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
         Update(obj);
         return Boolean.TRUE;
     }
-    
-    public void NullifySession(){
+
+    public void NullifySession() {
         SID = null;
     }
 
 }
-
-
- 
-   
