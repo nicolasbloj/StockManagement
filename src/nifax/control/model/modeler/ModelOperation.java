@@ -16,7 +16,7 @@ public class ModelOperation implements IOperation{
     private static final Logger logger = Logger.getLogger(ModelOperation.class.getName());
     private Session session = null;   
     private static ModelOperation instance = null;
-    public ModelOperation() {
+    protected ModelOperation() {
     }
     
     public static ModelOperation getInstance(){
