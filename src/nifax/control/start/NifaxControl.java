@@ -23,14 +23,13 @@ public class NifaxControl {
             ModelOperation op = ModelOperation.getInstance();
             usr = new UserEmployee(
                 "f4ka", 
-                    "1234",
-                    new Employee(
-                            "Facundo",
-                            "Gomez Algazan",
-                            "+5493816534690"
+                "1234",
+                new Employee(
+                    "Facundo",
+                    "Gomez Algazan",
+                    "+5493816534690"
                     )
-            );
-            
+            );            
             op.Insert(usr);
             // the following lines will be added temporally til we have an UI to 
             // enter the required fields
@@ -38,15 +37,14 @@ public class NifaxControl {
             String user;
             String pass;
             do {
-             logger.info("Ingresar Usuario");
-             user = in.next();
-             logger.info("Ingresar Password");
-               pass = in.next();
-            }while(!auth.LogIn(user, pass));
-             logger.info("El Usuario fue logueado con éxito");
+                logger.info("Ingresar Usuario");
+                user = in.next();
+                logger.info("Ingresar Password");
+                pass = in.next();
+            } while (!auth.LogIn(user, pass));
+            logger.info("El Usuario fue logueado con éxito");
             op.Insert(auth.getSession()); 
-            }
-        finally {
+        } finally {
             Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
             HibernateUtil.getSessionFactory().close();
         }

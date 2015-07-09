@@ -8,14 +8,19 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDefs;
 import org.jasypt.hibernate4.type.EncryptedStringType;
 
-@TypeDefs({
-    @org.hibernate.annotations.TypeDef(name = "EncryptedString",
+@TypeDefs (
+    {
+        @org.hibernate.annotations.TypeDef(
+            name = "EncryptedString",
             typeClass = EncryptedStringType.class,
             parameters = {
                 @Parameter(name = "algorithm", value = "PBEWithMD5AndDES"),
                 @Parameter(name = "password", value = "123456"),
-                @Parameter(name = "keyObtentionIterations", value = "1000")})
-})
+                @Parameter(name = "keyObtentionIterations", value = "1000")
+            }
+        )
+    }
+)
 
 @Entity
 @Table(name = "USEREMPLOYEE")

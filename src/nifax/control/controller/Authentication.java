@@ -40,8 +40,8 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
     @Override
     public Boolean LogIn(String username, String password) throws InvalidCredentialsException {
         List obj = Select(userLogin)
-                .setParameter("username", username)
-                .list();
+            .setParameter("username", username)
+            .list();
         if (!obj.isEmpty()) {
             final UserEmployee userEmployee = (UserEmployee) obj.get(0);
             if (userEmployee.getPassword().equals(password)) {
@@ -54,11 +54,11 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
             return Boolean.FALSE;
         }
     }
+
     @Override
     public Boolean LogOut(Session obj) {
-        obj.setOpen(Boolean.FALSE);
-        Update(obj);
-        return Boolean.TRUE;
+        obj.setOpen(Boolean.FALSE);        
+        return Update(obj);
     }
 
     public void NullifySession() {
