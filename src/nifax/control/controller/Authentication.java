@@ -53,9 +53,7 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
         } else {
             return Boolean.FALSE;
         }
-
     }
-
     @Override
     public Boolean LogOut(Session obj) {
         obj.setOpen(Boolean.FALSE);
