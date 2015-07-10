@@ -20,7 +20,8 @@ public class Store implements Serializable {
     protected Store() {
     }
 
-    public Store(String descriptio){
+    public Store(String description){
+        this.description=description;
     }
 
     @Id

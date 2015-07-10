@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 
 @Entity
-@Table(name = "CATEGORY_PRODUCT")
+@Table(name = "CategoryProduct")
 public class CategoryProduct implements Serializable{
 
     protected CategoryProduct() {

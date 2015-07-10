@@ -1,6 +1,8 @@
 package nifax.control.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -10,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 
 @Entity
-@Table(name = "TYPE_QUANTITY")
+@Table(name = "TYPEQUANTITY")
 public class TypeQuantity implements Serializable{
 
     protected TypeQuantity() {
@@ -27,6 +29,10 @@ public class TypeQuantity implements Serializable{
     @Column(name = "description")
     private String description;
 
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.typeQuantity", cascade=CascadeType.ALL)
+    private Set<ProductQuantity> productQuantities = new HashSet<ProductQuantity>();
+
     public Long getId() {
         return id;
     }
@@ -34,5 +40,11 @@ public class TypeQuantity implements Serializable{
     public String getDescription() {
         return description;
     }
+    
+    
+    public void setProductQuantities(Set<ProductQuantity> productQuantities) {
+        this.productQuantities = productQuantities;
+    }
+
 
 }
