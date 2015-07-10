@@ -7,7 +7,8 @@ import org.hibernate.Query;
  * @author faka
  */
 public interface IOperation {
-    void Insert(Object obj);
+    Boolean Insert(Object obj);
     Query Select(String AQuery);
     Boolean Update(Object obj);
+    Boolean Delete(Object obj);
 }

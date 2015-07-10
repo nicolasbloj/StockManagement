@@ -43,7 +43,7 @@ public class NifaxControl {
                 pass = in.next();
             } while (!auth.LogIn(user, pass));
             logger.info("El Usuario fue logueado con éxito");
-            op.Insert(auth.getSession()); 
+            op.Insert(auth.getSession());            
         } finally {
             Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
             HibernateUtil.getSessionFactory().close();

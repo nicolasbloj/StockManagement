@@ -25,21 +25,46 @@ public class ModelOperation implements IOperation{
         return instance;
     }    
     
-    @Override
-    public void Insert(Object obj) {
+    private Boolean executeHibernateHQLStament(Object obj, Integer n, String op){
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            logger.info("Insertando registro");
+            logger.info(op);
             Transaction tx = session.beginTransaction();
-            session.save(obj);
+            switch(n){
+                case 1:
+                    session.save(obj);
+                    break;
+                case 2:
+                    session.saveOrUpdate(obj);
+                    break;
+                case 3:
+                    session.delete(obj);
+                    break;
+            }            
             tx.commit();
-            logger.info("Finalizado...");            
+            logger.info("Operación Finalizada...");            
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
             throw e;
         }finally {
             session.close();
         }
+        return Boolean.TRUE;
+    }
+    
+    @Override
+    public Boolean Insert(Object obj) {        
+        return executeHibernateHQLStament(obj, 1, "Insertando Registros");
+    }
+    
+    @Override    
+    public Boolean Update(Object obj){        
+        return executeHibernateHQLStament(obj, 2, "Modificando registros");
+    }
+
+    @Override    
+    public Boolean Delete(Object obj){        
+        return executeHibernateHQLStament(obj, 3, "Borrando registros");
     }
 
     @Override
@@ -55,24 +80,5 @@ public class ModelOperation implements IOperation{
             logger.log(Level.SEVERE, e.getMessage(), e);
         } 
         return slist;
-    }    
-    
-    @Override    
-    public Boolean Update(Object obj){
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            logger.info("Modificando registros");
-            session.saveOrUpdate(obj);
-            tx.commit();
-            logger.info("Finalizado...");
-        }
-        catch (RuntimeException e) {
-            session.getTransaction().rollback();
-            throw e;
-        }finally {
-            session.close();
-        }
-        return true;
-    }
+    }            
 }
