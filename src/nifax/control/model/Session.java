@@ -29,7 +29,7 @@ public class Session implements Serializable {
     @OneToOne
     private UserEmployee user_id;
 
-    public Session() {
+    protected Session() {
     }
 
     public Session(Boolean status, UserEmployee user_id) throws IllegalArgumentException {

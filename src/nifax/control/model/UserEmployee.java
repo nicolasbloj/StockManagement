@@ -26,7 +26,7 @@ import org.jasypt.hibernate4.type.EncryptedStringType;
 @Table(name = "USEREMPLOYEE")
 public class UserEmployee implements Serializable {
 
-    public UserEmployee() {
+    protected UserEmployee() {
     }
 
     public UserEmployee(String username, String password, Employee employee_id) {
