@@ -7,7 +7,6 @@ import javax.persistence.*;
  *
  * @author NB
  */
-
 @Entity
 @Table(name = "PRODUCT_QUANTITY")
 @AssociationOverrides (
@@ -19,9 +18,9 @@ import javax.persistence.*;
                     )
             ),
             @AssociationOverride (
-                    name = "pk.typeQuantity",
+                    name = "pk.quantity",
                     joinColumns = @JoinColumn(
-                            name = "typeQuantity_id"
+                            name = "quantity_id"
                     )
             )
         }
@@ -32,8 +31,7 @@ public class ProductQuantity implements Serializable {
     }
 
     private ProductQuantityId pk = new ProductQuantityId();
-
-    private double quantity;
+     private double quantity;
 
     @EmbeddedId
     public ProductQuantityId getPk() {
@@ -54,12 +52,12 @@ public class ProductQuantity implements Serializable {
     }
 
     @Transient
-    public TypeQuantity getTypeQuantity() {
-        return getPk().getTypeQuantity();
+    public Quantity getTypeQuantity() {
+        return getPk().getQuantity();
     }
 
-    public void setTypeQuantity(TypeQuantity typeQuantity) {
-        getPk().setTypeQuantity(typeQuantity);
+    public void setTypeQuantity(Quantity typeQuantity) {
+        getPk().setQuantity(typeQuantity);
     }
 
     public double getQuantity() {

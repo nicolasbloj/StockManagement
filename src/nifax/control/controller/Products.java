@@ -1,7 +1,7 @@
 package nifax.control.controller;
 
 import java.util.List;
-import nifax.control.model.CategoryProduct;
+import nifax.control.model.Category;
 import nifax.control.model.Product;
 import nifax.control.model.modeler.ModelOperation;
 import nifax.control.model.modeler.operation.IProductOperation;
@@ -27,12 +27,12 @@ public class Products extends ModelOperation
     }
 
     @Override
-    public CategoryProduct getCategoryProduct(long categoryId) {
-        List obj = super.Select(CategoryProductFilteredByID)
+    public Category getCategory(long categoryId) {
+        List obj = super.Select(CategoryFilteredByID)
                 .setParameter("id", categoryId)
                 .list();
         if (!obj.isEmpty()) {
-            return (CategoryProduct) obj.get(0);
+            return (Category) obj.get(0);
         } else {
             return null;
         }
@@ -40,11 +40,23 @@ public class Products extends ModelOperation
 
     @Override
     public Product buildProduct(String product, double cost, long categoryId) {
-        CategoryProduct categoryProduct = getCategoryProduct(categoryId);
-        if (categoryProduct != null) {
-            return new Product(product, cost, categoryProduct);
+        Category category = getCategory(categoryId);
+        if (category != null) {
+            return new Product(product, cost, category);
         } else {
             return null;
         }
     }
+    @Override
+    public Product getProduct(long productId) {
+        List obj = super.Select(ProductFilteredByID)
+                .setParameter("id", productId)
+                .list();
+        if (!obj.isEmpty()) {
+            return (Product) obj.get(0);
+        } else {
+            return null;
+        }
+    }
+
 }

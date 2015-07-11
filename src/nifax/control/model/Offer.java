@@ -8,20 +8,18 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
 @Table(name = "OFFER")
 public class Offer implements Serializable {
 
     protected Offer() {
     }
-
     public Offer(String description, double discount, double quantity,
-            TypeQuantity tipeQuantity, Product product) {
+            Quantity typeQuantity, Product product) {
         this.description = description;
         this.discount = discount;
         this.quantity = quantity;
-        this.tipeQuantity = tipeQuantity;
+        this.typeQuantity = typeQuantity;
         this.product = product;
     }
 
@@ -35,9 +33,9 @@ public class Offer implements Serializable {
     private double discount;
     @Column(name = "quantity")
     private double quantity;
-    @JoinColumn(name = "tyeQuantity_id")
+    @JoinColumn(name = "quantity_id")
     @OneToOne
-    private TypeQuantity tipeQuantity;
+    private Quantity typeQuantity;
     @JoinColumn(name = "product_id")
     @OneToOne
     private Product product;
@@ -58,8 +56,8 @@ public class Offer implements Serializable {
         return quantity;
     }
 
-    public TypeQuantity getTipeQuantity() {
-        return tipeQuantity;
+    public Quantity getTypeQuantity() {
+        return typeQuantity;
     }
 
     public Product getProduct() {

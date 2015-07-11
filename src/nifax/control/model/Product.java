@@ -16,24 +16,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Product implements Serializable {
 
     protected Product() {
-    }
-
-    
-    public Product(String description, double cost, CategoryProduct categoryProduct) {
+    }    
+    public Product(String description, double cost, Category categoryProduct) {
         this.description = description;
         this.cost = cost;
         this.categoryProduct = categoryProduct;
     }
-
-    
-    public Product(String description, double cost,
-            CategoryProduct categoryProduct, Set<ProductQuantity> productQuantities) {
-        this.description = description;
-        this.cost = cost;
-        this.categoryProduct = categoryProduct;
-        this.productQuantities = productQuantities;
-    }
-
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "product_id", unique = true, nullable = false)
@@ -42,9 +30,9 @@ public class Product implements Serializable {
     private String description;
     @Column(name = "cost")
     private double cost;
-    @JoinColumn(name = "categoryProduct_id")
+    @JoinColumn(name = "category_id")
     @OneToOne
-    private CategoryProduct categoryProduct;
+    private Category categoryProduct;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
     private Set<ProductQuantity> productQuantities = new HashSet<ProductQuantity>();
@@ -61,7 +49,7 @@ public class Product implements Serializable {
         return cost;
     }
 
-    public CategoryProduct getCategoryProduct() {
+    public Category getCategory() {
         return categoryProduct;
     }
 

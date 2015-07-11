@@ -24,13 +24,13 @@ public class Restoration implements Serializable {
     }
 
     public Restoration(String description, double peak, double midpoint,
-            double lowpoint, TypeQuantity tipeQuantity, 
+            double lowpoint, Quantity typeQuantity, 
             Product product, Store store) {
         this.description = description;
         this.peak = peak;
         this.midpoint = midpoint;
         this.lowpoint = lowpoint;
-        this.tipeQuantity = tipeQuantity;
+        this.typeQuantity = typeQuantity;
         this.product = product;
         this.store = store;
     }
@@ -52,9 +52,9 @@ public class Restoration implements Serializable {
     @Column(name = "lowpoint")
     private double lowpoint;
     
-    @JoinColumn(name = "tyeQuantity_id")
+    @JoinColumn(name = "quantity_id")
     @OneToOne
-    private TypeQuantity tipeQuantity;
+    private Quantity typeQuantity;
     @JoinColumn(name = "product_id")
     @OneToOne
     private Product product;
@@ -82,8 +82,8 @@ public class Restoration implements Serializable {
         return lowpoint;
     }
 
-    public TypeQuantity getTipeQuantity() {
-        return tipeQuantity;
+    public Quantity getTypeQuantity() {
+        return typeQuantity;
     }
 
     public Product getProduct() {
