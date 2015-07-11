@@ -10,23 +10,23 @@ import nifax.control.model.modeler.operation.IQueries;
  *
  * @author NB
  */
-public class UtilController extends ModelOperation
+public class Util extends ModelOperation
         implements IUtilOperation, IQueries {
 
-    private static UtilController instance = null;
+    private static Util instance = null;
     
-    protected UtilController(){
+    protected Util(){
     }
     
-    public static UtilController getInstance(){
+    public static Util getInstance(){
     if(instance == null)
-            instance = new UtilController();
+            instance = new Util();
         return instance;
     }
 
     @Override
     public TypeQuantity getTypeQuantity(long typeQuantitId) {
-        List obj = super.Select(getTypeQuantity)
+        List obj = super.Select(TypeQuantityFilteredByID)
                 .setParameter("id", typeQuantitId)
                 .list();
         if (!obj.isEmpty()) {

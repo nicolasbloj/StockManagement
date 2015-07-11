@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
-import nifax.control.controller.ProductController;
-import nifax.control.controller.UtilController;
+import nifax.control.controller.Products;
+import nifax.control.controller.Util;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.hibernate.HibernateUtil;
@@ -50,8 +50,8 @@ public class NifaxControl {
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
 
-            ProductController productController = ProductController.getInstance();
-            UtilController utilController = UtilController.getInstance();
+            Products productController = Products.getInstance();
+            Util utilController = Util.getInstance();
 
             //              --SIMPLE LOADS--
             //CATEGORIES

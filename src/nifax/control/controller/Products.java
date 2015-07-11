@@ -11,24 +11,24 @@ import nifax.control.model.modeler.operation.IQueries;
  *
  * @author NB
  */
-public class ProductController extends ModelOperation
+public class Products extends ModelOperation
         implements IProductOperation, IQueries {
 
-    private static ProductController instance = null;
+    private static Products instance = null;
 
-    protected ProductController() {
+    protected Products() {
     }
 
-    public static ProductController getInstance() {
+    public static Products getInstance() {
         if (instance == null) {
-            instance = new ProductController();
+            instance = new Products();
         }
         return instance;
     }
 
     @Override
     public CategoryProduct getCategoryProduct(long categoryId) {
-        List obj = super.Select(getCategoryProduct)
+        List obj = super.Select(CategoryProductFilteredByID)
                 .setParameter("id", categoryId)
                 .list();
         if (!obj.isEmpty()) {
@@ -37,6 +37,7 @@ public class ProductController extends ModelOperation
             return null;
         }
     }
+
     @Override
     public Product buildProduct(String product, double cost, long categoryId) {
         CategoryProduct categoryProduct = getCategoryProduct(categoryId);

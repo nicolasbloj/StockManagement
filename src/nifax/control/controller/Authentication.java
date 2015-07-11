@@ -39,7 +39,7 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
 
     @Override
     public Boolean LogIn(String username, String password) throws InvalidCredentialsException {
-        List obj = Select(getUser)
+        List obj = Select(userLogin)
             .setParameter("username", username)
             .list();
         if (!obj.isEmpty()) {
