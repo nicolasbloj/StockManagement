@@ -1,4 +1,4 @@
-package jcode.hibernate.model;
+package nifax.hibernate.model;
 
 import nifax.control.model.Employee;
 import nifax.control.model.Session;
