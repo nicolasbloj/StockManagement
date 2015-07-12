@@ -8,22 +8,21 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
-@Table(name = "PRICE_LIST")
-public class PriceList implements Serializable{
+@Table(name = "PRICE")
+public class Price implements Serializable{
 
-    protected PriceList() {
+    protected Price() {
     }
 
-    public PriceList(String description,double profit) {
+    public Price(String description,double profit) {
         this.description = description;
         this.profit=profit;
     }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "proceList_id", unique = true, nullable = false)
+    @Column(name = "price_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;

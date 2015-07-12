@@ -1,10 +1,8 @@
 
 package nifax.control.model.modeler.operation;
 
-import java.util.Set;
-import nifax.control.model.CategoryProduct;
+import nifax.control.model.Category;
 import nifax.control.model.Product;
-import nifax.control.model.ProductQuantity;
 
 /**
  *
@@ -14,8 +12,10 @@ import nifax.control.model.ProductQuantity;
 public interface IProductOperation {
     
     
-   public CategoryProduct getCategoryProduct(long categoryId);
+   public Category getCategory(long categoryId);
    
    public Product buildProduct(String product, double cost, long categoryId);
 
+   public Product getProduct(long productId);
+   
 }

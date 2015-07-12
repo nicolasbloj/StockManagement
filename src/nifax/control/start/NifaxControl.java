@@ -6,7 +6,8 @@ import java.util.Set;
 import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
 import nifax.control.controller.Products;
-import nifax.control.controller.Util;
+import nifax.control.controller.Stocks;
+
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.hibernate.HibernateUtil;
@@ -51,39 +52,38 @@ public class NifaxControl {
             modelOperation.Insert(auth.getSession());
 
             Products productController = Products.getInstance();
-            Util utilController = Util.getInstance();
 
+            Stocks stockController  =  Stocks.getInstance();
+            
             //              --SIMPLE LOADS--
             //CATEGORIES
-            modelOperation.Insert(new CategoryProduct("Audio"));
-            modelOperation.Insert(new CategoryProduct("Iluminacion"));
+            modelOperation.Insert(new Category("Audio"));
+            modelOperation.Insert(new Category("Iluminacion"));
             //PRICE LISTS
-            modelOperation.Insert(new PriceList("Lista1", 1.85));
-            modelOperation.Insert(new PriceList("Lista2", 1.75));
-            modelOperation.Insert(new PriceList("Lista3", 1.55));
-            modelOperation.Insert(new PriceList("Lista4", 1.25));
-            modelOperation.Insert(new PriceList("Lista5", 1.05));
+            modelOperation.Insert(new Price("Lista1", 1.85));
+            modelOperation.Insert(new Price("Lista2", 1.75));
+            modelOperation.Insert(new Price("Lista3", 1.55));
+            modelOperation.Insert(new Price("Lista4", 1.25));
+            modelOperation.Insert(new Price("Lista5", 1.05));
             //STORES
             modelOperation.Insert(new Store("Deposito central"));
             modelOperation.Insert(new Store("Deposito alternativo"));
             //TYPES QUANTITIES
-            modelOperation.Insert(new TypeQuantity("Bulto"));
-            modelOperation.Insert(new TypeQuantity("Unidad"));
+            modelOperation.Insert(new Quantity("Bulto"));
+            modelOperation.Insert(new Quantity("Paquete"));
 
             //PRODUCT
             String productDesc = "Foco 12V";
-            double cost = 12.4;
+            double cost = 76.40;
             long categoryId = 1;
-
-            long typeQuantityId = 1;
-            long quantity = 12;
 
             Product product = productController.buildProduct(productDesc, cost, categoryId);
 
             if (product != null) {
-                TypeQuantity typeQuantity = utilController.getTypeQuantity(typeQuantityId);
+                long quantityId = 1;
+                Quantity typeQuantity = stockController.getTypeQuantity(quantityId);
                 if (typeQuantity != null) {
-
+                    long quantity = 12;
                     Set<ProductQuantity> productQuantities = new HashSet<ProductQuantity>();
                     ProductQuantity productQuantity = new ProductQuantity();
                     productQuantity.setProduct(product);
@@ -94,6 +94,23 @@ public class NifaxControl {
 
                     if (modelOperation.Insert(product)) {
                         logger.info("Producto insertado correctamente");
+                        //STOCK
+                        String description="STOCK";
+                        long productId=1;
+                        double quantityStock=500;
+                        long typeQuantityStock=1;
+                        long store=1;
+                        
+                        quantityId=1;
+                        
+                        Stock stock = stockController.buildStock(description, 
+                        quantityStock, quantityId, productId, store);
+                        
+                        if(modelOperation.Insert(stock)){
+                        logger.info("Stock insertado correctamente");
+                        }else
+                            logger.info("Stock insertado correctamente");
+                        
                     } else {
                         logger.info("Error al insertar producto");
                     }

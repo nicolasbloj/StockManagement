@@ -16,11 +16,11 @@ public class Stock implements Serializable {
     protected Stock() {
     }
 
-    public Stock(String description, double quantity, TypeQuantity tipeQuantity,
+    public Stock(String description, double quantity, Quantity typeQuantity,
             Product product, Store store) {
         this.description = description;
         this.quantity = quantity;
-        this.tipeQuantity = tipeQuantity;
+        this.typeQuantity = typeQuantity;
         this.product = product;
         this.store = store;
     }
@@ -34,9 +34,9 @@ public class Stock implements Serializable {
     private String description;
     @Column(name = "quantity")
     private double quantity;
-    @JoinColumn(name = "tyeQuantity_id")
+    @JoinColumn(name = "quantity_id")
     @OneToOne
-    private TypeQuantity tipeQuantity;
+    private Quantity typeQuantity;
     @JoinColumn(name = "product_id")
     @OneToOne
     private Product product;
@@ -56,8 +56,8 @@ public class Stock implements Serializable {
         return quantity;
     }
 
-    public TypeQuantity getTipeQuantity() {
-        return tipeQuantity;
+    public Quantity getTypeQuantity() {
+        return typeQuantity;
     }
 
     public Product getProduct() {

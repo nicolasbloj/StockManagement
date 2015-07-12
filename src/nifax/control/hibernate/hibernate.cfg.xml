@@ -13,13 +13,13 @@
         <mapping class="nifax.control.model.Employee"/>    
         <mapping class="nifax.control.model.UserEmployee"/>  
         <mapping class="nifax.control.model.Session"/> 
-        <mapping class="nifax.control.model.CategoryProduct"/> 
+        <mapping class="nifax.control.model.Category"/> 
         <mapping class="nifax.control.model.Product"/> 
         <mapping class="nifax.control.model.Offer"/> 
         <mapping class="nifax.control.model.Stock"/> 
-        <mapping class="nifax.control.model.TypeQuantity"/>
+        <mapping class="nifax.control.model.Quantity"/>
         <mapping class="nifax.control.model.Store"/>  
-        <mapping class="nifax.control.model.PriceList"/> 
+        <mapping class="nifax.control.model.Price"/> 
         <mapping class="nifax.control.model.Restoration"/> 
         <mapping class="nifax.control.model.ProductQuantity"/> 
         

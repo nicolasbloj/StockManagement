@@ -8,21 +8,19 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
-@Table(name = "CategoryProduct")
-public class CategoryProduct implements Serializable{
+@Table(name = "CATEGORY")
+public class Category implements Serializable{
 
-    protected CategoryProduct() {
+    protected Category() {
     }
-
-    public CategoryProduct(String description) {
+    public Category(String description) {
          this.description = description;
     }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "categoryProduct_id", unique = true, nullable = false)
+    @Column(name = "category_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;
@@ -30,9 +28,7 @@ public class CategoryProduct implements Serializable{
     public Long getId() {
         return id;
     }
-
     public String getDescription() {
         return description;
     }
-
 }
