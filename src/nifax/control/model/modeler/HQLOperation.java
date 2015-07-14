@@ -1,5 +1,7 @@
 package nifax.control.model.modeler;
 
+import nifax.control.model.modeler.operation.IHQLOperation;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nifax.control.hibernate.HibernateUtil;
@@ -12,16 +14,16 @@ import org.hibernate.Transaction;
  * @author faka
  */
 
-public class ModelOperation implements IOperation{
-    private static final Logger logger = Logger.getLogger(ModelOperation.class.getName());
+public class HQLOperation implements IHQLOperation{
+    private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
     private Session session = null;   
-    private static ModelOperation instance = null;
-    protected ModelOperation() {
+    private static HQLOperation instance = null;
+    protected HQLOperation() {
     }
     
-    public static ModelOperation getInstance(){
+    public static HQLOperation getInstance(){
         if(instance == null)
-            instance = new ModelOperation();
+            instance = new HQLOperation();
         return instance;
     }    
     
@@ -66,9 +68,8 @@ public class ModelOperation implements IOperation{
     public Boolean Delete(Object obj){        
         return executeHibernateHQLStament(obj, 3, "Borrando registros");
     }
-
-    @Override
-    public Query Select(String AQuery) {
+  
+    public Query HQLSelect(String AQuery) {
         Query slist = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -80,5 +81,31 @@ public class ModelOperation implements IOperation{
             logger.log(Level.SEVERE, e.getMessage(), e);
         } 
         return slist;
-    }            
+    }
+    
+    @Override
+    public List Select(String AQuery){
+        return HQLSelect(AQuery)
+            .list();
+    }
+    
+    @Override
+    public List Select(String AQuery, Object obj){
+        return HQLSelect(AQuery)
+            .setProperties(obj)
+            .list();
+    }
+
+    @Override
+    public Object SelectCount(String AQuery, Object obj, int nrow){
+        return null; //Not implemented yet
+    }
+    
+    @Override
+    public Object SelectUnique(String AQuery, Object obj){
+        return HQLSelect(AQuery)
+            .setProperties(obj)
+            .setMaxResults(1)
+            .uniqueResult();
+    }
 }

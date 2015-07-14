@@ -1,19 +1,18 @@
 package nifax.control.controller;
 
-import java.util.List;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.model.Session;
 import nifax.control.model.UserEmployee;
-import nifax.control.model.modeler.ModelOperation;
+import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.operation.IUserOperation;
-import nifax.control.model.modeler.operation.IQueries;
+import nifax.control.data.IQueries;
 
 /**
  *
  * @author faka
  */
-public class Authentication extends ModelOperation implements IUserOperation, IQueries {
+public class Authentication extends HQLOperation implements IUserOperation, IQueries {
 
     private static Authentication instance = null;
     private static Session SID = null;
@@ -38,14 +37,11 @@ public class Authentication extends ModelOperation implements IUserOperation, IQ
     }
 
     @Override
-    public Boolean LogIn(String username, String password) throws InvalidCredentialsException {
-        List obj = Select(userLogin)
-            .setParameter("username", username)
-            .list();
-        if (!obj.isEmpty()) {
-            final UserEmployee userEmployee = (UserEmployee) obj.get(0);
-            if (userEmployee.getPassword().equals(password)) {
-                SID = new Session(Boolean.TRUE, userEmployee);
+    public Boolean LogIn(UserEmployee usr) throws InvalidCredentialsException {
+        UserEmployee obj = (UserEmployee) SelectUnique(userLogin, usr);
+        if (obj!=null) {
+            if (obj.getPassword().equals(usr.getPassword())) {
+                SID = new Session(Boolean.TRUE, obj);
                 return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;

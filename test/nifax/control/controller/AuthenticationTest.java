@@ -10,7 +10,7 @@ import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.model.Employee;
 
 import nifax.control.model.UserEmployee;
-import nifax.control.model.modeler.ModelOperation;
+import nifax.control.model.modeler.HQLOperation;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class AuthenticationTest {
     
     @BeforeClass
     public static void setUpClass() {
-        ModelOperation op = ModelOperation.getInstance();
+        HQLOperation op = HQLOperation.getInstance();
         UserEmployee usr = new UserEmployee(
             "f4ka", 
             "1234", 
@@ -66,21 +66,21 @@ public class AuthenticationTest {
     public void testLogIn() throws InvalidCredentialsException {
         System.out.println("LogIn works");
         Authentication instance = Authentication.getInstance();
-        assertTrue(instance.LogIn("f4ka", "1234"));
+        assertTrue(instance.LogIn(new UserEmployee("f4ka", "1234")));
     }
     
     @Test
     public void testLogInInvalid() throws InvalidCredentialsException{
         System.out.println("LogIn fails");
         Authentication instance = Authentication.getInstance();
-        assertFalse(instance.LogIn("f4ka", "12345"));
+        assertFalse(instance.LogIn(new UserEmployee("f4ka", "12345")));
     }
     
     @Test
     public void testLogOut() throws InvalidCredentialsException, InitializeSessionException {
         System.out.println("LogOut works");
         Authentication instance = Authentication.getInstance();
-        instance.LogIn("f4ka", "1234");        
+        instance.LogIn(new UserEmployee("f4ka", "1234"));        
         assertTrue(instance.LogOut(instance.getSession()));
         assertFalse(instance.getSession().isOpen());
     }

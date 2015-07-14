@@ -17,6 +17,10 @@ public class Category implements Serializable{
     public Category(String description) {
          this.description = description;
     }
+    public Category(Long id, String description) {
+         this.description = description;
+         this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

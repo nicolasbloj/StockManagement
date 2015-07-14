@@ -29,6 +29,10 @@ public class UserEmployee implements Serializable {
     protected UserEmployee() {
     }
 
+    public UserEmployee(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
     public UserEmployee(String username, String password, Employee employee_id) {
         this.username = username;
         this.password = password;

@@ -18,10 +18,10 @@ import static org.junit.Assert.*;
  *
  * @author faka
  */
-public class ModelOperationTest {
-    ModelOperation instance = ModelOperation.getInstance();
+public class HQLOperationTest {
+    HQLOperation instance = HQLOperation.getInstance();
     Employee obj;
-    public ModelOperationTest() {
+    public HQLOperationTest() {
     }
     
     @BeforeClass
@@ -46,17 +46,17 @@ public class ModelOperationTest {
     }
 
     /**
-     * Test of getInstance method, of class ModelOperation.
+     * Test of getInstance method, of class HQLOperation.
      */
     @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        ModelOperation result = ModelOperation.getInstance();
+        HQLOperation result = HQLOperation.getInstance();
         assertNotNull(result);
     }
 
     /**
-     * Test of Insert method, of class ModelOperation.
+     * Test of Insert method, of class HQLOperation.
      */
     @Test
     public void testInsert() {
@@ -70,7 +70,7 @@ public class ModelOperationTest {
     }
 
     /**
-     * Test of Update method, of class ModelOperation.
+     * Test of Update method, of class HQLOperation.
      */
     @Test
     public void testUpdate() {
@@ -82,7 +82,7 @@ public class ModelOperationTest {
     }
 
     /**
-     * Test of Delete method, of class ModelOperation.
+     * Test of Delete method, of class HQLOperation.
      */
     @Test
     public void testDelete() {
@@ -93,15 +93,13 @@ public class ModelOperationTest {
     }
 
     /**
-     * Test of Select method, of class ModelOperation.
+     * Test of Select method, of class HQLOperation.
      */
     @Test
     public void testSelect() {
         System.out.println("Select");
         instance.Insert(obj);
-        List a = instance.Select("from Employee where firstname = :firstname")
-                .setParameter("firstname", "TestFirstName")
-                .list();
+        List a = instance.Select("from Employee where firstname = :firstname", obj);
         assertEquals(a.size(), 1);
         instance.Delete(obj);
     }

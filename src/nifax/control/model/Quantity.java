@@ -40,11 +40,8 @@ public class Quantity implements Serializable{
     public String getDescription() {
         return description;
     }
-    
-    
+        
     public void setProductQuantities(Set<ProductQuantity> productQuantities) {
         this.productQuantities = productQuantities;
     }
-
-
 }

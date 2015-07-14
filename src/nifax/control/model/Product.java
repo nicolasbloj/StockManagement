@@ -17,11 +17,13 @@ public class Product implements Serializable {
 
     protected Product() {
     }    
+    
     public Product(String description, double cost, Category categoryProduct) {
         this.description = description;
         this.cost = cost;
         this.categoryProduct = categoryProduct;
     }
+    
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "product_id", unique = true, nullable = false)
@@ -60,6 +62,4 @@ public class Product implements Serializable {
     public void setProductQuantities(Set<ProductQuantity> productQuantities) {
         this.productQuantities = productQuantities;
     }
-
-    
 }
