@@ -1,6 +1,6 @@
 package nifax.control.view.util;
 
-import nifax.control.view.event.JTreeMenuMainListener;
+import nifax.control.view.event.Jtr_navigation_Listener;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -11,13 +11,13 @@ import nifax.control.view.FrameMain;
  *
  * @author NB
  */
-public class TreeMenuMain extends JTree {
+public class Jtr_navigation extends JTree {
 
-    private final JTreeMenuMainListener TreeListener;
+    private final Jtr_navigation_Listener TreeListener;
 
-    public TreeMenuMain(FrameMain jFrameMain) {
+    public Jtr_navigation(FrameMain jFrameMain) {
 
-        TreeListener = new JTreeMenuMainListener(jFrameMain);
+        TreeListener = new Jtr_navigation_Listener(jFrameMain);
 
         addMouseListener(TreeListener);
 

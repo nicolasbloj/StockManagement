@@ -1,163 +1,108 @@
 package nifax.control.view;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import nifax.control.view.panel.PanelPresentation;
 
 /**
  *
  * @author NB
  */
-public class FrameMain extends javax.swing.JFrame {
+public final class FrameMain extends javax.swing.JFrame {
 
     public FrameMain() {
         initComponents();
 
+        this.getContentPane().setBackground(new Color(226,212,246));
+        final PanelPresentation panelPresentation = new PanelPresentation();
+        this.ContainerAddPanel(panelPresentation);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
     }
 
-    public void DesktopPaneAddPanel(JPanel jPanel) {
-
-        this.jDesktopPane1.add(jPanel);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
-        );
-
-        jDesktopPane1.setLayer(jPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        this.jDesktopPane1.repaint();
-    }
-    
-    public void DesktopPaneRemoveAll(){
-
-            this.jDesktopPane1.removeAll();
-            this.jDesktopPane1.repaint();
+    public void ContainerAddPanel(JPanel jPanel) {
+        this.jsp_container.setViewportView(jPanel);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTreeMenuMain = new nifax.control.view.util.TreeMenuMain(this);
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jsp_tree = new javax.swing.JScrollPane();
+        jtr_navigation = new nifax.control.view.util.Jtr_navigation(this);
+        jp_title = new javax.swing.JPanel();
+        jlbl_title = new javax.swing.JLabel();
+        jsp_container = new javax.swing.JScrollPane();
+        jmb_main = new javax.swing.JMenuBar();
+        jm_system = new javax.swing.JMenu();
+        jmi_exit = new javax.swing.JMenuItem();
+        jm_help = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jsp_tree.setBackground(new java.awt.Color(229, 220, 220));
+        jsp_tree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+        jtr_navigation.setBackground(new java.awt.Color(226, 212, 246));
+        jsp_tree.setViewportView(jtr_navigation);
+
+        jp_title.setBackground(new java.awt.Color(226, 212, 246));
+
+        jlbl_title.setBackground(new java.awt.Color(226, 212, 246));
+        jlbl_title.setFont(new java.awt.Font("Century Gothic", 0, 23)); // NOI18N
+        jlbl_title.setForeground(new java.awt.Color(102, 102, 102));
+        jlbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbl_title.setText("NiFax ");
+
+        javax.swing.GroupLayout jp_titleLayout = new javax.swing.GroupLayout(jp_title);
+        jp_title.setLayout(jp_titleLayout);
+        jp_titleLayout.setHorizontalGroup(
+            jp_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titleLayout.createSequentialGroup()
+                .addComponent(jlbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jScrollPane1.setViewportView(jTreeMenuMain);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Modulo Stock");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jp_titleLayout.setVerticalGroup(
+            jp_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(jlbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jsp_container.setBackground(new java.awt.Color(51, 51, 51));
+        jsp_container.setOpaque(true);
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 35)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("NiFax ");
+        jm_system.setText("Sistema");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jmi_exit.setText("Salir");
+        jm_system.add(jmi_exit);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jmb_main.add(jm_system);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jm_help.setText("Ayuda");
+        jmb_main.add(jm_help);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jmb_main);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jsp_tree, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jsp_container, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
+            .addComponent(jp_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jp_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jsp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jsp_container))
                 .addGap(51, 51, 51))
         );
 
@@ -187,7 +132,7 @@ public class FrameMain extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-            java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrameMain().setVisible(true);
             }
@@ -195,15 +140,14 @@ public class FrameMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTreeMenuMain;
+    private javax.swing.JLabel jlbl_title;
+    private javax.swing.JMenu jm_help;
+    private javax.swing.JMenu jm_system;
+    private javax.swing.JMenuBar jmb_main;
+    private javax.swing.JMenuItem jmi_exit;
+    private javax.swing.JPanel jp_title;
+    private javax.swing.JScrollPane jsp_container;
+    private javax.swing.JScrollPane jsp_tree;
+    private javax.swing.JTree jtr_navigation;
     // End of variables declaration//GEN-END:variables
 }

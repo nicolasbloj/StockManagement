@@ -6,9 +6,9 @@ import javax.swing.JPanel;
  *
  * @author NB
  */
-public class PanelTab extends JPanel{
+public class Jp_Tab extends JPanel{
     
-    public PanelTab(){
+    public Jp_Tab(){
         setBackground(new java.awt.Color(204, 204, 204));
         setOpaque(true);
     }
