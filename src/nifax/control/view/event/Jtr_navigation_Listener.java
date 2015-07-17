@@ -5,17 +5,18 @@ import java.awt.event.MouseListener;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 import nifax.control.view.FrameMain;
+import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
 
 /**
  *
  * @author NB
  */
-public class JTreeMenuMainListener implements MouseListener {
+public class Jtr_navigation_Listener implements MouseListener {
 
     private final FrameMain jFrameMain;
 
-    public JTreeMenuMainListener(FrameMain jFrameMain) {
+    public Jtr_navigation_Listener(FrameMain jFrameMain) {
 
         this.jFrameMain = jFrameMain;
 
@@ -39,10 +40,15 @@ public class JTreeMenuMainListener implements MouseListener {
                     jPanelProductsAdmin.setVisible(true);
                     jPanelProductsAdmin.setOpaque(true);
 
-                    this.jFrameMain.DesktopPaneAddPanel(jPanelProductsAdmin);
+                    this.jFrameMain.ContainerAddPanel(jPanelProductsAdmin);
 
                 } else {
-                    this.jFrameMain.DesktopPaneRemoveAll();
+
+                    PanelPresentation jPanelPresentation = new PanelPresentation();
+                    jPanelPresentation.setVisible(true);
+                    jPanelPresentation.setOpaque(true);
+
+                    this.jFrameMain.ContainerAddPanel(jPanelPresentation);
                 }
 
             }
