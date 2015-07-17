@@ -12,11 +12,11 @@ import nifax.control.view.panel.PanelProductsAdmin;
  *
  * @author NB
  */
-public class Jtr_navigation_Listener implements MouseListener {
+public class Tree_navigation_Listener implements MouseListener {
 
     private final FrameMain jFrameMain;
 
-    public Jtr_navigation_Listener(FrameMain jFrameMain) {
+    public Tree_navigation_Listener(FrameMain jFrameMain) {
 
         this.jFrameMain = jFrameMain;
 

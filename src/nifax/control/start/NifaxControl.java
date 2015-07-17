@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
 import nifax.control.model.modeler.CategoryOperation;
 import nifax.control.model.modeler.ProductOperation;
-import nifax.control.model.modeler.QuantityOperation;
+import nifax.control.model.modeler.MeasureOperation;
 import nifax.control.model.modeler.StockOperation;
 import nifax.control.model.modeler.StoreOperation;
 
@@ -69,14 +69,14 @@ public class NifaxControl implements IQueries{
             //Add stores
             modelOperation.Insert(new Store("Deposito central"));
             modelOperation.Insert(new Store("Deposito alternativo"));
-            //Add quantities type
-            modelOperation.Insert(new Quantity("Bulto"));
-            modelOperation.Insert(new Quantity("Paquete"));
+            //Add measures
+            modelOperation.Insert(new Measure("Bulto"));
+            modelOperation.Insert(new Measure("Paquete"));
 
             //Get category list from db
             Map<String, Category> CategoryList = CategoryOperation.getInstance().List();
             //Get quantity list from db
-            Map<String, Quantity> QuantityList = QuantityOperation.getInstance().List();
+            Map<String, Measure> measureList = MeasureOperation.getInstance().List();
             //Add product
             String productDesc = "Foco 12V";
             double cost = 76.40;
@@ -87,13 +87,13 @@ public class NifaxControl implements IQueries{
             );
             //Add quantity
             double quantityValue = 12.0;
-            Set<ProductQuantity> productQuantities = new HashSet<>();
-            ProductQuantity productQuantity = new ProductQuantity();
-            productQuantity.setProduct(product);
-            productQuantity.setTypeQuantity(QuantityList.get("Bulto"));
-            productQuantity.setQuantity(quantityValue);
-            productQuantities.add(productQuantity);
-            product.setProductQuantities(productQuantities);
+            Set<ProductMeasure> productMeasures = new HashSet<>();
+            ProductMeasure productMeasure = new ProductMeasure();
+            productMeasure.setProduct(product);
+            productMeasure.setMeasure(measureList.get("Bulto"));
+            productMeasure.setQuantity(quantityValue);
+            productMeasures.add(productMeasure);
+            product.setProductMeasures(productMeasures);
 
             modelOperation.Insert(product);
             logger.info("Producto insertado correctamente");
@@ -104,10 +104,9 @@ public class NifaxControl implements IQueries{
             //Add stock
             String description = "STOCK";
             double quantityStock = 500;
-            StockOperation.getInstance().Add(
-                description, 
+            StockOperation.getInstance().Add(description, 
                 quantityStock, 
-                QuantityList.get("Bulto"), 
+                measureList.get("Bulto"), 
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
             );

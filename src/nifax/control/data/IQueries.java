@@ -22,13 +22,13 @@ public interface IQueries {
        
     final String Category = "from Category";
     
-    final String Quantity = "from Quantity";
+    final String Measure = "from Measure";
     
-    final String Stores = "from Store";
+    final String Store = "from Store";
     
-    final String QuantityFilteredByID = "from Quantity where id = :id";
+    final String MeasureFilteredByID = "from Measure where id = :id";
     
-    final String QuantityFilteredByDescription = "from Quantity where description = :description";
+    final String MeasureFilteredByDescription = "from Measure where description = :description";
     
     final String StoreFilteredByID = "from Store where id = :id";
     

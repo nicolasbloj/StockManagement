@@ -94,7 +94,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Jtr_navigation(this)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Tre_navigation(this)"/>
           </AuxValues>
         </Component>
       </SubComponents>

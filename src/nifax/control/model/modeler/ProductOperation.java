@@ -5,14 +5,12 @@ import java.util.List;
 import java.util.Map;
 import nifax.control.model.Category;
 import nifax.control.model.Product;
-import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
 
 /**
  *
  * @author NB
  */
-
 public class ProductOperation extends HQLOperation implements IQueries {
 
     private static ProductOperation instance = null;

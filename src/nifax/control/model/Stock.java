@@ -8,7 +8,6 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
 @Table(name = "STOCK")
 public class Stock implements Serializable {
@@ -16,11 +15,11 @@ public class Stock implements Serializable {
     protected Stock() {
     }
 
-    public Stock(String description, double quantity, Quantity typeQuantity,
+    public Stock(String description, double quantity, Measure measure,
             Product product, Store store) {
         this.description = description;
         this.quantity = quantity;
-        this.typeQuantity = typeQuantity;
+        this.measure = measure;
         this.product = product;
         this.store = store;
     }
@@ -34,9 +33,9 @@ public class Stock implements Serializable {
     private String description;
     @Column(name = "quantity")
     private double quantity;
-    @JoinColumn(name = "quantity_id")
+    @JoinColumn(name = "measure_id")
     @OneToOne
-    private Quantity typeQuantity;
+    private Measure measure;
     @JoinColumn(name = "product_id")
     @OneToOne
     private Product product;
@@ -56,8 +55,8 @@ public class Stock implements Serializable {
         return quantity;
     }
 
-    public Quantity getTypeQuantity() {
-        return typeQuantity;
+    public Measure getMeure() {
+        return measure;
     }
 
     public Product getProduct() {
