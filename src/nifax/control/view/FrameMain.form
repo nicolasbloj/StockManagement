@@ -48,9 +48,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="scp_tree" min="-2" pref="157" max="-2" attributes="0"/>
+              <Component id="scp_tree" min="-2" pref="190" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="scp_container" pref="584" max="32767" attributes="0"/>
+              <Component id="scp_container" pref="551" max="32767" attributes="0"/>
           </Group>
           <Component id="pnl_title" max="32767" attributes="0"/>
       </Group>

@@ -1,12 +1,9 @@
 package nifax.control.start;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
 import nifax.control.model.modeler.CategoryOperation;
@@ -116,6 +113,7 @@ public class NifaxControl implements IQueries{
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
             );
+            
         } finally {
             Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
             HibernateUtil.getSessionFactory().close();

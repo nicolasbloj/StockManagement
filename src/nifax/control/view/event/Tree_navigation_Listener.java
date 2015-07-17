@@ -35,7 +35,7 @@ public class Tree_navigation_Listener implements MouseListener {
             if (tp != null) {
                 nodoPadre = tp.getParentPath();
 
-                if (tp.toString().equals("[NiFax, Administracion, Productos, Cargar]")) {
+                if (tp.toString().equals("[NiFax, Administracion, Productos, Gestion]")) {
                     PanelProductsAdmin jPanelProductsAdmin = new PanelProductsAdmin();
                     jPanelProductsAdmin.setVisible(true);
                     jPanelProductsAdmin.setOpaque(true);
