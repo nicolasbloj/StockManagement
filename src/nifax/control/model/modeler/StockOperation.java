@@ -1,4 +1,4 @@
-package nifax.control.model.modeler;
+    package nifax.control.model.modeler;
 
 import nifax.control.model.Product;
 import nifax.control.model.Stock;
@@ -45,7 +45,4 @@ public class StockOperation extends HQLOperation
         }
     }
     
-    public Measure Find(Measure measure) {
-        return (Measure) SelectUnique(MeasureFilteredByID, measure);        
-    }
 }
