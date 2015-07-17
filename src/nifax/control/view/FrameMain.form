@@ -2,21 +2,21 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Menu class="javax.swing.JMenuBar" name="jmb_main">
+    <Menu class="javax.swing.JMenuBar" name="mbr_main">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jm_system">
+        <Menu class="javax.swing.JMenu" name="men_system">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sistema"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmi_exit">
+            <MenuItem class="javax.swing.JMenuItem" name="mei_exit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jm_help">
+        <Menu class="javax.swing.JMenu" name="men_help">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
@@ -28,7 +28,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jmb_main"/>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="mbr_main"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -48,21 +48,21 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="jsp_tree" min="-2" pref="157" max="-2" attributes="0"/>
+              <Component id="scp_tree" min="-2" pref="157" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jsp_container" pref="584" max="32767" attributes="0"/>
+              <Component id="scp_container" pref="584" max="32767" attributes="0"/>
           </Group>
-          <Component id="jp_title" max="32767" attributes="0"/>
+          <Component id="pnl_title" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="jp_title" min="-2" max="-2" attributes="0"/>
+              <Component id="pnl_title" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jsp_tree" pref="237" max="32767" attributes="0"/>
-                  <Component id="jsp_container" max="32767" attributes="0"/>
+                  <Component id="scp_tree" pref="237" max="32767" attributes="0"/>
+                  <Component id="scp_container" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
@@ -70,7 +70,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jsp_tree">
+    <Container class="javax.swing.JScrollPane" name="scp_tree">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="dc" green="dc" red="e5" type="rgb"/>
@@ -87,7 +87,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTree" name="jtr_navigation">
+        <Component class="javax.swing.JTree" name="tre_navigation">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f6" green="d4" red="e2" type="rgb"/>
@@ -99,7 +99,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jp_title">
+    <Container class="javax.swing.JPanel" name="pnl_title">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f6" green="d4" red="e2" type="rgb"/>
@@ -110,7 +110,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jlbl_title" max="32767" attributes="0"/>
+                  <Component id="lbl_title" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -119,14 +119,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jlbl_title" pref="51" max="32767" attributes="0"/>
+                  <Component id="lbl_title" pref="51" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jlbl_title">
+        <Component class="javax.swing.JLabel" name="lbl_title">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f6" green="d4" red="e2" type="rgb"/>
@@ -143,7 +143,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JScrollPane" name="jsp_container">
+    <Container class="javax.swing.JScrollPane" name="scp_container">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>

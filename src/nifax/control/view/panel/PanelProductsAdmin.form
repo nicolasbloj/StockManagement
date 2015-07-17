@@ -23,12 +23,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="jtp_container" max="32767" attributes="0"/>
+              <Component id="tbp_container" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jp_menu" max="32767" attributes="0"/>
+              <Component id="pnl_menu" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -36,16 +36,16 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jtp_container" max="32767" attributes="0"/>
+              <Component id="tbp_container" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jp_menu" min="-2" max="-2" attributes="0"/>
+              <Component id="pnl_menu" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="jtp_container">
+    <Container class="javax.swing.JTabbedPane" name="tbp_container">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
@@ -55,7 +55,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jp_products">
+        <Container class="javax.swing.JPanel" name="pnl_products">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Jp_Tab()"/>
           </AuxValues>
@@ -72,9 +72,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jp_principalProduct" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_principalProduct" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jp_rulesProduct" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_rulesProduct" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="279" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -84,8 +84,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jp_rulesProduct" min="-2" max="-2" attributes="0"/>
-                          <Component id="jp_principalProduct" min="-2" pref="462" max="-2" attributes="0"/>
+                          <Component id="pnl_rulesProduct" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnl_principalProduct" min="-2" pref="462" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -93,7 +93,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jp_principalProduct">
+            <Container class="javax.swing.JPanel" name="pnl_principalProduct">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -108,30 +108,30 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlbl_money" max="32767" attributes="0"/>
-                              <Component id="jlbl_category" max="32767" attributes="0"/>
-                              <Component id="jlbl_cost" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jlbl_descProduct" alignment="1" pref="96" max="32767" attributes="0"/>
+                              <Component id="lbl_money" max="32767" attributes="0"/>
+                              <Component id="lbl_category" max="32767" attributes="0"/>
+                              <Component id="lbl_cost" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lbl_descProduct" alignment="1" pref="96" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jcb_category" pref="162" max="32767" attributes="0"/>
+                                  <Component id="cbx_category" pref="162" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jbtn_searchCategory" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_searchCategory" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jcb_money" max="32767" attributes="0"/>
+                                  <Component id="cbx_money" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jbtn_searchMoneyProduct" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_searchMoneyProduct" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jtxf_descProduct" pref="211" max="32767" attributes="0"/>
-                              <Component id="jtxf_cost" max="32767" attributes="0"/>
+                              <Component id="txf_descProduct" pref="211" max="32767" attributes="0"/>
+                              <Component id="txf_cost" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="10" pref="35" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jp_codesProduct" max="32767" attributes="0"/>
+                          <Component id="pnl_codesProduct" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -141,54 +141,54 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_category" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jcb_category" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_searchCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_category" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_category" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_descProduct" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jtxf_descProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_descProduct" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txf_descProduct" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_cost" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jtxf_cost" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_cost" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txf_cost" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_money" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jcb_money" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_searchMoneyProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_money" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="cbx_money" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchMoneyProduct" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jp_codesProduct" min="-2" pref="162" max="-2" attributes="0"/>
+                          <Component id="pnl_codesProduct" min="-2" pref="162" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jtxf_cost">
+                <Component class="javax.swing.JTextField" name="txf_cost">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_cost">
+                <Component class="javax.swing.JLabel" name="lbl_cost">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Costo : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_descProduct">
+                <Component class="javax.swing.JLabel" name="lbl_descProduct">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Descripcion :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtxf_descProduct">
+                <Component class="javax.swing.JTextField" name="txf_descProduct">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_category">
+                <Component class="javax.swing.JLabel" name="lbl_category">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Categoria :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jcb_category">
+                <Component class="javax.swing.JComboBox" name="cbx_category">
                   <Properties>
                     <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -196,12 +196,12 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_money">
+                <Component class="javax.swing.JLabel" name="lbl_money">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Moneda : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jcb_money">
+                <Component class="javax.swing.JComboBox" name="cbx_money">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -213,7 +213,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtn_searchCategory">
+                <Component class="javax.swing.JButton" name="btn_searchCategory">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -221,7 +221,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtn_searchMoneyProduct">
+                <Component class="javax.swing.JButton" name="btn_searchMoneyProduct">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -229,7 +229,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jp_codesProduct">
+                <Container class="javax.swing.JPanel" name="pnl_codesProduct">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -309,7 +309,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jp_rulesProduct">
+            <Container class="javax.swing.JPanel" name="pnl_rulesProduct">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -324,32 +324,32 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="364" max="-2" attributes="0"/>
+                              <Component id="scp_tblRules" min="-2" pref="364" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jlbl_an" min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="lbl_an" min="-2" pref="43" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jlbl_equivalent" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbl_equivalent" min="-2" pref="68" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtxf_equivalent" max="32767" attributes="0"/>
-                                      <Component id="jcb_measure" pref="168" max="32767" attributes="0"/>
+                                      <Component id="txf_equivalent" max="32767" attributes="0"/>
+                                      <Component id="cbx_measure" pref="168" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jbtn_plusRule" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Component id="btn_plusRule" min="-2" pref="52" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jbtn_lessRule" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Component id="btn_lessRule" min="-2" pref="52" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jbtn_searchMeasure" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jlbl_units" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btn_searchMeasure" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lbl_units" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -363,36 +363,36 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_an" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jcb_measure" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_searchMeasure" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_an" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_measure" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchMeasure" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_units" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jtxf_equivalent" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlbl_equivalent" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="lbl_units" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="txf_equivalent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_equivalent" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jbtn_plusRule" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_lessRule" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_plusRule" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_lessRule" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="scp_tblRules" min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbl_units">
+                <Component class="javax.swing.JLabel" name="lbl_units">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="unidades"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtxf_equivalent">
+                <Component class="javax.swing.JTextField" name="txf_equivalent">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jcb_measure">
+                <Component class="javax.swing.JComboBox" name="cbx_measure">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -404,34 +404,34 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtn_searchMeasure">
+                <Component class="javax.swing.JButton" name="btn_searchMeasure">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_an">
+                <Component class="javax.swing.JLabel" name="lbl_an">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Un"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_equivalent">
+                <Component class="javax.swing.JLabel" name="lbl_equivalent">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="equivale a "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtn_plusRule">
+                <Component class="javax.swing.JButton" name="btn_plusRule">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="+"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                <Container class="javax.swing.JScrollPane" name="scp_tblRules">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jtb_measures">
+                    <Component class="javax.swing.JTable" name="tbl_rules">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
@@ -445,7 +445,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jbtn_lessRule">
+                <Component class="javax.swing.JButton" name="btn_lessRule">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
@@ -454,7 +454,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jp_offer">
+        <Container class="javax.swing.JPanel" name="pnl_offer">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Jp_Tab()"/>
           </AuxValues>
@@ -479,7 +479,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jp_restoration">
+        <Container class="javax.swing.JPanel" name="pnl_restoration">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Jp_Tab()"/>
           </AuxValues>
@@ -504,7 +504,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jp_stock">
+        <Container class="javax.swing.JPanel" name="pnl_stock">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Jp_Tab()"/>
           </AuxValues>
@@ -521,7 +521,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jp_principalStock" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_principalStock" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="622" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -530,14 +530,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jp_principalStock" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_principalStock" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jp_principalStock">
+            <Container class="javax.swing.JPanel" name="pnl_principalStock">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -552,19 +552,19 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlbl_product" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jlbl_descStock" alignment="1" pref="96" max="32767" attributes="0"/>
+                              <Component id="lbl_product" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbl_descStock" alignment="1" pref="96" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtxf_descStock" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="jcb_product" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="txf_descStock" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="cbx_product" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jbtn_searchProduct" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_searchProduct" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnl_storeStock" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -572,36 +572,36 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_product" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jcb_product" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_searchProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_product" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_product" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchProduct" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlbl_descStock" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jtxf_descStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_descStock" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txf_descStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel8" min="-2" pref="285" max="-2" attributes="0"/>
+                          <Component id="pnl_storeStock" min="-2" pref="285" max="-2" attributes="0"/>
                           <EmptySpace pref="35" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbl_descStock">
+                <Component class="javax.swing.JLabel" name="lbl_descStock">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Descripcion  :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtxf_descStock">
+                <Component class="javax.swing.JTextField" name="txf_descStock">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlbl_product">
+                <Component class="javax.swing.JLabel" name="lbl_product">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Producto : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jcb_product">
+                <Component class="javax.swing.JComboBox" name="cbx_product">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -613,7 +613,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtn_searchProduct">
+                <Component class="javax.swing.JButton" name="btn_searchProduct">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -621,7 +621,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel8">
+                <Container class="javax.swing.JPanel" name="pnl_storeStock">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -638,27 +638,27 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlbl_measureStock" min="-2" pref="68" max="-2" attributes="0"/>
-                                          <Component id="jlbl_storeStock" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbl_measureStock" min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="lbl_storeStock" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jComboBox6" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <Component id="cbx_moneyStock" min="-2" pref="168" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jbtn_searchMonetStock" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btn_searchMoneyStock" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jComboBox7" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <Component id="cbx_storeStock" min="-2" pref="168" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jbtn_plusStock" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btn_plusStock" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jbtn_lessStock" max="32767" attributes="0"/>
+                                                      <Component id="btn_lessStock" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jbtn_searchStore" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btn_searchStore" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -667,12 +667,12 @@
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlbl_quantity" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Component id="lbl_quantity" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="jtxf_quantity" min="-2" pref="168" max="-2" attributes="0"/>
+                                      <Component id="txf_quantity" min="-2" pref="168" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                                      <Component id="scp_tblStoreStock" pref="0" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -683,39 +683,39 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jtxf_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlbl_quantity" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="txf_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_quantity" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlbl_measureStock" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="lbl_measureStock" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jbtn_searchMonetStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbx_moneyStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_searchMoneyStock" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jbtn_searchStore" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlbl_storeStock" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="cbx_storeStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_searchStore" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_storeStock" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jbtn_lessStock" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jbtn_plusStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_lessStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_plusStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="scp_tblStoreStock" min="-2" pref="88" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jtxf_quantity">
+                    <Component class="javax.swing.JTextField" name="txf_quantity">
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox6">
+                    <Component class="javax.swing.JComboBox" name="cbx_moneyStock">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -727,12 +727,12 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jlbl_measureStock">
+                    <Component class="javax.swing.JLabel" name="lbl_measureStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Medida : "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbtn_searchMonetStock">
+                    <Component class="javax.swing.JButton" name="btn_searchMoneyStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="..."/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -740,7 +740,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox7">
+                    <Component class="javax.swing.JComboBox" name="cbx_storeStock">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -752,7 +752,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbtn_lessStock">
+                    <Component class="javax.swing.JButton" name="btn_lessStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="-"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -760,14 +760,14 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                    <Container class="javax.swing.JScrollPane" name="scp_tblStoreStock">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jtb_stock">
+                        <Component class="javax.swing.JTable" name="tbl_stock">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
@@ -781,7 +781,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jbtn_searchStore">
+                    <Component class="javax.swing.JButton" name="btn_searchStore">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="..."/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -789,7 +789,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbtn_plusStock">
+                    <Component class="javax.swing.JButton" name="btn_plusStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="+"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -797,12 +797,12 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jlbl_quantity">
+                    <Component class="javax.swing.JLabel" name="lbl_quantity">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cantidad : "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jlbl_storeStock">
+                    <Component class="javax.swing.JLabel" name="lbl_storeStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Deposito :"/>
                       </Properties>
@@ -815,7 +815,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jp_menu">
+    <Container class="javax.swing.JPanel" name="pnl_menu">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
@@ -830,13 +830,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jbtn_save" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_save" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="jbtn_search" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_search" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="jbtn_delete" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="jbtn_cancel" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_cancel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -846,32 +846,32 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbtn_save" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtn_search" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtn_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_save" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_search" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jbtn_save">
+        <Component class="javax.swing.JButton" name="btn_save">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtn_search">
+        <Component class="javax.swing.JButton" name="btn_search">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtn_delete">
+        <Component class="javax.swing.JButton" name="btn_delete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtn_cancel">
+        <Component class="javax.swing.JButton" name="btn_cancel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>

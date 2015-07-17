@@ -21,88 +21,88 @@ public final class FrameMain extends javax.swing.JFrame {
     }
 
     public void ContainerAddPanel(JPanel jPanel) {
-        this.jsp_container.setViewportView(jPanel);
+        this.scp_container.setViewportView(jPanel);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jsp_tree = new javax.swing.JScrollPane();
-        jtr_navigation = new nifax.control.view.util.Jtr_navigation(this);
-        jp_title = new javax.swing.JPanel();
-        jlbl_title = new javax.swing.JLabel();
-        jsp_container = new javax.swing.JScrollPane();
-        jmb_main = new javax.swing.JMenuBar();
-        jm_system = new javax.swing.JMenu();
-        jmi_exit = new javax.swing.JMenuItem();
-        jm_help = new javax.swing.JMenu();
+        scp_tree = new javax.swing.JScrollPane();
+        tre_navigation = new nifax.control.view.util.Jtr_navigation(this);
+        pnl_title = new javax.swing.JPanel();
+        lbl_title = new javax.swing.JLabel();
+        scp_container = new javax.swing.JScrollPane();
+        mbr_main = new javax.swing.JMenuBar();
+        men_system = new javax.swing.JMenu();
+        mei_exit = new javax.swing.JMenuItem();
+        men_help = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jsp_tree.setBackground(new java.awt.Color(229, 220, 220));
-        jsp_tree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        scp_tree.setBackground(new java.awt.Color(229, 220, 220));
+        scp_tree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jtr_navigation.setBackground(new java.awt.Color(226, 212, 246));
-        jsp_tree.setViewportView(jtr_navigation);
+        tre_navigation.setBackground(new java.awt.Color(226, 212, 246));
+        scp_tree.setViewportView(tre_navigation);
 
-        jp_title.setBackground(new java.awt.Color(226, 212, 246));
+        pnl_title.setBackground(new java.awt.Color(226, 212, 246));
 
-        jlbl_title.setBackground(new java.awt.Color(226, 212, 246));
-        jlbl_title.setFont(new java.awt.Font("Century Gothic", 0, 23)); // NOI18N
-        jlbl_title.setForeground(new java.awt.Color(102, 102, 102));
-        jlbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbl_title.setText("NiFax ");
+        lbl_title.setBackground(new java.awt.Color(226, 212, 246));
+        lbl_title.setFont(new java.awt.Font("Century Gothic", 0, 23)); // NOI18N
+        lbl_title.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_title.setText("NiFax ");
 
-        javax.swing.GroupLayout jp_titleLayout = new javax.swing.GroupLayout(jp_title);
-        jp_title.setLayout(jp_titleLayout);
-        jp_titleLayout.setHorizontalGroup(
-            jp_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titleLayout.createSequentialGroup()
-                .addComponent(jlbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnl_titleLayout = new javax.swing.GroupLayout(pnl_title);
+        pnl_title.setLayout(pnl_titleLayout);
+        pnl_titleLayout.setHorizontalGroup(
+            pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
+                .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jp_titleLayout.setVerticalGroup(
-            jp_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titleLayout.createSequentialGroup()
+        pnl_titleLayout.setVerticalGroup(
+            pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jsp_container.setBackground(new java.awt.Color(51, 51, 51));
-        jsp_container.setOpaque(true);
+        scp_container.setBackground(new java.awt.Color(51, 51, 51));
+        scp_container.setOpaque(true);
 
-        jm_system.setText("Sistema");
+        men_system.setText("Sistema");
 
-        jmi_exit.setText("Salir");
-        jm_system.add(jmi_exit);
+        mei_exit.setText("Salir");
+        men_system.add(mei_exit);
 
-        jmb_main.add(jm_system);
+        mbr_main.add(men_system);
 
-        jm_help.setText("Ayuda");
-        jmb_main.add(jm_help);
+        men_help.setText("Ayuda");
+        mbr_main.add(men_help);
 
-        setJMenuBar(jmb_main);
+        setJMenuBar(mbr_main);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jsp_tree, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scp_tree, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jsp_container, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
-            .addComponent(jp_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scp_container, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
+            .addComponent(pnl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jp_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jsp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addComponent(jsp_container))
+                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(scp_container))
                 .addGap(51, 51, 51))
         );
 
@@ -140,14 +140,14 @@ public final class FrameMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jlbl_title;
-    private javax.swing.JMenu jm_help;
-    private javax.swing.JMenu jm_system;
-    private javax.swing.JMenuBar jmb_main;
-    private javax.swing.JMenuItem jmi_exit;
-    private javax.swing.JPanel jp_title;
-    private javax.swing.JScrollPane jsp_container;
-    private javax.swing.JScrollPane jsp_tree;
-    private javax.swing.JTree jtr_navigation;
+    private javax.swing.JLabel lbl_title;
+    private javax.swing.JMenuBar mbr_main;
+    private javax.swing.JMenuItem mei_exit;
+    private javax.swing.JMenu men_help;
+    private javax.swing.JMenu men_system;
+    private javax.swing.JPanel pnl_title;
+    private javax.swing.JScrollPane scp_container;
+    private javax.swing.JScrollPane scp_tree;
+    private javax.swing.JTree tre_navigation;
     // End of variables declaration//GEN-END:variables
 }
