@@ -17,7 +17,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         tbp_container = new javax.swing.JTabbedPane();
-        pnl_products = new nifax.control.view.util.Jp_Tab();
+        pnl_products = new nifax.control.view.util.Pnl_Tab();
         pnl_principalProduct = new javax.swing.JPanel();
         txf_cost = new javax.swing.JTextField();
         lbl_cost = new javax.swing.JLabel();
@@ -47,9 +47,9 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
         scp_tblRules = new javax.swing.JScrollPane();
         tbl_rules = new javax.swing.JTable();
         btn_lessRule = new javax.swing.JButton();
-        pnl_offer = new nifax.control.view.util.Jp_Tab();
-        pnl_restoration = new nifax.control.view.util.Jp_Tab();
-        pnl_stock = new nifax.control.view.util.Jp_Tab();
+        pnl_offer = new nifax.control.view.util.Pnl_Tab();
+        pnl_restoration = new nifax.control.view.util.Pnl_Tab();
+        pnl_stock = new nifax.control.view.util.Pnl_Tab();
         pnl_principalStock = new javax.swing.JPanel();
         lbl_descStock = new javax.swing.JLabel();
         txf_descStock = new javax.swing.JTextField();

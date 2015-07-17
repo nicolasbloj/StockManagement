@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @author NB
  */
 @Entity
-@Table(name = "PRODUCT_QUANTITY")
+@Table(name = "PRODUCT_MEASURE")
 @AssociationOverrides (
         {
             @AssociationOverride(
@@ -18,27 +18,27 @@ import javax.persistence.*;
                     )
             ),
             @AssociationOverride (
-                    name = "pk.quantity",
+                    name = "pk.measure",
                     joinColumns = @JoinColumn(
-                            name = "quantity_id"
+                            name = "measure_id"
                     )
             )
         }
 )
-public class ProductQuantity implements Serializable {
+public class ProductMeasure implements Serializable {
 
-    public ProductQuantity() {
+    public ProductMeasure() {
     }
 
-    private ProductQuantityId pk = new ProductQuantityId();
+    private ProductMeasureId pk = new ProductMeasureId();
      private double quantity;
 
     @EmbeddedId
-    public ProductQuantityId getPk() {
+    public ProductMeasureId getPk() {
         return pk;
     }
 
-    public void setPk(ProductQuantityId pk) {
+    public void setPk(ProductMeasureId pk) {
         this.pk = pk;
     }
 
@@ -52,12 +52,12 @@ public class ProductQuantity implements Serializable {
     }
 
     @Transient
-    public Quantity getTypeQuantity() {
-        return getPk().getQuantity();
+    public Measure getMeasure() {
+        return getPk().getMeasure();
     }
 
-    public void setTypeQuantity(Quantity typeQuantity) {
-        getPk().setQuantity(typeQuantity);
+    public void setMeasure(Measure measure) {
+        getPk().setMeasure(measure);
     }
 
     public double getQuantity() {
@@ -76,7 +76,7 @@ public class ProductQuantity implements Serializable {
             return false;
         }
 
-        ProductQuantity that = (ProductQuantity) o;
+        ProductMeasure that = (ProductMeasure) o;
 
         if (getPk() != null ? !getPk().equals(that.getPk())
                 : that.getPk() != null) {

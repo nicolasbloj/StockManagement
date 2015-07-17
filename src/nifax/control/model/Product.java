@@ -10,7 +10,6 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
 @Table(name = "PRODUCT")
 public class Product implements Serializable {
@@ -21,7 +20,7 @@ public class Product implements Serializable {
     public Product(String description, double cost, Category categoryProduct) {
         this.description = description;
         this.cost = cost;
-        this.categoryProduct = categoryProduct;
+        this.category = categoryProduct;
     }
     
     @Id
@@ -34,10 +33,10 @@ public class Product implements Serializable {
     private double cost;
     @JoinColumn(name = "category_id")
     @OneToOne
-    private Category categoryProduct;
+    private Category category;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
-    private Set<ProductQuantity> productQuantities = new HashSet<ProductQuantity>();
+    private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
 
     public Long getId() {
         return id;
@@ -52,14 +51,14 @@ public class Product implements Serializable {
     }
 
     public Category getCategory() {
-        return categoryProduct;
+        return category;
     }
 
-    public Set<ProductQuantity> getTypesQuantities() {
-        return productQuantities;
+    public Set<ProductMeasure> getMeasures() {
+        return productMeasures;
     }
 
-    public void setProductQuantities(Set<ProductQuantity> productQuantities) {
-        this.productQuantities = productQuantities;
+    public void setProductMeasures(Set<ProductMeasure> productMeasures) {
+        this.productMeasures = productMeasures;
     }
 }

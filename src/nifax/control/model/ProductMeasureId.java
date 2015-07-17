@@ -8,10 +8,10 @@ import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class ProductQuantityId implements java.io.Serializable {
+public class ProductMeasureId implements java.io.Serializable {
 
     private Product product;
-    private Quantity quantity;
+    private Measure measure;
 
     @ManyToOne
     public Product getProduct() {
@@ -23,12 +23,12 @@ public class ProductQuantityId implements java.io.Serializable {
     }
 
     @ManyToOne
-    public Quantity getQuantity() {
-        return quantity;
+    public Measure getMeasure() {
+        return measure;
     }
 
-    public void setQuantity(Quantity quantity) {
-        this.quantity = quantity;
+    public void setMeasure(Measure measure) {
+        this.measure = measure;
     }
 
     public boolean equals(Object o) {
@@ -39,12 +39,12 @@ public class ProductQuantityId implements java.io.Serializable {
             return false;
         }
 
-        ProductQuantityId that = (ProductQuantityId) o;
+        ProductMeasureId that = (ProductMeasureId) o;
 
         if (product != null ? !product.equals(that.product) : that.product != null) {
             return false;
         }
-        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) {
+        if (measure != null ? !measure.equals(that.measure) : that.measure != null) {
             return false;
         }
 
@@ -54,7 +54,7 @@ public class ProductQuantityId implements java.io.Serializable {
     public int hashCode() {
         int result;
         result = (product != null ? product.hashCode() : 0);
-        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
+        result = 31 * result + (measure != null ? measure.hashCode() : 0);
         return result;
     }
 

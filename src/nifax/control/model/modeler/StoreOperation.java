@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import nifax.control.model.Store;
-import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
 import static nifax.control.data.IQueries.StoreFilteredByID;
 
@@ -32,7 +31,7 @@ public class StoreOperation extends HQLOperation implements IQueries {
     
     public Map List(){
         Map<String, Store> map = new HashMap<>();
-        List<Store> lsp = Select(Stores);
+        List<Store> lsp = Select(Store);
         lsp.stream().forEach((ls) -> {
             map.put(ls.getDescription(), ls);
         });

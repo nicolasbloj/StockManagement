@@ -10,28 +10,27 @@ import static javax.persistence.GenerationType.IDENTITY;
  *
  * @author NB
  */
-
 @Entity
-@Table(name = "QUANTITY")
-public class Quantity implements Serializable{
+@Table(name = "MEASURE")
+public class Measure implements Serializable{
 
-    protected Quantity() {
+    protected Measure() {
     }
 
-    public Quantity(String description) {
+    public Measure(String description) {
         this.description = description;
     }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "quantity_id", unique = true, nullable = false)
+    @Column(name = "measure_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;
 
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.quantity", cascade=CascadeType.ALL)
-    private Set<ProductQuantity> productQuantities = new HashSet<ProductQuantity>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.measure", cascade=CascadeType.ALL)
+    private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
 
     public Long getId() {
         return id;
@@ -41,7 +40,7 @@ public class Quantity implements Serializable{
         return description;
     }
         
-    public void setProductQuantities(Set<ProductQuantity> productQuantities) {
-        this.productQuantities = productQuantities;
+    public void setProductMeasures(Set<ProductMeasure> productMeasures) {
+        this.productMeasures = productMeasures;
     }
 }

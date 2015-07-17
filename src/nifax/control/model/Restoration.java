@@ -15,7 +15,6 @@ import javax.persistence.Table;
  *
  * @author NB
  */
-
 @Entity
 @Table(name = "RESTORATION")
 public class Restoration implements Serializable {
@@ -24,13 +23,13 @@ public class Restoration implements Serializable {
     }
 
     public Restoration(String description, double peak, double midpoint,
-            double lowpoint, Quantity typeQuantity, 
+            double lowpoint, Measure measure, 
             Product product, Store store) {
         this.description = description;
         this.peak = peak;
         this.midpoint = midpoint;
         this.lowpoint = lowpoint;
-        this.typeQuantity = typeQuantity;
+        this.measure = measure;
         this.product = product;
         this.store = store;
     }
@@ -52,9 +51,9 @@ public class Restoration implements Serializable {
     @Column(name = "lowpoint")
     private double lowpoint;
     
-    @JoinColumn(name = "quantity_id")
+    @JoinColumn(name = "measure_id")
     @OneToOne
-    private Quantity typeQuantity;
+    private Measure measure;
     @JoinColumn(name = "product_id")
     @OneToOne
     private Product product;
@@ -82,8 +81,8 @@ public class Restoration implements Serializable {
         return lowpoint;
     }
 
-    public Quantity getTypeQuantity() {
-        return typeQuantity;
+    public Measure getMeasure() {
+        return measure;
     }
 
     public Product getProduct() {

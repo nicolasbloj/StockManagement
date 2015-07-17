@@ -17,11 +17,11 @@
         <mapping class="nifax.control.model.Product"/> 
         <mapping class="nifax.control.model.Offer"/> 
         <mapping class="nifax.control.model.Stock"/> 
-        <mapping class="nifax.control.model.Quantity"/>
+        <mapping class="nifax.control.model.Measure"/>
         <mapping class="nifax.control.model.Store"/>  
         <mapping class="nifax.control.model.Price"/> 
         <mapping class="nifax.control.model.Restoration"/> 
-        <mapping class="nifax.control.model.ProductQuantity"/> 
+        <mapping class="nifax.control.model.ProductMeasure"/> 
         
     </session-factory>
 </hibernate-configuration>

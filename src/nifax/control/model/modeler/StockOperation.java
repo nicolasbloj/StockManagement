@@ -3,15 +3,13 @@ package nifax.control.model.modeler;
 import nifax.control.model.Product;
 import nifax.control.model.Stock;
 import nifax.control.model.Store;
-import nifax.control.model.Quantity;
-import nifax.control.model.modeler.HQLOperation;
+import nifax.control.model.Measure;
 import nifax.control.data.IQueries;
 
 /**
  *
  * @author NB
  */
-
 public class StockOperation extends HQLOperation
     implements IQueries {
 
@@ -32,13 +30,12 @@ public class StockOperation extends HQLOperation
     }
 
     public Boolean Add(String description, double quantityValue, 
-    Quantity quantity, Product product, Store store) {        
+    Measure measure, Product product, Store store) {        
         try {
-            return Insert(
-                new Stock (
+            return Insert(new Stock (
                     description, 
                     quantityValue, 
-                    quantity, 
+                    measure, 
                     product, 
                     store
                     )
@@ -48,7 +45,7 @@ public class StockOperation extends HQLOperation
         }
     }
     
-    public Quantity Find(Quantity quantity) {
-        return (Quantity) SelectUnique(QuantityFilteredByID, quantity);        
+    public Measure Find(Measure measure) {
+        return (Measure) SelectUnique(MeasureFilteredByID, measure);        
     }
 }

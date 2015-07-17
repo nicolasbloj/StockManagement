@@ -29,7 +29,7 @@ public final class FrameMain extends javax.swing.JFrame {
     private void initComponents() {
 
         scp_tree = new javax.swing.JScrollPane();
-        tre_navigation = new nifax.control.view.util.Jtr_navigation(this);
+        tre_navigation = new nifax.control.view.util.Tre_navigation(this);
         pnl_title = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
         scp_container = new javax.swing.JScrollPane();
