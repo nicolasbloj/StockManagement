@@ -11,13 +11,14 @@ import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.MeasureOperation;
 import nifax.control.model.modeler.StockOperation;
 import nifax.control.model.modeler.StoreOperation;
-
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.*;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
+import nifax.control.model.modeler.OfferOperation;
+import nifax.control.model.modeler.RestorationOperation;
 
 /**
  *
@@ -72,7 +73,8 @@ public class NifaxControl implements IQueries{
             //Add measures
             modelOperation.Insert(new Measure("Bulto"));
             modelOperation.Insert(new Measure("Paquete"));
-
+            modelOperation.Insert(new Measure("Unidad"));
+            
             //Get category list from db
             Map<String, Category> CategoryList = CategoryOperation.getInstance().List();
             //Get quantity list from db
@@ -113,6 +115,32 @@ public class NifaxControl implements IQueries{
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
             );
+            
+            //Add Offer 
+            OfferOperation.getInstance().add("Oferta mes mayo",10,20,
+                    measureList.get("Unidad"),productList.get("Foco 12V") );
+            
+            //Add Restoration 
+            
+            RestorationOperation.getInstance().add(
+                    "Rep al mes de abril",
+                    900.0,
+                    560.0,
+                    140.0,
+                    measureList.get("Unidad"),
+                    productList.get("Foco 12V"),
+                    storeList.get("Deposito central")
+                            );
+            
+            RestorationOperation.getInstance().add(
+                    "Rep al mes de abril",
+                    600.0,
+                    350.0,
+                    100.0,
+                    measureList.get("Unidad"),
+                    productList.get("Foco 12V"),
+                    storeList.get("Deposito alternativo")
+                            );
             
         } finally {
             Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
