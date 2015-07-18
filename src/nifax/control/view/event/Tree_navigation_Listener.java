@@ -7,6 +7,7 @@ import javax.swing.tree.TreePath;
 import nifax.control.view.FrameMain;
 import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
+import nifax.control.view.panel.PanelSalesTicket;
 
 /**
  *
@@ -36,11 +37,18 @@ public class Tree_navigation_Listener implements MouseListener {
                 nodoPadre = tp.getParentPath();
 
                 if (tp.toString().equals("[NiFax, Administracion, Productos, Gestion]")) {
-                    PanelProductsAdmin jPanelProductsAdmin = new PanelProductsAdmin();
-                    jPanelProductsAdmin.setVisible(true);
-                    jPanelProductsAdmin.setOpaque(true);
+                    PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
+                    panelProductsAdmin.setVisible(true);
+                    panelProductsAdmin.setOpaque(true);
 
-                    this.jFrameMain.ContainerAddPanel(jPanelProductsAdmin);
+                    this.jFrameMain.ContainerAddPanel(panelProductsAdmin);
+
+                }else    if (tp.toString().equals("[NiFax, Operacion, Ventas, Ticket]")) {
+                    PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
+                    panelSalesTicket.setVisible(true);
+                    panelSalesTicket.setOpaque(true);
+
+                    this.jFrameMain.ContainerAddPanel(panelSalesTicket);
 
                 } else {
 
