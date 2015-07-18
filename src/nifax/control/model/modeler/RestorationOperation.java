@@ -15,14 +15,14 @@ import nifax.control.model.Store;
  */
 public class RestorationOperation extends HQLOperation implements IQueries {
 
-    private static OfferOperation instance = null;
+    private static RestorationOperation instance = null;
 
     protected RestorationOperation() {
     }
 
-    public static OfferOperation getInstance() {
+    public static RestorationOperation getInstance() {
         if (instance == null) {
-            instance = new OfferOperation();
+            instance = new RestorationOperation();
         }
         return instance;
     }
