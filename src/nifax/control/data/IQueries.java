@@ -25,7 +25,11 @@ public interface IQueries {
     final String Measure = "from Measure";
     
     final String Store = "from Store";
+
+    final String Offer = "from Offer";
     
+    final String Restoration = "from Restoration";
+        
     final String MeasureFilteredByID = "from Measure where id = :id";
     
     final String MeasureFilteredByDescription = "from Measure where description = :description";
@@ -33,5 +37,9 @@ public interface IQueries {
     final String StoreFilteredByID = "from Store where id = :id";
     
     final String StoreFilteredByDescription = "from Store where description = :description";
+    
+    final String OfferFilteredByID = "from Offer where id = :id";
+    
+    final String RestorationFilteredByID = "from Restoration where id = :id";
     
 }

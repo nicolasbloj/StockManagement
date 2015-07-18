@@ -1,6 +1,9 @@
 package nifax.control.start;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -80,23 +83,26 @@ public class NifaxControl implements IQueries{
             //Add product
             String productDesc = "Foco 12V";
             double cost = 76.40;
-            Product product = ProductOperation.getInstance().Add(
-                productDesc, 
-                cost, 
-                CategoryList.get("Audio")
-            );
-            //Add quantity
+            
+            //Genering ProductMeasure for product - rules.
+            List<ProductMeasure> measures  =new ArrayList<ProductMeasure>();
+            
             double quantityValue = 12.0;
-            Set<ProductMeasure> productMeasures = new HashSet<>();
+            
             ProductMeasure productMeasure = new ProductMeasure();
-            productMeasure.setProduct(product);
             productMeasure.setMeasure(measureList.get("Bulto"));
             productMeasure.setQuantity(quantityValue);
-            productMeasures.add(productMeasure);
-            product.setProductMeasures(productMeasures);
-
-            modelOperation.Insert(product);
-            logger.info("Producto insertado correctamente");
+            measures.add(productMeasure);
+            
+            quantityValue=24;
+            ProductMeasure productMeasure2 = new ProductMeasure();
+            productMeasure2.setMeasure(measureList.get("Paquete"));
+            productMeasure2.setQuantity(quantityValue);
+            measures.add(productMeasure2);
+            
+            //Add product
+            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
+            
             //Get product list from db
             Map<String, Product> productList = ProductOperation.getInstance().List();
             //Get store list from db
