@@ -1,11 +1,13 @@
 package nifax.control.view.panel;
 
+import nifax.control.view.util.Pnl;
+
 
 /**
  *
  * @author NB
  */
-public class PanelProductsAdmin extends javax.swing.JPanel {
+public class PanelProductsAdmin extends Pnl {
 
     
     public PanelProductsAdmin() {
@@ -16,7 +18,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tbp_container = new javax.swing.JTabbedPane();
+        tbp_containerProduct = new nifax.control.view.util.Tbp();
         pnl_products = new nifax.control.view.util.Pnl_Tab();
         pnl_principalProduct = new javax.swing.JPanel();
         txf_cost = new javax.swing.JTextField();
@@ -115,16 +117,14 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
         lbl_storeStock = new javax.swing.JLabel();
         scp_tblStoreStock = new javax.swing.JScrollPane();
         tbl_stock = new javax.swing.JTable();
-        pnl_menu = new javax.swing.JPanel();
+        pnl_menuProduct = new javax.swing.JPanel();
         btn_save = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
-
-        tbp_container.setBackground(new java.awt.Color(51, 51, 51));
-        tbp_container.setOpaque(true);
+        tbp_containerProduct.setBackground(new java.awt.Color(51, 51, 51));
+        tbp_containerProduct.setOpaque(true);
 
         pnl_principalProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
         pnl_principalProduct.setPreferredSize(new java.awt.Dimension(460, 360));
@@ -347,7 +347,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        tbp_container.addTab("Producto", pnl_products);
+        tbp_containerProduct.addTab("Producto", pnl_products);
 
         pnl_principalOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
@@ -536,7 +536,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tbp_container.addTab("Oferta ", pnl_offer);
+        tbp_containerProduct.addTab("Oferta ", pnl_offer);
 
         pnl_principalRestoration.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
@@ -724,7 +724,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tbp_container.addTab("Reposicion", pnl_restoration);
+        tbp_containerProduct.addTab("Reposicion", pnl_restoration);
 
         pnl_principalStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
@@ -888,10 +888,10 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tbp_container.addTab("Stock", pnl_stock);
+        tbp_containerProduct.addTab("Stock", pnl_stock);
 
-        pnl_menu.setBackground(new java.awt.Color(51, 51, 51));
-        pnl_menu.setBorder(null);
+        pnl_menuProduct.setBackground(new java.awt.Color(51, 51, 51));
+        pnl_menuProduct.setBorder(null);
 
         btn_save.setText("Guardar");
 
@@ -901,11 +901,11 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
 
         btn_cancel.setText("Cancelar");
 
-        javax.swing.GroupLayout pnl_menuLayout = new javax.swing.GroupLayout(pnl_menu);
-        pnl_menu.setLayout(pnl_menuLayout);
-        pnl_menuLayout.setHorizontalGroup(
-            pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_menuLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_menuProductLayout = new javax.swing.GroupLayout(pnl_menuProduct);
+        pnl_menuProduct.setLayout(pnl_menuProductLayout);
+        pnl_menuProductLayout.setHorizontalGroup(
+            pnl_menuProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_menuProductLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(btn_save)
                 .addGap(10, 10, 10)
@@ -916,11 +916,11 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
                 .addComponent(btn_cancel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnl_menuLayout.setVerticalGroup(
-            pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menuLayout.createSequentialGroup()
+        pnl_menuProductLayout.setVerticalGroup(
+            pnl_menuProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menuProductLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnl_menuProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save)
                     .addComponent(btn_search)
                     .addComponent(btn_delete)
@@ -933,19 +933,19 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(tbp_container)
+                .addComponent(tbp_containerProduct)
                 .addGap(7, 7, 7))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnl_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_menuProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tbp_container)
+                .addComponent(tbp_containerProduct)
                 .addGap(0, 0, 0)
-                .addComponent(pnl_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_menuProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1022,7 +1022,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_units;
     private javax.swing.JPanel pnl_branchesOffer;
     private javax.swing.JPanel pnl_codesProduct;
-    private javax.swing.JPanel pnl_menu;
+    private javax.swing.JPanel pnl_menuProduct;
     private javax.swing.JPanel pnl_offer;
     private javax.swing.JPanel pnl_principalOffer;
     private javax.swing.JPanel pnl_principalProduct;
@@ -1042,7 +1042,7 @@ public class PanelProductsAdmin extends javax.swing.JPanel {
     private javax.swing.JTable tbl_restoration;
     private javax.swing.JTable tbl_rules;
     private javax.swing.JTable tbl_stock;
-    private javax.swing.JTabbedPane tbp_container;
+    private javax.swing.JTabbedPane tbp_containerProduct;
     private javax.swing.JTextField txf_cost;
     private javax.swing.JTextField txf_descOffer;
     private javax.swing.JTextField txf_descProduct;

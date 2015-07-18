@@ -1,10 +1,12 @@
 package nifax.control.view.panel;
 
+import nifax.control.view.util.Pnl;
+
 /**
  *
  * @author NB
  */
-public class PanelPresentation extends javax.swing.JPanel {
+public class PanelPresentation extends Pnl{
 
     public PanelPresentation() {
         initComponents();
