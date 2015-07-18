@@ -33,10 +33,10 @@ public class Tre_navigation extends JTree {
         TreeModel.insertNodeInto(DefaultMutableTreeNodeOperation, TreeRoot, 1);
 
         DefaultMutableTreeNode defaultMutableTreeNodeProducts = new DefaultMutableTreeNode("Productos");
-        DefaultMutableTreeNode defaultMutableTreeNodeLoad = new DefaultMutableTreeNode("Cargar");//this could be to used other nodes
+        DefaultMutableTreeNode defaultMutableTreeNodeHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
         
         TreeModel.insertNodeInto(defaultMutableTreeNodeProducts, defaultMutableTreeNodeAdministration, 0);
-        TreeModel.insertNodeInto(defaultMutableTreeNodeLoad, defaultMutableTreeNodeProducts, 0);
+        TreeModel.insertNodeInto(defaultMutableTreeNodeHlm, defaultMutableTreeNodeProducts, 0);
 
         DefaultMutableTreeNode defaultMutableTreeNodeSales = new DefaultMutableTreeNode("Ventas");
         TreeModel.insertNodeInto(defaultMutableTreeNodeSales, DefaultMutableTreeNodeOperation, 0);

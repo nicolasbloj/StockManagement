@@ -72,10 +72,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnl_principalProduct" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_principalProduct" min="-2" pref="422" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnl_rulesProduct" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="279" max="32767" attributes="0"/>
+                      <EmptySpace pref="239" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -84,10 +84,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnl_rulesProduct" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnl_principalProduct" min="-2" pref="462" max="-2" attributes="0"/>
+                          <Component id="pnl_principalProduct" pref="453" max="32767" attributes="0"/>
+                          <Component id="pnl_rulesProduct" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -99,6 +99,9 @@
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Principal"/>
                   </Border>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[460, 360]"/>
                 </Property>
               </Properties>
 
@@ -125,10 +128,10 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_searchMoneyProduct" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txf_descProduct" pref="211" max="32767" attributes="0"/>
+                              <Component id="txf_descProduct" max="32767" attributes="0"/>
                               <Component id="txf_cost" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="10" pref="35" max="32767" attributes="0"/>
+                          <EmptySpace min="10" pref="61" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnl_codesProduct" max="32767" attributes="0"/>
@@ -373,13 +376,14 @@
                               <Component id="txf_equivalent" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_equivalent" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_plusRule" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_lessRule" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scp_tblRules" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="scp_tblRules" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -469,15 +473,335 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1079" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnl_principalOffer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scp_tblStoreOffer" pref="383" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="478" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnl_principalOffer" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreOffer" pref="462" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="pnl_principalOffer">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Principal"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lbl_productOffer" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbl_descOffer" alignment="1" pref="96" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txf_descOffer" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="cbx_productOffer" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_searchProductOffer" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="pnl_branchesOffer" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbl_productOffer" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_productOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchProductOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbl_descOffer" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txf_descOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnl_branchesOffer" min="-2" pref="267" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lbl_descOffer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Descripcion  :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txf_descOffer">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbl_productOffer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto : "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbx_productOffer">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="true"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_searchProductOffer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="..."/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[52, 28]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JPanel" name="pnl_branchesOffer">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Por sucursal"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbl_measureOffer" max="32767" attributes="0"/>
+                                          <Component id="lbl_branchOffer" pref="76" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cbx_moneyOffer" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btn_searchMoneyOffer" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cbx_branchOffer" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btn_plusOffer" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btn_lessOffer" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btn_searchBranchOffer" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lbl_discount2" max="32767" attributes="0"/>
+                                          <Component id="lbl_discount" alignment="0" pref="76" max="32767" attributes="0"/>
+                                          <Component id="lbl_quantityOffer" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txf_quantityOffer" min="-2" pref="168" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txf_discount2" min="-2" pref="168" max="-2" attributes="0"/>
+                                                  <Component id="txf_discount" min="-2" pref="168" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_discount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_discount" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_discount2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_discount2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_quantityOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_quantityOffer" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_measureOffer" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="cbx_moneyOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_searchMoneyOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cbx_branchOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_searchBranchOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_branchOffer" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btn_lessOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_plusOffer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="txf_discount">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbx_moneyOffer">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_measureOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Medida : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_searchMoneyOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="..."/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbx_branchOffer">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Todas"/>
+                            <StringItem index="1" value="Santiago"/>
+                            <StringItem index="2" value="Capital"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_lessOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="-"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_searchBranchOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="..."/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_plusOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="+"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_discount">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Descuento : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_branchOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Sucursal : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txf_quantityOffer">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_quantityOffer">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cantidad : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_discount2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Descuento : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txf_discount2">
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="scp_tblStoreOffer">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tbl_offer">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnl_restoration">
           <AuxValues>
@@ -494,15 +818,334 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1079" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnl_principalRestoration" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scp_tblStoreRestoration" pref="383" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="478" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnl_principalRestoration" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreRestoration" pref="462" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="pnl_principalRestoration">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Principal"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lbl_productRestoration" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbl_descRestoration" alignment="1" pref="96" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txf_descRestoration" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="cbx_productRestoration" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_searchRestoration" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="pnl_storesRestoration" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbl_productRestoration" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_productRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbl_descRestoration" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txf_descRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnl_storesRestoration" min="-2" pref="259" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lbl_descRestoration">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Descripcion  :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txf_descRestoration">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbl_productRestoration">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto : "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbx_productRestoration">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="true"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_searchRestoration">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="..."/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[52, 28]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JPanel" name="pnl_storesRestoration">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Por deposito"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbl_measureRestoration" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lbl_storeRestoration" alignment="0" pref="76" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cbx_moneyRestoration" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btn_searchMoneyRestoration" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cbx_storeRestoration" min="-2" pref="168" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btn_plusRestoration" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btn_lessRestoration" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btn_searchStoreRestoration" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lbl_midPoint" max="32767" attributes="0"/>
+                                          <Component id="lbl_peak" alignment="0" pref="76" max="32767" attributes="0"/>
+                                          <Component id="lbl_lowPoint" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txf_lowPoint" min="-2" pref="168" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txf_midPoint" min="-2" pref="168" max="-2" attributes="0"/>
+                                                  <Component id="txf_peak" min="-2" pref="168" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_peak" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_peak" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_midPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_midPoint" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_lowPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_lowPoint" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_measureRestoration" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="cbx_moneyRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_searchMoneyRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cbx_storeRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_searchStoreRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_storeRestoration" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btn_lessRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_plusRestoration" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="txf_peak">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbx_moneyRestoration">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_measureRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Medida : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_searchMoneyRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="..."/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbx_storeRestoration">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Todas"/>
+                            <StringItem index="1" value="Santiago"/>
+                            <StringItem index="2" value="Capital"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_lessRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="-"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_searchStoreRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="..."/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_plusRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="+"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[52, 28]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_peak">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Punto Max : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_storeRestoration">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Deposito "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txf_lowPoint">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_lowPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Punto Min : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_midPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Punto Rep  :"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txf_midPoint">
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="scp_tblStoreRestoration">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tbl_restoration">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnl_stock">
           <AuxValues>
@@ -522,16 +1165,21 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnl_principalStock" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="622" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scp_tblStoreStock" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnl_principalStock" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnl_principalStock" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreStock" pref="462" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -552,16 +1200,16 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbl_product" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbl_productStock" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbl_descStock" alignment="1" pref="96" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txf_descStock" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="cbx_product" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="cbx_productStock" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn_searchProduct" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_searchProductStock" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Component id="pnl_storeStock" alignment="0" max="32767" attributes="0"/>
@@ -572,9 +1220,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_product" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="cbx_product" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btn_searchProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_productStock" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="cbx_productStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_searchProductStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -582,8 +1230,8 @@
                               <Component id="txf_descStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnl_storeStock" min="-2" pref="285" max="-2" attributes="0"/>
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                          <Component id="pnl_storeStock" min="-2" pref="193" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -596,12 +1244,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_descStock">
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbl_product">
+                <Component class="javax.swing.JLabel" name="lbl_productStock">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Producto : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_product">
+                <Component class="javax.swing.JComboBox" name="cbx_productStock">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -613,7 +1261,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_searchProduct">
+                <Component class="javax.swing.JButton" name="btn_searchProductStock">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -667,13 +1315,9 @@
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbl_quantity" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Component id="lbl_quantityStock" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="txf_quantity" min="-2" pref="168" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="scp_tblStoreStock" pref="0" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txf_quantityStock" min="-2" pref="168" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -683,8 +1327,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txf_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_quantity" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="txf_quantityStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_quantityStock" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -705,15 +1349,13 @@
                                   <Component id="btn_lessStock" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_plusStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scp_tblStoreStock" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="txf_quantity">
+                    <Component class="javax.swing.JTextField" name="txf_quantityStock">
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbx_moneyStock">
                       <Properties>
@@ -760,27 +1402,6 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Container class="javax.swing.JScrollPane" name="scp_tblStoreStock">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTable" name="tbl_stock">
-                          <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                              </Table>
-                            </Property>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
                     <Component class="javax.swing.JButton" name="btn_searchStore">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="..."/>
@@ -797,7 +1418,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbl_quantity">
+                    <Component class="javax.swing.JLabel" name="lbl_quantityStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cantidad : "/>
                       </Properties>
@@ -809,6 +1430,27 @@
                     </Component>
                   </SubComponents>
                 </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="scp_tblStoreStock">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tbl_stock">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
