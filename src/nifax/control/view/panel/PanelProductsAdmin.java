@@ -1,5 +1,6 @@
 package nifax.control.view.panel;
 
+import nifax.control.view.event.btn_CancelAction;
 import nifax.control.view.util.Pnl;
 
 
@@ -121,7 +122,7 @@ public class PanelProductsAdmin extends Pnl {
         btn_save = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
-        btn_cancel = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton(new btn_CancelAction());
 
         tbp_containerProduct.setBackground(new java.awt.Color(51, 51, 51));
         tbp_containerProduct.setOpaque(true);

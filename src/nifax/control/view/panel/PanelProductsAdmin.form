@@ -1515,6 +1515,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new btn_CancelAction())"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
