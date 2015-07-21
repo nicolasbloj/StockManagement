@@ -1,5 +1,6 @@
 package nifax.control.model;
 
+import java.io.Serializable;
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
 import javax.persistence.EmbeddedId;
@@ -30,8 +31,7 @@ import javax.persistence.Transient;
             )
         }
 )
-
-public class SaleDocProduct {
+public class SaleDocProduct implements Serializable {
 
     public SaleDocProduct() {
     }

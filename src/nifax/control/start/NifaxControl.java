@@ -78,7 +78,7 @@ public class NifaxControl implements IQueries{
             modelOperation.Insert(new Measure("Paquete"));
             modelOperation.Insert(new Measure("Unidad"));
    
-            //Add TypeSaleDoc
+            //Add type of sale's document
             TypeSaleDocOperation.getInstance().add("Ticket");
             TypeSaleDocOperation.getInstance().add("Factura ");
             TypeSaleDocOperation.getInstance().add("Factura electronica");
@@ -107,9 +107,8 @@ public class NifaxControl implements IQueries{
             productMeasure2.setQuantity(quantityValue);
             measures.add(productMeasure2);
             
-            //Add product
+            //Add product 
             ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
-            
             
             //Add product 2
              productDesc = "Lampara";
@@ -134,7 +133,7 @@ public class NifaxControl implements IQueries{
             Map<String, Store> storeList = StoreOperation.getInstance().List();
             //Add stock
             
-            //Product 1
+            // Stock Product 1
             String description = "STOCK";
             double quantityStock = 500;
             StockOperation.getInstance().Add(description, 
@@ -144,7 +143,7 @@ public class NifaxControl implements IQueries{
                 storeList.get("Deposito central")
             );
             
-            //Product 2
+            // Stock Product 2
             quantityStock = 120;
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
@@ -154,12 +153,12 @@ public class NifaxControl implements IQueries{
             );
             
             //Add Offer 
-            //product 1
+            //Offer Product 1
             OfferOperation.getInstance().add("Oferta mes mayo",10,20,
                     measureList.get("Unidad"),productList.get("Foco 12V") );
             
             //Add Restoration 
-            //product 1
+            //Restoration Product 1
             RestorationOperation.getInstance().add(
                     "Rep al mes de abril",
                     900.0,
@@ -187,7 +186,7 @@ public class NifaxControl implements IQueries{
             
             List<SaleDocProduct> saleDocProducts  =new ArrayList<SaleDocProduct>();
                         
-            // product 1   
+            // Sale Product 1   
             itemQuantity = 240;
             itemPrice = 3.5;
             itemProduct=productList.get("Foco 12V");
@@ -198,7 +197,7 @@ public class NifaxControl implements IQueries{
             saleDocProduct.setPrice(itemPrice);
             saleDocProducts.add(saleDocProduct);
             
-            // product 2
+            // Sale Product 2   
             itemQuantity = 130;
             itemPrice = 6.25;
             itemProduct=productList.get("Lampara");
@@ -209,7 +208,6 @@ public class NifaxControl implements IQueries{
             saleDocProduct2.setPrice(itemPrice);
             saleDocProducts.add(saleDocProduct2);
             
-            
             Calendar calendar = Calendar.getInstance();
 
             //Get typSaleDoc list from db
@@ -217,7 +215,7 @@ public class NifaxControl implements IQueries{
             
             SaleOperation.getInstance().add(calendar.getTime(),
                     usr,
-                    typeSaleDocList.get("Ticket"), // --> do maplist in saleOperation
+                    typeSaleDocList.get("Ticket"),
                     saleDocProducts
                             );
             

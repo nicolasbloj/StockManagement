@@ -48,9 +48,6 @@ public class TypeSaleDocOperation extends HQLOperation implements IQueries {
         });
         return map;
     }
-
-
- 
-
+    
 }
 

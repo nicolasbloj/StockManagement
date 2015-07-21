@@ -14,14 +14,11 @@ public class Category implements Serializable{
 
     protected Category() {
     }
+    
     public Category(String description) {
          this.description = description;
     }
-    /*public Category(Long id, String description) {
-         this.description = description;
-         this.id = id;
-    }*/
-
+    
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "category_id", unique = true, nullable = false)
@@ -32,6 +29,7 @@ public class Category implements Serializable{
     public Long getId() {
         return id;
     }
+    
     public String getDescription() {
         return description;
     }
