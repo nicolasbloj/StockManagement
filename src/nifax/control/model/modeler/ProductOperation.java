@@ -32,12 +32,12 @@ public class ProductOperation extends HQLOperation implements IQueries {
         try {
             Product product = new Product(productDesc, cost, category);
             Set<ProductMeasure> productMeasures = new HashSet<>();
-
-            measures.stream().map((measure) -> {
-                measure.setProduct(product);
-                return measure;
-            }).forEach((measure) -> {
-                productMeasures.add(measure);
+            
+            measures.stream().map((ProductMeasure productMeasure) -> {
+                productMeasure.setProduct(product);
+                return productMeasure;
+            }).forEach((productMeasure) -> {
+                productMeasures.add(productMeasure);
             });
 
             product.setProductMeasures(productMeasures);

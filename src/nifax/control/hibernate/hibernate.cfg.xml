@@ -22,6 +22,9 @@
         <mapping class="nifax.control.model.Price"/> 
         <mapping class="nifax.control.model.Restoration"/> 
         <mapping class="nifax.control.model.ProductMeasure"/> 
-        
+        <mapping class="nifax.control.model.SaleDoc"/> 
+        <mapping class="nifax.control.model.SaleDocProduct"/> 
+        <mapping class="nifax.control.model.TypeSaleDoc"/> 
+         
     </session-factory>
 </hibernate-configuration>

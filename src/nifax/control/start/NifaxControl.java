@@ -1,6 +1,7 @@
 package nifax.control.start;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,6 +20,8 @@ import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
 import nifax.control.model.modeler.OfferOperation;
 import nifax.control.model.modeler.RestorationOperation;
+import nifax.control.model.modeler.SaleOperation;
+import nifax.control.model.modeler.TypeSaleDocOperation;
 
 /**
  *
@@ -74,12 +77,17 @@ public class NifaxControl implements IQueries{
             modelOperation.Insert(new Measure("Bulto"));
             modelOperation.Insert(new Measure("Paquete"));
             modelOperation.Insert(new Measure("Unidad"));
+   
+            //Add type of sale's document
+            TypeSaleDocOperation.getInstance().add("Ticket");
+            TypeSaleDocOperation.getInstance().add("Factura ");
+            TypeSaleDocOperation.getInstance().add("Factura electronica");
             
             //Get category list from db
             Map<String, Category> CategoryList = CategoryOperation.getInstance().List();
             //Get quantity list from db
             Map<String, Measure> measureList = MeasureOperation.getInstance().List();
-            //Add product
+            //Add product 1
             String productDesc = "Foco 12V";
             double cost = 76.40;
             
@@ -99,6 +107,23 @@ public class NifaxControl implements IQueries{
             productMeasure2.setQuantity(quantityValue);
             measures.add(productMeasure2);
             
+            //Add product 
+            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
+            
+            //Add product 2
+             productDesc = "Lampara";
+             cost = 16.10;
+            
+            //Genering ProductMeasure for product - rules.
+            measures  =new ArrayList<ProductMeasure>();
+            
+            quantityValue = 32.0;
+            
+            productMeasure = new ProductMeasure();
+            productMeasure.setMeasure(measureList.get("Bulto"));
+            productMeasure.setQuantity(quantityValue);
+            measures.add(productMeasure);
+            
             //Add product
             ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
             
@@ -107,21 +132,33 @@ public class NifaxControl implements IQueries{
             //Get store list from db
             Map<String, Store> storeList = StoreOperation.getInstance().List();
             //Add stock
+            
+            // Stock Product 1
             String description = "STOCK";
             double quantityStock = 500;
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
-                measureList.get("Bulto"), 
+                measureList.get("Unidad"), 
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
             );
             
+            // Stock Product 2
+            quantityStock = 120;
+            StockOperation.getInstance().Add(description, 
+                quantityStock, 
+                measureList.get("Unidad"), 
+                productList.get("Lampara"), 
+                storeList.get("Deposito central")
+            );
+            
             //Add Offer 
+            //Offer Product 1
             OfferOperation.getInstance().add("Oferta mes mayo",10,20,
                     measureList.get("Unidad"),productList.get("Foco 12V") );
             
             //Add Restoration 
-            
+            //Restoration Product 1
             RestorationOperation.getInstance().add(
                     "Rep al mes de abril",
                     900.0,
@@ -140,6 +177,46 @@ public class NifaxControl implements IQueries{
                     measureList.get("Unidad"),
                     productList.get("Foco 12V"),
                     storeList.get("Deposito alternativo")
+                            );
+            
+            //Add Sale.
+            double itemQuantity;
+            double itemPrice ;
+            Product itemProduct;
+            
+            List<SaleDocProduct> saleDocProducts  =new ArrayList<SaleDocProduct>();
+                        
+            // Sale Product 1   
+            itemQuantity = 240;
+            itemPrice = 3.5;
+            itemProduct=productList.get("Foco 12V");
+            
+            SaleDocProduct saleDocProduct = new SaleDocProduct();
+            saleDocProduct.setProduct(itemProduct);
+            saleDocProduct.setQuantity(itemQuantity);
+            saleDocProduct.setPrice(itemPrice);
+            saleDocProducts.add(saleDocProduct);
+            
+            // Sale Product 2   
+            itemQuantity = 130;
+            itemPrice = 6.25;
+            itemProduct=productList.get("Lampara");
+            
+            SaleDocProduct saleDocProduct2 = new SaleDocProduct();
+            saleDocProduct2.setProduct(itemProduct);
+            saleDocProduct2.setQuantity(itemQuantity);
+            saleDocProduct2.setPrice(itemPrice);
+            saleDocProducts.add(saleDocProduct2);
+            
+            Calendar calendar = Calendar.getInstance();
+
+            //Get typSaleDoc list from db
+            Map<String, TypeSaleDoc> typeSaleDocList = StoreOperation.getInstance().List();
+            
+            SaleOperation.getInstance().add(calendar.getTime(),
+                    usr,
+                    typeSaleDocList.get("Ticket"),
+                    saleDocProducts
                             );
             
         } finally {
