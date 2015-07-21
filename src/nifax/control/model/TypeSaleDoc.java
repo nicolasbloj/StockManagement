@@ -9,22 +9,18 @@ import static javax.persistence.GenerationType.IDENTITY;
  * @author NB
  */
 @Entity
-@Table(name = "CATEGORY")
-public class Category implements Serializable{
+@Table(name = "TypeSaleDoc")
+public class TypeSaleDoc implements Serializable{
 
-    protected Category() {
+    protected TypeSaleDoc() {
     }
-    public Category(String description) {
+    public TypeSaleDoc(String description) {
          this.description = description;
     }
-    /*public Category(Long id, String description) {
-         this.description = description;
-         this.id = id;
-    }*/
-
+    
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "category_id", unique = true, nullable = false)
+    @Column(name = "typeSaleDoc_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;

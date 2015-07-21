@@ -30,6 +30,8 @@ public interface IQueries {
     
     final String Restoration = "from Restoration";
         
+    final String TypeSaleDoc = "from TypeSaleDoc";
+    
     final String MeasureFilteredByID = "from Measure where id = :id";
     
     final String MeasureFilteredByDescription = "from Measure where description = :description";
