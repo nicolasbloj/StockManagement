@@ -8,6 +8,7 @@ import java.util.Set;
 import nifax.control.model.Category;
 import nifax.control.model.Product;
 import nifax.control.data.IQueries;
+import nifax.control.model.Iva;
 import nifax.control.model.ProductMeasure;
 
 /**
@@ -28,9 +29,10 @@ public class ProductOperation extends HQLOperation implements IQueries {
         return instance;
     }
 
-    public Boolean Add(String productDesc, double cost, Category category, List<ProductMeasure> measures) {
+    public Boolean Add(String productDesc, double cost, Category category,Iva iva,
+            List<ProductMeasure> measures) {
         try {
-            Product product = new Product(productDesc, cost, category);
+            Product product = new Product(productDesc, cost, category,iva);
             Set<ProductMeasure> productMeasures = new HashSet<>();
             
             measures.stream().map((ProductMeasure productMeasure) -> {
@@ -52,7 +54,7 @@ public class ProductOperation extends HQLOperation implements IQueries {
     public Product Find(Product product) {
         return (Product) SelectUnique(ProductFilteredByID, product);
     }
-
+    
     public Map List(){
         Map<String, Product> map = new HashMap<>();
         List<Product> lsp = Select(Product);
@@ -61,5 +63,5 @@ public class ProductOperation extends HQLOperation implements IQueries {
         });
         return map;
     }
-
+    
 }

@@ -6,21 +6,22 @@ import java.util.Map;
 import nifax.control.model.Category;
 import nifax.control.data.IQueries;
 import static nifax.control.data.IQueries.CategoryFilteredByID;
+import nifax.control.model.Iva;
 
 /**
  *
- * @author faka
+ * @author 
  */
-public class CategoryOperation extends HQLOperation implements IQueries {
+public class IvaOperation extends HQLOperation implements IQueries {
 
-    private static CategoryOperation instance = null;
+    private static IvaOperation instance = null;
 
-    protected CategoryOperation() {
+    protected IvaOperation() {
     }
 
-    public static CategoryOperation getInstance() {
+    public static IvaOperation getInstance() {
         if (instance == null) {
-            instance = new CategoryOperation();
+            instance = new IvaOperation();
         }
         return instance;
     }
@@ -30,10 +31,10 @@ public class CategoryOperation extends HQLOperation implements IQueries {
     }
 
     public Map List(){
-        Map<String, Category> map = new HashMap<>();
-        List<Category> lsp = Select(Category);
+        Map<Double, Iva> map = new HashMap<>();
+        List<Iva> lsp = Select(Iva);
         lsp.stream().forEach((ls) -> {
-            map.put(ls.getDescription(), ls);
+            map.put(ls.getIva(), ls);
         });
         return map;
     }

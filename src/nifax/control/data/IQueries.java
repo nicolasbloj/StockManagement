@@ -18,7 +18,11 @@ public interface IQueries {
     
     final String ProductFilteredByDescription = "from Product where description = :description";
     
+    final String PriceFilteredById = "from Price where id = :id";
+    
     final String Product = "from Product";
+    
+    final String Iva = "from Iva";
        
     final String Category = "from Category";
     
@@ -27,6 +31,8 @@ public interface IQueries {
     final String Store = "from Store";
 
     final String Offer = "from Offer";
+    
+    final String Price = "from Price";
     
     final String Restoration = "from Restoration";
         
