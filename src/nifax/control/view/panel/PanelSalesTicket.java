@@ -1,5 +1,14 @@
 package nifax.control.view.panel;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import nifax.control.view.event.Txf_ticketCodeProductListener;
 import nifax.control.view.util.Pnl;
 
 /**
@@ -30,7 +39,6 @@ public class PanelSalesTicket extends Pnl{
         cbx_ticketStoreProduct = new javax.swing.JComboBox();
         lbl_ticketStoreProduct = new javax.swing.JLabel();
         lbl_ticketPriceProduct = new javax.swing.JLabel();
-        btn_loadProductInTicket = new javax.swing.JButton();
         pnl_ticketSideMenu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -44,15 +52,16 @@ public class PanelSalesTicket extends Pnl{
         scp_tblTicket = new javax.swing.JScrollPane();
         tbl_ticket = new javax.swing.JTable();
         pnl_totalTicket = new javax.swing.JPanel();
+        lbl_textIva21Ticket = new javax.swing.JLabel();
+        lbl_iva21Ticket = new javax.swing.JLabel();
+        lbl_textIva105Ticket = new javax.swing.JLabel();
+        lbl_iva105Ticket = new javax.swing.JLabel();
         lbl_textSubTotalTicket = new javax.swing.JLabel();
-        lbl_textIvaTicket = new javax.swing.JLabel();
         lbl_subTotalTicket = new javax.swing.JLabel();
-        lbl_ivaTicket = new javax.swing.JLabel();
-        lbl_totalTicket = new javax.swing.JLabel();
         lbl_textTotalTicket = new javax.swing.JLabel();
+        lbl_TotalTicket = new javax.swing.JLabel();
         pnl_menuTicket = new javax.swing.JPanel();
         btn_emit = new javax.swing.JButton();
-        ckb_printTicket = new javax.swing.JCheckBox();
 
         pnl_ticketProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
 
@@ -60,19 +69,22 @@ public class PanelSalesTicket extends Pnl{
 
         lbl_ticketDescProduct.setText("Descripcion");
 
+        txf_ticketCodeProduct.addKeyListener(new Txf_ticketCodeProductListener(this));
+
         lbl_ticketQuantityProduct.setText("Cantidad : ");
+
+        txf_ticketQuantityProduct.setText("1");
 
         cbx_ticketDescProduct.setEditable(true);
 
         cbx_ticketPriceProduct.setEditable(true);
+        cbx_ticketPriceProduct.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
 
         cbx_ticketStoreProduct.setEditable(true);
 
         lbl_ticketStoreProduct.setText("Deposito");
 
         lbl_ticketPriceProduct.setText("Lista de precios");
-
-        btn_loadProductInTicket.setText("Cargar en grilla");
 
         javax.swing.GroupLayout pnl_ticketProductLayout = new javax.swing.GroupLayout(pnl_ticketProduct);
         pnl_ticketProduct.setLayout(pnl_ticketProductLayout);
@@ -95,15 +107,12 @@ public class PanelSalesTicket extends Pnl{
                         .addComponent(txf_ticketQuantityProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnl_ticketProductLayout.createSequentialGroup()
-                        .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_ticketPriceProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_ticketStoreProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbx_ticketStoreProduct, 0, 141, Short.MAX_VALUE)
-                            .addComponent(cbx_ticketPriceProduct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(btn_loadProductInTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbl_ticketPriceProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_ticketStoreProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbx_ticketStoreProduct, 0, 141, Short.MAX_VALUE)
+                    .addComponent(cbx_ticketPriceProduct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnl_ticketProductLayout.setVerticalGroup(
             pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +132,7 @@ public class PanelSalesTicket extends Pnl{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_ticketQuantityProduct, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_ticketProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txf_ticketQuantityProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_loadProductInTicket)))
+                    .addComponent(txf_ticketQuantityProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
         );
 
@@ -202,30 +209,44 @@ public class PanelSalesTicket extends Pnl{
 
         tbl_ticket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "IT", "CODIGO ", "DETALLE", "PRECIO", "PRECIO C/IVA", "CANTIDAD", "IVA", "IMPORTE C/IVA", "IMPORTE"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_ticket.getTableHeader().setReorderingAllowed(false);
         scp_tblTicket.setViewportView(tbl_ticket);
 
         pnl_totalTicket.setBorder(javax.swing.BorderFactory.createTitledBorder("Totales"));
 
-        lbl_textSubTotalTicket.setText("jLabel8");
+        lbl_textIva21Ticket.setText("Iva al 21 % :");
 
-        lbl_textIvaTicket.setText("jLabel8");
+        lbl_iva21Ticket.setText("$ 0.0");
+        lbl_iva21Ticket.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lbl_subTotalTicket.setText("jLabel8");
+        lbl_textIva105Ticket.setText("Iva al 10.5 % :");
 
-        lbl_ivaTicket.setText("jLabel8");
+        lbl_iva105Ticket.setText("$ 0.0");
+        lbl_iva105Ticket.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lbl_totalTicket.setText("jLabel8");
+        lbl_textSubTotalTicket.setText("Sub-Total : ");
 
-        lbl_textTotalTicket.setText("jLabel8");
+        lbl_subTotalTicket.setText("$ 0.0");
+        lbl_subTotalTicket.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lbl_textTotalTicket.setText("TOTAL : ");
+
+        lbl_TotalTicket.setText("$ 0.0");
+        lbl_TotalTicket.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout pnl_totalTicketLayout = new javax.swing.GroupLayout(pnl_totalTicket);
         pnl_totalTicket.setLayout(pnl_totalTicketLayout);
@@ -233,35 +254,40 @@ public class PanelSalesTicket extends Pnl{
             pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_totalTicketLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_textSubTotalTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_totalTicketLayout.createSequentialGroup()
-                        .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_textIvaTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_textTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 25, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_subTotalTicket, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(lbl_ivaTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_totalTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(14, 14, 14))
+                    .addComponent(lbl_textIva21Ticket, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                    .addComponent(lbl_textIva105Ticket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_totalTicketLayout.createSequentialGroup()
+                        .addComponent(lbl_iva105Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_textTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_TotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_totalTicketLayout.createSequentialGroup()
+                        .addComponent(lbl_iva21Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_textSubTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_subTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_totalTicketLayout.setVerticalGroup(
             pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_totalTicketLayout.createSequentialGroup()
                 .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_textIva21Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_iva21Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_textSubTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_subTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_textIvaTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_ivaTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_totalTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_totalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_textTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_textIva105Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_iva105Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_textTotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_TotalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_ticketLayout = new javax.swing.GroupLayout(pnl_ticket);
@@ -280,7 +306,7 @@ public class PanelSalesTicket extends Pnl{
                 .addContainerGap())
             .addGroup(pnl_ticketLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnl_totalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_totalTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnl_ticketLayout.setVerticalGroup(
@@ -306,22 +332,17 @@ public class PanelSalesTicket extends Pnl{
 
         btn_emit.setText("Emitir ticket");
 
-        ckb_printTicket.setText("Imprimir");
-
         javax.swing.GroupLayout pnl_menuTicketLayout = new javax.swing.GroupLayout(pnl_menuTicket);
         pnl_menuTicket.setLayout(pnl_menuTicketLayout);
         pnl_menuTicketLayout.setHorizontalGroup(
             pnl_menuTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_menuTicketLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ckb_printTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_emit)
                 .addGap(17, 17, 17))
         );
         pnl_menuTicketLayout.setVerticalGroup(
             pnl_menuTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ckb_printTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menuTicketLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_emit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,23 +370,154 @@ public class PanelSalesTicket extends Pnl{
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTbl_ticket() {
+        return tbl_ticket;
+    }
 
+    public JTextField getTxf_ticketCodeProduct() {
+        return txf_ticketCodeProduct;
+    }
+
+    public JButton getBtn_emit() {
+        return btn_emit;
+    }
+
+    public JComboBox getCbx_ticketDescProduct() {
+        return cbx_ticketDescProduct;
+    }
+
+    public JComboBox getCbx_ticketGralPrice() {
+        return cbx_ticketGralPrice;
+    }
+
+    public JComboBox getCbx_ticketGralStore() {
+        return cbx_ticketGralStore;
+    }
+
+    public JComboBox getCbx_ticketPriceProduct() {
+        return cbx_ticketPriceProduct;
+    }
+
+    public JComboBox getCbx_ticketStoreProduct() {
+        return cbx_ticketStoreProduct;
+    }
+    
+    public JLabel getLbl_TotalTicket() {
+        return lbl_TotalTicket;
+    }
+
+    public JLabel getLbl_iva105Ticket() {
+        return lbl_iva105Ticket;
+    }
+
+    public JLabel getLbl_iva21Ticket() {
+        return lbl_iva21Ticket;
+    }
+
+    public JLabel getLbl_subTotalTicket() {
+        return lbl_subTotalTicket;
+    }
+
+    public JLabel getLbl_textIva105Ticket() {
+        return lbl_textIva105Ticket;
+    }
+
+    public JLabel getLbl_textIva21Ticket() {
+        return lbl_textIva21Ticket;
+    }
+
+    public JLabel getLbl_textSubTotalTicket() {
+        return lbl_textSubTotalTicket;
+    }
+
+    public JLabel getLbl_textTotalTicket() {
+        return lbl_textTotalTicket;
+    }
+
+    public JLabel getLbl_ticketCodeProduct() {
+        return lbl_ticketCodeProduct;
+    }
+
+    public JLabel getLbl_ticketDescProduct() {
+        return lbl_ticketDescProduct;
+    }
+
+    public JLabel getLbl_ticketGralPrice() {
+        return lbl_ticketGralPrice;
+    }
+
+    public JLabel getLbl_ticketGralStore() {
+        return lbl_ticketGralStore;
+    }
+
+    public JLabel getLbl_ticketPriceProduct() {
+        return lbl_ticketPriceProduct;
+    }
+
+    public JLabel getLbl_ticketQuantityProduct() {
+        return lbl_ticketQuantityProduct;
+    }
+
+    public JLabel getLbl_ticketStoreProduct() {
+        return lbl_ticketStoreProduct;
+    }
+
+    public JPanel getPnl_menuTicket() {
+        return pnl_menuTicket;
+    }
+
+    public JPanel getPnl_ticket() {
+        return pnl_ticket;
+    }
+
+    public JPanel getPnl_ticketGral() {
+        return pnl_ticketGral;
+    }
+
+    public JPanel getPnl_ticketProduct() {
+        return pnl_ticketProduct;
+    }
+
+    public JPanel getPnl_ticketSideMenu() {
+        return pnl_ticketSideMenu;
+    }
+
+    public JPanel getPnl_totalTicket() {
+        return pnl_totalTicket;
+    }
+
+    public JScrollPane getScp_tblTicket() {
+        return scp_tblTicket;
+    }
+
+    public JTabbedPane getTbp_containerTicket() {
+        return tbp_containerTicket;
+    }
+
+    public JTextField getTxf_ticketQuantityProduct() {
+        return txf_ticketQuantityProduct;
+    }
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_emit;
-    private javax.swing.JButton btn_loadProductInTicket;
     private javax.swing.JComboBox cbx_ticketDescProduct;
     private javax.swing.JComboBox cbx_ticketGralPrice;
     private javax.swing.JComboBox cbx_ticketGralStore;
     private javax.swing.JComboBox cbx_ticketPriceProduct;
     private javax.swing.JComboBox cbx_ticketStoreProduct;
-    private javax.swing.JCheckBox ckb_printTicket;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel lbl_ivaTicket;
+    private javax.swing.JLabel lbl_TotalTicket;
+    private javax.swing.JLabel lbl_iva105Ticket;
+    private javax.swing.JLabel lbl_iva21Ticket;
     private javax.swing.JLabel lbl_subTotalTicket;
-    private javax.swing.JLabel lbl_textIvaTicket;
+    private javax.swing.JLabel lbl_textIva105Ticket;
+    private javax.swing.JLabel lbl_textIva21Ticket;
     private javax.swing.JLabel lbl_textSubTotalTicket;
     private javax.swing.JLabel lbl_textTotalTicket;
     private javax.swing.JLabel lbl_ticketCodeProduct;
@@ -375,7 +527,6 @@ public class PanelSalesTicket extends Pnl{
     private javax.swing.JLabel lbl_ticketPriceProduct;
     private javax.swing.JLabel lbl_ticketQuantityProduct;
     private javax.swing.JLabel lbl_ticketStoreProduct;
-    private javax.swing.JLabel lbl_totalTicket;
     private javax.swing.JPanel pnl_menuTicket;
     private javax.swing.JPanel pnl_ticket;
     private javax.swing.JPanel pnl_ticketGral;

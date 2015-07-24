@@ -39,6 +39,9 @@ public class PanelProductsAdmin extends Pnl {
         jtxtf_codeAlternative = new javax.swing.JTextField();
         jtxf_codeProduct = new javax.swing.JTextField();
         jtxf_barCode = new javax.swing.JTextField();
+        pnl_codesProduct1 = new javax.swing.JPanel();
+        jlbl_barCode1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         pnl_rulesProduct = new javax.swing.JPanel();
         lbl_units = new javax.swing.JLabel();
         txf_equivalent = new javax.swing.JTextField();
@@ -192,6 +195,32 @@ public class PanelProductsAdmin extends Pnl {
                 .addGap(10, 10, 10))
         );
 
+        pnl_codesProduct1.setBorder(javax.swing.BorderFactory.createTitledBorder("Iva"));
+
+        jlbl_barCode1.setText("Iva : ");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21", "10.5" }));
+
+        javax.swing.GroupLayout pnl_codesProduct1Layout = new javax.swing.GroupLayout(pnl_codesProduct1);
+        pnl_codesProduct1.setLayout(pnl_codesProduct1Layout);
+        pnl_codesProduct1Layout.setHorizontalGroup(
+            pnl_codesProduct1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_codesProduct1Layout.createSequentialGroup()
+                .addComponent(jlbl_barCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_codesProduct1Layout.setVerticalGroup(
+            pnl_codesProduct1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_codesProduct1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnl_codesProduct1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlbl_barCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnl_principalProductLayout = new javax.swing.GroupLayout(pnl_principalProduct);
         pnl_principalProduct.setLayout(pnl_principalProductLayout);
         pnl_principalProductLayout.setHorizontalGroup(
@@ -217,7 +246,11 @@ public class PanelProductsAdmin extends Pnl {
                     .addComponent(txf_cost))
                 .addGap(10, 61, Short.MAX_VALUE))
             .addGroup(pnl_principalProductLayout.createSequentialGroup()
-                .addComponent(pnl_codesProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_principalProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_codesProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_principalProductLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnl_codesProduct1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnl_principalProductLayout.setVerticalGroup(
@@ -243,7 +276,9 @@ public class PanelProductsAdmin extends Pnl {
                     .addComponent(btn_searchMoneyProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_codesProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_codesProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
 
         pnl_rulesProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Reglas de Cantidad"));
@@ -989,7 +1024,9 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JComboBox cbx_productStock;
     private javax.swing.JComboBox cbx_storeRestoration;
     private javax.swing.JComboBox cbx_storeStock;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jlbl_barCode;
+    private javax.swing.JLabel jlbl_barCode1;
     private javax.swing.JTextField jtxf_barCode;
     private javax.swing.JTextField jtxf_codeProduct;
     private javax.swing.JTextField jtxtf_codeAlternative;
@@ -1023,6 +1060,7 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JLabel lbl_units;
     private javax.swing.JPanel pnl_branchesOffer;
     private javax.swing.JPanel pnl_codesProduct;
+    private javax.swing.JPanel pnl_codesProduct1;
     private javax.swing.JPanel pnl_menuProduct;
     private javax.swing.JPanel pnl_offer;
     private javax.swing.JPanel pnl_principalOffer;

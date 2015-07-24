@@ -20,6 +20,9 @@ public class Price implements Serializable{
         this.profit=profit;
     }
 
+    public Price(Long id) {
+        this.id=id;
+    }
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "price_id", unique = true, nullable = false)

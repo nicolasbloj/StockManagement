@@ -17,10 +17,15 @@ public class Product implements Serializable {
     protected Product() {
     }    
     
-    public Product(String description, double cost, Category categoryProduct) {
+    public Product(String description, double cost, Category categoryProduct,Iva iva) {
         this.description = description;
         this.cost = cost;
         this.category = categoryProduct;
+        this.iva=iva;
+    }
+
+    public Product(Long id) {
+        this.id = id;
     }
     
     @Id
@@ -34,6 +39,9 @@ public class Product implements Serializable {
     @JoinColumn(name = "category_id")
     @OneToOne
     private Category category;
+    @JoinColumn(name = "iva_id")
+    @OneToOne
+    private Iva iva;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
     private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
@@ -63,6 +71,10 @@ public class Product implements Serializable {
         return productMeasures;
     }
 
+    public Iva getIva() {
+        return iva;
+    }
+    
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {
         this.productMeasures = productMeasures;
     }

@@ -2,8 +2,9 @@ package nifax.control.view;
 
 import java.awt.Color;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import nifax.control.view.panel.PanelPresentation;
+import javax.swing.JScrollPane;
+import nifax.control.view.event.Fra_frameMainListener;
+import nifax.control.view.event.Mei_exitListener;
 
 /**
  *
@@ -14,22 +15,19 @@ public final class FrameMain extends javax.swing.JFrame {
     public FrameMain() {
         initComponents();
 
+        this.addWindowListener(new Fra_frameMainListener());
+        
         this.getContentPane().setBackground(new Color(226,212,246));
-        final PanelPresentation panelPresentation = new PanelPresentation();
-        this.ContainerAddPanel(panelPresentation);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
-    public void ContainerAddPanel(JPanel jPanel) {
-        this.scp_container.setViewportView(jPanel);
-    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         scp_tree = new javax.swing.JScrollPane();
-        tre_navigation = new nifax.control.view.util.Tre_navigation(this);
+        tre_navigation = new nifax.control.view.util.Tre(this);
         pnl_title = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
         scp_container = new javax.swing.JScrollPane();
@@ -75,6 +73,7 @@ public final class FrameMain extends javax.swing.JFrame {
 
         men_system.setText("Sistema");
 
+        mei_exit.addActionListener(new Mei_exitListener());
         mei_exit.setText("Salir");
         men_system.add(mei_exit);
 
@@ -139,6 +138,12 @@ public final class FrameMain extends javax.swing.JFrame {
         });
     }
 
+    public JScrollPane getScp_container() {
+        return scp_container;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbl_title;
     private javax.swing.JMenuBar mbr_main;

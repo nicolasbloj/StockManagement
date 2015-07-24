@@ -18,10 +18,12 @@ import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.*;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
+import nifax.control.model.modeler.IvaOperation;
 import nifax.control.model.modeler.OfferOperation;
 import nifax.control.model.modeler.RestorationOperation;
 import nifax.control.model.modeler.SaleOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
+import nifax.control.view.FrameMain;
 
 /**
  *
@@ -60,7 +62,11 @@ public class NifaxControl implements IQueries{
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
             
+/*            
             //Loading scenario
+            //Add Iva
+            modelOperation.Insert(new Iva(21.0));
+            modelOperation.Insert(new Iva(10.5));
             //Add categories
             modelOperation.Insert(new Category("Audio"));
             modelOperation.Insert(new Category("Iluminacion"));
@@ -82,6 +88,7 @@ public class NifaxControl implements IQueries{
             TypeSaleDocOperation.getInstance().add("Ticket");
             TypeSaleDocOperation.getInstance().add("Factura ");
             TypeSaleDocOperation.getInstance().add("Factura electronica");
+            
             
             //Get category list from db
             Map<String, Category> CategoryList = CategoryOperation.getInstance().List();
@@ -107,8 +114,13 @@ public class NifaxControl implements IQueries{
             productMeasure2.setQuantity(quantityValue);
             measures.add(productMeasure2);
             
-            //Add product 
-            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
+            //Genering Ivas
+            Map<Double, Iva> IvaList = IvaOperation.getInstance().List();
+            
+            //Add product
+            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),
+                    IvaList.get(21.0),
+                    measures);
             
             //Add product 2
              productDesc = "Lampara";
@@ -125,7 +137,9 @@ public class NifaxControl implements IQueries{
             measures.add(productMeasure);
             
             //Add product
-            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),measures);
+            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),
+                    IvaList.get(10.5),
+                    measures);
             
             //Get product list from db
             Map<String, Product> productList = ProductOperation.getInstance().List();
@@ -219,9 +233,13 @@ public class NifaxControl implements IQueries{
                     saleDocProducts
                             );
             
+*/
+          FrameMain.main(null);
+         
+          
         } finally {
-            Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
-            HibernateUtil.getSessionFactory().close();
+           // Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
+           //HibernateUtil.getSessionFactory().close();
         }
     }
 }
