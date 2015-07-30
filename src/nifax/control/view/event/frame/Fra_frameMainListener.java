@@ -1,4 +1,4 @@
-package nifax.control.view.event;
+package nifax.control.view.event.frame;
 
 import java.awt.event.WindowEvent;
 import nifax.control.view.FrameMain;

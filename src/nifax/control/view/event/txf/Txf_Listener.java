@@ -1,4 +1,4 @@
-package nifax.control.view.event;
+package nifax.control.view.event.txf;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

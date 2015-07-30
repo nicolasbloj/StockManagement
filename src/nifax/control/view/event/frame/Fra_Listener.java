@@ -1,7 +1,8 @@
-package nifax.control.view.event;
+package nifax.control.view.event.frame;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -11,15 +12,16 @@ public class Fra_Listener implements WindowListener{
 
     @Override
     public void windowOpened(WindowEvent e) {
-        
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
+        JFrame frame = (JFrame)e.getSource();
+        frame.removeAll();
     }
 
     @Override
-    public void windowClosed(WindowEvent e) {
+    public void windowClosed(WindowEvent e) {        
     }
 
     @Override
@@ -27,7 +29,7 @@ public class Fra_Listener implements WindowListener{
     }
 
     @Override
-    public void windowDeiconified(WindowEvent e) {
+    public void windowDeiconified(WindowEvent e) {    
     }
 
     @Override

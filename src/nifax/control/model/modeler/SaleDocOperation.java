@@ -14,16 +14,16 @@ import nifax.control.model.UserEmployee;
  *
  * @author NB
  */
-public class SaleOperation extends HQLOperation implements IQueries {
+public class SaleDocOperation extends HQLOperation implements IQueries {
 
-    private static SaleOperation instance = null;
+    private static SaleDocOperation instance = null;
 
-    protected SaleOperation() {
+    protected SaleDocOperation() {
     }
 
-    public static SaleOperation getInstance() {
+    public static SaleDocOperation getInstance() {
         if (instance == null) {
-            instance = new SaleOperation();
+            instance = new SaleDocOperation();
         }
         return instance;
     }

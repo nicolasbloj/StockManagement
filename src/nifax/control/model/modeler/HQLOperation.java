@@ -13,20 +13,19 @@ import org.hibernate.Transaction;
  *
  * @author faka
  */
-
 public class HQLOperation implements IHQLOperation{
     private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
     private Session session = null;   
     private static HQLOperation instance = null;
     protected HQLOperation() {
     }
-    
+
     public static HQLOperation getInstance(){
         if(instance == null)
             instance = new HQLOperation();
         return instance;
-    }    
-    
+    }
+
     private Boolean executeHibernateHQLStament(Object obj, Integer n, String op){
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -42,9 +41,9 @@ public class HQLOperation implements IHQLOperation{
                 case 3:
                     session.delete(obj);
                     break;
-            }            
+            }
             tx.commit();
-            logger.info("Operación Finalizada...");            
+            logger.info("Operación Finalizada...");
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
             throw e;
@@ -53,22 +52,22 @@ public class HQLOperation implements IHQLOperation{
         }
         return Boolean.TRUE;
     }
-    
+
     @Override
-    public Boolean Insert(Object obj) {        
+    public Boolean Insert(Object obj) {
         return executeHibernateHQLStament(obj, 1, "Insertando Registros");
     }
-    
-    @Override    
+
+    @Override
     public Boolean Update(Object obj){        
         return executeHibernateHQLStament(obj, 2, "Modificando registros");
     }
 
-    @Override    
+    @Override
     public Boolean Delete(Object obj){        
         return executeHibernateHQLStament(obj, 3, "Borrando registros");
     }
-  
+
     public Query HQLSelect(String AQuery) {
         Query slist = null;
         try {
@@ -79,33 +78,56 @@ public class HQLOperation implements IHQLOperation{
             logger.info("Finalizado...");
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
-        } 
+        }
         return slist;
     }
-    
+
     @Override
     public List Select(String AQuery){
         return HQLSelect(AQuery)
-            .list();
+                .list();
     }
-    
+
     @Override
     public List Select(String AQuery, Object obj){
         return HQLSelect(AQuery)
-            .setProperties(obj)
-            .list();
+                .setProperties(obj)
+                .list();
     }
 
     @Override
     public Object SelectCount(String AQuery, Object obj, int nrow){
         return null; //Not implemented yet
     }
-    
+
     @Override
     public Object SelectUnique(String AQuery, Object obj){
         return HQLSelect(AQuery)
-            .setProperties(obj)
+                .setProperties(obj)
+                .setMaxResults(1)
+                .uniqueResult();
+    }
+    
+    
+    @Override
+    public List SelectLike(String ATable, String AField, String ACondition){
+        StringBuilder sql = new StringBuilder();
+        sql.append(String.format("select description from %s where %s like :searchKey group by description ", ATable, AField));
+        return HQLSelect(sql.toString())
+            .setParameter("searchKey", "%" + ACondition + "%")
+            .list();
+    }
+
+    
+    @Override
+        public Object SelectUnique(String AQuery){
+        return HQLSelect(AQuery)
             .setMaxResults(1)
             .uniqueResult();
+    }
+    
+    @Override
+    public List Select(String AQuery, String parameter , Object value) {
+        return HQLSelect(AQuery).setParameter(parameter,value).list();
     }
 }

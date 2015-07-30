@@ -1,4 +1,4 @@
-package nifax.control.view.event;
+package nifax.control.view.event.mei;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -3,8 +3,9 @@ package nifax.control.view;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import nifax.control.view.event.Fra_frameMainListener;
-import nifax.control.view.event.Mei_exitListener;
+import javax.swing.JTree;
+import nifax.control.view.event.frame.Fra_frameMainListener;
+import nifax.control.view.event.mei.Mei_exitListener;
 
 /**
  *
@@ -16,10 +17,15 @@ public final class FrameMain extends javax.swing.JFrame {
         initComponents();
 
         this.addWindowListener(new Fra_frameMainListener());
-        
+
         this.getContentPane().setBackground(new Color(226,212,246));
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
+
+    public JTree getTre_navigation() {
+        return tre_navigation;
+    }
+    
     
 
     @SuppressWarnings("unchecked")
@@ -131,10 +137,8 @@ public final class FrameMain extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameMain().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrameMain().setVisible(true);
         });
     }
 

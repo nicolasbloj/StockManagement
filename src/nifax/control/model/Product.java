@@ -27,6 +27,11 @@ public class Product implements Serializable {
     public Product(Long id) {
         this.id = id;
     }
+ 
+    public Product(String description) {
+        this.description=description;
+    }
+
     
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -47,10 +52,8 @@ public class Product implements Serializable {
     private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
-     private Set<SaleDocProduct> saleDocProducts = new HashSet<SaleDocProduct>();
+    private Set<SaleDocProduct> saleDocProducts = new HashSet<SaleDocProduct>();
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -67,12 +70,12 @@ public class Product implements Serializable {
         return category;
     }
 
-    public Set<ProductMeasure> getMeasures() {
-        return productMeasures;
-    }
-
     public Iva getIva() {
         return iva;
+    }
+    
+    public Set<ProductMeasure> getMeasures() {
+        return productMeasures;
     }
     
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {

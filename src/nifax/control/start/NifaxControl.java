@@ -21,7 +21,7 @@ import nifax.control.data.IQueries;
 import nifax.control.model.modeler.IvaOperation;
 import nifax.control.model.modeler.OfferOperation;
 import nifax.control.model.modeler.RestorationOperation;
-import nifax.control.model.modeler.SaleOperation;
+import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
 import nifax.control.view.FrameMain;
 
@@ -61,21 +61,20 @@ public class NifaxControl implements IQueries{
             } while (!auth.LogIn(new UserEmployee(user, pass)));
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
-            
-/*            
+/*
             //Loading scenario
             //Add Iva
-            modelOperation.Insert(new Iva(21.0));
+            modelOperation.Insert(new Iva(21));
             modelOperation.Insert(new Iva(10.5));
             //Add categories
             modelOperation.Insert(new Category("Audio"));
             modelOperation.Insert(new Category("Iluminacion"));
             //Add prices
-            modelOperation.Insert(new Price("Lista1", 1.85));
-            modelOperation.Insert(new Price("Lista2", 1.75));
-            modelOperation.Insert(new Price("Lista3", 1.55));
-            modelOperation.Insert(new Price("Lista4", 1.25));
-            modelOperation.Insert(new Price("Lista5", 1.05));
+            modelOperation.Insert(new Price("Lista1", 85));
+            modelOperation.Insert(new Price("Lista2", 75));
+            modelOperation.Insert(new Price("Lista3", 55));
+            modelOperation.Insert(new Price("Lista4", 25));
+            modelOperation.Insert(new Price("Lista5", 5));
             //Add stores
             modelOperation.Insert(new Store("Deposito central"));
             modelOperation.Insert(new Store("Deposito alternativo"));
@@ -152,6 +151,7 @@ public class NifaxControl implements IQueries{
             double quantityStock = 500;
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
+                0,
                 measureList.get("Unidad"), 
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
@@ -161,6 +161,7 @@ public class NifaxControl implements IQueries{
             quantityStock = 120;
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
+                0,
                 measureList.get("Unidad"), 
                 productList.get("Lampara"), 
                 storeList.get("Deposito central")
@@ -169,6 +170,9 @@ public class NifaxControl implements IQueries{
             //Add Offer 
             //Offer Product 1
             OfferOperation.getInstance().add("Oferta mes mayo",10,20,
+                    measureList.get("Unidad"),productList.get("Foco 12V") );
+            //Offer Product 2
+            OfferOperation.getInstance().add("Oferta mes mayo",20,40,
                     measureList.get("Unidad"),productList.get("Foco 12V") );
             
             //Add Restoration 
@@ -225,21 +229,22 @@ public class NifaxControl implements IQueries{
             Calendar calendar = Calendar.getInstance();
 
             //Get typSaleDoc list from db
-            Map<String, TypeSaleDoc> typeSaleDocList = StoreOperation.getInstance().List();
+            Map<String, TypeSaleDoc> typeSaleDocList = TypeSaleDocOperation.getInstance().List();
             
-            SaleOperation.getInstance().add(calendar.getTime(),
+            
+            
+            SaleDocOperation.getInstance().add(calendar.getTime(),
                     usr,
                     typeSaleDocList.get("Ticket"),
                     saleDocProducts
                             );
-            
 */
-          FrameMain.main(null);
+         FrameMain.main(null);
          
           
         } finally {
-           // Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
-           //HibernateUtil.getSessionFactory().close();
+            //Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
+            //HibernateUtil.getSessionFactory().close();
         }
     }
 }
