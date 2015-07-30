@@ -37,7 +37,7 @@ public class TypeSaleDocOperation extends HQLOperation implements IQueries {
     }
     
       public TypeSaleDoc Find(TypeSaleDoc typeSaleDoc) {
-        return (TypeSaleDoc) SelectUnique(OfferFilteredByID, typeSaleDoc);
+        return (TypeSaleDoc) SelectUnique(TypeSaleDocFilteredByDescription, typeSaleDoc);
     }
 
     public Map List() {

@@ -42,11 +42,21 @@ public class OfferOperation extends HQLOperation implements IQueries {
         return (Offer) SelectUnique(OfferFilteredByID, offer);
     }
 
+    //method list - not use Map<String,Stock> because the stock's description is not unique - use Map<Long,Offer>
     public Map List() {
-        Map<String, Offer> map = new HashMap<>();
+        Map<Long, Offer> map = new HashMap<>();
         List<Offer> lsp = Select(Offer);
         lsp.stream().forEach((ls) -> {
-            map.put(ls.getDescription(), ls);
+            map.put(ls.getId(), ls);
+        });
+        return map;
+    }
+
+    public Map ListByParameter(String parameter, Object value) {
+        Map<Long, Offer> map = new HashMap<>();
+        List<Offer> lsp = Select(OfferFilteredByProduct, parameter, value);
+        lsp.stream().forEach((ls) -> {
+            map.put(ls.getId(), ls);
         });
         return map;
     }

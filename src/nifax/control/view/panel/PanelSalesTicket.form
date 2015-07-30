@@ -132,15 +132,24 @@
                                   <Component id="txf_ticketQuantityProduct" min="-2" pref="194" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbl_ticketPriceProduct" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                              <Component id="lbl_ticketStoreProduct" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lbl_ticketPriceProduct" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                      <Component id="lbl_ticketStoreProduct" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lbl_ticketMeasureProduct" min="-2" pref="101" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="cbx_ticketStoreProduct" pref="141" max="32767" attributes="0"/>
                               <Component id="cbx_ticketPriceProduct" max="32767" attributes="0"/>
+                              <Component id="cbx_ticketMeasureProduct" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -156,16 +165,22 @@
                               <Component id="lbl_ticketPriceProduct" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_ticketDescProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_ticketDescProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_ticketStoreProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_ticketStoreProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_ticketStoreProduct" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbl_ticketDescProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbx_ticketDescProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbx_ticketStoreProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_ticketQuantityProduct" alignment="1" max="32767" attributes="0"/>
-                              <Component id="txf_ticketQuantityProduct" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txf_ticketQuantityProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbx_ticketMeasureProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_ticketMeasureProduct" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
@@ -175,12 +190,12 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lbl_ticketCodeProduct">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Codigo "/>
+                    <Property name="text" type="java.lang.String" value="Codigo :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_ticketDescProduct">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Descripcion"/>
+                    <Property name="text" type="java.lang.String" value="Descripcion :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_ticketCodeProduct">
@@ -208,19 +223,13 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_ticketPriceProduct">
                   <Properties>
-                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="1"/>
-                        <StringItem index="1" value="2"/>
-                        <StringItem index="2" value="3"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_ticketStoreProduct">
                   <Properties>
-                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
@@ -228,12 +237,24 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_ticketStoreProduct">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Deposito"/>
+                    <Property name="text" type="java.lang.String" value="Deposito : "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_ticketPriceProduct">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Lista de precios"/>
+                    <Property name="text" type="java.lang.String" value="Lista de precios : "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbx_ticketMeasureProduct">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbl_ticketMeasureProduct">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Medida :"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -250,7 +271,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_ticketProductSearch" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
@@ -260,7 +281,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_ticketProductSearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -273,10 +294,13 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="btn_ticketProductSearch">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_ticketProductSearchAction(this))"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
@@ -342,28 +366,28 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lbl_ticketGralPrice">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Lista de precios"/>
+                    <Property name="text" type="java.lang.String" value="Lista de precios :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_ticketGralStore">
                   <Properties>
-                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_ticketGralPrice">
                   <Properties>
-                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_ticketGralStore">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Deposito"/>
+                    <Property name="text" type="java.lang.String" value="Deposito :"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -378,20 +402,68 @@
                 <Component class="javax.swing.JTable" name="tbl_ticket">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="9" rowCount="0">
+                      <Table columnCount="17" rowCount="0">
+                        <Column editable="true" title="" type="java.lang.Boolean"/>
                         <Column editable="false" title="IT" type="java.lang.Object"/>
-                        <Column editable="false" title="CODIGO " type="java.lang.Object"/>
+                        <Column editable="false" title="CODIGO" type="java.lang.Object"/>
                         <Column editable="false" title="DETALLE" type="java.lang.Object"/>
-                        <Column editable="false" title="PRECIO" type="java.lang.Object"/>
-                        <Column editable="false" title="PRECIO C/IVA" type="java.lang.Object"/>
-                        <Column editable="false" title="CANTIDAD" type="java.lang.Object"/>
-                        <Column editable="false" title="IVA" type="java.lang.Object"/>
-                        <Column editable="false" title="IMPORTE C/IVA" type="java.lang.Object"/>
+                        <Column editable="false" title="PREC" type="java.lang.Object"/>
+                        <Column editable="false" title="PREC C/IVA" type="java.lang.Object"/>
+                        <Column editable="false" title="LISTA" type="java.lang.Object"/>
+                        <Column editable="false" title="CANT X UN." type="java.lang.Object"/>
+                        <Column editable="false" title="CANT." type="java.lang.Object"/>
+                        <Column editable="false" title="MED" type="java.lang.Object"/>
+                        <Column editable="false" title="DTO(%)" type="java.lang.Object"/>
+                        <Column editable="false" title="COSTO" type="java.lang.Object"/>
+                        <Column editable="false" title="RENT(%)" type="java.lang.Object"/>
+                        <Column editable="false" title="IVA(%)" type="java.lang.Object"/>
                         <Column editable="false" title="IMPORTE" type="java.lang.Object"/>
+                        <Column editable="false" title="IMPORTE C/IVA" type="java.lang.Object"/>
+                        <Column editable="false" title="DEPO" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -588,7 +660,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btn_emit" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_emitTicket" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -597,16 +669,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="btn_emit" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="btn_emitTicket" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btn_emit">
+        <Component class="javax.swing.JButton" name="btn_emitTicket">
           <Properties>
             <Property name="text" type="java.lang.String" value="Emitir ticket"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new Btn_emitTicketAction(this))"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

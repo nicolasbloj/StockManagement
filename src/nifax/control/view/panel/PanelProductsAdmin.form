@@ -204,6 +204,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Cbx_CategoryAction sbm = new Cbx_CategoryAction(cbx_category);&#xa;cbx_category.setModel(sbm);&#xa;cbx_category.addItemListener(sbm);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_money">
                   <Properties>
@@ -1575,7 +1578,7 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new btn_CancelAction())"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -1,6 +1,6 @@
 package nifax.control.view.util;
 
-import nifax.control.view.event.Tre_Listener;
+import nifax.control.view.event.tre.Tre_Listener;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -20,7 +20,8 @@ public class Tre extends JTree {
         TreeListener = new Tre_Listener(jFrameMain);
 
         addMouseListener(TreeListener);
-
+        addKeyListener(TreeListener);
+        
         DefaultMutableTreeNode TreeRoot = new DefaultMutableTreeNode("NiFax");
         DefaultTreeModel TreeModel = new DefaultTreeModel(TreeRoot);
 

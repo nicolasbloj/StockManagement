@@ -24,6 +24,9 @@ public class Store implements Serializable {
         this.description=description;
     }
 
+    public Store(long id){
+        this.id=id;
+    }
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "store_id", unique = true, nullable = false)

@@ -53,5 +53,6 @@ public class RestorationOperation extends HQLOperation implements IQueries {
         });
         return map;
     }
-
+//method list - no use Map<String,Stock> because the stock's description is not unique
+    
 }

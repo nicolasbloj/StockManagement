@@ -1,6 +1,6 @@
 package nifax.control.view.panel;
 
-import nifax.control.view.event.btn_CancelAction;
+import nifax.control.view.cbx.Cbx_CategoryAction;
 import nifax.control.view.util.Pnl;
 
 
@@ -125,7 +125,7 @@ public class PanelProductsAdmin extends Pnl {
         btn_save = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
-        btn_cancel = new javax.swing.JButton(new btn_CancelAction());
+        btn_cancel = new javax.swing.JButton();
 
         tbp_containerProduct.setBackground(new java.awt.Color(51, 51, 51));
         tbp_containerProduct.setOpaque(true);
@@ -139,6 +139,9 @@ public class PanelProductsAdmin extends Pnl {
 
         lbl_category.setText("Categoria :");
 
+        Cbx_CategoryAction sbm = new Cbx_CategoryAction(cbx_category);
+        cbx_category.setModel(sbm);
+        cbx_category.addItemListener(sbm);
         cbx_category.setEditable(true);
 
         lbl_money.setText("Moneda : ");
