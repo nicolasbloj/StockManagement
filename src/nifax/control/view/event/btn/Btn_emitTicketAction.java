@@ -43,7 +43,7 @@ public class Btn_emitTicketAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         int dialogResult = JOptionPane.showConfirmDialog(null,
-                "Would You Like to Save your Previous Note First?", "Warning",
+                "Esta seguro que desea emitir ticket ?", "Confirmacion",
                 JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.YES_OPTION) {
             try {
