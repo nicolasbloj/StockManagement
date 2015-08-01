@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nifax.control.view.event.btn;
 
 import com.sun.glass.events.KeyEvent;
@@ -15,7 +10,10 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import static javax.swing.Action.MNEMONIC_KEY;
 import static javax.swing.Action.SHORT_DESCRIPTION;
+import javax.swing.JOptionPane;
+import javax.swing.tree.TreePath;
 import nifax.control.controller.Authentication;
+import nifax.control.controller.Navigation;
 import nifax.control.controller.SaleController;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Product;
@@ -24,6 +22,7 @@ import nifax.control.model.TypeSaleDoc;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
+import nifax.control.view.FrameMain;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -43,64 +42,84 @@ public class Btn_emitTicketAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            SaleController saleController = SaleController.getInstance();
-            saleController.setPanelSalesTicket(panelSalesTicket);
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+                "Would You Like to Save your Previous Note First?", "Warning",
+                JOptionPane.YES_NO_OPTION);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            try {
+                SaleController saleController = SaleController.getInstance();
+                saleController.setPanelSalesTicket(panelSalesTicket);
 
-            ProductOperation productOperation = ProductOperation.getInstance();
+                ProductOperation productOperation = ProductOperation.getInstance();
 
-            int indexCodProd = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CODIGO");
-            int indexCodStore = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("DEPO");
-            int indexCant = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CANT X UN.");
-            int indexPrice = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("PREC C/IVA");
+                int indexCodProd = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CODIGO");
+                int indexCodStore = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("DEPO");
+                int indexCant = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CANT X UN.");
+                int indexPrice = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("PREC C/IVA");
 
-            long store_id;
-            
-            Product product;
-            double quantity;
-            double price;
+                long store_id;
 
-            SaleDocProduct saleDocProduct;
+                Product product;
+                double quantity;
+                double price;
 
-            List<SaleDocProduct> saleDocProducts = new ArrayList<SaleDocProduct>();
+                SaleDocProduct saleDocProduct;
 
-            for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
-                product = productOperation.Find(new Product(Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString())));
-                quantity = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCant).toString());
-                price = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexPrice).toString());
+                List<SaleDocProduct> saleDocProducts = new ArrayList<SaleDocProduct>();
 
-                store_id = Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodStore).toString());
+                for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
+                    product = productOperation.Find(new Product(Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString())));
+                    quantity = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCant).toString());
+                    price = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexPrice).toString());
 
-                saleDocProduct = new SaleDocProduct();
+                    store_id = Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodStore).toString());
 
-                saleDocProduct.setProduct(product);
-                saleDocProduct.setQuantity(quantity);
-                saleDocProduct.setPrice(price);
+                    saleDocProduct = new SaleDocProduct();
 
-                saleDocProducts.add(saleDocProduct);
+                    saleDocProduct.setProduct(product);
+                    saleDocProduct.setQuantity(quantity);
+                    saleDocProduct.setPrice(price);
 
-                //STOCK QUANTITYCOMMITTED
-                saleController.calculateStocks(product,
-                        store_id,
-                        quantity,
-                        SaleController.DOSCOUNT_STOCKCOMMITTED
+                    saleDocProducts.add(saleDocProduct);
+
+                    //STOCK QUANTITYCOMMITTED
+                    saleController.calculateStocks(product,
+                            store_id,
+                            quantity,
+                            SaleController.DOSCOUNT_STOCKCOMMITTED
+                    );
+                    //STOCK QUANTITYCOMMITTED
+                    saleController.calculateStocks(product,
+                            store_id,
+                            quantity,
+                            SaleController.DISCOUNT_STOCK
+                    );
+                }
+
+                SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
+                        Authentication.getInstance().getSession().getUser_id(),
+                        TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
+                        saleDocProducts
                 );
-                //STOCK QUANTITYCOMMITTED
-                saleController.calculateStocks(product,
-                        store_id,
-                        quantity,
-                        SaleController.DISCOUNT_STOCK
-                );
+
+                //See SEQ
+                /*JOptionPane.showMessageDialog(null, 
+                 new StringBuilder().append("Ticket ")
+                 .append(String.valueOf(ProductOperation.getInstance().
+                 SelectUnique("SELECT nextval('public.\"saledoc_saledoc_id_seq\"')"))));*/
+                JOptionPane.showMessageDialog(null, "Ticket generado correctamente ");
+
+                //Reload panel
+                FrameMain f = Navigation.getInstance().getFrameMain();
+                TreePath tp = Navigation.getInstance().getLastSelected();
+                Navigation.getInstance().showPanel(tp);
+
+                this.panelSalesTicket.repaint();
+
+            } catch (InitializeSessionException ex) {
+                Logger.getLogger(Btn_emitTicketAction.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
-                    Authentication.getInstance().getSession().getUser_id(),
-                    TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
-                    saleDocProducts
-            );
-
-        } catch (InitializeSessionException ex) {
-            Logger.getLogger(Btn_emitTicketAction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
