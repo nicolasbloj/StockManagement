@@ -1,5 +1,6 @@
 package nifax.control.model.modeler;
 
+import java.math.BigInteger;
 import nifax.control.model.modeler.operation.IHQLOperation;
 import java.util.List;
 import java.util.logging.Level;
@@ -8,6 +9,7 @@ import nifax.control.hibernate.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.type.StandardBasicTypes;
 
 /**
  *
@@ -130,4 +132,12 @@ public class HQLOperation implements IHQLOperation{
     public List Select(String AQuery, String parameter , Object value) {
         return HQLSelect(AQuery).setParameter(parameter,value).list();
     }
+    
+    public Long getNextSequenceValue(final String SequenceName) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = 
+        session.createSQLQuery(String.format("select nextval('public.%s')", SequenceName));
+        return ((BigInteger) query.uniqueResult()).longValue();
+}
 }
