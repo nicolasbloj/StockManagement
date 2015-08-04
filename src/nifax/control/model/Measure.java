@@ -43,4 +43,9 @@ public class Measure implements Serializable{
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {
         this.productMeasures = productMeasures;
     }
+
+    public Set<ProductMeasure> getProductMeasures() {
+        return productMeasures;
+    }
+    
 }

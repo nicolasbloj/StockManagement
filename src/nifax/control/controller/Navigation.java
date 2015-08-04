@@ -1,6 +1,7 @@
 package nifax.control.controller;
 
 import javax.swing.tree.TreePath;
+import nifax.control.util.Table;
 import nifax.control.view.FrameMain;
 import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelPresentation;
@@ -36,32 +37,29 @@ public class Navigation {
     public void showPanel(TreePath tp) {
         lastSelected = tp;
         if (tp != null) {
+
+            PanelGeneralAdmin panelGeneralAdmin = new PanelGeneralAdmin();
+            frameMain.getScp_container().setViewportView(panelGeneralAdmin);
+            String tab = "";
+
             switch (tp.toString()) {
                 case "[NiFax, Administracion, Productos, Gestion]":
                     PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
-                    PanelGeneralAdmin panelGeneralAdminCategories = new PanelGeneralAdmin();
-                    panelGeneralAdminCategories.getTbp_gral().setTitleAt(0, "Categoria");
-                    frameMain.getScp_container().setViewportView(panelGeneralAdminCategories);
+                    tab = "Categoria";
                     break;
                 case "[NiFax, Administracion, Depositos, Gestion]":
-                    PanelGeneralAdmin panelGeneralAdminStores = new PanelGeneralAdmin();
-                    panelGeneralAdminStores.getTbp_gral().setTitleAt(0, "Deposito");
-                    frameMain.getScp_container().setViewportView(panelGeneralAdminStores);
+                    tab = "Deposito";
                     break;
                 case "[NiFax, Administracion, Medidas, Gestion]":
-                    PanelGeneralAdmin panelGeneralAdminMedidas = new PanelGeneralAdmin();
-                    panelGeneralAdminMedidas.getTbp_gral().setTitleAt(0, "Medida");
-                    frameMain.getScp_container().setViewportView(panelGeneralAdminMedidas);
+                    tab = "Medida";
                     break;
                 case "[NiFax, Administracion, Lista de precios, Gestion]":
-                    PanelGeneralAdmin panelGeneralAdminPrices = new PanelGeneralAdmin();
-                    panelGeneralAdminPrices.getLbl_profitGral().setVisible(true);
-                    panelGeneralAdminPrices.getTxf_profitGral().setVisible(true);
-                    panelGeneralAdminPrices.getTbp_gral().setTitleAt(0, "Lista de precio");
-                    frameMain.getScp_container().setViewportView(panelGeneralAdminPrices);
+                    tab = "Lista de precio";
+                    panelGeneralAdmin.getLbl_profitGral().setVisible(true);
+                    panelGeneralAdmin.getTxf_profitGral().setVisible(true);
                     break;
                 case "[NiFax, Operacion, Ventas, Ticket]":
                     PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
@@ -71,6 +69,13 @@ public class Navigation {
                     PanelPresentation jPanelPresentation = new PanelPresentation();
                     frameMain.getScp_container().setViewportView(jPanelPresentation);
                     break;
+            }
+
+            panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
+
+            if (!tab.equals(TableGralController.Price)) {
+                int[] columnsOcults = {3};
+                Table.ocultColumns(panelGeneralAdmin.getTbl_gral(), columnsOcults);
             }
         }
     }

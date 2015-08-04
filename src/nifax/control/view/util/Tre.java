@@ -31,10 +31,12 @@ public class Tre extends JTree {
         DefaultMutableTreeNode defaultMutableTreeNodeAdministration = new DefaultMutableTreeNode("Administracion");
         DefaultMutableTreeNode DefaultMutableTreeNodeOperation = new DefaultMutableTreeNode("Operacion");
         DefaultMutableTreeNode DefaultMutableTreeNodeSystem = new DefaultMutableTreeNode("Sistema");
+        DefaultMutableTreeNode defaultMutableTreeNodeReports = new DefaultMutableTreeNode("Reportes");
             
         TreeModel.insertNodeInto(defaultMutableTreeNodeAdministration, TreeRoot, 0);
         TreeModel.insertNodeInto(DefaultMutableTreeNodeOperation, TreeRoot, 1);
-        TreeModel.insertNodeInto(DefaultMutableTreeNodeSystem, TreeRoot, 2);
+        TreeModel.insertNodeInto(defaultMutableTreeNodeReports, TreeRoot, 2);
+            TreeModel.insertNodeInto(DefaultMutableTreeNodeSystem, TreeRoot, 3);
         
         // Administration
         DefaultMutableTreeNode defaultMutableTreeNodeProducts = new DefaultMutableTreeNode("Productos");
@@ -77,6 +79,15 @@ public class Tre extends JTree {
                                                               
         TreeModel.insertNodeInto(defaultMutableTreeNodeSales, DefaultMutableTreeNodeOperation, 0);
         TreeModel.insertNodeInto(defaultMutableTreeNodeTicket, defaultMutableTreeNodeSales, 0);
+        
+        // Reports
+        
+        DefaultMutableTreeNode defaultMutableTreeNodeReportProducts = new DefaultMutableTreeNode("Productos");
+        DefaultMutableTreeNode defaultMutableTreeNodeProductsState = new DefaultMutableTreeNode("Estado");
+        
+        TreeModel.insertNodeInto(defaultMutableTreeNodeReportProducts, defaultMutableTreeNodeReports, 0);
+        TreeModel.insertNodeInto(defaultMutableTreeNodeProductsState, defaultMutableTreeNodeReportProducts, 0);
+  
         
         // System
         DefaultMutableTreeNode defaultMutableTreeNodeUsers = new DefaultMutableTreeNode("Usuarios");

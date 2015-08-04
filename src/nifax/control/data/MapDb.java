@@ -1,6 +1,7 @@
 package nifax.control.data;
 
 import java.util.Map;
+import nifax.control.model.Category;
 import nifax.control.model.Measure;
 import nifax.control.model.Price;
 import nifax.control.model.Store;
@@ -15,5 +16,6 @@ public final class MapDb {
     public static Map<String, Price> priceList = null;
     public static Map<String, Store> storeList = null;
     public static Map<String, Measure> measureList = null;
+    public static Map<String, Category> categoryList;
 
 }
