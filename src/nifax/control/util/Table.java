@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class Table {
 
-    public static void ocultColumns(JTable tbl, int columna[]) {
+    public static void hideColumns(JTable tbl, int columna[]) {
 
         for (int i = 0; i < columna.length; i++) {
 

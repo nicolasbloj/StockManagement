@@ -36,10 +36,8 @@ public class ColumnSorter implements Comparator {
         } else if (o2 == null) {
             return -1;
         } else if (o1 instanceof Comparable) {
-
             return ((Comparable) o1).compareTo(o2);
         } else {
-
             return o1.toString().compareTo(o2.toString());
         }
     }

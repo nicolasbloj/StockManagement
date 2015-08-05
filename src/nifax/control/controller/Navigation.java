@@ -74,8 +74,8 @@ public class Navigation {
             panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
 
             if (!tab.equals(TableGralController.Price)) {
-                int[] columnsOcults = {3};
-                Table.ocultColumns(panelGeneralAdmin.getTbl_gral(), columnsOcults);
+                int[] columnsHides = {3};
+                Table.hideColumns(panelGeneralAdmin.getTbl_gral(), columnsHides);
             }
         }
     }

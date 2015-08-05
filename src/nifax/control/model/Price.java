@@ -2,7 +2,6 @@ package nifax.control.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  *
@@ -10,35 +9,32 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "PRICE")
-public class Price implements Serializable{
+@AttributeOverrides(
+        {
+            @AttributeOverride(
+                    name = "id", column = @Column(name = "price_id")
+            ),
+            @AttributeOverride(
+                    name = "description", column = @Column(name = "description")
+            ),
+        }
+)
+public class Price extends EntityModel implements Serializable {
 
     protected Price() {
     }
 
-    public Price(String description,double profit) {
-        this.description = description;
-        this.profit=profit;
+    public Price(String description, double profit) {
+        super(description);
+        this.profit = profit;
     }
 
     public Price(Long id) {
-        this.id=id;
+        super(id);
     }
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "price_id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "description")
-    private String description;
+
     @Column(name = "profit")
     private double profit;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 
     public double getProfit() {
         return profit;

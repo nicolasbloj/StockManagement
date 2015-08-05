@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  *
@@ -12,34 +11,28 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "MEASURE")
-public class Measure implements Serializable{
+@AttributeOverrides(
+        {
+            @AttributeOverride(
+                    name = "id", column = @Column(name = "measure_id")
+            ),
+            @AttributeOverride(
+                    name = "description", column = @Column(name = "description")
+            ),
+        }
+)
+public class Measure extends EntityModel implements Serializable {
 
     protected Measure() {
     }
 
     public Measure(String description) {
-        this.description = description;
+        super(description);
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "measure_id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "description")
-    private String description;
-
-    
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.measure", cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.measure", cascade = CascadeType.ALL)
     private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-        
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {
         this.productMeasures = productMeasures;
     }
@@ -47,5 +40,5 @@ public class Measure implements Serializable{
     public Set<ProductMeasure> getProductMeasures() {
         return productMeasures;
     }
-    
+
 }
