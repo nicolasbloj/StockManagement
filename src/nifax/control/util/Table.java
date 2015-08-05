@@ -9,17 +9,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class Table {
 
-    public static void hideColumns(JTable tbl, int columna[]) {
+    public static void hiddenColumns(JTable tbl, int[] column) {
 
-        for (int i = 0; i < columna.length; i++) {
+        for (int i = 0; i < column.length; i++) {
 
-            tbl.getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+            tbl.getColumnModel().getColumn(column[i]).setMaxWidth(0);
 
-            tbl.getColumnModel().getColumn(columna[i]).setMinWidth(0);
+            tbl.getColumnModel().getColumn(column[i]).setMinWidth(0);
 
-            tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+            tbl.getTableHeader().getColumnModel().getColumn(column[i]).setMaxWidth(0);
 
-            tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMinWidth(0);
+            tbl.getTableHeader().getColumnModel().getColumn(column[i]).setMinWidth(0);
 
         }
     }
