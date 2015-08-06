@@ -33,9 +33,9 @@ public class Txf_ticketCodeProductListener extends Txf_Listener {
 
             JTextField txf = (JTextField) e.getSource();
 
-            String codeProduct = txf.getText();
+            String codeProduct = txf.getText().toUpperCase();
 
-            Product parcialProd = new Product(Long.parseLong(codeProduct));
+            Product parcialProd = new Product(codeProduct,1);
 
             final ProductOperation productOperation = ProductOperation.getInstance();
             Product product = productOperation.Find(parcialProd);

@@ -9,7 +9,7 @@ import nifax.control.hibernate.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.type.StandardBasicTypes;
+
 
 /**
  *
@@ -140,4 +140,12 @@ public class HQLOperation implements IHQLOperation{
         session.createSQLQuery(String.format("select nextval('public.%s')", SequenceName));
         return ((BigInteger) query.uniqueResult()).longValue();
 }
+    public Long getCurrSequenceValue(final String SequenceName) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = 
+        session.createSQLQuery(String.format("select currval('public.%s')", SequenceName));
+        return ((BigInteger) query.uniqueResult()).longValue();
+}
+    
 }

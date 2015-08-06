@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
+import nifax.control.controller.CodeGenerator;
 
 /**
  *
@@ -15,30 +16,36 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Product implements Serializable {
 
     protected Product() {
-    }    
-    
-    public Product(String description, double cost, Category categoryProduct,Iva iva) {
+    }
+
+    public Product(String description, double cost, Category categoryProduct, Iva iva ) {
         this.description = description;
         this.cost = cost;
         this.category = categoryProduct;
-        this.iva=iva;
+        this.iva = iva;
+
+        //generate code
+        CodeGenerator codeGenerator = new CodeGenerator(categoryProduct.getDescription());
+        code = codeGenerator.createProductCode();
     }
 
-    public Product(Long id) {
-        this.id = id;
-    }
- 
-    public Product(String description) {
-        this.description=description;
+    public Product(String str, int i) {
+        switch (i) {
+            case 0:
+                this.description = str;
+            case 1:
+                this.code = str;
+        }
     }
 
-    
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "product_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;
+    @Column(name = "code")
+    private String code;
     @Column(name = "cost")
     private double cost;
     @JoinColumn(name = "category_id")
@@ -58,6 +65,7 @@ public class Product implements Serializable {
         return id;
     }
 
+    
     public String getDescription() {
         return description;
     }
@@ -73,11 +81,11 @@ public class Product implements Serializable {
     public Iva getIva() {
         return iva;
     }
-    
+
     public Set<ProductMeasure> getMeasures() {
         return productMeasures;
     }
-    
+
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {
         this.productMeasures = productMeasures;
     }
@@ -89,6 +97,10 @@ public class Product implements Serializable {
     public void setSaleDocProducts(Set<SaleDocProduct> saleDocProducts) {
         this.saleDocProducts = saleDocProducts;
     }
-    
+
+    public String getCode() {
+        return code;
+    }
+
     
 }

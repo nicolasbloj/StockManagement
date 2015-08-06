@@ -34,25 +34,35 @@ public class Pnl_panelSalesTicketListener extends Pnl_Listener {
         Arrays.sort(StringArrayPrices);
 
         this.panelSalesTicket.getCbx_ticketGralPrice().setModel(
-                new DefaultComboBoxModel(StringArrayPrices));
+                new DefaultComboBoxModel(StringArrayPrices)
+        );
+        
         this.panelSalesTicket.getCbx_ticketPriceProduct().setModel(
-                new DefaultComboBoxModel(StringArrayPrices));
+                new DefaultComboBoxModel(StringArrayPrices)
+        );
 
         MapDb.storeList = StoreOperation.getInstance().List();
 
         Object[] StringArrayStores = MapDb.storeList.keySet().toArray();
 
+        
         this.panelSalesTicket.getCbx_ticketGralStore().setModel(
-                new DefaultComboBoxModel(StringArrayStores));
+                new DefaultComboBoxModel(StringArrayStores)
+        );
+        
         this.panelSalesTicket.getCbx_ticketStoreProduct().setModel(
-                new DefaultComboBoxModel(StringArrayStores));
+                new DefaultComboBoxModel(StringArrayStores)
+        );
 
         MapDb.measureList = MeasureOperation.getInstance().List();
 
         Object[] StringArrayMeasure = MapDb.measureList.keySet().toArray();
 
         this.panelSalesTicket.getCbx_ticketMeasureProduct().setModel(
-                new DefaultComboBoxModel(StringArrayMeasure));
+                new DefaultComboBoxModel(
+                        StringArrayMeasure
+                )
+        );
 
         this.panelSalesTicket.getCbx_ticketMeasureProduct().setSelectedItem("Unidad");
 
@@ -70,13 +80,13 @@ public class Pnl_panelSalesTicketListener extends Pnl_Listener {
         int indexCant = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CANT X UN.");
 
         long store_id;
-
         Product product;
         double quantity;
-        double price;
-
+        String codeProduct;
+        
         for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
-            product = productOperation.Find(new Product(Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString())));
+            codeProduct = this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString();
+            product = productOperation.Find(new Product(codeProduct,1));
             store_id = Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodStore).toString());
             quantity = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCant).toString());
 
