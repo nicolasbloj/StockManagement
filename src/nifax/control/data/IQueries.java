@@ -18,7 +18,7 @@ public interface IQueries {
     
     final String TypeSaleDocFilteredByDescription = "from TypeSaleDoc where description = :description";
     
-    final String ProductFilteredByID = "from Product where id = :id";
+    final String ProductFilteredByCode = "from Product where code = :code";
     
     final String ProductFilteredByDescription = "from Product where description = :description";
     

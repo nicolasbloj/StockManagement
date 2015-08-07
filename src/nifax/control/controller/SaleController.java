@@ -106,7 +106,7 @@ public class SaleController {
 
             rowData.add(Boolean.FALSE);
             rowData.add(tableModel.getRowCount() + 1);
-            rowData.add(product.getId());
+            rowData.add(product.getCode());
             rowData.add(product.getDescription());
             rowData.add(Number.formateator.format(price));
             rowData.add(Number.formateator.format(priceWithIva));

@@ -8,13 +8,13 @@ import nifax.control.model.modeler.HQLOperation;
  */
 public class CodeGenerator extends HQLOperation{
     private final String PRODUCTSEQUENCE = "product_product_id_seq";
-    private String code;
+    private final String code;
     
     public CodeGenerator(String code){
         this.code = code;
     }
     public String createCode(final String SequenceValue){
-        String result = code.substring(0, 2);
+        String result = code.substring(0, 2).toUpperCase();
         result = result + SequenceValue;
         return result;
     }

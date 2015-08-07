@@ -19,6 +19,7 @@ import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Product;
 import nifax.control.model.SaleDocProduct;
 import nifax.control.model.TypeSaleDoc;
+import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
@@ -68,7 +69,7 @@ public class Btn_emitTicketAction extends AbstractAction {
                 List<SaleDocProduct> saleDocProducts = new ArrayList<SaleDocProduct>();
 
                 for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
-                    product = productOperation.Find(new Product(Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString())));
+                    product = productOperation.Find(new Product(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString(),1));
                     quantity = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCant).toString());
                     price = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexPrice).toString());
 
@@ -96,19 +97,20 @@ public class Btn_emitTicketAction extends AbstractAction {
                     );
                 }
 
+                
                 SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
                         Authentication.getInstance().getSession().getUser_id(),
                         TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
                         saleDocProducts
                 );
 
-                //See SEQ
-                /*JOptionPane.showMessageDialog(null, 
-                 new StringBuilder().append("Ticket ")
-                 .append(String.valueOf(ProductOperation.getInstance().
-                 SelectUnique("SELECT nextval('public.\"saledoc_saledoc_id_seq\"')"))));*/
-                JOptionPane.showMessageDialog(null, "Ticket generado correctamente ");
-
+                JOptionPane.showMessageDialog(null,
+                        new StringBuilder()
+                                .append("Ticket ").append(HQLOperation.getInstance()
+                                        .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
+                                            .append(" generado correctamente"));
+                
+                
                 //Reload panel
                 FrameMain f = Navigation.getInstance().getFrameMain();
                 TreePath tp = Navigation.getInstance().getLastSelected();

@@ -52,7 +52,7 @@ public class ProductOperation extends HQLOperation implements IQueries {
     }
 
     public Product Find(Product product) {
-        return (Product) SelectUnique(ProductFilteredByID, product);
+        return (Product) SelectUnique(ProductFilteredByCode, product);
     }
     
     public Map List(){
