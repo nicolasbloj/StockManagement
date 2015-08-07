@@ -10,30 +10,36 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
 /**
  *
  * @author faka
  */
-public class HQLOperation implements IHQLOperation{
+public class HQLOperation implements IHQLOperation {
+
     private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
-    private Session session = null;   
+    private Session session = null;
     private static HQLOperation instance = null;
+
+    //Sequence Pseudocolumns
+    private final String COL_CURRVAl = "currval";
+    private final String COL_NEXTVAL = "nextval";
+    
     protected HQLOperation() {
     }
 
-    public static HQLOperation getInstance(){
-        if(instance == null)
+    public static HQLOperation getInstance() {
+        if (instance == null) {
             instance = new HQLOperation();
+        }
         return instance;
     }
 
-    private Boolean executeHibernateHQLStament(Object obj, Integer n, String op){
+    private Boolean executeHibernateHQLStament(Object obj, Integer n, String op) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             logger.info(op);
             Transaction tx = session.beginTransaction();
-            switch(n){
+            switch (n) {
                 case 1:
                     session.save(obj);
                     break;
@@ -49,7 +55,7 @@ public class HQLOperation implements IHQLOperation{
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
             throw e;
-        }finally {
+        } finally {
             session.close();
         }
         return Boolean.TRUE;
@@ -61,12 +67,12 @@ public class HQLOperation implements IHQLOperation{
     }
 
     @Override
-    public Boolean Update(Object obj){        
+    public Boolean Update(Object obj) {
         return executeHibernateHQLStament(obj, 2, "Modificando registros");
     }
 
     @Override
-    public Boolean Delete(Object obj){        
+    public Boolean Delete(Object obj) {
         return executeHibernateHQLStament(obj, 3, "Borrando registros");
     }
 
@@ -85,67 +91,66 @@ public class HQLOperation implements IHQLOperation{
     }
 
     @Override
-    public List Select(String AQuery){
+    public List Select(String AQuery) {
         return HQLSelect(AQuery)
                 .list();
     }
 
     @Override
-    public List Select(String AQuery, Object obj){
+    public List Select(String AQuery, Object obj) {
         return HQLSelect(AQuery)
                 .setProperties(obj)
                 .list();
     }
 
     @Override
-    public Object SelectCount(String AQuery, Object obj, int nrow){
+    public Object SelectCount(String AQuery, Object obj, int nrow) {
         return null; //Not implemented yet
     }
 
     @Override
-    public Object SelectUnique(String AQuery, Object obj){
+    public Object SelectUnique(String AQuery, Object obj) {
         return HQLSelect(AQuery)
                 .setProperties(obj)
                 .setMaxResults(1)
                 .uniqueResult();
     }
-    
-    
+
     @Override
-    public List SelectLike(String ATable, String AField, String ACondition){
+    public List SelectLike(String ATable, String AField, String ACondition) {
         StringBuilder sql = new StringBuilder();
         sql.append(String.format("select description from %s where %s like :searchKey group by description ", ATable, AField));
         return HQLSelect(sql.toString())
-            .setParameter("searchKey", "%" + ACondition + "%")
-            .list();
+                .setParameter("searchKey", "%" + ACondition + "%")
+                .list();
     }
 
-    
     @Override
-        public Object SelectUnique(String AQuery){
+    public Object SelectUnique(String AQuery) {
         return HQLSelect(AQuery)
-            .setMaxResults(1)
-            .uniqueResult();
+                .setMaxResults(1)
+                .uniqueResult();
     }
-    
+
     @Override
-    public List Select(String AQuery, String parameter , Object value) {
-        return HQLSelect(AQuery).setParameter(parameter,value).list();
+    public List Select(String AQuery, String parameter, Object value) {
+        return HQLSelect(AQuery).setParameter(parameter, value).list();
     }
-    
+
     public Long getNextSequenceValue(final String SequenceName) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query query = 
-        session.createSQLQuery(String.format("select nextval('public.%s')", SequenceName));
-        return ((BigInteger) query.uniqueResult()).longValue();
-}
+        return getSequenceValue(SequenceName, COL_NEXTVAL);
+    }
+
     public Long getCurrSequenceValue(final String SequenceName) {
+        return getSequenceValue(SequenceName, COL_CURRVAl);
+    }
+
+    private Long getSequenceValue(final String SequenceName, String col) {
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query query = 
-        session.createSQLQuery(String.format("select currval('public.%s')", SequenceName));
+        session.beginTransaction();   
+        Query query = session.createSQLQuery(String.format("select %s('public.%s')", col, SequenceName));
+        System.out.println(String.format("select %s('public.%s')", col, SequenceName));
         return ((BigInteger) query.uniqueResult()).longValue();
-}
-    
+    }
+
 }
