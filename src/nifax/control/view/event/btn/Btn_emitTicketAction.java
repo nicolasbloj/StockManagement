@@ -2,9 +2,9 @@ package nifax.control.view.event.btn;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -16,8 +16,8 @@ import nifax.control.controller.Authentication;
 import nifax.control.controller.Navigation;
 import nifax.control.controller.SaleController;
 import nifax.control.exception.InitializeSessionException;
+import nifax.control.model.Item;
 import nifax.control.model.Product;
-import nifax.control.model.SaleDocProduct;
 import nifax.control.model.TypeSaleDoc;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
@@ -53,20 +53,21 @@ public class Btn_emitTicketAction extends AbstractAction {
 
                 ProductOperation productOperation = ProductOperation.getInstance();
 
+                int indexIt = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("IT");
                 int indexCodProd = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CODIGO");
                 int indexCodStore = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("DEPO");
                 int indexCant = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("CANT X UN.");
                 int indexPrice = this.panelSalesTicket.getTbl_ticket().getColumnModel().getColumnIndex("PREC C/IVA");
 
                 long store_id;
-
                 Product product;
                 double quantity;
                 double price;
+                int it;
+                
+                Item item;
 
-                SaleDocProduct saleDocProduct;
-
-                List<SaleDocProduct> saleDocProducts = new ArrayList<SaleDocProduct>();
+                Set<Item> items = new HashSet<Item>();
 
                 for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
                     product = productOperation.Find(new Product(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString(),1));
@@ -75,13 +76,11 @@ public class Btn_emitTicketAction extends AbstractAction {
 
                     store_id = Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodStore).toString());
 
-                    saleDocProduct = new SaleDocProduct();
+                    it = Integer.parseInt(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexIt).toString());
+                    item = new Item(quantity,price,product,it);
 
-                    saleDocProduct.setProduct(product);
-                    saleDocProduct.setQuantity(quantity);
-                    saleDocProduct.setPrice(price);
 
-                    saleDocProducts.add(saleDocProduct);
+                    items.add(item);
 
                     //STOCK QUANTITYCOMMITTED
                     saleController.calculateStocks(product,
@@ -101,7 +100,7 @@ public class Btn_emitTicketAction extends AbstractAction {
                 SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
                         Authentication.getInstance().getSession().getUser_id(),
                         TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
-                        saleDocProducts
+                        items
                 );
 
                 JOptionPane.showMessageDialog(null,
