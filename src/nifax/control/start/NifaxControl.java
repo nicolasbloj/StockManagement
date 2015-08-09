@@ -2,9 +2,11 @@ package nifax.control.start;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Logger;
 import nifax.control.controller.Authentication;
 import nifax.control.model.modeler.CategoryOperation;
@@ -61,7 +63,8 @@ public class NifaxControl implements IQueries{
             } while (!auth.LogIn(new UserEmployee(user, pass)));
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
-/*
+          
+   
             //Loading scenario
             //Add Iva
             modelOperation.Insert(new Iva(21));
@@ -139,7 +142,7 @@ public class NifaxControl implements IQueries{
             ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),
                     IvaList.get(10.5),
                     measures);
-            
+           
             //Get product list from db
             Map<String, Product> productList = ProductOperation.getInstance().List();
             //Get store list from db
@@ -202,49 +205,33 @@ public class NifaxControl implements IQueries{
             double itemPrice ;
             Product itemProduct;
             
-            List<SaleDocProduct> saleDocProducts  =new ArrayList<SaleDocProduct>();
+            Set<Item> items  =new HashSet<Item>();
                         
             // Sale Product 1   
             itemQuantity = 240;
             itemPrice = 3.5;
             itemProduct=productList.get("Foco 12V");
             
-            SaleDocProduct saleDocProduct = new SaleDocProduct();
-            saleDocProduct.setProduct(itemProduct);
-            saleDocProduct.setQuantity(itemQuantity);
-            saleDocProduct.setPrice(itemPrice);
-            saleDocProducts.add(saleDocProduct);
-            
-            // Sale Product 2   
-            itemQuantity = 130;
-            itemPrice = 6.25;
-            itemProduct=productList.get("Lampara");
-            
-            SaleDocProduct saleDocProduct2 = new SaleDocProduct();
-            saleDocProduct2.setProduct(itemProduct);
-            saleDocProduct2.setQuantity(itemQuantity);
-            saleDocProduct2.setPrice(itemPrice);
-            saleDocProducts.add(saleDocProduct2);
+            Item item = new Item(itemQuantity,itemPrice,itemProduct,0);
+            items.add(item);
             
             Calendar calendar = Calendar.getInstance();
 
             //Get typSaleDoc list from db
             Map<String, TypeSaleDoc> typeSaleDocList = TypeSaleDocOperation.getInstance().List();
             
-            
-            
             SaleDocOperation.getInstance().add(calendar.getTime(),
                     usr,
                     typeSaleDocList.get("Ticket"),
-                    saleDocProducts
+                    items
                             );
-*/
-         FrameMain.main(null);
+
+   
+            FrameMain.main(null);
          
-          
         } finally {
-            //Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
-            //HibernateUtil.getSessionFactory().close();
+         Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
+         HibernateUtil.getSessionFactory().close();
         }
     }
 }

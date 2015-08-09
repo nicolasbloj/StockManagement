@@ -58,13 +58,9 @@ public class Product implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
     private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
-    private Set<SaleDocProduct> saleDocProducts = new HashSet<SaleDocProduct>();
-
     public Long getId() {
         return id;
     }
-
     
     public String getDescription() {
         return description;
@@ -88,14 +84,6 @@ public class Product implements Serializable {
 
     public void setProductMeasures(Set<ProductMeasure> productMeasures) {
         this.productMeasures = productMeasures;
-    }
-
-    public Set<SaleDocProduct> getSaleDocProducts() {
-        return saleDocProducts;
-    }
-
-    public void setSaleDocProducts(Set<SaleDocProduct> saleDocProducts) {
-        this.saleDocProducts = saleDocProducts;
     }
 
     public String getCode() {

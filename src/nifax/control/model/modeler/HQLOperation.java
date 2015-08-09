@@ -149,7 +149,6 @@ public class HQLOperation implements IHQLOperation {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();   
         Query query = session.createSQLQuery(String.format("select %s('public.%s')", col, SequenceName));
-        System.out.println(String.format("select %s('public.%s')", col, SequenceName));
         return ((BigInteger) query.uniqueResult()).longValue();
     }
 
