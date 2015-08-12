@@ -6,6 +6,7 @@ import nifax.control.view.FrameMain;
 import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
+import nifax.control.view.panel.PanelReportProductStock;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -64,6 +65,10 @@ public class Navigation {
                 case "[NiFax, Operacion, Ventas, Ticket]":
                     PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
+                    break;
+                case "[NiFax, Reportes, Productos, Stock]":
+                    PanelReportProductStock panelReportProductStock = new PanelReportProductStock();
+                    frameMain.getScp_container().setViewportView(panelReportProductStock);
                     break;
                 default:
                     PanelPresentation jPanelPresentation = new PanelPresentation();

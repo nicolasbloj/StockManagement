@@ -11,11 +11,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "STOCK")
 public class Stock implements Serializable {
-    
-    protected Stock() {
+
+    public  Stock() {
     }
 
-    public Stock(String description, double quantity,double quantityCommitted, Measure measure,
+    public Stock(String description, double quantity, double quantityCommitted, Measure measure,
             Product product, Store store) {
         this.description = description;
         this.quantity = quantity;
@@ -65,7 +65,7 @@ public class Stock implements Serializable {
     public double getQuantityCommitted() {
         return quantityCommitted;
     }
-    
+
     public Measure getMeure() {
         return measure;
     }
@@ -81,7 +81,7 @@ public class Stock implements Serializable {
     public Store getStore() {
         return store;
     }
-    
+
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }

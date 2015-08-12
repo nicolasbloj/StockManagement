@@ -1,6 +1,8 @@
 package nifax.control.model.modeler;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nifax.control.model.Product;
@@ -41,8 +43,8 @@ public class StockOperation extends HQLOperation implements IQueries {
             session.beginTransaction();
             logger.info("Listando registros");
             List list = session.createQuery(StockFilteredByProductAndStore)
-                    .setParameter("product_id", product_id)
-                    .setParameter("store_id", store_id).list();
+                .setParameter("product_id", product_id)
+                .setParameter("store_id", store_id).list();
 
             if (!list.isEmpty()) {
                 return (Stock) list.get(0);
@@ -56,16 +58,16 @@ public class StockOperation extends HQLOperation implements IQueries {
         }
     }
 
-    public Boolean Add(String description, double quantity,double quantityCommitted,
-            Measure measure, Product product, Store store) {
+    public Boolean Add(String description, double quantity, double quantityCommitted,
+        Measure measure, Product product, Store store) {
         try {
             return Insert(new Stock(
-                    description,
-                    quantity,
-                    quantityCommitted,
-                    measure,
-                    product,
-                    store
+                description,
+                quantity,
+                quantityCommitted,
+                measure,
+                product,
+                store
             )
             );
         } catch (NullPointerException ex) {
@@ -73,7 +75,17 @@ public class StockOperation extends HQLOperation implements IQueries {
         }
     }
 
-    //method list - no use Map<String,Stock> because the stock's description is not unique
-    
-    
+    public Map ListByParameter(String parameter, Object value) {
+        Map<Long, Stock> map = new HashMap<>();
+        List<Stock> lsp = Select(StockFilteredByQuantity, parameter, value);
+        lsp.stream().forEach((ls) -> {
+            map.put(ls.getId(), ls);
+        });
+        return map;
+    }
+
+    public List getListByParameter(String parameter, Object value) {
+        return SelectCacheable(StockFilteredByQuantity, parameter, value);
+    }
+
 }

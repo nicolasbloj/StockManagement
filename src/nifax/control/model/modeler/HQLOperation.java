@@ -23,7 +23,7 @@ public class HQLOperation implements IHQLOperation {
     //Sequence Pseudocolumns
     private final String COL_CURRVAl = "currval";
     private final String COL_NEXTVAL = "nextval";
-    
+
     protected HQLOperation() {
     }
 
@@ -93,27 +93,39 @@ public class HQLOperation implements IHQLOperation {
     @Override
     public List Select(String AQuery) {
         return HQLSelect(AQuery)
-                .list();
+            .list();
     }
 
     @Override
     public List Select(String AQuery, Object obj) {
         return HQLSelect(AQuery)
-                .setProperties(obj)
-                .list();
+            .setProperties(obj)
+            .list();
     }
 
     @Override
-    public Object SelectCount(String AQuery, Object obj, int nrow) {
-        return null; //Not implemented yet
+    public List Select(String AQuery, String parameter, Object value) {
+        return HQLSelect(AQuery).setParameter(parameter, value).list();
+    }
+
+    @Override
+    public List SelectCacheable(String AQuery, String parameter, Object value) {
+        return HQLSelect(AQuery).setCacheable(true).setParameter(parameter, value).list();
     }
 
     @Override
     public Object SelectUnique(String AQuery, Object obj) {
         return HQLSelect(AQuery)
-                .setProperties(obj)
-                .setMaxResults(1)
-                .uniqueResult();
+            .setProperties(obj)
+            .setMaxResults(1)
+            .uniqueResult();
+    }
+
+    @Override
+    public Object SelectUnique(String AQuery) {
+        return HQLSelect(AQuery)
+            .setMaxResults(1)
+            .uniqueResult();
     }
 
     @Override
@@ -121,20 +133,13 @@ public class HQLOperation implements IHQLOperation {
         StringBuilder sql = new StringBuilder();
         sql.append(String.format("select description from %s where %s like :searchKey group by description ", ATable, AField));
         return HQLSelect(sql.toString())
-                .setParameter("searchKey", "%" + ACondition + "%")
-                .list();
+            .setParameter("searchKey", "%" + ACondition + "%")
+            .list();
     }
 
     @Override
-    public Object SelectUnique(String AQuery) {
-        return HQLSelect(AQuery)
-                .setMaxResults(1)
-                .uniqueResult();
-    }
-
-    @Override
-    public List Select(String AQuery, String parameter, Object value) {
-        return HQLSelect(AQuery).setParameter(parameter, value).list();
+    public Object SelectCount(String AQuery, Object obj, int nrow) {
+        return null; //Not implemented yet
     }
 
     public Long getNextSequenceValue(final String SequenceName) {
@@ -147,7 +152,7 @@ public class HQLOperation implements IHQLOperation {
 
     private Long getSequenceValue(final String SequenceName, String col) {
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();   
+        session.beginTransaction();
         Query query = session.createSQLQuery(String.format("select %s('public.%s')", col, SequenceName));
         return ((BigInteger) query.uniqueResult()).longValue();
     }
