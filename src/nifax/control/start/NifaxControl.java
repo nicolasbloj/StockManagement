@@ -63,7 +63,7 @@ public class NifaxControl implements IQueries{
             } while (!auth.LogIn(new UserEmployee(user, pass)));
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
-          
+/*
    
             //Loading scenario
             //Add Iva
@@ -225,13 +225,13 @@ public class NifaxControl implements IQueries{
                     typeSaleDocList.get("Ticket"),
                     items
                             );
-
+*/
    
             FrameMain.main(null);
          
         } finally {
-         Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
-         HibernateUtil.getSessionFactory().close();
+//         Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
+//         HibernateUtil.getSessionFactory().close();
         }
     }
 }

@@ -83,10 +83,10 @@ public class Tre extends JTree {
         // Reports
         
         DefaultMutableTreeNode defaultMutableTreeNodeReportProducts = new DefaultMutableTreeNode("Productos");
-        DefaultMutableTreeNode defaultMutableTreeNodeProductsState = new DefaultMutableTreeNode("Estado");
+        DefaultMutableTreeNode defaultMutableTreeNodeProductsStock = new DefaultMutableTreeNode("Stock");
         
         TreeModel.insertNodeInto(defaultMutableTreeNodeReportProducts, defaultMutableTreeNodeReports, 0);
-        TreeModel.insertNodeInto(defaultMutableTreeNodeProductsState, defaultMutableTreeNodeReportProducts, 0);
+        TreeModel.insertNodeInto(defaultMutableTreeNodeProductsStock, defaultMutableTreeNodeReportProducts, 0);
   
         
         // System

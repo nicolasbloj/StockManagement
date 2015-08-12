@@ -22,6 +22,8 @@ public interface IQueries {
     
     final String ProductFilteredByDescription = "from Product where description = :description";
     
+    final String StockFilteredByQuantity = "from Stock where quantity <= :quantity";
+    
     final String PriceFilteredById = "from Price where id = :id";
     
     final String Product = "from Product";
