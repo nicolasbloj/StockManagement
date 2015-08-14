@@ -23,6 +23,7 @@ import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
+import nifax.control.util.Frame;
 import nifax.control.view.FrameMain;
 import nifax.control.view.panel.PanelSalesTicket;
 
@@ -44,8 +45,8 @@ public class Btn_emitTicketAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         int dialogResult = JOptionPane.showConfirmDialog(null,
-                "Esta seguro que desea emitir ticket ?", "Confirmacion",
-                JOptionPane.YES_NO_OPTION);
+            "Esta seguro que desea emitir ticket ?", "Confirmacion",
+            JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.YES_OPTION) {
             try {
                 SaleController saleController = SaleController.getInstance();
@@ -64,57 +65,51 @@ public class Btn_emitTicketAction extends AbstractAction {
                 double quantity;
                 double price;
                 int it;
-                
+
                 Item item;
 
                 Set<Item> items = new HashSet<Item>();
 
                 for (int i = 0; i < this.panelSalesTicket.getTbl_ticket().getRowCount(); i++) {
-                    product = productOperation.Find(new Product(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString(),1));
+                    product = productOperation.Find(new Product(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodProd).toString(), 1));
                     quantity = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCant).toString());
                     price = Double.parseDouble(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexPrice).toString());
 
                     store_id = Long.parseLong(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexCodStore).toString());
 
                     it = Integer.parseInt(this.panelSalesTicket.getTbl_ticket().getValueAt(i, indexIt).toString());
-                    item = new Item(quantity,price,product,it);
-
+                    item = new Item(quantity, price, product, it);
 
                     items.add(item);
 
                     //STOCK QUANTITYCOMMITTED
                     saleController.calculateStocks(product,
-                            store_id,
-                            quantity,
-                            SaleController.DOSCOUNT_STOCKCOMMITTED
+                        store_id,
+                        quantity,
+                        SaleController.DOSCOUNT_STOCKCOMMITTED
                     );
                     //STOCK QUANTITYCOMMITTED
                     saleController.calculateStocks(product,
-                            store_id,
-                            quantity,
-                            SaleController.DISCOUNT_STOCK
+                        store_id,
+                        quantity,
+                        SaleController.DISCOUNT_STOCK
                     );
                 }
 
-                
                 SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
-                        Authentication.getInstance().getSession().getUser_id(),
-                        TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
-                        items
+                    Authentication.getInstance().getSession().getUser_id(),
+                    TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
+                    items
                 );
 
                 JOptionPane.showMessageDialog(null,
-                        new StringBuilder()
-                                .append("Ticket ").append(HQLOperation.getInstance()
-                                        .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
-                                            .append(" generado correctamente"));
-                
-                
-                //Reload panel
-                FrameMain f = Navigation.getInstance().getFrameMain();
-                TreePath tp = Navigation.getInstance().getLastSelected();
-                Navigation.getInstance().showPanel(tp);
+                    new StringBuilder()
+                    .append("Ticket ").append(HQLOperation.getInstance()
+                        .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
+                    .append(" generado correctamente"));
 
+                //Reload panel
+                Frame.reloadPanel();
                 this.panelSalesTicket.repaint();
 
             } catch (InitializeSessionException ex) {

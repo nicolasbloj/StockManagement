@@ -9,85 +9,57 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "PRODUCT_MEASURE")
-@AssociationOverrides (
-        {
-            @AssociationOverride(
-                    name = "pk.product",
-                    joinColumns = @JoinColumn(
-                            name = "product_id"
-                    )
-            ),
-            @AssociationOverride (
-                    name = "pk.measure",
-                    joinColumns = @JoinColumn(
-                            name = "measure_id"
-                    )
-            )
-        }
-)
 public class ProductMeasure implements Serializable {
 
     public ProductMeasure() {
     }
 
-    private ProductMeasureId pk = new ProductMeasureId();
-     private double quantity;
-
-    @EmbeddedId
-    public ProductMeasureId getPk() {
-        return pk;
+    public ProductMeasure(Long id) {
+        this.id = id;
     }
 
-    public void setPk(ProductMeasureId pk) {
-        this.pk = pk;
+    public ProductMeasure(double quantity, Product product, Measure measure) {
+        this.quantity = quantity;
+        this.product = product;
+        this.measure = measure;
     }
 
-    @Transient
-    public Product getProduct() {
-        return getPk().getProduct();
+    public ProductMeasure(double quantity, Measure measure) {
+        this.quantity = quantity;
+        this.measure = measure;
     }
 
-    public void setProduct(Product product) {
-        getPk().setProduct(product);
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_measure_id", unique = true, nullable = false)
+    private Long id;
+    @Column(name = "quantity")
+    private double quantity;
+    @ManyToOne
+    @JoinColumn(name = "product_id", updatable = false, insertable = false)
+    private Product product;
+    @JoinColumn(name = "measure_id")
+    @OneToOne
+    private Measure measure;
 
-    @Transient
-    public Measure getMeasure() {
-        return getPk().getMeasure();
-    }
-
-    public void setMeasure(Measure measure) {
-        getPk().setMeasure(measure);
+    public Long getId() {
+        return id;
     }
 
     public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
+    public Product getProduct() {
+        return product;
     }
 
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        ProductMeasure that = (ProductMeasure) o;
-
-        if (getPk() != null ? !getPk().equals(that.getPk())
-                : that.getPk() != null) {
-            return false;
-        }
-
-        return true;
+    public Measure getMeasure() {
+        return measure;
     }
 
-    @Override
-    public int hashCode() {
-        return (getPk() != null ? getPk().hashCode() : 0);
+    public void setProduct(Product product) {
+        this.product = product;
     }
+
 }

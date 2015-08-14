@@ -103,18 +103,7 @@ public final class TableGralController {
                             op.Delete(MapDb.categoryList.get(this.panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
                             break;
                         case Measure:
-
-                            Measure measure = (Measure) MapDb.measureList.get(this.panelGeneralAdmin.getTbl_gral().getValueAt(i,
-                                    indexdescription).toString());
-
-                            measure.getProductMeasures().stream().forEach((productMeasure) -> {
-                                    op.Delete(productMeasure);
-                                }
-                            );
-
-                            measure.setProductMeasures(null);
-                            op.Delete(measure);
-
+                            op.Delete(MapDb.measureList.get(this.panelGeneralAdmin.getTbl_gral().getValueAt(i,indexdescription).toString()));
                             break;
                         case Store:
                             op.Delete(MapDb.storeList.get(this.panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
@@ -135,21 +124,21 @@ public final class TableGralController {
 
     private void fillTable(Map<String, EntityModel> list) {
         list.entrySet().stream().map((entry) -> entry.getValue()).forEach((EntityModel obj) -> {
-                DefaultTableModel modelTable = (DefaultTableModel) panelGeneralAdmin.getTbl_gral().getModel();
-                Vector v = new Vector();
+            DefaultTableModel modelTable = (DefaultTableModel) panelGeneralAdmin.getTbl_gral().getModel();
+            Vector v = new Vector();
 
-                v.add(false);
-                v.add(obj.getId());
-                v.add(obj.getDescription());
+            v.add(false);
+            v.add(obj.getId());
+            v.add(obj.getDescription());
 
-                if (obj instanceof Price) {
-                    Price p = (Price) obj;
-                    v.add(p.getProfit());
-                }
-
-                modelTable.insertRow(0, v);
-
+            if (obj instanceof Price) {
+                Price p = (Price) obj;
+                v.add(p.getProfit());
             }
+
+            modelTable.insertRow(0, v);
+
+        }
         );
 
     }
