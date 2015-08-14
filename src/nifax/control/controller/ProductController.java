@@ -81,7 +81,8 @@ public class ProductController {
             );
         }
 
-        if (ProductOperation.getInstance().AddOrUpdate(Long.parseLong(id),code, description, cost, MapDb.categoryList.get(category), MapDb.ivaList.get(iva), measures));
+        
+        if (ProductOperation.getInstance().AddOrUpdate(id,code, description, cost, MapDb.categoryList.get(category), MapDb.ivaList.get(iva), measures));
         JOptionPane.showMessageDialog(null, "Producto cargado correctamente");
 
     }
