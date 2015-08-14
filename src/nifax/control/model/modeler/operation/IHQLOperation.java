@@ -11,7 +11,7 @@ public interface IHQLOperation {
     List Select(String AQuery);
     Object Select(String AQuery, Object obj);
     List Select(String AQuery, String parameter,Object value);
-    Object SelectCount(String AQuery, Object obj, int nrow);
+    Integer SelectCount(Class obj);
     Object SelectUnique(String AQuery, Object obj) throws Exception;
     Boolean Update(Object obj);
     Boolean Delete(Object obj);

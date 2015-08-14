@@ -28,17 +28,20 @@ public class CodeGenerator extends HQLOperation{
     }
     
     public String getSequenceProduct(){        
-        return getSequenceValue(PRODUCTSEQUENCE);
+        return formatSequenceValue(getSequenceValue(PRODUCTSEQUENCE));
     }
     
-    public String getSequenceValue(final String SequenceName){
+    public String formatSequenceValue(Integer sequence){
         return String.format("%05d", Integer.
             parseInt(
-                HQLOperation.
-                getInstance().
-                getNextSequenceValue(SequenceName).
-                toString()
+                sequence.toString()
             )
         );
+    }
+    
+    public Integer getSequenceValue(final String SequenceName){
+        return HQLOperation.
+                getInstance().
+                getNextSequenceValue(SequenceName);
     }
 }

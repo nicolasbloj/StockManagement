@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nifax.control.hibernate.HibernateUtil;
+import nifax.control.model.Product;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 
 /**
  *
@@ -19,11 +21,7 @@ public class HQLOperation implements IHQLOperation {
     private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
     private Session session = null;
     private static HQLOperation instance = null;
-
-    //Sequence Pseudocolumns
-    private final String COL_CURRVAl = "currval";
-    private final String COL_NEXTVAL = "nextval";
-
+    
     protected HQLOperation() {
     }
 
@@ -113,17 +111,18 @@ public class HQLOperation implements IHQLOperation {
         return HQLSelect(AQuery).setCacheable(true).setParameter(parameter, value).list();
     }
 
+    
+    @Override
+    public Integer SelectCount(Class obj) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();   
+        return ((Number) session.createCriteria(obj).setProjection(Projections.rowCount()).uniqueResult()).intValue();
+    }
+
     @Override
     public Object SelectUnique(String AQuery, Object obj) {
         return HQLSelect(AQuery)
             .setProperties(obj)
-            .setMaxResults(1)
-            .uniqueResult();
-    }
-
-    @Override
-    public Object SelectUnique(String AQuery) {
-        return HQLSelect(AQuery)
             .setMaxResults(1)
             .uniqueResult();
     }
@@ -138,23 +137,31 @@ public class HQLOperation implements IHQLOperation {
     }
 
     @Override
-    public Object SelectCount(String AQuery, Object obj, int nrow) {
-        return null; //Not implemented yet
+    public Object SelectUnique(String AQuery) {
+        return HQLSelect(AQuery)
+                .setMaxResults(1)
+                .uniqueResult();
     }
 
-    public Long getNextSequenceValue(final String SequenceName) {
-        return getSequenceValue(SequenceName, COL_NEXTVAL);
+    public Integer getNextSequenceValue(final String SequenceName) {
+        int result = getSequenceValue(SequenceName);
+        if (result != 1)
+            return result + 1;
+        else
+            if (SelectCount(Product.class) == 1)
+                return result + 1;
+        return result;
     }
 
-    public Long getCurrSequenceValue(final String SequenceName) {
-        return getSequenceValue(SequenceName, COL_CURRVAl);
+    public Integer getCurrSequenceValue(final String SequenceName) {
+        return getSequenceValue(SequenceName);
     }
 
-    private Long getSequenceValue(final String SequenceName, String col) {
+    private Integer getSequenceValue(final String SequenceName) {
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query query = session.createSQLQuery(String.format("select %s('public.%s')", col, SequenceName));
-        return ((BigInteger) query.uniqueResult()).longValue();
+        session.beginTransaction();   
+        Query query = session.createSQLQuery(String.format("select last_value from %s", SequenceName));
+        return ((BigInteger) query.uniqueResult()).intValue();
     }
 
 }
