@@ -105,22 +105,17 @@ public class NifaxControl implements IQueries{
             
             double quantityValue = 12.0;
             
-            ProductMeasure productMeasure = new ProductMeasure();
-            productMeasure.setMeasure(measureList.get("Bulto"));
-            productMeasure.setQuantity(quantityValue);
-            measures.add(productMeasure);
+            measures.add(new ProductMeasure(quantityValue,measureList.get("BULTO")));
             
             quantityValue=24;
-            ProductMeasure productMeasure2 = new ProductMeasure();
-            productMeasure2.setMeasure(measureList.get("Paquete"));
-            productMeasure2.setQuantity(quantityValue);
-            measures.add(productMeasure2);
+            
+            measures.add(new ProductMeasure(quantityValue,measureList.get("PAQUETE")));
             
             //Genering Ivas
             Map<Double, Iva> IvaList = IvaOperation.getInstance().List();
             
             //Add product
-            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),
+            ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
                     IvaList.get(21.0),
                     measures);
             
@@ -133,13 +128,10 @@ public class NifaxControl implements IQueries{
             
             quantityValue = 32.0;
             
-            productMeasure = new ProductMeasure();
-            productMeasure.setMeasure(measureList.get("Bulto"));
-            productMeasure.setQuantity(quantityValue);
-            measures.add(productMeasure);
+            measures.add(new ProductMeasure(quantityValue,measureList.get("BULTO")));
             
             //Add product
-            ProductOperation.getInstance().Add(productDesc,cost,CategoryList.get("Audio"),
+            ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
                     IvaList.get(10.5),
                     measures);
            
@@ -155,7 +147,7 @@ public class NifaxControl implements IQueries{
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
                 0,
-                measureList.get("Unidad"), 
+                measureList.get("UNIDAD"), 
                 productList.get("Foco 12V"), 
                 storeList.get("Deposito central")
             );
@@ -165,7 +157,7 @@ public class NifaxControl implements IQueries{
             StockOperation.getInstance().Add(description, 
                 quantityStock, 
                 0,
-                measureList.get("Unidad"), 
+                measureList.get("UNIDAD"), 
                 productList.get("Lampara"), 
                 storeList.get("Deposito central")
             );
@@ -173,10 +165,10 @@ public class NifaxControl implements IQueries{
             //Add Offer 
             //Offer Product 1
             OfferOperation.getInstance().add("Oferta mes mayo",10,20,
-                    measureList.get("Unidad"),productList.get("Foco 12V") );
+                    measureList.get("UNIDAD"),productList.get("Foco 12V") );
             //Offer Product 2
             OfferOperation.getInstance().add("Oferta mes mayo",20,40,
-                    measureList.get("Unidad"),productList.get("Foco 12V") );
+                    measureList.get("UNIDAD"),productList.get("Foco 12V") );
             
             //Add Restoration 
             //Restoration Product 1
@@ -185,7 +177,7 @@ public class NifaxControl implements IQueries{
                     900.0,
                     560.0,
                     140.0,
-                    measureList.get("Unidad"),
+                    measureList.get("UNIDAD"),
                     productList.get("Foco 12V"),
                     storeList.get("Deposito central")
                             );
@@ -195,7 +187,7 @@ public class NifaxControl implements IQueries{
                     600.0,
                     350.0,
                     100.0,
-                    measureList.get("Unidad"),
+                    measureList.get("UNIDAD"),
                     productList.get("Foco 12V"),
                     storeList.get("Deposito alternativo")
                             );

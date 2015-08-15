@@ -29,12 +29,23 @@ public class ProductOperation extends HQLOperation implements IQueries {
         return instance;
     }
 
-    public Boolean Add(String productDesc, double cost, Category category,Iva iva,
-            List<ProductMeasure> measures) {
+    public Boolean AddOrUpdate(String id,String code, String productDesc, double cost, Category category, Iva iva,
+        List<ProductMeasure> measures) {
         try {
-            Product product = new Product(productDesc, cost, category,iva);
+            boolean update = false;
+            Product product;
+            if (code != null) {
+                if (code.trim().length() != 0) {
+                    product = new Product(Long.parseLong(id),code, productDesc, cost, category, iva);
+                    update = true;
+                } else {
+                    product = new Product(productDesc, cost, category, iva);
+                }
+            } else {
+                product = new Product(productDesc, cost, category, iva);
+            }
             Set<ProductMeasure> productMeasures = new HashSet<>();
-            
+
             measures.stream().map((ProductMeasure productMeasure) -> {
                 productMeasure.setProduct(product);
                 return productMeasure;
@@ -43,6 +54,10 @@ public class ProductOperation extends HQLOperation implements IQueries {
             });
 
             product.setProductMeasures(productMeasures);
+
+            if (update) {
+                return Update(product);
+            }
 
             return Insert(product);
 
@@ -54,8 +69,8 @@ public class ProductOperation extends HQLOperation implements IQueries {
     public Product Find(Product product) {
         return (Product) SelectUnique(ProductFilteredByCode, product);
     }
-    
-    public Map List(){
+
+    public Map List() {
         Map<String, Product> map = new HashMap<>();
         List<Product> lsp = Select(Product);
         lsp.stream().forEach((ls) -> {
@@ -63,5 +78,5 @@ public class ProductOperation extends HQLOperation implements IQueries {
         });
         return map;
     }
-    
+
 }

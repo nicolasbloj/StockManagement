@@ -23,7 +23,7 @@ public class EntityModel {
     private String description;
 
     public EntityModel(String description) {
-        this.description = description;
+        this.description = description.toUpperCase();
     }
 
     public EntityModel(Long id) {

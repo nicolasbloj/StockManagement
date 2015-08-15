@@ -1,7 +1,6 @@
 package nifax.control.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -18,8 +17,8 @@ public class Product implements Serializable {
     protected Product() {
     }
 
-    public Product(String description, double cost, Category categoryProduct, Iva iva ) {
-        this.description = description;
+    public Product(String description, double cost, Category categoryProduct, Iva iva) {
+        this.description = description.toUpperCase();
         this.cost = cost;
         this.category = categoryProduct;
         this.iva = iva;
@@ -29,12 +28,25 @@ public class Product implements Serializable {
         code = codeGenerator.createProductCode();
     }
 
+    public Product(Long id, String code, String description, double cost, Category categoryProduct, Iva iva) {
+        this.description = description.toUpperCase();
+        this.cost = cost;
+        this.category = categoryProduct;
+        this.iva = iva;
+        
+        this.id=id;
+        this.code=code;
+        //CodeGenerator codeGenerator = new CodeGenerator(categoryProduct.getDescription());
+        //code = codeGenerator.createProductCode(Integer.parseInt(id.toString()));
+        
+    }
+
     public Product(String str, int i) {
         switch (i) {
             case 0:
-                this.description = str;
+                this.description = str.toUpperCase();
             case 1:
-                this.code = str;
+                this.code = str.toUpperCase();
         }
     }
 
@@ -55,13 +67,14 @@ public class Product implements Serializable {
     @OneToOne
     private Iva iva;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product", cascade=CascadeType.ALL)
-    private Set<ProductMeasure> productMeasures = new HashSet<ProductMeasure>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Set<ProductMeasure> productMeasures ;
 
     public Long getId() {
         return id;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -90,5 +103,8 @@ public class Product implements Serializable {
         return code;
     }
 
-    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
