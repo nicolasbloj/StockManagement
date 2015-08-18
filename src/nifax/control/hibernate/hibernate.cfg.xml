@@ -12,7 +12,7 @@
         <property name="current_session_context_class">thread</property>
         <mapping class="nifax.control.model.Employee"/>    
         <mapping class="nifax.control.model.UserEmployee"/>  
-        <mapping class="nifax.control.model.Session"/> 
+        <mapping class="nifax.control.model.UserSession"/> 
         <mapping class="nifax.control.model.Category"/> 
         <mapping class="nifax.control.model.Product"/> 
         <mapping class="nifax.control.model.Offer"/> 

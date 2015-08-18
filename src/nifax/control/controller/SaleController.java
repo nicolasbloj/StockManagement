@@ -69,7 +69,7 @@ public class SaleController {
             String selectedMeasureDesc = panelSalesTicket.getCbx_ticketMeasureProduct().getSelectedItem().toString();
             Measure measure = MapDb.measureList.get(selectedMeasureDesc);
 
-            ProductMeasure productMeasure = this.findProductMesureByDescription(product.getMeasures(), selectedMeasureDesc);
+            ProductMeasure productMeasure = this.findProductMesureByDescription(product.getProductMeasures(), selectedMeasureDesc);
 
             double quantityXunit = Double.parseDouble(panelSalesTicket.getTxf_ticketQuantityProduct().getText());
 
@@ -157,7 +157,7 @@ public class SaleController {
         //Stock stock= stockOperation.Find(new Stock(product,store));
         if (stock != null) {
 
-            Set<ProductMeasure> listProductMeasure = product.getMeasures();
+            Set<ProductMeasure> listProductMeasure = product.getProductMeasures();
 
             ProductMeasure productMeasure = null;
             for (ProductMeasure pm : listProductMeasure) {
@@ -263,7 +263,7 @@ public class SaleController {
             long measure_id = offer.getMeasure().getId();
             double offerQuantity = offer.getQuantity();
 
-            ProductMeasure productMeasure = this.findProductMesureById(product.getMeasures(), measure_id);
+            ProductMeasure productMeasure = this.findProductMesureById(product.getProductMeasures(), measure_id);
 
             if (productMeasure != null) {
                 offerQuantity = offer.getQuantity() * productMeasure.getQuantity();

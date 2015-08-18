@@ -17,28 +17,33 @@ public class Product implements Serializable {
     protected Product() {
     }
 
-    public Product(String description, double cost, Category categoryProduct, Iva iva) {
+    public Product(Long id) {
+        this.id = id;
+    }
+
+    public Product(String description, double cost, Category categoryProduct, Iva iva,Boolean active) {
         this.description = description.toUpperCase();
         this.cost = cost;
         this.category = categoryProduct;
         this.iva = iva;
+        this.active=active;
 
         //generate code
         CodeGenerator codeGenerator = new CodeGenerator(categoryProduct.getDescription());
         code = codeGenerator.createProductCode();
     }
 
-    public Product(Long id, String code, String description, double cost, Category categoryProduct, Iva iva) {
+    public Product(Long id, String code, String description, double cost, Category categoryProduct, Iva iva,Boolean active) {
         this.description = description.toUpperCase();
         this.cost = cost;
         this.category = categoryProduct;
         this.iva = iva;
-        
-        this.id=id;
-        this.code=code;
+        this.active=active;
+        this.id = id;
+        this.code = code;
         //CodeGenerator codeGenerator = new CodeGenerator(categoryProduct.getDescription());
         //code = codeGenerator.createProductCode(Integer.parseInt(id.toString()));
-        
+
     }
 
     public Product(String str, int i) {
@@ -69,8 +74,11 @@ public class Product implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
-    private Set<ProductMeasure> productMeasures ;
+    private Set<ProductMeasure> productMeasures;
 
+    @Column(name="active")
+    private Boolean active;
+    
     public Long getId() {
         return id;
     }
@@ -91,7 +99,7 @@ public class Product implements Serializable {
         return iva;
     }
 
-    public Set<ProductMeasure> getMeasures() {
+    public Set<ProductMeasure> getProductMeasures() {
         return productMeasures;
     }
 
@@ -107,4 +115,9 @@ public class Product implements Serializable {
         this.id = id;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    
 }

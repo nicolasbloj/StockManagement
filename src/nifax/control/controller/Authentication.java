@@ -2,7 +2,7 @@ package nifax.control.controller;
 
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
-import nifax.control.model.Session;
+import nifax.control.model.UserSession;
 import nifax.control.model.UserEmployee;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.operation.IUserOperation;
@@ -15,7 +15,7 @@ import nifax.control.data.IQueries;
 public class Authentication extends HQLOperation implements IUserOperation, IQueries {
 
     private static Authentication instance = null;
-    private static Session SID = null;
+    private static UserSession SID = null;
 
     protected Authentication() {
         // Exists only to defeat instantiation.
@@ -28,7 +28,7 @@ public class Authentication extends HQLOperation implements IUserOperation, IQue
         return instance;
     }
 
-    public Session getSession() throws InitializeSessionException {
+    public UserSession getSession() throws InitializeSessionException {
         if (SID != null) {
             return SID;
         } else {
@@ -41,7 +41,7 @@ public class Authentication extends HQLOperation implements IUserOperation, IQue
         UserEmployee obj = (UserEmployee) SelectUnique(userLogin, usr);
         if (obj!=null) {
             if (obj.getPassword().equals(usr.getPassword())) {
-                SID = new Session(Boolean.TRUE, obj);
+                SID = new UserSession(Boolean.TRUE, obj);
                 return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;
@@ -52,7 +52,7 @@ public class Authentication extends HQLOperation implements IUserOperation, IQue
     }
 
     @Override
-    public Boolean LogOut(Session obj) {
+    public Boolean LogOut(UserSession obj) {
         obj.setOpen(Boolean.FALSE);        
         return Update(obj);
     }

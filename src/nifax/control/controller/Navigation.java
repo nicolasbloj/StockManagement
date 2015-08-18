@@ -42,7 +42,7 @@ public class Navigation {
             PanelGeneralAdmin panelGeneralAdmin = new PanelGeneralAdmin();
             frameMain.getScp_container().setViewportView(panelGeneralAdmin);
             String tab = "";
-
+            String panelName = null;
             switch (tp.toString()) {
                 case "[NiFax, Administracion, Productos, Gestion]":
                     PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
@@ -50,15 +50,19 @@ public class Navigation {
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
                     tab = "Categoria";
+                    panelName = "Category";
                     break;
                 case "[NiFax, Administracion, Depositos, Gestion]":
                     tab = "Deposito";
+                    panelName = "Store";
                     break;
                 case "[NiFax, Administracion, Medidas, Gestion]":
                     tab = "Medida";
+                    panelName = "Measure";
                     break;
                 case "[NiFax, Administracion, Lista de precios, Gestion]":
                     tab = "Lista de precio";
+                    panelName = "Price";
                     panelGeneralAdmin.getLbl_profitGral().setVisible(true);
                     panelGeneralAdmin.getTxf_profitGral().setVisible(true);
                     break;
@@ -76,9 +80,10 @@ public class Navigation {
                     break;
             }
 
+            panelGeneralAdmin.getPnl_loadGral().setName(panelName);
             panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
 
-            if (!tab.equals(TableGralController.Price)) {
+            if (!Administration.Price.equals(panelName)) {
                 int[] columnsHides = {3};
                 Table.hiddenColumns(panelGeneralAdmin.getTbl_gral(), columnsHides);
             }

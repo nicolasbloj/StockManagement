@@ -1,7 +1,6 @@
 package nifax.control.view.panel;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,10 +8,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import nifax.control.view.event.btn.Btn_deleteGralAction;
-import nifax.control.view.event.btn.Btn_saveGralAction;
-import nifax.control.view.event.btn.Btn_listGralAction;
 import nifax.control.view.util.Pnl;
+import nifax.control.view.util.Tbp;
 
 /**
  *
@@ -68,10 +65,6 @@ public class PanelGeneralAdmin extends Pnl {
         return btn_list;
     }
 
-    public JButton getBtn_search() {
-        return btn_search;
-    }
-
     public JPanel getPnl_principal() {
         return pnl_principal;
     }
@@ -88,7 +81,7 @@ public class PanelGeneralAdmin extends Pnl {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tbp_gral = new javax.swing.JTabbedPane();
+        tbp_gral = new Tbp();
         pnl_loadGral = new nifax.control.view.util.Pnl_Tab();
         pnl_principal = new javax.swing.JPanel();
         txf_profitGral = new javax.swing.JTextField();
@@ -98,10 +91,9 @@ public class PanelGeneralAdmin extends Pnl {
         scp_gral = new javax.swing.JScrollPane();
         tbl_gral = new javax.swing.JTable();
         pnl_menuGral = new javax.swing.JPanel();
-        btn_save = new javax.swing.JButton(new Btn_saveGralAction(this));
-        btn_search = new javax.swing.JButton();
-        btn_delete = new javax.swing.JButton(new Btn_deleteGralAction(this));
-        btn_list = new javax.swing.JButton(new Btn_listGralAction(this));
+        btn_save = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.SAVE,"Guardar"));
+        btn_delete = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.DELETE,"Eliminar"));
+        btn_list = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.LIST,"Listar"));
         btn_cancel = new javax.swing.JButton();
 
         pnl_principal.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
@@ -198,8 +190,6 @@ public class PanelGeneralAdmin extends Pnl {
 
         btn_save.setText("Guardar");
 
-        btn_search.setText("Buscar");
-
         btn_delete.setText("Eliminar");
 
         btn_list.setText("Listar");
@@ -213,9 +203,7 @@ public class PanelGeneralAdmin extends Pnl {
             .addGroup(pnl_menuGralLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(btn_save)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btn_delete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_list)
@@ -229,7 +217,6 @@ public class PanelGeneralAdmin extends Pnl {
                 .addGap(0, 0, 0)
                 .addGroup(pnl_menuGralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save)
-                    .addComponent(btn_search)
                     .addComponent(btn_delete)
                     .addComponent(btn_list)
                     .addComponent(btn_cancel)))
@@ -256,7 +243,6 @@ public class PanelGeneralAdmin extends Pnl {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_list;
     private javax.swing.JButton btn_save;
-    private javax.swing.JButton btn_search;
     private javax.swing.JLabel lbl_descGral;
     private javax.swing.JLabel lbl_profitGral;
     private javax.swing.JPanel pnl_loadGral;

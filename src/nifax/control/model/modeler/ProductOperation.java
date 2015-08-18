@@ -29,20 +29,20 @@ public class ProductOperation extends HQLOperation implements IQueries {
         return instance;
     }
 
-    public Boolean AddOrUpdate(String id,String code, String productDesc, double cost, Category category, Iva iva,
+    public Boolean AddOrUpdate(String id, String code, String productDesc, double cost, Category category, Iva iva,Boolean active,
         List<ProductMeasure> measures) {
         try {
             boolean update = false;
             Product product;
-            if (code != null) {
-                if (code.trim().length() != 0) {
-                    product = new Product(Long.parseLong(id),code, productDesc, cost, category, iva);
+            if (id != null) {
+                if (id.trim().length() > 0) {
+                    product = new Product(Long.parseLong(id), code, productDesc, cost, category, iva,active);
                     update = true;
                 } else {
-                    product = new Product(productDesc, cost, category, iva);
+                    product = new Product(productDesc, cost, category, iva,active);
                 }
             } else {
-                product = new Product(productDesc, cost, category, iva);
+                product = new Product(productDesc, cost, category, iva,active);
             }
             Set<ProductMeasure> productMeasures = new HashSet<>();
 

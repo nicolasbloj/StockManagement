@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import nifax.control.controller.SaleController;
 import nifax.control.model.Product;
 import nifax.control.model.modeler.ProductOperation;
+import nifax.control.util.Message;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -35,15 +36,18 @@ public class Txf_ticketCodeProductListener extends Txf_Listener {
 
             String codeProduct = txf.getText().toUpperCase();
 
-            Product parcialProd = new Product(codeProduct,1);
+            Product parcialProd = new Product(codeProduct, 1);
 
             final ProductOperation productOperation = ProductOperation.getInstance();
             Product product = productOperation.Find(parcialProd);
 
-            if (!saleController.SaleProduct(product)) {
-                JOptionPane.showMessageDialog(null, "Elemento no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            if (product.getActive()) {
+                if (!saleController.SaleProduct(product)) {
+                    JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, Message.DialogProductNotActive, Message.DialogProductNotActiveTitle, JOptionPane.ERROR_MESSAGE);
             }
-
         }
     }
 }

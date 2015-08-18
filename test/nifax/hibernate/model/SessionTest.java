@@ -1,7 +1,7 @@
 package nifax.hibernate.model;
 
 import nifax.control.model.Employee;
-import nifax.control.model.Session;
+import nifax.control.model.UserSession;
 import nifax.control.model.UserEmployee;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,7 +52,7 @@ public class SessionTest {
     @Test
     public void testisOpen() {
         System.out.println("getStatus");
-        Session instance = new Session(true, usr);
+        UserSession instance = new UserSession(true, usr);
         Boolean result = instance.isOpen();
         assertTrue(result);
     }
@@ -63,7 +63,7 @@ public class SessionTest {
     @Test
     public void testGetUser_id() {
         System.out.println("getUser");
-        Session instance = new Session(true, usr);
+        UserSession instance = new UserSession(true, usr);
         UserEmployee result = instance.getUser_id();
         assertNotNull(result);
     }

@@ -16,8 +16,8 @@ import javax.persistence.Table;
  * @author faka
  */
 @Entity
-@Table(name = "SESSION")
-public class Session implements Serializable {
+@Table(name = "USERSESSION")
+public class UserSession implements Serializable {
     
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -29,10 +29,10 @@ public class Session implements Serializable {
     @OneToOne
     private UserEmployee user_id;
 
-    protected Session() {
+    protected UserSession() {
     }
 
-    public Session(Boolean status, UserEmployee user_id) throws IllegalArgumentException {
+    public UserSession(Boolean status, UserEmployee user_id) throws IllegalArgumentException {
         if(user_id != null){
             this.open = status;
             this.user_id = user_id;
