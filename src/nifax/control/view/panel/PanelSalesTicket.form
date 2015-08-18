@@ -299,7 +299,7 @@
                     <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_ticketProductSearchAction(this))"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_adminAction(this,Administration.LIST,&quot;...&quot;))"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
@@ -677,10 +677,10 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btn_emitTicket">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Emitir ticket"/>
+            <Property name="text" type="java.lang.String" value="Emitir"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_emitTicket(this))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_operationAction(this,Operation.EMIT,&quot;Emitir&quot;))"/>
           </AuxValues>
         </Component>
       </SubComponents>

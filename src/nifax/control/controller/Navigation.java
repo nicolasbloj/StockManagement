@@ -38,40 +38,31 @@ public class Navigation {
     public void showPanel(TreePath tp) {
         lastSelected = tp;
         if (tp != null) {
-
-            PanelGeneralAdmin panelGeneralAdmin = new PanelGeneralAdmin();
-            frameMain.getScp_container().setViewportView(panelGeneralAdmin);
-            String tab = "";
-            String panelName = null;
             switch (tp.toString()) {
                 case "[NiFax, Administracion, Productos, Gestion]":
                     PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
-                    tab = "Categoria";
-                    panelName = "Category";
+                    showGralPanel("Category", "Categoria");
                     break;
                 case "[NiFax, Administracion, Depositos, Gestion]":
-                    tab = "Deposito";
-                    panelName = "Store";
+                    showGralPanel("Store", "Deposito");
                     break;
                 case "[NiFax, Administracion, Medidas, Gestion]":
-                    tab = "Medida";
-                    panelName = "Measure";
+                    showGralPanel("Measure", "Medida");
                     break;
                 case "[NiFax, Administracion, Lista de precios, Gestion]":
-                    tab = "Lista de precio";
-                    panelName = "Price";
-                    panelGeneralAdmin.getLbl_profitGral().setVisible(true);
-                    panelGeneralAdmin.getTxf_profitGral().setVisible(true);
+                    showGralPanel("Price", "Lista de precio");
                     break;
                 case "[NiFax, Operacion, Ventas, Ticket]":
                     PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
+                    panelSalesTicket.getPnl_ticket().setName("Ticket");
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
                     break;
                 case "[NiFax, Reportes, Productos, Stock]":
                     PanelReportProductStock panelReportProductStock = new PanelReportProductStock();
+                    panelReportProductStock.getPnl_reportProductStock().setName("ProductStock");
                     frameMain.getScp_container().setViewportView(panelReportProductStock);
                     break;
                 default:
@@ -80,14 +71,29 @@ public class Navigation {
                     break;
             }
 
-            panelGeneralAdmin.getPnl_loadGral().setName(panelName);
-            panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
-
-            if (!Administration.Price.equals(panelName)) {
-                int[] columnsHides = {3};
-                Table.hiddenColumns(panelGeneralAdmin.getTbl_gral(), columnsHides);
-            }
         }
+    }
+
+    private void showGralPanel(String panelName, String tab) {
+
+        PanelGeneralAdmin panelGeneralAdmin = new PanelGeneralAdmin();
+        frameMain.getScp_container().setViewportView(panelGeneralAdmin);
+
+        panelGeneralAdmin.getPnl_loadGral().setName(panelName);
+        panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
+
+        if (!Administration.Price.equals(panelName)) {
+
+            panelGeneralAdmin.getLbl_profitGral().setVisible(false);
+            panelGeneralAdmin.getTxf_profitGral().setVisible(false);
+
+            int[] columnsHides = {3};
+            Table.hiddenColumns(panelGeneralAdmin.getTbl_gral(), columnsHides);
+        } else {
+            panelGeneralAdmin.getLbl_profitGral().setVisible(true);
+            panelGeneralAdmin.getTxf_profitGral().setVisible(true);
+        }
+
     }
 
     public FrameMain getFrameMain() {

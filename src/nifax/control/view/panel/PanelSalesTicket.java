@@ -8,8 +8,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import nifax.control.view.event.btn.Btn_emitTicket;
-import nifax.control.view.event.btn.Btn_ticketProductSearchAction;
+import nifax.control.controller.Administration;
+import nifax.control.controller.Operation;
+import nifax.control.view.event.btn.Btn_adminAction;
 import nifax.control.view.event.pnl.Pnl_panelSalesTicketListener;
 import nifax.control.view.event.txf.Txf_ticketCodeProductListener;
 import nifax.control.view.util.Pnl;
@@ -47,7 +48,7 @@ public class PanelSalesTicket extends Pnl{
         lbl_ticketMeasureProduct = new javax.swing.JLabel();
         pnl_ticketSideMenu = new javax.swing.JPanel();
         btn_ticketProductSearch = new javax.swing.JButton
-        (new Btn_ticketProductSearchAction(this));
+        (new Btn_adminAction(this,Administration.LIST,"..."));
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -68,7 +69,7 @@ public class PanelSalesTicket extends Pnl{
         lbl_textTotalTicket = new javax.swing.JLabel();
         lbl_TotalTicket = new javax.swing.JLabel();
         pnl_menuTicket = new javax.swing.JPanel();
-        btn_emitTicket = new javax.swing.JButton(new Btn_emitTicket(this));
+        btn_emitTicket = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_operationAction(this,Operation.EMIT,"Emitir"));
 
         pnl_ticketProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
 
@@ -351,7 +352,7 @@ public class PanelSalesTicket extends Pnl{
         pnl_menuTicket.setBackground(new java.awt.Color(51, 51, 51));
         pnl_menuTicket.setBorder(null);
 
-        btn_emitTicket.setText("Emitir ticket");
+        btn_emitTicket.setText("Emitir");
 
         javax.swing.GroupLayout pnl_menuTicketLayout = new javax.swing.GroupLayout(pnl_menuTicket);
         pnl_menuTicket.setLayout(pnl_menuTicketLayout);

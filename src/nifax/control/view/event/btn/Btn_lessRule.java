@@ -26,7 +26,7 @@ public class Btn_lessRule extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         int dialogResult = JOptionPane.showConfirmDialog(null,
-            Message.DialogDelete,Message.DialogSaveAndDeleteTitle,
+            Message.DialogDelete,Message.DialogConfirmationTitle,
             JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.YES_OPTION) {
 

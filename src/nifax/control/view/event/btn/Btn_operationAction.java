@@ -1,11 +1,12 @@
 package nifax.control.view.event.btn;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
+import static javax.swing.Action.MNEMONIC_KEY;
+import static javax.swing.Action.SHORT_DESCRIPTION;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import nifax.control.controller.Reporting;
+import nifax.control.controller.Operation;
 import nifax.control.util.Message;
 import nifax.control.view.util.Tbp;
 
@@ -13,25 +14,24 @@ import nifax.control.view.util.Tbp;
  *
  * @author NB
  */
-public class Btn_reportAction extends AbstractAction {
+public class Btn_operationAction extends AbstractAction {
 
-    private final JPanel panel;
     private final int action;
+    JPanel panel;
 
-    public Btn_reportAction(JPanel panel, int action, String btnTitle) {
+    public Btn_operationAction(JPanel panel, int action, String btnTitle) {
         super(btnTitle);
-        this.action = action;
         this.panel = panel;
-
+        this.action = action;
         DescAndKey();
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
-        Reporting reporting = Reporting.getInstance();
+
+        Operation operation = Operation.getInstance();
+
         String panelName = null;
 
         for (int i = 0; i < panel.getComponentCount(); i++) {
@@ -46,7 +46,7 @@ public class Btn_reportAction extends AbstractAction {
             }
         }
         if (panelName != null) {
-            if (!reporting.operate(panel, panelName, action)) {
+            if (!operation.operate(panel, panelName, action)) {
                 JOptionPane.showMessageDialog(null, Message.FailuredOperation, Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -56,12 +56,13 @@ public class Btn_reportAction extends AbstractAction {
     private void DescAndKey() {
         String text = null;
         switch (action) {
-            case Reporting.GENERATE:
-                text = Message.ShorDescriptionGenerate;
-                putValue(MNEMONIC_KEY, KeyEvent.VK_G);
+            case Operation.EMIT:
+                text = Message.ShorDescriptionEmit;
+                putValue(MNEMONIC_KEY, java.awt.event.KeyEvent.VK_G);
                 break;
         }
         putValue(SHORT_DESCRIPTION, text);
 
     }
+
 }
