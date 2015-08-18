@@ -64,10 +64,10 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btn_generateReport">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+            <Property name="text" type="java.lang.String" value="Generar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.ProductStock))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.GENERATE,&quot;Generar&quot;))"/>
           </AuxValues>
         </Component>
       </SubComponents>

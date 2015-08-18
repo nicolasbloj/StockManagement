@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -26,9 +27,11 @@ public class Reporting {
 
     private static Reporting instance = null;
 
-    private PanelReportProductStock panelReportProductStock;
-    //Reports
-    public static final int ProductStock = 0;
+    //Constants
+    public static final int GENERATE = 0;
+
+    //Panels name - Reports
+    public static final String ProductStock = "ProductStock";
 
     protected Reporting() {
     }
@@ -40,23 +43,33 @@ public class Reporting {
         return instance;
     }
 
-    public void setPanelReportProductStock(PanelReportProductStock panelReportProductStock) {
-        this.panelReportProductStock = panelReportProductStock;
-    }
+    public Boolean operate(JPanel panel, String panelName, int ACTION) {
+        switch (ACTION) {
+            case GENERATE:
+                return generate(panel, panelName);
 
-    
-    public Boolean operate(int report) {
-
-        switch (report) {
-
-            case ProductStock:
-                StockOperation stockOperation = StockOperation.getInstance();
-                List<Stock> list = stockOperation.getListByParameter("quantity", Double.parseDouble(panelReportProductStock.getTxf_StockMin().getText()));
-                StockDataSource stockDataSource = new StockDataSource(list);
-                return generateReport("ProductsStock", "Stock", stockDataSource);
-                
         }
         return Boolean.FALSE;
+    }
+
+    private Boolean generate(JPanel panel, String panelName) {
+
+        switch (panelName) {
+
+            case ProductStock:
+                return generateReportProductStock((PanelReportProductStock) panel);
+
+        }
+        return Boolean.FALSE;
+    }
+
+    public Boolean generateReportProductStock(PanelReportProductStock panelReportProductStock) {
+
+        StockOperation stockOperation = StockOperation.getInstance();
+        List<Stock> list = stockOperation.getListByParameter("quantity", Double.parseDouble(panelReportProductStock.getTxf_StockMin().getText()));
+        StockDataSource stockDataSource = new StockDataSource(list);
+        return generateReport("ProductsStock", "Stock", stockDataSource);
+
     }
 
     private Boolean generateReport(String name, String title, JRDataSource dataSource) {
@@ -81,7 +94,7 @@ public class Reporting {
 
             jasperViewer.setVisible(true);
             return Boolean.TRUE;
-                
+
         } catch (JRException ex) {
             Logger.getLogger(Btn_reportAction.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;

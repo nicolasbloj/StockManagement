@@ -31,13 +31,22 @@ public class Btn_adminAction extends AbstractAction {
         Administration administration = Administration.getInstance();
 
         String panelName = null;
-        if (panel.getComponent(0).getName().equals("Container")) {
-            Tbp tbp = (Tbp) panel.getComponent(0);
-            panelName = tbp.getSelectedComponent().getName();
-        }
 
-        if (!administration.operate(panel, panelName, action)) {
-            JOptionPane.showMessageDialog(null, Message.FailuredOperation, Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
+        for (int i = 0; i < panel.getComponentCount(); i++) {
+            panelName = panel.getComponent(i).getName();
+
+            if (panelName != null) {
+                if (panelName.equals("Container")) {
+                    Tbp tbp = (Tbp) panel.getComponent(i);
+                    panelName = tbp.getSelectedComponent().getName();
+                    break;
+                }
+            }
+        }
+        if (panelName != null) {
+            if (!administration.operate(panel, panelName, action)) {
+                JOptionPane.showMessageDialog(null, Message.FailuredOperation, Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }

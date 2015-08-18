@@ -1,5 +1,6 @@
 package nifax.control.view.panel;
 
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import nifax.control.controller.Reporting;
 import nifax.control.view.util.Pnl;
@@ -20,6 +21,10 @@ public class PanelReportProductStock extends Pnl {
         return txf_stockMin;
     }
 
+    public JPanel getPnl_reportProductStock() {
+        return pnl_reportProductStock;
+    }
+
     
     
     @SuppressWarnings("unchecked")
@@ -27,7 +32,7 @@ public class PanelReportProductStock extends Pnl {
     private void initComponents() {
 
         pnl_menuReportProductStock = new javax.swing.JPanel();
-        btn_generateReport = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.ProductStock));
+        btn_generateReport = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.GENERATE,"Generar"));
         tbp_reportProductStock = new Tbp();
         pnl_reportProductStock = new javax.swing.JPanel();
         lbl_stockMin = new javax.swing.JLabel();
@@ -36,7 +41,7 @@ public class PanelReportProductStock extends Pnl {
         pnl_menuReportProductStock.setBackground(new java.awt.Color(51, 51, 51));
         pnl_menuReportProductStock.setBorder(null);
 
-        btn_generateReport.setText("Generar Reporte");
+        btn_generateReport.setText("Generar");
 
         javax.swing.GroupLayout pnl_menuReportProductStockLayout = new javax.swing.GroupLayout(pnl_menuReportProductStock);
         pnl_menuReportProductStock.setLayout(pnl_menuReportProductStockLayout);

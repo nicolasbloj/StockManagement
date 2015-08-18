@@ -68,6 +68,10 @@ public class Administration {
     private static final String Restoration = "Restoration";
     private static final String Stock = "Stock";
 
+    //Panels name - EXTRAS
+    //Ticket panel , for product's list and select one.
+    private static final String Ticket = "Ticket";
+
     public Boolean operate(JPanel panel, String panelName, int ACTION) {
         switch (ACTION) {
             case SAVE:
@@ -85,7 +89,7 @@ public class Administration {
     private Boolean save(JPanel panel, String panelName) {
         try {
             int dialogResult = JOptionPane.showConfirmDialog(null,
-                Message.DialogSave, Message.DialogSaveAndDeleteTitle, JOptionPane.YES_NO_OPTION);
+                Message.DialogSave, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) {
 
                 switch (panelName) {
@@ -141,6 +145,8 @@ public class Administration {
         try {
             switch (panelName) {
                 case Product:
+                case Ticket:
+                    return productListAndAdvancedSearch(panel);
                 //return ;
                 case Offer:
                 //return ;
@@ -164,7 +170,7 @@ public class Administration {
     private Boolean delete(JPanel panel, String panelName) {
         try {
             int dialogResult = JOptionPane.showConfirmDialog(null,
-                Message.DialogDelete, Message.DialogSaveAndDeleteTitle, JOptionPane.YES_NO_OPTION);
+                Message.DialogDelete, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) {
 
                 switch (panelName) {
@@ -280,7 +286,7 @@ public class Administration {
         Product product = productOperation.Find(new Product(code, 1));
 
         Set<ProductMeasure> productMeasuresAux = new HashSet<ProductMeasure>();
-        
+
         product.getProductMeasures().stream().forEach((productMeasure) -> {
             productMeasuresAux.add(productMeasure);
         });
@@ -420,6 +426,18 @@ public class Administration {
         panelGeneralAdmin.repaint();
         return Boolean.TRUE;
 
+    }
+
+    private Boolean productListAndAdvancedSearch(JPanel panel) {
+        /*
+        javax.swing.JLayeredPane layeredPane = (javax.swing.JLayeredPane) panel.getParent().getParent().getParent().getParent();
+        IntFrameProductSearch intFrameProductSearch = new IntFrameProductSearch(layeredPane);
+        layeredPane.add(intFrameProductSearch);
+       */
+        
+        //In inFrameProductSearch verify wich is the active panel for operate . Could do it if see the TreePath
+        
+        return Boolean.TRUE;
     }
 
     //Util.
