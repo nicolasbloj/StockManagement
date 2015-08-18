@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import nifax.control.view.event.btn.Btn_emitTicketAction;
+import nifax.control.view.event.btn.Btn_emitTicket;
 import nifax.control.view.event.btn.Btn_ticketProductSearchAction;
 import nifax.control.view.event.pnl.Pnl_panelSalesTicketListener;
 import nifax.control.view.event.txf.Txf_ticketCodeProductListener;
@@ -68,7 +68,7 @@ public class PanelSalesTicket extends Pnl{
         lbl_textTotalTicket = new javax.swing.JLabel();
         lbl_TotalTicket = new javax.swing.JLabel();
         pnl_menuTicket = new javax.swing.JPanel();
-        btn_emitTicket = new javax.swing.JButton(new Btn_emitTicketAction(this));
+        btn_emitTicket = new javax.swing.JButton(new Btn_emitTicket(this));
 
         pnl_ticketProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
 

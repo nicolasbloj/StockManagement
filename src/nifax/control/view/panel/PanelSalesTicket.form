@@ -680,7 +680,7 @@
             <Property name="text" type="java.lang.String" value="Emitir ticket"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new Btn_emitTicketAction(this))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_emitTicket(this))"/>
           </AuxValues>
         </Component>
       </SubComponents>

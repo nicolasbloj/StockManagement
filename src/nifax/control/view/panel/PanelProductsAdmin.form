@@ -83,10 +83,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnl_principalProduct" pref="453" max="32767" attributes="0"/>
+                          <Component id="pnl_principalProduct" pref="487" max="32767" attributes="0"/>
                           <Component id="pnl_rulesProduct" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -108,34 +107,35 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbl_money" max="32767" attributes="0"/>
-                              <Component id="lbl_category" max="32767" attributes="0"/>
-                              <Component id="lbl_cost" alignment="1" max="32767" attributes="0"/>
-                              <Component id="lbl_descProduct" alignment="1" pref="96" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="cbx_category" pref="162" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_searchCategory" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="cbx_money" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_searchMoneyProduct" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txf_descProduct" max="32767" attributes="0"/>
-                              <Component id="txf_cost" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="10" pref="61" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="pnl_codesProduct" max="32767" attributes="0"/>
                               <Component id="pnl_codesProduct1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lbl_money" max="32767" attributes="0"/>
+                                      <Component id="lbl_category" max="32767" attributes="0"/>
+                                      <Component id="lbl_cost" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lbl_descProduct" alignment="1" pref="96" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="cbx_category" pref="162" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_searchCategory" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="cbx_money" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_searchMoneyProduct" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txf_descProduct" max="32767" attributes="0"/>
+                                      <Component id="txf_cost" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="pnl_stateProduct" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -170,7 +170,9 @@
                           <Component id="pnl_codesProduct" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnl_codesProduct1" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnl_stateProduct" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -344,7 +346,7 @@
                               <Component id="jlbl_barCode1" min="-2" pref="106" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbx_iva" min="-2" pref="172" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="76" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -373,6 +375,55 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnl_stateProduct">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Estado"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_active" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="chx_active" min="-2" pref="162" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbl_active" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chx_active" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lbl_active">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Habilitado : "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="chx_active">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="chx_active.setSelected(true);"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -507,7 +558,7 @@
                             <Column editable="false" title="It" type="java.lang.Integer"/>
                             <Column editable="true" title="Cod" type="java.lang.Object"/>
                             <Column editable="false" title="Medida" type="java.lang.Object"/>
-                            <Column editable="false" title="Equivalente" type="java.lang.Object"/>
+                            <Column editable="false" title="Equivalente" type="java.lang.Double"/>
                             <Column editable="true" title="" type="java.lang.Boolean"/>
                           </Table>
                         </Property>
@@ -590,7 +641,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnl_principalOffer" max="32767" attributes="0"/>
-                          <Component id="scp_tblStoreOffer" pref="462" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreOffer" pref="481" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -936,7 +987,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnl_principalRestoration" max="32767" attributes="0"/>
-                          <Component id="scp_tblStoreRestoration" pref="462" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreRestoration" pref="481" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1281,7 +1332,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnl_principalStock" max="32767" attributes="0"/>
-                          <Component id="scp_tblStoreStock" pref="462" max="32767" attributes="0"/>
+                          <Component id="scp_tblStoreStock" pref="481" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1583,7 +1634,7 @@
                   <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="btn_list" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="btn_cancel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -1610,7 +1661,7 @@
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new Btn_saveAction(this))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.SAVE,&quot;Guardar&quot;))"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btn_search">
@@ -1618,20 +1669,23 @@
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new Btn_searchAction(this))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.SEARCH,&quot;Buscar&quot;))"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btn_delete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.DELETE,&quot;ELiminar&quot;))"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btn_list">
           <Properties>
-            <Property name="text" type="java.lang.String" value="LUPA"/>
+            <Property name="text" type="java.lang.String" value="Listar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.LIST,&quot;Listar&quot;))"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btn_cancel">

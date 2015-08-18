@@ -24,6 +24,12 @@ public class ProductMeasure implements Serializable {
         this.measure = measure;
     }
 
+    public ProductMeasure(Long id, double quantity, Measure measure) {
+        this.id=id;
+        this.quantity = quantity;
+        this.measure = measure;
+    }
+    
     public ProductMeasure(double quantity, Measure measure) {
         this.quantity = quantity;
         this.measure = measure;

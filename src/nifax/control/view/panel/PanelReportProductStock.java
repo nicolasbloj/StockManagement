@@ -1,8 +1,9 @@
 package nifax.control.view.panel;
 
 import javax.swing.JTextField;
-import nifax.control.view.event.btn.Btn_emitReportProductStock;
+import nifax.control.controller.Reporting;
 import nifax.control.view.util.Pnl;
+import nifax.control.view.util.Tbp;
 
 /**
  *
@@ -26,8 +27,8 @@ public class PanelReportProductStock extends Pnl {
     private void initComponents() {
 
         pnl_menuReportProductStock = new javax.swing.JPanel();
-        btn_generateReport = new javax.swing.JButton(new Btn_emitReportProductStock(this));
-        tbp_reportProductStock = new javax.swing.JTabbedPane();
+        btn_generateReport = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.ProductStock));
+        tbp_reportProductStock = new Tbp();
         pnl_reportProductStock = new javax.swing.JPanel();
         lbl_stockMin = new javax.swing.JLabel();
         txf_stockMin = new javax.swing.JTextField();

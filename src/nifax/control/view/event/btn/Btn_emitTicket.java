@@ -11,9 +11,7 @@ import javax.swing.AbstractAction;
 import static javax.swing.Action.MNEMONIC_KEY;
 import static javax.swing.Action.SHORT_DESCRIPTION;
 import javax.swing.JOptionPane;
-import javax.swing.tree.TreePath;
 import nifax.control.controller.Authentication;
-import nifax.control.controller.Navigation;
 import nifax.control.controller.SaleController;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Item;
@@ -24,18 +22,18 @@ import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
 import nifax.control.util.Frame;
-import nifax.control.view.FrameMain;
+import nifax.control.util.Message;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
  *
  * @author NB
  */
-public class Btn_emitTicketAction extends AbstractAction {
+public class Btn_emitTicket extends AbstractAction {
 
     private final PanelSalesTicket panelSalesTicket;
 
-    public Btn_emitTicketAction(PanelSalesTicket panelSalesTicket) {
+    public Btn_emitTicket(PanelSalesTicket panelSalesTicket) {
         super("Emitir Ticket");
         this.panelSalesTicket = panelSalesTicket;
         putValue(SHORT_DESCRIPTION, "Presionando este boton emitirá ticket");
@@ -45,7 +43,7 @@ public class Btn_emitTicketAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         int dialogResult = JOptionPane.showConfirmDialog(null,
-            "Esta seguro que desea emitir ticket ?", "Confirmacion",
+            Message.DialogEmitTicket, Message.DialogSaveAndDeleteTitle,
             JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.YES_OPTION) {
             try {
@@ -98,12 +96,11 @@ public class Btn_emitTicketAction extends AbstractAction {
 
                 SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
                     Authentication.getInstance().getSession().getUser_id(),
-                    TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("Ticket")),
+                    TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("TICKET")),
                     items
                 );
 
-                JOptionPane.showMessageDialog(null,
-                    new StringBuilder()
+                JOptionPane.showMessageDialog(null, new StringBuilder()
                     .append("Ticket ").append(HQLOperation.getInstance()
                         .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
                     .append(" generado correctamente"));
@@ -113,7 +110,7 @@ public class Btn_emitTicketAction extends AbstractAction {
                 this.panelSalesTicket.repaint();
 
             } catch (InitializeSessionException ex) {
-                Logger.getLogger(Btn_emitTicketAction.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Btn_emitTicket.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

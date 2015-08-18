@@ -29,4 +29,16 @@ public final class Table {
         model.setRowCount(0);
     }
 
+    public static boolean InCellTable(String str, JTable table, String columnTitle) {
+
+        int index = table.getColumnModel().getColumnIndex(columnTitle);
+
+        for (int i = 0; i < table.getRowCount(); i++) {
+            if (table.getValueAt(i, index).toString().equals(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

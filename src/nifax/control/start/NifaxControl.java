@@ -16,7 +16,6 @@ import nifax.control.model.modeler.StockOperation;
 import nifax.control.model.modeler.StoreOperation;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
-import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.*;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
@@ -64,32 +63,31 @@ public class NifaxControl implements IQueries{
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
 
-   
             //Loading scenario
             //Add Iva
             modelOperation.Insert(new Iva(21));
             modelOperation.Insert(new Iva(10.5));
             //Add categories
-            modelOperation.Insert(new Category("Audio"));
-            modelOperation.Insert(new Category("Iluminacion"));
+            modelOperation.Insert(new Category("AUDIO"));
+            modelOperation.Insert(new Category("ILUMINACION"));
             //Add prices
-            modelOperation.Insert(new Price("Lista1", 85));
-            modelOperation.Insert(new Price("Lista2", 75));
-            modelOperation.Insert(new Price("Lista3", 55));
-            modelOperation.Insert(new Price("Lista4", 25));
-            modelOperation.Insert(new Price("Lista5", 5));
+            modelOperation.Insert(new Price("LISTA1", 85));
+            modelOperation.Insert(new Price("LISTA2", 75));
+            modelOperation.Insert(new Price("LISTA3", 55));
+            modelOperation.Insert(new Price("LISTA4", 25));
+            modelOperation.Insert(new Price("LISTA5", 5));
             //Add stores
-            modelOperation.Insert(new Store("Deposito central"));
-            modelOperation.Insert(new Store("Deposito alternativo"));
+            modelOperation.Insert(new Store("DEPOSITO CENTRAL"));
+            modelOperation.Insert(new Store("DEPOSITO ALTERNATIVO"));
             //Add measures
-            modelOperation.Insert(new Measure("Bulto"));
-            modelOperation.Insert(new Measure("Paquete"));
-            modelOperation.Insert(new Measure("Unidad"));
+            modelOperation.Insert(new Measure("BULTO"));
+            modelOperation.Insert(new Measure("PAQUETE"));
+            modelOperation.Insert(new Measure("UNIDAD"));
    
             //Add type of sale's document
-            TypeSaleDocOperation.getInstance().add("Ticket");
-            TypeSaleDocOperation.getInstance().add("Factura ");
-            TypeSaleDocOperation.getInstance().add("Factura electronica");
+            TypeSaleDocOperation.getInstance().add("TICKET");
+            TypeSaleDocOperation.getInstance().add("FACTURA ");
+            TypeSaleDocOperation.getInstance().add("FACTURA ELECTRONICA");
             
             
             //Get category list from db
@@ -97,7 +95,7 @@ public class NifaxControl implements IQueries{
             //Get quantity list from db
             Map<String, Measure> measureList = MeasureOperation.getInstance().List();
             //Add product 1
-            String productDesc = "Foco 12V";
+            String productDesc = "FOCO 12V";
             double cost = 76.40;
             
             //Genering ProductMeasure for product - rules.
@@ -116,11 +114,11 @@ public class NifaxControl implements IQueries{
             
             //Add product
             ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
-                    IvaList.get(21.0),
+                    IvaList.get(21.0),true,
                     measures);
             
             //Add product 2
-             productDesc = "Lampara";
+             productDesc = "LAMPARA";
              cost = 16.10;
             
             //Genering ProductMeasure for product - rules.
@@ -132,7 +130,7 @@ public class NifaxControl implements IQueries{
             
             //Add product
             ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
-                    IvaList.get(10.5),
+                    IvaList.get(10.5),true,
                     measures);
            
             //Get product list from db
@@ -148,8 +146,8 @@ public class NifaxControl implements IQueries{
                 quantityStock, 
                 0,
                 measureList.get("UNIDAD"), 
-                productList.get("Foco 12V"), 
-                storeList.get("Deposito central")
+                productList.get("FOCO 12V"), 
+                storeList.get("DEPOSITO CENTRAL")
             );
             
             // Stock Product 2
@@ -158,17 +156,17 @@ public class NifaxControl implements IQueries{
                 quantityStock, 
                 0,
                 measureList.get("UNIDAD"), 
-                productList.get("Lampara"), 
-                storeList.get("Deposito central")
+                productList.get("LAMPARA"), 
+                storeList.get("DEPOSITO ALTERNATIVO")
             );
             
             //Add Offer 
             //Offer Product 1
             OfferOperation.getInstance().add("Oferta mes mayo",10,20,
-                    measureList.get("UNIDAD"),productList.get("Foco 12V") );
+                    measureList.get("UNIDAD"),productList.get("FOCO 12V") );
             //Offer Product 2
             OfferOperation.getInstance().add("Oferta mes mayo",20,40,
-                    measureList.get("UNIDAD"),productList.get("Foco 12V") );
+                    measureList.get("UNIDAD"),productList.get("FOCO 12V") );
             
             //Add Restoration 
             //Restoration Product 1
@@ -178,7 +176,7 @@ public class NifaxControl implements IQueries{
                     560.0,
                     140.0,
                     measureList.get("UNIDAD"),
-                    productList.get("Foco 12V"),
+                    productList.get("FOCO 12V"),
                     storeList.get("Deposito central")
                             );
             
@@ -188,7 +186,7 @@ public class NifaxControl implements IQueries{
                     350.0,
                     100.0,
                     measureList.get("UNIDAD"),
-                    productList.get("Foco 12V"),
+                    productList.get("FOCO 12V"),
                     storeList.get("Deposito alternativo")
                             );
             
@@ -202,7 +200,7 @@ public class NifaxControl implements IQueries{
             // Sale Product 1   
             itemQuantity = 240;
             itemPrice = 3.5;
-            itemProduct=productList.get("Foco 12V");
+            itemProduct=productList.get("FOCO 12V");
             
             Item item = new Item(itemQuantity,itemPrice,itemProduct,0);
             items.add(item);
@@ -214,16 +212,15 @@ public class NifaxControl implements IQueries{
             
             SaleDocOperation.getInstance().add(calendar.getTime(),
                     usr,
-                    typeSaleDocList.get("Ticket"),
+                    typeSaleDocList.get("TICKET"),
                     items
                             );
-
    
-            FrameMain.main(null);
+           FrameMain.main(null);
          
         } finally {
-//         Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
-//         HibernateUtil.getSessionFactory().close();
+//Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
+//HibernateUtil.getSessionFactory().close();
         }
     }
 }
