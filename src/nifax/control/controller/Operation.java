@@ -24,7 +24,7 @@ import nifax.control.view.panel.PanelSalesTicket;
  *
  * @author NB
  */
-public class Operation {
+public class Operation implements ActionController{
 
     private static Operation instance = null;
 
@@ -44,6 +44,7 @@ public class Operation {
     // Panels name
     public static final String Ticket = "Ticket";
 
+    @Override
     public Boolean operate(JPanel panel, String panelName, int ACTION) {
         switch (ACTION) {
             case EMIT:

@@ -23,7 +23,7 @@ import nifax.control.view.panel.PanelReportProductStock;
  *
  * @author NB
  */
-public class Reporting {
+public class Reporting implements ActionController {
 
     private static Reporting instance = null;
 
@@ -43,6 +43,7 @@ public class Reporting {
         return instance;
     }
 
+    @Override
     public Boolean operate(JPanel panel, String panelName, int ACTION) {
         switch (ACTION) {
             case GENERATE:

@@ -36,7 +36,7 @@ import nifax.control.view.panel.PanelProductsAdmin;
  *
  * @author NB
  */
-public class Administration {
+public class Administration implements ActionController{
 
     private static Administration instance = null;
 
@@ -72,6 +72,7 @@ public class Administration {
     //Ticket panel , for product's list and select one.
     private static final String Ticket = "Ticket";
 
+    @Override
     public Boolean operate(JPanel panel, String panelName, int ACTION) {
         switch (ACTION) {
             case SAVE:
