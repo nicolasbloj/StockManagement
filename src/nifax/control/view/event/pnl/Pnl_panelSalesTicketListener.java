@@ -6,10 +6,7 @@ import javax.swing.event.AncestorEvent;
 import nifax.control.controller.SaleController;
 import nifax.control.data.MapDb;
 import nifax.control.model.Product;
-import nifax.control.model.modeler.MeasureOperation;
-import nifax.control.model.modeler.PriceOperation;
 import nifax.control.model.modeler.ProductOperation;
-import nifax.control.model.modeler.StoreOperation;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -27,9 +24,7 @@ public class Pnl_panelSalesTicketListener extends Pnl_Listener {
     @Override
     public void ancestorAdded(AncestorEvent event) {
 
-        MapDb.priceList = PriceOperation.getInstance().List();
-
-        Object[] StringArrayPrices = MapDb.priceList.keySet().toArray();
+        Object[] StringArrayPrices = MapDb.getPriceList().keySet().toArray();
 
         Arrays.sort(StringArrayPrices);
 
@@ -41,9 +36,7 @@ public class Pnl_panelSalesTicketListener extends Pnl_Listener {
                 new DefaultComboBoxModel(StringArrayPrices)
         );
 
-        MapDb.storeList = StoreOperation.getInstance().List();
-
-        Object[] StringArrayStores = MapDb.storeList.keySet().toArray();
+        Object[] StringArrayStores = MapDb.getStoreList().keySet().toArray();
 
         
         this.panelSalesTicket.getCbx_ticketGralStore().setModel(
@@ -54,9 +47,7 @@ public class Pnl_panelSalesTicketListener extends Pnl_Listener {
                 new DefaultComboBoxModel(StringArrayStores)
         );
 
-        MapDb.measureList = MeasureOperation.getInstance().List();
-
-        Object[] StringArrayMeasure = MapDb.measureList.keySet().toArray();
+        Object[] StringArrayMeasure = MapDb.getMeasureList().keySet().toArray();
 
         this.panelSalesTicket.getCbx_ticketMeasureProduct().setModel(
                 new DefaultComboBoxModel(

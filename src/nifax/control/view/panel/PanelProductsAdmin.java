@@ -28,6 +28,87 @@ public class PanelProductsAdmin extends Pnl {
         addAncestorListener(new Pnl_panelProductsAdminListener(this));
     }
 
+    public JLabel getJlbl_barCode1() {
+        return jlbl_barCode1;
+    }
+
+    public JLabel getLbl_active() {
+        return lbl_active;
+    }
+
+    public JLabel getLbl_codeProductOffer() {
+        return lbl_codeProductOffer;
+    }
+
+    public JLabel getLbl_codeProductStock() {
+        return lbl_codeProductStock;
+    }
+
+    public JLabel getLbl_codeProducttRestoration() {
+        return lbl_codeProducttRestoration;
+    }
+
+    public JLabel getLbl_descProductOffer() {
+        return lbl_descProductOffer;
+    }
+
+    public JLabel getLbl_descProductRestoration() {
+        return lbl_descProductRestoration;
+    }
+
+    public JLabel getLbl_descProductStock() {
+        return lbl_descProductStock;
+    }
+
+    public JPanel getPnl_productOffer() {
+        return pnl_productOffer;
+    }
+
+    public JPanel getPnl_productRestoration() {
+        return pnl_productRestoration;
+    }
+
+    public JPanel getPnl_productStock() {
+        return pnl_productStock;
+    }
+
+    public JPanel getPnl_stateProduct() {
+        return pnl_stateProduct;
+    }
+
+    public JTextField getTxf_codeAlternative() {
+        return txf_codeAlternative;
+    }
+
+    public JTextField getTxf_codeProductOffer() {
+        return txf_codeProductOffer;
+    }
+
+    public JTextField getTxf_codeProductRestoration() {
+        return txf_codeProductRestoration;
+    }
+
+    public JTextField getTxf_codeProductStock() {
+        return txf_codeProductStock;
+    }
+
+    public JTextField getTxf_descProductOffer() {
+        return txf_descProductOffer;
+    }
+
+    public JTextField getTxf_descProductRestoration() {
+        return txf_descProductRestoration;
+    }
+
+    public JTextField getTxf_descProductStock() {
+        return txf_descProductStock;
+    }
+
+    public JComboBox getCbx_measureOffer() {
+        return cbx_measureOffer;
+    }
+
+    
     public JTextField getTxf_codeProduct() {
         return txf_codeProduct;
     }
@@ -92,14 +173,6 @@ public class PanelProductsAdmin extends Pnl {
         return btn_searchCategory;
     }
 
-    public JButton getBtn_searchMeasure() {
-        return btn_searchMeasure;
-    }
-
-    public JButton getBtn_searchMoneyOffer() {
-        return btn_searchMoneyOffer;
-    }
-
     public JButton getBtn_searchMoneyProduct() {
         return btn_searchMoneyProduct;
     }
@@ -110,18 +183,6 @@ public class PanelProductsAdmin extends Pnl {
 
     public JButton getBtn_searchMoneyStock() {
         return btn_searchMoneyStock;
-    }
-
-    public JButton getBtn_searchProductOffer() {
-        return btn_searchProductOffer;
-    }
-
-    public JButton getBtn_searchProductStock() {
-        return btn_searchProductStock;
-    }
-
-    public JButton getBtn_searchRestoration() {
-        return btn_searchRestoration;
     }
 
     public JButton getBtn_searchStore() {
@@ -149,7 +210,7 @@ public class PanelProductsAdmin extends Pnl {
     }
 
     public JComboBox getCbx_moneyOffer() {
-        return cbx_moneyOffer;
+        return cbx_measureOffer;
     }
 
     public JComboBox getCbx_moneyRestoration() {
@@ -158,18 +219,6 @@ public class PanelProductsAdmin extends Pnl {
 
     public JComboBox getCbx_moneyStock() {
         return cbx_moneyStock;
-    }
-
-    public JComboBox getCbx_productOffer() {
-        return cbx_productOffer;
-    }
-
-    public JComboBox getCbx_productRestoration() {
-        return cbx_productRestoration;
-    }
-
-    public JComboBox getCbx_productStock() {
-        return cbx_productStock;
     }
 
     public JComboBox getCbx_storeRestoration() {
@@ -217,23 +266,15 @@ public class PanelProductsAdmin extends Pnl {
     }
 
     public JLabel getLbl_descOffer() {
-        return lbl_descOffer;
+        return lbl_descProductOffer;
     }
 
     public JLabel getLbl_descProduct() {
         return lbl_descProduct;
     }
 
-    public JLabel getLbl_descRestoration() {
-        return lbl_descRestoration;
-    }
-
-    public JLabel getLbl_descStock() {
-        return lbl_descStock;
-    }
-
     public JLabel getLbl_discount() {
-        return lbl_discount;
+        return lbl_descOffer;
     }
 
     public JLabel getLbl_discount2() {
@@ -273,17 +314,10 @@ public class PanelProductsAdmin extends Pnl {
     }
 
     public JLabel getLbl_productOffer() {
-        return lbl_productOffer;
+        return lbl_codeProductOffer;
     }
 
-    public JLabel getLbl_productRestoration() {
-        return lbl_productRestoration;
-    }
-
-    public JLabel getLbl_productStock() {
-        return lbl_productStock;
-    }
-
+    
     public JLabel getLbl_quantityOffer() {
         return lbl_quantityOffer;
     }
@@ -405,23 +439,15 @@ public class PanelProductsAdmin extends Pnl {
     }
 
     public JTextField getTxf_descOffer() {
-        return txf_descOffer;
+        return txf_descProductOffer;
     }
 
     public JTextField getTxf_descProduct() {
         return txf_descProduct;
     }
 
-    public JTextField getTxf_descRestoration() {
-        return txf_descRestoration;
-    }
-
-    public JTextField getTxf_descStock() {
-        return txf_descStock;
-    }
-
     public JTextField getTxf_discount() {
-        return txf_discount;
+        return txf_descOffer;
     }
 
     public JTextField getTxf_discount2() {
@@ -505,35 +531,29 @@ public class PanelProductsAdmin extends Pnl {
         btn_lessRule = new javax.swing.JButton(new Btn_lessRule(this));
         pnl_offer = new nifax.control.view.util.Pnl_Tab();
         pnl_principalOffer = new javax.swing.JPanel();
-        lbl_descOffer = new javax.swing.JLabel();
-        txf_descOffer = new javax.swing.JTextField();
-        lbl_productOffer = new javax.swing.JLabel();
-        cbx_productOffer = new javax.swing.JComboBox();
-        btn_searchProductOffer = new javax.swing.JButton();
         pnl_branchesOffer = new javax.swing.JPanel();
-        txf_discount = new javax.swing.JTextField();
-        cbx_moneyOffer = new javax.swing.JComboBox();
+        txf_descOffer = new javax.swing.JTextField();
+        cbx_measureOffer = new javax.swing.JComboBox();
         lbl_measureOffer = new javax.swing.JLabel();
-        btn_searchMoneyOffer = new javax.swing.JButton();
         cbx_branchOffer = new javax.swing.JComboBox();
         btn_lessOffer = new javax.swing.JButton();
         btn_searchBranchOffer = new javax.swing.JButton();
         btn_plusOffer = new javax.swing.JButton();
-        lbl_discount = new javax.swing.JLabel();
+        lbl_descOffer = new javax.swing.JLabel();
         lbl_branchOffer = new javax.swing.JLabel();
         txf_quantityOffer = new javax.swing.JTextField();
         lbl_quantityOffer = new javax.swing.JLabel();
         lbl_discount2 = new javax.swing.JLabel();
         txf_discount2 = new javax.swing.JTextField();
+        pnl_productOffer = new javax.swing.JPanel();
+        txf_descProductOffer = new javax.swing.JTextField();
+        lbl_descProductOffer = new javax.swing.JLabel();
+        lbl_codeProductOffer = new javax.swing.JLabel();
+        txf_codeProductOffer = new javax.swing.JTextField();
         scp_tblStoreOffer = new javax.swing.JScrollPane();
         tbl_offer = new javax.swing.JTable();
         pnl_restoration = new nifax.control.view.util.Pnl_Tab();
         pnl_principalRestoration = new javax.swing.JPanel();
-        lbl_descRestoration = new javax.swing.JLabel();
-        txf_descRestoration = new javax.swing.JTextField();
-        lbl_productRestoration = new javax.swing.JLabel();
-        cbx_productRestoration = new javax.swing.JComboBox();
-        btn_searchRestoration = new javax.swing.JButton();
         pnl_storesRestoration = new javax.swing.JPanel();
         txf_peak = new javax.swing.JTextField();
         cbx_moneyRestoration = new javax.swing.JComboBox();
@@ -549,15 +569,15 @@ public class PanelProductsAdmin extends Pnl {
         lbl_lowPoint = new javax.swing.JLabel();
         lbl_midPoint = new javax.swing.JLabel();
         txf_midPoint = new javax.swing.JTextField();
+        pnl_productRestoration = new javax.swing.JPanel();
+        txf_descProductRestoration = new javax.swing.JTextField();
+        lbl_descProductRestoration = new javax.swing.JLabel();
+        lbl_codeProducttRestoration = new javax.swing.JLabel();
+        txf_codeProductRestoration = new javax.swing.JTextField();
         scp_tblStoreRestoration = new javax.swing.JScrollPane();
         tbl_restoration = new javax.swing.JTable();
         pnl_stock = new nifax.control.view.util.Pnl_Tab();
         pnl_principalStock = new javax.swing.JPanel();
-        lbl_descStock = new javax.swing.JLabel();
-        txf_descStock = new javax.swing.JTextField();
-        lbl_productStock = new javax.swing.JLabel();
-        cbx_productStock = new javax.swing.JComboBox();
-        btn_searchProductStock = new javax.swing.JButton();
         pnl_storeStock = new javax.swing.JPanel();
         txf_quantityStock = new javax.swing.JTextField();
         cbx_moneyStock = new javax.swing.JComboBox();
@@ -569,6 +589,11 @@ public class PanelProductsAdmin extends Pnl {
         btn_plusStock = new javax.swing.JButton();
         lbl_quantityStock = new javax.swing.JLabel();
         lbl_storeStock = new javax.swing.JLabel();
+        pnl_productStock = new javax.swing.JPanel();
+        txf_descProductStock = new javax.swing.JTextField();
+        lbl_descProductStock = new javax.swing.JLabel();
+        lbl_codeProductStock = new javax.swing.JLabel();
+        txf_codeProductStock = new javax.swing.JTextField();
         scp_tblStoreStock = new javax.swing.JScrollPane();
         tbl_stock = new javax.swing.JTable();
         pnl_menuProduct = new javax.swing.JPanel();
@@ -580,8 +605,6 @@ public class PanelProductsAdmin extends Pnl {
 
         tbp_containerProduct.setBackground(new java.awt.Color(51, 51, 51));
         tbp_containerProduct.setOpaque(true);
-
-        pnl_product.setName("Product");
 
         pnl_principalProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
         pnl_principalProduct.setPreferredSize(new java.awt.Dimension(460, 360));
@@ -892,39 +915,28 @@ public class PanelProductsAdmin extends Pnl {
 
         pnl_principalOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
-        lbl_descOffer.setText("Descripcion  :");
-
-        lbl_productOffer.setText("Producto : ");
-
-        cbx_productOffer.setEditable(true);
-
-        btn_searchProductOffer.setText("...");
-        btn_searchProductOffer.setPreferredSize(new java.awt.Dimension(52, 28));
-
         pnl_branchesOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Por sucursal"));
-
-        cbx_moneyOffer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbl_measureOffer.setText("Medida : ");
 
-        btn_searchMoneyOffer.setText("...");
-        btn_searchMoneyOffer.setPreferredSize(new java.awt.Dimension(52, 28));
-
         cbx_branchOffer.setEditable(true);
         cbx_branchOffer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Santiago", "Capital" }));
+        cbx_branchOffer.setEnabled(false);
 
         btn_lessOffer.setText("-");
         btn_lessOffer.setPreferredSize(new java.awt.Dimension(52, 28));
 
         btn_searchBranchOffer.setText("...");
+        btn_searchBranchOffer.setEnabled(false);
         btn_searchBranchOffer.setPreferredSize(new java.awt.Dimension(52, 28));
 
         btn_plusOffer.setText("+");
         btn_plusOffer.setPreferredSize(new java.awt.Dimension(52, 28));
 
-        lbl_discount.setText("Descuento : ");
+        lbl_descOffer.setText("Descripcion :");
 
         lbl_branchOffer.setText("Sucursal : ");
+        lbl_branchOffer.setEnabled(false);
 
         lbl_quantityOffer.setText("Cantidad : ");
 
@@ -944,25 +956,21 @@ public class PanelProductsAdmin extends Pnl {
                         .addGap(17, 17, 17)
                         .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
-                                .addComponent(cbx_moneyOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_searchMoneyOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbx_measureOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
                                 .addComponent(cbx_branchOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
-                                        .addComponent(btn_plusOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_lessOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
-                                        .addComponent(btn_searchBranchOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(6, 6, 6))
+                                .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btn_plusOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_searchBranchOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_lessOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
                         .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lbl_discount2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_discount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                            .addComponent(lbl_descOffer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                             .addComponent(lbl_quantityOffer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_branchesOfferLayout.createSequentialGroup()
@@ -972,15 +980,16 @@ public class PanelProductsAdmin extends Pnl {
                                 .addGap(18, 18, 18)
                                 .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txf_discount2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txf_discount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txf_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnl_branchesOfferLayout.setVerticalGroup(
             pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_branchesOfferLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txf_discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_discount, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txf_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txf_discount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -992,10 +1001,8 @@ public class PanelProductsAdmin extends Pnl {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_measureOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbx_moneyOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_searchMoneyOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cbx_measureOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(pnl_branchesOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbx_branchOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchBranchOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1007,54 +1014,95 @@ public class PanelProductsAdmin extends Pnl {
                 .addGap(159, 159, 159))
         );
 
+        pnl_productOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
+
+        txf_descProductOffer.setEnabled(false);
+
+        lbl_descProductOffer.setText("Descripcion  :");
+
+        lbl_codeProductOffer.setText("Codigo : ");
+
+        txf_codeProductOffer.setEnabled(false);
+
+        javax.swing.GroupLayout pnl_productOfferLayout = new javax.swing.GroupLayout(pnl_productOffer);
+        pnl_productOffer.setLayout(pnl_productOfferLayout);
+        pnl_productOfferLayout.setHorizontalGroup(
+            pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productOfferLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_descProductOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(lbl_codeProductOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_productOfferLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txf_descProductOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                    .addGroup(pnl_productOfferLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txf_codeProductOffer)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_productOfferLayout.setVerticalGroup(
+            pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productOfferLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_codeProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_codeProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_productOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_descProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_descProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnl_principalOfferLayout = new javax.swing.GroupLayout(pnl_principalOffer);
         pnl_principalOffer.setLayout(pnl_principalOfferLayout);
         pnl_principalOfferLayout.setHorizontalGroup(
             pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_principalOfferLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_productOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_descOffer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txf_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productOffer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_searchProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(pnl_branchesOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnl_productOffer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_branchesOffer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnl_principalOfferLayout.setVerticalGroup(
             pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_principalOfferLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_productOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_searchProductOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnl_principalOfferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txf_descOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_productOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(pnl_branchesOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         tbl_offer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "It", "Cod", "Descripcion", "Descuento", "Cantidad", "Medida", ""
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbl_offer.setRequestFocusEnabled(false);
         scp_tblStoreOffer.setViewportView(tbl_offer);
+        if (tbl_offer.getColumnModel().getColumnCount() > 0) {
+            tbl_offer.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout pnl_offerLayout = new javax.swing.GroupLayout(pnl_offer);
         pnl_offer.setLayout(pnl_offerLayout);
@@ -1064,7 +1112,7 @@ public class PanelProductsAdmin extends Pnl {
                 .addContainerGap()
                 .addComponent(pnl_principalOffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scp_tblStoreOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addComponent(scp_tblStoreOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addGap(219, 219, 219))
         );
         pnl_offerLayout.setVerticalGroup(
@@ -1073,7 +1121,7 @@ public class PanelProductsAdmin extends Pnl {
                 .addContainerGap()
                 .addGroup(pnl_offerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_principalOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scp_tblStoreOffer, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))
+                    .addComponent(scp_tblStoreOffer))
                 .addContainerGap())
         );
 
@@ -1082,15 +1130,6 @@ public class PanelProductsAdmin extends Pnl {
         pnl_restoration.setName("Restoration");
 
         pnl_principalRestoration.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
-
-        lbl_descRestoration.setText("Descripcion  :");
-
-        lbl_productRestoration.setText("Producto : ");
-
-        cbx_productRestoration.setEditable(true);
-
-        btn_searchRestoration.setText("...");
-        btn_searchRestoration.setPreferredSize(new java.awt.Dimension(52, 28));
 
         pnl_storesRestoration.setBorder(javax.swing.BorderFactory.createTitledBorder("Por deposito"));
 
@@ -1198,39 +1237,59 @@ public class PanelProductsAdmin extends Pnl {
                 .addGap(159, 159, 159))
         );
 
+        pnl_productRestoration.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
+
+        lbl_descProductRestoration.setText("Descripcion  :");
+
+        lbl_codeProducttRestoration.setText("Codigo : ");
+
+        javax.swing.GroupLayout pnl_productRestorationLayout = new javax.swing.GroupLayout(pnl_productRestoration);
+        pnl_productRestoration.setLayout(pnl_productRestorationLayout);
+        pnl_productRestorationLayout.setHorizontalGroup(
+            pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productRestorationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_descProductRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(lbl_codeProducttRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_productRestorationLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txf_descProductRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                    .addGroup(pnl_productRestorationLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txf_codeProductRestoration)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_productRestorationLayout.setVerticalGroup(
+            pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productRestorationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_codeProducttRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_codeProductRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_productRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_descProductRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_descProductRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnl_principalRestorationLayout = new javax.swing.GroupLayout(pnl_principalRestoration);
         pnl_principalRestoration.setLayout(pnl_principalRestorationLayout);
         pnl_principalRestorationLayout.setHorizontalGroup(
             pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_principalRestorationLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_productRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_descRestoration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txf_descRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productRestoration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_searchRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pnl_storesRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_productRestoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnl_principalRestorationLayout.setVerticalGroup(
             pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_principalRestorationLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_productRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_searchRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnl_principalRestorationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_descRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txf_descRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(pnl_productRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnl_storesRestoration, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         tbl_restoration.setModel(new javax.swing.table.DefaultTableModel(
@@ -1273,22 +1332,16 @@ public class PanelProductsAdmin extends Pnl {
 
         pnl_principalStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
-        lbl_descStock.setText("Descripcion  :");
-
-        lbl_productStock.setText("Producto : ");
-
-        cbx_productStock.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btn_searchProductStock.setText("...");
-        btn_searchProductStock.setPreferredSize(new java.awt.Dimension(52, 28));
-
         pnl_storeStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Por deposito"));
 
-        cbx_moneyStock.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_moneyStock.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pesos", "Dolar" }));
+        cbx_moneyStock.setEnabled(false);
 
         lbl_measureStock.setText("Medida : ");
+        lbl_measureStock.setEnabled(false);
 
         btn_searchMoneyStock.setText("...");
+        btn_searchMoneyStock.setEnabled(false);
         btn_searchMoneyStock.setPreferredSize(new java.awt.Dimension(52, 28));
 
         cbx_storeStock.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1297,6 +1350,7 @@ public class PanelProductsAdmin extends Pnl {
         btn_lessStock.setPreferredSize(new java.awt.Dimension(52, 28));
 
         btn_searchStore.setText("...");
+        btn_searchStore.setEnabled(false);
         btn_searchStore.setPreferredSize(new java.awt.Dimension(52, 28));
 
         btn_plusStock.setText("+");
@@ -1364,39 +1418,62 @@ public class PanelProductsAdmin extends Pnl {
                 .addGap(159, 159, 159))
         );
 
+        pnl_productStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
+
+        txf_descProductStock.setEnabled(false);
+
+        lbl_descProductStock.setText("Descripcion  :");
+
+        lbl_codeProductStock.setText("Codigo : ");
+
+        javax.swing.GroupLayout pnl_productStockLayout = new javax.swing.GroupLayout(pnl_productStock);
+        pnl_productStock.setLayout(pnl_productStockLayout);
+        pnl_productStockLayout.setHorizontalGroup(
+            pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productStockLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_descProductStock, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(lbl_codeProductStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_productStockLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txf_descProductStock, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                    .addGroup(pnl_productStockLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txf_codeProductStock)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_productStockLayout.setVerticalGroup(
+            pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_productStockLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_codeProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_codeProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_productStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_descProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txf_descProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnl_principalStockLayout = new javax.swing.GroupLayout(pnl_principalStock);
         pnl_principalStock.setLayout(pnl_principalStockLayout);
         pnl_principalStockLayout.setHorizontalGroup(
             pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_principalStockLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_productStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_descStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txf_descStock, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_searchProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pnl_storeStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_principalStockLayout.createSequentialGroup()
+                .addComponent(pnl_productStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnl_principalStockLayout.setVerticalGroup(
             pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_principalStockLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_productStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_productStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_searchProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnl_principalStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_descStock, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txf_descStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnl_productStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnl_storeStock, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         tbl_stock.setModel(new javax.swing.table.DefaultTableModel(
@@ -1518,26 +1595,19 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JButton btn_searchBranchOffer;
     private javax.swing.JButton btn_searchCategory;
     private javax.swing.JButton btn_searchMeasure;
-    private javax.swing.JButton btn_searchMoneyOffer;
     private javax.swing.JButton btn_searchMoneyProduct;
     private javax.swing.JButton btn_searchMoneyRestoration;
     private javax.swing.JButton btn_searchMoneyStock;
-    private javax.swing.JButton btn_searchProductOffer;
-    private javax.swing.JButton btn_searchProductStock;
-    private javax.swing.JButton btn_searchRestoration;
     private javax.swing.JButton btn_searchStore;
     private javax.swing.JButton btn_searchStoreRestoration;
     private javax.swing.JComboBox cbx_branchOffer;
     private javax.swing.JComboBox cbx_category;
     private javax.swing.JComboBox cbx_iva;
     private javax.swing.JComboBox cbx_measure;
+    private javax.swing.JComboBox cbx_measureOffer;
     private javax.swing.JComboBox cbx_money;
-    private javax.swing.JComboBox cbx_moneyOffer;
     private javax.swing.JComboBox cbx_moneyRestoration;
     private javax.swing.JComboBox cbx_moneyStock;
-    private javax.swing.JComboBox cbx_productOffer;
-    private javax.swing.JComboBox cbx_productRestoration;
-    private javax.swing.JComboBox cbx_productStock;
     private javax.swing.JComboBox cbx_storeRestoration;
     private javax.swing.JComboBox cbx_storeStock;
     private javax.swing.JCheckBox chx_active;
@@ -1548,12 +1618,15 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JLabel lbl_category;
     private javax.swing.JLabel lbl_codeAlternative;
     private javax.swing.JLabel lbl_codeProduct;
+    private javax.swing.JLabel lbl_codeProductOffer;
+    private javax.swing.JLabel lbl_codeProductStock;
+    private javax.swing.JLabel lbl_codeProducttRestoration;
     private javax.swing.JLabel lbl_cost;
     private javax.swing.JLabel lbl_descOffer;
     private javax.swing.JLabel lbl_descProduct;
-    private javax.swing.JLabel lbl_descRestoration;
-    private javax.swing.JLabel lbl_descStock;
-    private javax.swing.JLabel lbl_discount;
+    private javax.swing.JLabel lbl_descProductOffer;
+    private javax.swing.JLabel lbl_descProductRestoration;
+    private javax.swing.JLabel lbl_descProductStock;
     private javax.swing.JLabel lbl_discount2;
     private javax.swing.JLabel lbl_equivalent;
     private javax.swing.JLabel lbl_idProduct;
@@ -1564,9 +1637,6 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JLabel lbl_midPoint;
     private javax.swing.JLabel lbl_money;
     private javax.swing.JLabel lbl_peak;
-    private javax.swing.JLabel lbl_productOffer;
-    private javax.swing.JLabel lbl_productRestoration;
-    private javax.swing.JLabel lbl_productStock;
     private javax.swing.JLabel lbl_quantityOffer;
     private javax.swing.JLabel lbl_quantityStock;
     private javax.swing.JLabel lbl_storeRestoration;
@@ -1582,6 +1652,9 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JPanel pnl_principalRestoration;
     private javax.swing.JPanel pnl_principalStock;
     private javax.swing.JPanel pnl_product;
+    private javax.swing.JPanel pnl_productOffer;
+    private javax.swing.JPanel pnl_productRestoration;
+    private javax.swing.JPanel pnl_productStock;
     private javax.swing.JPanel pnl_restoration;
     private javax.swing.JPanel pnl_rulesProduct;
     private javax.swing.JPanel pnl_stateProduct;
@@ -1599,12 +1672,15 @@ public class PanelProductsAdmin extends Pnl {
     private javax.swing.JTabbedPane tbp_containerProduct;
     private javax.swing.JTextField txf_codeAlternative;
     private javax.swing.JTextField txf_codeProduct;
+    private javax.swing.JTextField txf_codeProductOffer;
+    private javax.swing.JTextField txf_codeProductRestoration;
+    private javax.swing.JTextField txf_codeProductStock;
     private javax.swing.JTextField txf_cost;
     private javax.swing.JTextField txf_descOffer;
     private javax.swing.JTextField txf_descProduct;
-    private javax.swing.JTextField txf_descRestoration;
-    private javax.swing.JTextField txf_descStock;
-    private javax.swing.JTextField txf_discount;
+    private javax.swing.JTextField txf_descProductOffer;
+    private javax.swing.JTextField txf_descProductRestoration;
+    private javax.swing.JTextField txf_descProductStock;
     private javax.swing.JTextField txf_discount2;
     private javax.swing.JTextField txf_equivalent;
     private javax.swing.JTextField txf_lowPoint;

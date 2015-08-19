@@ -41,7 +41,14 @@ public class Navigation {
             switch (tp.toString()) {
                 case "[NiFax, Administracion, Productos, Gestion]":
                     PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
+
+                    panelProductsAdmin.getPnl_product().setName("Product");
+                    panelProductsAdmin.getPnl_offer().setName("Product");
+                    panelProductsAdmin.getPnl_restoration().setName("Product");
+                    panelProductsAdmin.getPnl_stock().setName("Product");
+
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
+
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
                     showGralPanel("Category", "Categoria");

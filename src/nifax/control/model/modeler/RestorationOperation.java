@@ -29,11 +29,11 @@ public class RestorationOperation extends HQLOperation implements IQueries {
 
     public Boolean add(String description, double peak, double midpoint,
             double lowpoint, Measure measure,
-            Product product, Store store) {
+             Store store) {
         try {
 
             return Insert(new Restoration(description, peak, midpoint, lowpoint, measure,
-                    product, store));
+                    store));
 
         } catch (NullPointerException ex) {
             return Boolean.FALSE;

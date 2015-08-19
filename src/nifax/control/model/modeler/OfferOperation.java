@@ -27,10 +27,10 @@ public class OfferOperation extends HQLOperation implements IQueries {
     }
 
     public Boolean add(String description, double discount, double quantity,
-            Measure measure, Product product) {
+            Measure measure) {
         try {
 
-            return Insert(new Offer(description, discount, quantity, measure, product));
+            return Insert(new Offer(description, discount, quantity, measure));
 
         } catch (NullPointerException ex) {
             return Boolean.FALSE;
