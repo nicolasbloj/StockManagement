@@ -76,6 +76,20 @@ public class Product implements Serializable {
     @JoinColumn(name = "product_id")
     private Set<ProductMeasure> productMeasures;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Set<Offer> offers;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Set<Stock> stocks;
+
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Set<Restoration> restorations;
+
+    
     @Column(name="active")
     private Boolean active;
     
@@ -107,6 +121,31 @@ public class Product implements Serializable {
         this.productMeasures = productMeasures;
     }
 
+    public Set<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(Set<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public Set<Stock> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(Set<Stock> stocks) {
+        this.stocks = stocks;
+    }
+
+    public Set<Restoration> getRestorations() {
+        return restorations;
+    }
+
+    public void setRestorations(Set<Restoration> restorations) {
+        this.restorations = restorations;
+    }
+
+    
     public String getCode() {
         return code;
     }

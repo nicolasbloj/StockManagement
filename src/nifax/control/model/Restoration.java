@@ -1,4 +1,3 @@
-
 package nifax.control.model;
 
 import java.io.Serializable;
@@ -8,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,40 +23,38 @@ public class Restoration implements Serializable {
     }
 
     public Restoration(String description, double peak, double midpoint,
-            double lowpoint, Measure measure, 
-            Product product, Store store) {
+        double lowpoint, Measure measure,
+        Store store) {
         this.description = description;
         this.peak = peak;
         this.midpoint = midpoint;
         this.lowpoint = lowpoint;
         this.measure = measure;
-        this.product = product;
         this.store = store;
     }
 
-    
-
-    
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "restoration_id", unique = true, nullable = false)
     private Long id;
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "peak")
     private double peak;
     @Column(name = "midpoint")
     private double midpoint;
     @Column(name = "lowpoint")
     private double lowpoint;
-    
+
     @JoinColumn(name = "measure_id")
     @OneToOne
     private Measure measure;
-    @JoinColumn(name = "product_id")
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", updatable = false, insertable = false)
     private Product product;
+
     @JoinColumn(name = "store_id")
     @OneToOne
     private Store store;
@@ -93,7 +91,9 @@ public class Restoration implements Serializable {
         return store;
     }
 
-    
-    
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     
 }

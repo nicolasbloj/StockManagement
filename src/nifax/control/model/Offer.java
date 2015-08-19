@@ -14,13 +14,13 @@ public class Offer implements Serializable {
 
     protected Offer() {
     }
+
     public Offer(String description, double discount, double quantity,
-            Measure measure, Product product) {
+        Measure measure) {
         this.description = description;
         this.discount = discount;
         this.quantity = quantity;
         this.measure = measure;
-        this.product = product;
     }
 
     @Id
@@ -36,10 +36,12 @@ public class Offer implements Serializable {
     @JoinColumn(name = "measure_id")
     @OneToOne
     private Measure measure;
-    @JoinColumn(name = "product_id")
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", updatable = false, insertable = false)
     private Product product;
 
+    
     public Long getId() {
         return id;
     }
@@ -63,5 +65,10 @@ public class Offer implements Serializable {
     public Product getProduct() {
         return product;
     }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    
 
 }
