@@ -12,16 +12,15 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "STOCK")
 public class Stock implements Serializable {
 
-    public  Stock() {
+    public Stock() {
     }
 
     public Stock(String description, double quantity, double quantityCommitted, Measure measure,
-            Product product, Store store) {
+        Store store) {
         this.description = description;
         this.quantity = quantity;
         this.quantityCommitted = quantityCommitted;
         this.measure = measure;
-        this.product = product;
         this.store = store;
     }
 
@@ -43,8 +42,8 @@ public class Stock implements Serializable {
     @JoinColumn(name = "measure_id")
     @OneToOne
     private Measure measure;
-    @JoinColumn(name = "product_id")
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "product_id", updatable = false, insertable = false)
     private Product product;
     @JoinColumn(name = "store_id")
     @OneToOne
@@ -89,5 +88,10 @@ public class Stock implements Serializable {
     public void setQuantityCommitted(double quantityCommitted) {
         this.quantityCommitted = quantityCommitted;
     }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     
 }

@@ -61,13 +61,13 @@ public class SaleController {
     public boolean SaleProduct(Product product) {
         try {
             String selectedPriceListDesc = panelSalesTicket.getCbx_ticketPriceProduct().getSelectedItem().toString();
-            Price priceList = MapDb.priceList.get(selectedPriceListDesc);
+            Price priceList = MapDb.getPriceList().get(selectedPriceListDesc);
 
             String selectedStoreDesc = panelSalesTicket.getCbx_ticketStoreProduct().getSelectedItem().toString();
-            Store store = MapDb.storeList.get(selectedStoreDesc);
+            Store store = MapDb.getStoreList().get(selectedStoreDesc);
 
             String selectedMeasureDesc = panelSalesTicket.getCbx_ticketMeasureProduct().getSelectedItem().toString();
-            Measure measure = MapDb.measureList.get(selectedMeasureDesc);
+            Measure measure = MapDb.getMeasureList().get(selectedMeasureDesc);
 
             ProductMeasure productMeasure = this.findProductMesureByDescription(product.getProductMeasures(), selectedMeasureDesc);
 
@@ -254,12 +254,9 @@ public class SaleController {
     private double discount(Product product, double quantityXunit) {
         double discount = 0;
         double AUX = 0;
-        OfferOperation offerOperation = OfferOperation.getInstance();
-        Map<String, Offer> offerByProductList = offerOperation.ListByParameter("product_id", product.getId());
-
-        for (Entry<String, Offer> entry : offerByProductList.entrySet()) {
-            Offer offer = entry.getValue();
-
+        
+        for (Offer offer : product.getOffers()) {
+             
             long measure_id = offer.getMeasure().getId();
             double offerQuantity = offer.getQuantity();
 

@@ -59,14 +59,13 @@ public class StockOperation extends HQLOperation implements IQueries {
     }
 
     public Boolean Add(String description, double quantity, double quantityCommitted,
-        Measure measure, Product product, Store store) {
+        Measure measure,Store store) {
         try {
             return Insert(new Stock(
                 description,
                 quantity,
                 quantityCommitted,
                 measure,
-                product,
                 store
             )
             );

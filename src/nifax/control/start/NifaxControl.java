@@ -30,7 +30,7 @@ import nifax.control.view.FrameMain;
  *
  * @author faka
  */
-public class NifaxControl implements IQueries{
+public class NifaxControl implements IQueries {
 
     private static final Logger logger = Logger.getLogger(NifaxControl.class.getName());
 
@@ -83,141 +83,112 @@ public class NifaxControl implements IQueries{
             modelOperation.Insert(new Measure("BULTO"));
             modelOperation.Insert(new Measure("PAQUETE"));
             modelOperation.Insert(new Measure("UNIDAD"));
-   
+
             //Add type of sale's document
             TypeSaleDocOperation.getInstance().add("TICKET");
             TypeSaleDocOperation.getInstance().add("FACTURA ");
             TypeSaleDocOperation.getInstance().add("FACTURA ELECTRONICA");
-            
-            
+
             //Get category list from db
             Map<String, Category> CategoryList = CategoryOperation.getInstance().List();
             //Get quantity list from db
             Map<String, Measure> measureList = MeasureOperation.getInstance().List();
-            //Add product 1
-            String productDesc = "FOCO 12V";
-            double cost = 76.40;
-            
+
+            //Get store list from db for stock
+            Map<String, Store> storeList = StoreOperation.getInstance().List();
+
             //Genering ProductMeasure for product - rules.
-            List<ProductMeasure> measures  =new ArrayList<ProductMeasure>();
-            
-            double quantityValue = 12.0;
-            
-            measures.add(new ProductMeasure(quantityValue,measureList.get("BULTO")));
-            
-            quantityValue=24;
-            
-            measures.add(new ProductMeasure(quantityValue,measureList.get("PAQUETE")));
-            
+            List<ProductMeasure> measures = new ArrayList<ProductMeasure>();
+
+            //Genering Offers for product 
+            List<Offer> offers = new ArrayList<Offer>();
+
+            //Genering Offers for product 
+            List<Stock> stocks = new ArrayList<Stock>();
+
+            //Genering Offers for product 
+            List<Restoration> restorations = new ArrayList<Restoration>();
+
+            measures.add(new ProductMeasure(12, measureList.get("BULTO")));
+            measures.add(new ProductMeasure(22, measureList.get("PAQUETE")));
+
+            offers.add(new Offer("Oferta mes mayo", 10, 20, measureList.get("UNIDAD")));
+            offers.add(new Offer("Oferta mes mayo", 10, 2, measureList.get("PAQUETE")));
+
+            stocks.add(new Stock("Stock casa central", 200, 0,
+                measureList.get("UNIDAD"),
+                storeList.get("DEPOSITO CENTRAL")));
+
+            stocks.add(new Stock("Stock centro de distribucion", 2, 0,
+                measureList.get("BULTO"),
+                storeList.get("DEPOSITO ALTERNATIVO")));
+
+            restorations.add(new Restoration(
+                "Rep al mes de abril",
+                900.0,
+                560.0,
+                140.0,
+                measureList.get("UNIDAD"),
+                storeList.get("DEPOSITO CENTRAL")
+            ));
+
+            restorations.add(new Restoration(
+                "Rep al mes de abril",
+                200.0,
+                160.0,
+                40.0,
+                measureList.get("PAQUETE"),
+                storeList.get("DEPOSITO ALTERNATIVO")
+            ));
+
             //Genering Ivas
             Map<Double, Iva> IvaList = IvaOperation.getInstance().List();
-            
+
             //Add product
-            ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
-                    IvaList.get(21.0),true,
-                    measures);
-            
-            //Add product 2
-             productDesc = "LAMPARA";
-             cost = 16.10;
-            
-            //Genering ProductMeasure for product - rules.
-            measures  =new ArrayList<ProductMeasure>();
-            
-            quantityValue = 32.0;
-            
-            measures.add(new ProductMeasure(quantityValue,measureList.get("BULTO")));
-            
-            //Add product
-            ProductOperation.getInstance().AddOrUpdate(null,null,productDesc,cost,CategoryList.get("AUDIO"),
-                    IvaList.get(10.5),true,
-                    measures);
-           
-            //Get product list from db
+            ProductOperation.getInstance().AddOrUpdate(
+                null,
+                null,
+                "FOCO 12V",
+                12.2,
+                CategoryList.get("AUDIO"),
+                IvaList.get(21.0),
+                true,
+                measures,
+                offers,
+                stocks,
+                restorations);
+
+            //Get category list from db
             Map<String, Product> productList = ProductOperation.getInstance().List();
-            //Get store list from db
-            Map<String, Store> storeList = StoreOperation.getInstance().List();
-            //Add stock
-            
-            // Stock Product 1
-            String description = "STOCK";
-            double quantityStock = 500;
-            StockOperation.getInstance().Add(description, 
-                quantityStock, 
-                0,
-                measureList.get("UNIDAD"), 
-                productList.get("FOCO 12V"), 
-                storeList.get("DEPOSITO CENTRAL")
-            );
-            
-            // Stock Product 2
-            quantityStock = 120;
-            StockOperation.getInstance().Add(description, 
-                quantityStock, 
-                0,
-                measureList.get("UNIDAD"), 
-                productList.get("LAMPARA"), 
-                storeList.get("DEPOSITO ALTERNATIVO")
-            );
-            
-            //Add Offer 
-            //Offer Product 1
-            OfferOperation.getInstance().add("Oferta mes mayo",10,20,
-                    measureList.get("UNIDAD"),productList.get("FOCO 12V") );
-            //Offer Product 2
-            OfferOperation.getInstance().add("Oferta mes mayo",20,40,
-                    measureList.get("UNIDAD"),productList.get("FOCO 12V") );
-            
-            //Add Restoration 
-            //Restoration Product 1
-            RestorationOperation.getInstance().add(
-                    "Rep al mes de abril",
-                    900.0,
-                    560.0,
-                    140.0,
-                    measureList.get("UNIDAD"),
-                    productList.get("FOCO 12V"),
-                    storeList.get("Deposito central")
-                            );
-            
-            RestorationOperation.getInstance().add(
-                    "Rep al mes de abril",
-                    600.0,
-                    350.0,
-                    100.0,
-                    measureList.get("UNIDAD"),
-                    productList.get("FOCO 12V"),
-                    storeList.get("Deposito alternativo")
-                            );
-            
+
             //Add Sale.
             double itemQuantity;
-            double itemPrice ;
+            double itemPrice;
             Product itemProduct;
-            
-            Set<Item> items  =new HashSet<Item>();
-                        
+
+            Set<Item> items = new HashSet<Item>();
+
             // Sale Product 1   
             itemQuantity = 240;
             itemPrice = 3.5;
-            itemProduct=productList.get("FOCO 12V");
-            
-            Item item = new Item(itemQuantity,itemPrice,itemProduct,0);
+            itemProduct = productList.get("FOCO 12V");
+
+            Item item = new Item(itemQuantity, itemPrice, itemProduct, 0);
             items.add(item);
-            
+
             Calendar calendar = Calendar.getInstance();
 
             //Get typSaleDoc list from db
             Map<String, TypeSaleDoc> typeSaleDocList = TypeSaleDocOperation.getInstance().List();
-            
+
             SaleDocOperation.getInstance().add(calendar.getTime(),
-                    usr,
-                    typeSaleDocList.get("TICKET"),
-                    items
-                            );
-   
-           FrameMain.main(null);
-         
+                usr,
+                typeSaleDocList.get("TICKET"),
+                items
+            );
+
+            FrameMain.main(null);
+
         } finally {
 //Authentication.getInstance().LogOut(Authentication.getInstance().getSession());
 //HibernateUtil.getSessionFactory().close();
