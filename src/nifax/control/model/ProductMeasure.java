@@ -9,13 +9,29 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "PRODUCT_MEASURE")
-public class ProductMeasure implements Serializable {
+@AttributeOverrides(
+    {
+        @AttributeOverride(
+            name = "id", column = @Column(name = "product_measure_id")
+        ),
+        @AttributeOverride(
+            name = "description", column = @Column(name = "description")
+        ),
+        @AttributeOverride(
+            name = "product_id", column = @Column(name = "product_id")
+        ),
+        @AttributeOverride(
+            name = "measure_id", column = @Column(name = "measure_id")
+        )
+    }
+)
+public class ProductMeasure extends ProdRelEntity implements Serializable {
 
-    public ProductMeasure() {
+    protected ProductMeasure() {
     }
 
     public ProductMeasure(Long id) {
-        this.id = id;
+        super(id);
     }
 
     public ProductMeasure(double quantity, Product product, Measure measure) {
@@ -25,47 +41,21 @@ public class ProductMeasure implements Serializable {
     }
 
     public ProductMeasure(Long id, double quantity, Measure measure) {
-        this.id=id;
+        super.id = id;
         this.quantity = quantity;
-        this.measure = measure;
+        super.measure = measure;
     }
-    
+
     public ProductMeasure(double quantity, Measure measure) {
         this.quantity = quantity;
-        this.measure = measure;
+        super.measure = measure;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_measure_id", unique = true, nullable = false)
-    private Long id;
     @Column(name = "quantity")
     private double quantity;
-    @ManyToOne
-    @JoinColumn(name = "product_id", updatable = false, insertable = false)
-    private Product product;
-    @JoinColumn(name = "measure_id")
-    @OneToOne
-    private Measure measure;
-
-    public Long getId() {
-        return id;
-    }
 
     public double getQuantity() {
         return quantity;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public Measure getMeasure() {
-        return measure;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
 }

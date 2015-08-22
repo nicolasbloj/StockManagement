@@ -13,10 +13,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import nifax.control.data.MapDb;
 import nifax.control.model.Category;
-import nifax.control.model.EntityModel;
+import nifax.control.model.SimpleEntity;
 import nifax.control.model.Measure;
 import nifax.control.model.Offer;
 import nifax.control.model.Price;
+import nifax.control.model.ProdRelEntity;
 import nifax.control.model.Product;
 import nifax.control.model.ProductMeasure;
 import nifax.control.model.Restoration;
@@ -28,6 +29,7 @@ import nifax.control.util.ColumnSorter;
 import nifax.control.util.Frame;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
+import nifax.control.view.internalframe.IntFrameProductSearch;
 import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelProductsAdmin;
 
@@ -63,14 +65,16 @@ public class Administration implements ActionController {
 
     //Panels name - PRODUCT
     private static final String Product = "Product";
-    /*private static final String Offer = "Offer";
-     private static final String Restoration = "Restoration";
-     private static final String Stock = "Stock";
-     */
 
     //Panels name - EXTRAS
     //Ticket panel , for product's list and select one.
     private static final String Ticket = "Ticket";
+
+    //Tables name
+    private static final String TableRules = "TableRules";
+    private static final String TableOffers = "TableOffers";
+    private static final String TableRestorations = "TableRestorations";
+    private static final String TableStocks = "TableStocks";
 
     @Override
     public Boolean operate(JPanel panel, String panelName, int ACTION) {
@@ -96,11 +100,6 @@ public class Administration implements ActionController {
                 switch (panelName) {
                     case Product:
                         return saveProduct((PanelProductsAdmin) panel);
-                    /*case Offer:
-                     case Restoration:
-                     //return ;
-                     case Stock:
-                     //return ;*/
                     case Category:
                     case Store:
                     case Price:
@@ -191,56 +190,19 @@ public class Administration implements ActionController {
         double cost = Double.parseDouble(panelProductsAdmin.getTxf_cost().getText());
         double iva = Double.parseDouble(panelProductsAdmin.getCbx_iva().getSelectedItem().toString());
 
-        int indexMeasure = panelProductsAdmin.getTbl_rules().getColumnModel().getColumnIndex("Medida");
-        int indexEquivalent = panelProductsAdmin.getTbl_rules().getColumnModel().getColumnIndex("Equivalente");
-        int indexCod = panelProductsAdmin.getTbl_rules().getColumnModel().getColumnIndex("Cod");
+        List<ProductMeasure> measures = this.getListOfTable(panelProductsAdmin.getTbl_rules());
 
-        //Measures.
-        List<ProductMeasure> measures = new ArrayList<ProductMeasure>();
-        for (int i = 0; i < panelProductsAdmin.getTbl_rules().getRowCount(); i++) {
-            measures.add(new ProductMeasure(
-                nifax.control.util.Number.stringToLong(panelProductsAdmin.getTbl_rules().getValueAt(i, indexCod).toString()),
-                Double.parseDouble(panelProductsAdmin.getTbl_rules().getValueAt(i, indexEquivalent).toString()),
-                MapDb.getMeasureList().get(panelProductsAdmin.getTbl_rules().getValueAt(i, indexMeasure).toString()))
-            );
+        List<Offer> offers = this.getListOfTable(panelProductsAdmin.getTbl_offer());
 
-        }
+        List<Restoration> restorations = this.getListOfTable(panelProductsAdmin.getTbl_restoration());
 
-        //Offers
-        /*List<ProductMeasure> measures = new ArrayList<ProductMeasure>();
-         for (int i = 0; i < panelProductsAdmin.getTbl_rules().getRowCount(); i++) {
-         measures.add(new ProductMeasure(
-         nifax.control.util.Number.stringToLong(panelProductsAdmin.getTbl_rules().getValueAt(i, indexCod).toString()),
-         Double.parseDouble(panelProductsAdmin.getTbl_rules().getValueAt(i, indexEquivalent).toString()),
-         MapDb.getMeasureList().get(panelProductsAdmin.getTbl_rules().getValueAt(i, indexMeasure).toString()))
-         );
+        List<Stock> stocks = this.getListOfTable(panelProductsAdmin.getTbl_stock());
 
-         }*/
-        //Restorations
-        /*List<ProductMeasure> measures = new ArrayList<ProductMeasure>();
-         for (int i = 0; i < panelProductsAdmin.getTbl_rules().getRowCount(); i++) {
-         measures.add(new ProductMeasure(
-         nifax.control.util.Number.stringToLong(panelProductsAdmin.getTbl_rules().getValueAt(i, indexCod).toString()),
-         Double.parseDouble(panelProductsAdmin.getTbl_rules().getValueAt(i, indexEquivalent).toString()),
-         MapDb.getMeasureList().get(panelProductsAdmin.getTbl_rules().getValueAt(i, indexMeasure).toString()))
-         );
-
-         }*/
-        //Stocks
-        /*List<ProductMeasure> measures = new ArrayList<ProductMeasure>();
-         for (int i = 0; i < panelProductsAdmin.getTbl_rules().getRowCount(); i++) {
-         measures.add(new ProductMeasure(
-         nifax.control.util.Number.stringToLong(panelProductsAdmin.getTbl_rules().getValueAt(i, indexCod).toString()),
-         Double.parseDouble(panelProductsAdmin.getTbl_rules().getValueAt(i, indexEquivalent).toString()),
-         MapDb.getMeasureList().get(panelProductsAdmin.getTbl_rules().getValueAt(i, indexMeasure).toString()))
-         );
-
-         }*/
         Boolean active = panelProductsAdmin.getChx_active().isSelected();
 
         if (ProductOperation.getInstance().AddOrUpdate(id, code, description, cost,
             MapDb.getCategoryList().get(category), MapDb.getIvaList().get(iva), active, measures,
-            null, null, null));
+            offers, stocks, restorations));
         if (id.trim().length() > 0) {
             JOptionPane.showMessageDialog(null, Message.Edit);
         } else {
@@ -256,7 +218,6 @@ public class Administration implements ActionController {
     }
 
     private boolean searchProduct(PanelProductsAdmin panelProductsAdmin) {
-
         //Search by code
         String code = panelProductsAdmin.getTxf_codeProduct().getText();
         Product product = ProductOperation.getInstance().Find(new Product(code, 1));
@@ -271,16 +232,22 @@ public class Administration implements ActionController {
 
         panelProductsAdmin.getTxf_codeProduct().setEnabled(false);
 
-        panelProductsAdmin.getTxf_codeProductOffer().setText(code);
+        panelProductsAdmin.getTxf_codeProductOffer().setText(product.getCode());
         panelProductsAdmin.getTxf_descProductOffer().setText(product.getDescription());
 
+        panelProductsAdmin.getTxf_codeProductRestoration().setText(product.getCode());
+        panelProductsAdmin.getTxf_descProductRestoration().setText(product.getDescription());
+
+        panelProductsAdmin.getTxf_codeProductStock().setText(product.getCode());
+        panelProductsAdmin.getTxf_descProductStock().setText(product.getDescription());
+
         //Measures
-        DefaultTableModel tableModel = (DefaultTableModel) panelProductsAdmin.getTbl_rules().getModel();
-        tableModel.setRowCount(0);
+        DefaultTableModel measureTableModel = (DefaultTableModel) panelProductsAdmin.getTbl_rules().getModel();
+        measureTableModel.setRowCount(0);
 
         product.getProductMeasures().stream().map((productMeasure) -> {
             Vector v = new Vector();
-            v.add(tableModel.getRowCount() + 1);
+            v.add(measureTableModel.getRowCount() + 1);
             v.add(String.valueOf(productMeasure.getId()));
             v.add(productMeasure.getMeasure().getDescription());
             v.add(productMeasure.getQuantity());
@@ -288,11 +255,11 @@ public class Administration implements ActionController {
             return v;
         }
         ).forEach((v) -> {
-            tableModel.insertRow(tableModel.getRowCount(), v);
+            measureTableModel.insertRow(measureTableModel.getRowCount(), v);
         }
         );
 
-        //Offers
+        //Offers 
         DefaultTableModel offerTableModel = (DefaultTableModel) panelProductsAdmin.getTbl_offer().getModel();
         offerTableModel.setRowCount(0);
 
@@ -313,81 +280,88 @@ public class Administration implements ActionController {
         );
 
         //Restorations
+        DefaultTableModel restorationTableModel = (DefaultTableModel) panelProductsAdmin.getTbl_restoration().getModel();
+        restorationTableModel.setRowCount(0);
+
+        product.getRestorations().stream().map((restoration) -> {
+            Vector v = new Vector();
+            v.add(restorationTableModel.getRowCount() + 1);
+            v.add(String.valueOf(restoration.getId()));
+            v.add(restoration.getDescription());
+            v.add(restoration.getPeak());
+            v.add(restoration.getMidpoint());
+            v.add(restoration.getLowpoint());
+            v.add(restoration.getMeasure().getDescription());
+            v.add(restoration.getStore().getDescription());
+            v.add(false);
+            return v;
+        }
+        ).forEach((v) -> {
+            restorationTableModel.insertRow(restorationTableModel.getRowCount(), v);
+        }
+        );
+
         //Stocks
+        DefaultTableModel stockTableModel = (DefaultTableModel) panelProductsAdmin.getTbl_stock().getModel();
+        stockTableModel.setRowCount(0);
+
+        product.getStocks().stream().map((stock) -> {
+            Vector v = new Vector();
+            v.add(restorationTableModel.getRowCount() + 1);
+            v.add(String.valueOf(stock.getId()));
+            v.add(stock.getDescription());
+            v.add(stock.getQuantity());
+            v.add(stock.getStore().getDescription());
+            v.add(stock.getMeasure().getDescription());
+
+            v.add(false);
+            return v;
+        }
+        ).forEach((v) -> {
+            stockTableModel.insertRow(stockTableModel.getRowCount(), v);
+        }
+        );
+
         return Boolean.TRUE;
 
     }
 
     private boolean deleteProduct(PanelProductsAdmin panelProductsAdmin) {
-        String code = panelProductsAdmin.getTxf_codeProduct().getText();
-        ProductOperation productOperation = ProductOperation.getInstance();
-        Product product = productOperation.Find(new Product(code, 1));
+        if (panelProductsAdmin.getLbl_idProduct().getText().trim().length() > 0) {
+            String code = panelProductsAdmin.getTxf_codeProduct().getText();
+            ProductOperation productOperation = ProductOperation.getInstance();
+            Product product = productOperation.Find(new Product(code, 1));
 
-        //DUplicate code .
-        
-        Set<ProductMeasure> productMeasuresAux = new HashSet<ProductMeasure>();
-        Set<Offer> productOffersAux = new HashSet<Offer>();
-        Set<Restoration> productRestorationsAux = new HashSet<Restoration>();
-        Set<Stock> productStocksAux = new HashSet<Stock>();
+            //Duplicate code
+            Set<ProductMeasure> productMeasuresAux = getListAux(product.getProductMeasures());
+            Set<Offer> productOffersAux = getListAux(product.getOffers());
+            Set<Restoration> productRestorationsAux = getListAux(product.getRestorations());
+            Set<Stock> productStocksAux = getListAux(product.getStocks());
 
-        product.getProductMeasures().stream().forEach((productMeasure) -> {
-            productMeasuresAux.add(productMeasure);
-        });
-        product.setProductMeasures(null);
+            product.setProductMeasures(null);
+            product.setOffers(null);
+            product.setRestorations(null);
+            product.setStocks(null);
 
-        product.getOffers().stream().forEach((offer) -> {
-            productOffersAux.add(offer);
-        });
-        product.setOffers(null);
-        
-        
-        product.getRestorations().stream().forEach((restoration) -> {
-            productRestorationsAux.add(restoration);
-        });
-        product.setRestorations(null);
-        
-        product.getStocks().stream().forEach((stock) -> {
-            productStocksAux.add(stock);
-        });
-        product.setStocks(null);
-         
-        productOperation.Delete(product);
+            productOperation.Delete(product);
 
-        productMeasuresAux.stream().forEach((obj) -> {
-            productOperation.Delete(obj);
-        });
+            this.deleteListAux(productMeasuresAux);
+            this.deleteListAux(productOffersAux);
+            this.deleteListAux(productRestorationsAux);
+            this.deleteListAux(productStocksAux);
 
-        productOffersAux.stream().forEach((obj) -> {
-            productOperation.Delete(obj);
-        });
-        
-        productRestorationsAux.stream().forEach((obj) -> {
-            productOperation.Delete(obj);
-        });
+            JOptionPane.showMessageDialog(null, Message.Delete);
 
-        productStocksAux.stream().forEach((obj) -> {
-            productOperation.Delete(obj);
-        });
+            //Reload panel
+            Frame.reloadPanel();
+            panelProductsAdmin.repaint();
 
-        productRestorationsAux.stream().forEach((obj) -> {
-            productOperation.Delete(obj);
-        });
-        
-        JOptionPane.showMessageDialog(null, Message.Delete);
-
-        //Reload panel
-        Frame.reloadPanel();
-        panelProductsAdmin.repaint();
-
+        } else {
+            JOptionPane.showMessageDialog(null,
+                Message.FirstSearchProduct, "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
         return Boolean.TRUE;
 
-    }
-
-    private Boolean method(List<Object> list) {
-        list.stream().forEach((pm) -> {
-            ProductOperation.getInstance().Delete(pm);
-        });
-        return Boolean.TRUE;
     }
 
     // Category,Store,Price,Measure.
@@ -466,15 +440,23 @@ public class Administration implements ActionController {
         switch (panelName) {
 
             case Category:
+                //Clean list and reset
+                MapDb.setCategoryList(null);
                 map = MapDb.getCategoryList();
                 break;
             case Store:
+                //Clean list and reset
+                MapDb.setStoreList(null);
                 map = MapDb.getStoreList();
                 break;
             case Measure:
+                //Clean list and reset
+                MapDb.setMeasureList(null);
                 map = MapDb.getMeasureList();
                 break;
             case Price:
+                //Clean list and reset
+                MapDb.setPriceList(null);
                 map = MapDb.getPriceList();
                 break;
         }
@@ -493,19 +475,113 @@ public class Administration implements ActionController {
     }
 
     private Boolean productListAndAdvancedSearch(JPanel panel) {
-        /*
-         javax.swing.JLayeredPane layeredPane = (javax.swing.JLayeredPane) panel.getParent().getParent().getParent().getParent();
-         IntFrameProductSearch intFrameProductSearch = new IntFrameProductSearch(layeredPane);
-         layeredPane.add(intFrameProductSearch);
-         */
+
+        javax.swing.JLayeredPane layeredPane = (javax.swing.JLayeredPane) panel.getParent().getParent().getParent().getParent();
+        IntFrameProductSearch intFrameProductSearch = new IntFrameProductSearch(layeredPane);
+        layeredPane.add(intFrameProductSearch);
 
         //In inFrameProductSearch verify wich is the active panel for operate . Could do it if see the TreePath
         return Boolean.TRUE;
     }
 
+    private List getListOfTable(JTable table) {
+        //Measure,Offer,Restorations,Stock
+        int indexCod = table.getColumnModel().getColumnIndex("Cod");
+        int indexMeasure = table.getColumnModel().getColumnIndex("Medida");
+
+        int indexDesc;
+        int indexQuantity;
+        int indexStore;
+
+        int indexEquivalent;
+
+        int indexPeak;
+        int indexMidPoint;
+        int indexLowPoint;
+
+        int indexDiscOffer;
+
+        List<ProdRelEntity> list = new ArrayList<ProdRelEntity>();
+        for (int i = 0; i < table.getRowCount(); i++) {
+
+            switch (table.getName()) {
+                case TableRules:
+                    indexEquivalent = table.getColumnModel().getColumnIndex("Equivalente");
+                    list.add(new ProductMeasure(
+                        nifax.control.util.Number.stringToLong(table.getValueAt(i, indexCod).toString()),
+                        Double.parseDouble(table.getValueAt(i, indexEquivalent).toString()),
+                        MapDb.getMeasureList().get(table.getValueAt(i, indexMeasure).toString()))
+                    );
+                    break;
+                case TableOffers:
+                    indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                    indexQuantity = table.getColumnModel().getColumnIndex("Cantidad");
+                    indexDiscOffer = table.getColumnModel().getColumnIndex("Descuento");
+
+                    list.add(new Offer(
+                        nifax.control.util.Number.stringToLong(table.getValueAt(i, indexCod).toString()),
+                        table.getValueAt(i, indexDesc).toString(),
+                        Double.parseDouble(table.getValueAt(i, indexDiscOffer).toString()),
+                        Double.parseDouble(table.getValueAt(i, indexQuantity).toString()),
+                        MapDb.getMeasureList().get(table.getValueAt(i, indexMeasure).toString()))
+                    );
+                    break;
+                case TableRestorations:
+                    indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                    indexStore = table.getColumnModel().getColumnIndex("Deposito");
+
+                    indexPeak = table.getColumnModel().getColumnIndex("Punto Max");
+                    indexMidPoint = table.getColumnModel().getColumnIndex("Punto Rep");
+                    indexLowPoint = table.getColumnModel().getColumnIndex("Punto Min");
+
+                    list.add(new Restoration(
+                        nifax.control.util.Number.stringToLong(table.getValueAt(i, indexCod).toString()),
+                        table.getValueAt(i, indexDesc).toString(),
+                        Double.parseDouble(table.getValueAt(i, indexPeak).toString()),
+                        Double.parseDouble(table.getValueAt(i, indexMidPoint).toString()),
+                        Double.parseDouble(table.getValueAt(i, indexLowPoint).toString()),
+                        MapDb.getMeasureList().get(table.getValueAt(i, indexMeasure).toString()),
+                        MapDb.getStoreList().get(table.getValueAt(i, indexStore).toString())));
+                    break;
+                case TableStocks:
+                    indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                    indexStore = table.getColumnModel().getColumnIndex("Deposito");
+                    indexQuantity = table.getColumnModel().getColumnIndex("Cantidad");
+
+                    list.add(new Stock(
+                        nifax.control.util.Number.stringToLong(table.getValueAt(i, indexCod).toString()),
+                        table.getValueAt(i, indexDesc).toString(),
+                        Double.parseDouble(table.getValueAt(i, indexQuantity).toString()),
+                        MapDb.getMeasureList().get(table.getValueAt(i, indexMeasure).toString()),
+                        MapDb.getStoreList().get(table.getValueAt(i, indexStore).toString()))
+                    );
+                    break;
+
+            }
+
+        }
+        return list;
+
+    }
+
+    private Set getListAux(Set list) {
+        Set productListAux = new HashSet();
+        list.stream().forEach((obj) -> {
+            productListAux.add(obj);
+        });
+        return productListAux;
+    }
+
+    private Boolean deleteListAux(Set list) {
+        list.stream().forEach((obj) -> {
+            HQLOperation.getInstance().Delete(obj);
+        });
+        return Boolean.TRUE;
+    }
+
     //Util.
-    private void fillTable(Map<String, EntityModel> list, JTable table) {
-        list.entrySet().stream().map((entry) -> entry.getValue()).forEach((EntityModel obj) -> {
+    private void fillTable(Map<String, SimpleEntity> list, JTable table) {
+        list.entrySet().stream().map((entry) -> entry.getValue()).forEach((SimpleEntity obj) -> {
             DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
             Vector v = new Vector();
 

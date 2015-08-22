@@ -8,13 +8,15 @@ public class Message {
 
     //Exception's messages
     public static final String ConstraintViolationException = "No se puede eliminar ya que existen otros elementos que usan este valor";
-    public static final String ConstraintViolationExceptionTitle = "Relacion entre elementos";
+    public static final String ConstraintViolationExceptionTitle = "Excepcion - Relacion entre elementos";
 
     public static final String NumberFormatException = "Elementos ingresados incorrectamente";
-    public static final String NumberFormatExceptionTitle = "Formato de numeros";
+    public static final String NumberFormatExceptionTitle = "Excepcion - Formato de numeros";
 
     public static final String NullPointerException = "No se cuenta con todos los elementos necesarios";
-    public static final String NullPointerExceptionTitle = "Elementos nulos";
+    public static final String NullPointerExceptionTitle = "Excepcion - Elementos nulos";
+
+    public static final String ClassCastExceptionTitle = "Excepcion - Casting de elementos ";
 
     //Failure's messages
     public static final String FailuredOperation = "Operacion fallida";
@@ -25,6 +27,7 @@ public class Message {
     public static final String Edit = "Elemento editado correctamente";
     public static final String Delete = "Elemento eliminado correctamente";
 
+    public static final String Warning = "Advertencia";
     //Dialog's messages
     //For product's search in ticket
     public static final String DialogProductNotFound = "Producto no encontrado";
@@ -42,6 +45,9 @@ public class Message {
 
     //Extras messages
     public static final String MeasureAlreadyLoaded = "Este tipo de medida ya se encuentra agregado";
+    public static final String StoreAlreadyLoaded = "Este deposito ya se encuentra agregado";
+    public static final String ProductNotHasRule = "El producto no tiene cargado una regla para esta medida";
+    public static final String FirstSearchProduct = "Primero deberia buscar el producto";
 
     //Short descriptions
     public static String ShorDescriptionSave = "Presionando este boton guardara el elemento";
@@ -51,5 +57,7 @@ public class Message {
     public static String ShorDescriptionListGral = "Presionando este boton se listaran los elementos en la tabla derecha";
     public static String ShorDescriptionEmit = "Presionando este boton se emitira el documento especificado";
     public static String ShorDescriptionGenerate = "Presionando este boton se generara el documento especificado";
+    public static String ShorDescriptionPlus = "Presionando este boton se generara agregara elemento a tabla";
+    public static String ShorDescriptionLess = "Presionando este boton se eliminara el elemento seleccionado en la tabla";
 ;
 }

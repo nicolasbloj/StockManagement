@@ -19,7 +19,7 @@ import javax.persistence.*;
             ),
         }
 )
-public class Measure extends EntityModel implements Serializable {
+public class Measure extends SimpleEntity implements Serializable {
 
     protected Measure() {
     }

@@ -12,13 +12,23 @@ import nifax.control.controller.CodeGenerator;
  */
 @Entity
 @Table(name = "PRODUCT")
-public class Product implements Serializable {
+@AttributeOverrides(
+        {
+            @AttributeOverride(
+                    name = "id", column = @Column(name = "product_id")
+            ),
+            @AttributeOverride(
+                    name = "description", column = @Column(name = "description")
+            ),
+        }
+)
+public class Product extends SimpleEntity implements Serializable {
 
     protected Product() {
     }
-
+    
     public Product(Long id) {
-        this.id = id;
+        super.id = id;
     }
 
     public Product(String description, double cost, Category categoryProduct, Iva iva,Boolean active) {
@@ -41,9 +51,7 @@ public class Product implements Serializable {
         this.active=active;
         this.id = id;
         this.code = code;
-        //CodeGenerator codeGenerator = new CodeGenerator(categoryProduct.getDescription());
-        //code = codeGenerator.createProductCode(Integer.parseInt(id.toString()));
-
+        
     }
 
     public Product(String str, int i) {
@@ -55,12 +63,6 @@ public class Product implements Serializable {
         }
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "product_id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "description")
-    private String description;
     @Column(name = "code")
     private String code;
     @Column(name = "cost")
@@ -89,18 +91,9 @@ public class Product implements Serializable {
     @JoinColumn(name = "product_id")
     private Set<Restoration> restorations;
 
-    
     @Column(name="active")
     private Boolean active;
     
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public double getCost() {
         return cost;
     }
@@ -145,7 +138,6 @@ public class Product implements Serializable {
         this.restorations = restorations;
     }
 
-    
     public String getCode() {
         return code;
     }

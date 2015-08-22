@@ -65,6 +65,26 @@ public final class MapDb {
         return MapDb.ivaList;
     }
 
+    public static void setPriceList(Map<String, Price> priceList) {
+        MapDb.priceList = priceList;
+    }
+
+    public static void setStoreList(Map<String, Store> storeList) {
+        MapDb.storeList = storeList;
+    }
+
+    public static void setMeasureList(Map<String, Measure> measureList) {
+        MapDb.measureList = measureList;
+    }
+
+    public static void setCategoryList(Map<String, Category> categoryList) {
+        MapDb.categoryList = categoryList;
+    }
+
+    public static void setIvaList(Map<Double, Iva> ivaList) {
+        MapDb.ivaList = ivaList;
+    }
+    
     public static void addCategory(Category category) {
         if (MapDb.categoryList != null) {
             MapDb.categoryList.put(category.getDescription(), category);

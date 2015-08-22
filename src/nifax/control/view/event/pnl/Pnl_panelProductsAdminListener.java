@@ -6,6 +6,7 @@ import javax.swing.event.AncestorEvent;
 import nifax.control.data.MapDb;
 import nifax.control.model.Iva;
 import nifax.control.model.Measure;
+import nifax.control.model.Store;
 import nifax.control.view.panel.PanelProductsAdmin;
 
 /**
@@ -29,6 +30,9 @@ public class Pnl_panelProductsAdminListener extends Pnl_Listener {
         Object[] StringMeasureList = measureList.keySet().toArray();
 
         panelProductsAdmin.getCbx_measure().setModel(new DefaultComboBoxModel(StringMeasureList));
+        panelProductsAdmin.getCbx_measureRestoration().setModel(new DefaultComboBoxModel(StringMeasureList));
+        panelProductsAdmin.getCbx_measureStock().setModel(new DefaultComboBoxModel(StringMeasureList));
+        
         //In offer panel.
         panelProductsAdmin.getCbx_measureOffer().setModel(new DefaultComboBoxModel(StringMeasureList));
         
@@ -38,6 +42,14 @@ public class Pnl_panelProductsAdminListener extends Pnl_Listener {
         Object[] StringIvaList = ivaList.keySet().toArray();
 
         panelProductsAdmin.getCbx_iva().setModel(new DefaultComboBoxModel(StringIvaList));
+        
+        //Cbx Store 
+        Map<String, Store> storeList = MapDb.getStoreList();
+
+        Object[] StringStoreList = storeList.keySet().toArray();
+
+        panelProductsAdmin.getCbx_storeStock().setModel(new DefaultComboBoxModel(StringStoreList));
+        panelProductsAdmin.getCbx_storeRestoration().setModel(new DefaultComboBoxModel(StringStoreList));
         
         
         

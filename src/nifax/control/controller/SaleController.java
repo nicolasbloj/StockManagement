@@ -1,7 +1,5 @@
 package nifax.control.controller;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
@@ -14,7 +12,6 @@ import nifax.control.model.Product;
 import nifax.control.model.ProductMeasure;
 import nifax.control.model.Stock;
 import nifax.control.model.Store;
-import nifax.control.model.modeler.OfferOperation;
 import nifax.control.model.modeler.StockOperation;
 import nifax.control.util.Number;
 import nifax.control.view.panel.PanelSalesTicket;

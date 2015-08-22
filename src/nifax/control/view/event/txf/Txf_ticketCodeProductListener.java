@@ -41,13 +41,16 @@ public class Txf_ticketCodeProductListener extends Txf_Listener {
             final ProductOperation productOperation = ProductOperation.getInstance();
             Product product = productOperation.Find(parcialProd);
 
-            if (product.getActive()) {
-                if (!saleController.SaleProduct(product)) {
-                    JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+            if (product != null) {
+                if (product.getActive()) {
+                    if (!saleController.SaleProduct(product)) {
+                        JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, Message.DialogProductNotActive, Message.DialogProductNotActiveTitle, JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, Message.DialogProductNotActive, Message.DialogProductNotActiveTitle, JOptionPane.ERROR_MESSAGE);
-            }
+            }        JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+
         }
     }
 }

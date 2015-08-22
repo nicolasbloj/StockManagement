@@ -2,7 +2,7 @@ package nifax.control.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
+
 
 /**
  *
@@ -10,45 +10,52 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "OFFER")
-public class Offer implements Serializable {
+@AttributeOverrides(
+    {
+        @AttributeOverride(
+            name = "id", column = @Column(name = "offer_id")
+        ),
+        @AttributeOverride(
+            name = "description", column = @Column(name = "description")
+        ),
+        @AttributeOverride(
+            name = "product_id", column = @Column(name = "product_id")
+        ),
+        @AttributeOverride(
+            name = "measure_id", column = @Column(name = "measure_id")
+        )
+    }
+)
+public class Offer extends ProdRelEntity implements Serializable {
 
-    protected Offer() {
+    public Offer() {
+    }
+
+    public Offer(Long id) {
+        super(id);
     }
 
     public Offer(String description, double discount, double quantity,
         Measure measure) {
+        super.description = description;
+        this.discount = discount;
+        this.quantity = quantity;
+        super.measure = measure;
+    }
+
+    public Offer(Long id, String description, double discount, double quantity,
+        Measure measure) {
+        super.id = id;
         this.description = description;
         this.discount = discount;
         this.quantity = quantity;
-        this.measure = measure;
+        super.measure = measure;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "offer_id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "description")
-    private String description;
     @Column(name = "discount")
     private double discount;
     @Column(name = "quantity")
     private double quantity;
-    @JoinColumn(name = "measure_id")
-    @OneToOne
-    private Measure measure;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id", updatable = false, insertable = false)
-    private Product product;
-
-    
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 
     public double getDiscount() {
         return discount;
@@ -57,18 +64,5 @@ public class Offer implements Serializable {
     public double getQuantity() {
         return quantity;
     }
-
-    public Measure getMeasure() {
-        return measure;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-    
 
 }

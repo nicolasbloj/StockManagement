@@ -11,26 +11,26 @@ import javax.persistence.MappedSuperclass;
  * @author NB
  */
 @MappedSuperclass
-public class EntityModel {
+public class SimpleEntity {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    private Long id;
+    protected Long id;
     @Column(name = "description")
-    private String description;
+    protected String description;
 
-    public EntityModel(String description) {
+    public SimpleEntity(String description) {
         this.description = description.toUpperCase();
     }
 
-    public EntityModel(Long id) {
+    public SimpleEntity(Long id) {
         this.id = id;
     }
 
-    protected EntityModel() {
+    protected SimpleEntity() {
     }
 
     public Long getId() {
