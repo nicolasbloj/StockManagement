@@ -19,7 +19,7 @@ import javax.persistence.*;
             ),
         }
 ) 
-public class Category extends EntityModel implements Serializable {
+public class Category extends SimpleEntity implements Serializable {
 
     protected Category() {
     }

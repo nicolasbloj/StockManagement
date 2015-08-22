@@ -19,7 +19,7 @@ import javax.persistence.*;
             ),
         }
 )
-public class Price extends EntityModel implements Serializable {
+public class Price extends SimpleEntity implements Serializable {
 
     protected Price() {
     }
