@@ -12,7 +12,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import nifax.control.JRDataSource.StockDataSource;
+import nifax.control.report.jrdatasource.StockDataSource;
 import nifax.control.model.Stock;
 import nifax.control.model.modeler.StockOperation;
 import nifax.control.util.Path;
@@ -27,7 +27,6 @@ public class Reporting implements ActionController {
 
     private static Reporting instance = null;
 
-    //Constants
     public static final int GENERATE = 0;
 
     //Panels name - Reports
@@ -54,28 +53,22 @@ public class Reporting implements ActionController {
     }
 
     private Boolean generate(JPanel panel, String panelName) {
-
         switch (panelName) {
-
             case ProductStock:
                 return generateReportProductStock((PanelReportProductStock) panel);
-
         }
         return Boolean.FALSE;
     }
 
     public Boolean generateReportProductStock(PanelReportProductStock panelReportProductStock) {
-
         StockOperation stockOperation = StockOperation.getInstance();
         List<Stock> list = stockOperation.getListByParameter("quantity", Double.parseDouble(panelReportProductStock.getTxf_StockMin().getText()));
         StockDataSource stockDataSource = new StockDataSource(list);
         return generateReport("ProductsStock", "Stock", stockDataSource);
-
     }
 
     private Boolean generateReport(String name, String title, JRDataSource dataSource) {
         StringBuilder stringBuilder = new StringBuilder();
-
         try {
             String absolutePath = new File("").getAbsolutePath();
             String path = stringBuilder.append(absolutePath).
@@ -83,7 +76,6 @@ public class Reporting implements ActionController {
                 append(name).
                 append(".jasper").
                 toString();
-
             JasperReport jasperReport;
             jasperReport = (JasperReport) JRLoader.loadObjectFromFile(path);
             JasperPrint jasperPrint;
@@ -95,7 +87,6 @@ public class Reporting implements ActionController {
 
             jasperViewer.setVisible(true);
             return Boolean.TRUE;
-
         } catch (JRException ex) {
             Logger.getLogger(Btn_reportAction.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
