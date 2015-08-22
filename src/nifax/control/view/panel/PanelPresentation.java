@@ -18,7 +18,6 @@ public class PanelPresentation extends Pnl{
 
         lbl_presentation = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 51, 51));
         setBorder(null);
 
         lbl_presentation.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N

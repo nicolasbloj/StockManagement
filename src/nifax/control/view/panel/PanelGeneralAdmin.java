@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import nifax.control.view.event.tbl.Tbl_Listener;
 import nifax.control.view.util.Pnl;
 import nifax.control.view.util.Tbp;
 
@@ -161,6 +162,7 @@ public class PanelGeneralAdmin extends Pnl {
         });
         tbl_gral.getTableHeader().setReorderingAllowed(false);
         scp_gral.setViewportView(tbl_gral);
+        tbl_gral.getTableHeader().addMouseListener(new Tbl_Listener(this.tbl_gral));
 
         javax.swing.GroupLayout pnl_loadGralLayout = new javax.swing.GroupLayout(pnl_loadGral);
         pnl_loadGral.setLayout(pnl_loadGralLayout);
