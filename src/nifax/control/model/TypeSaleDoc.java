@@ -2,7 +2,6 @@ package nifax.control.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  *
@@ -10,25 +9,22 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "TypeSaleDoc")
-public class TypeSaleDoc implements Serializable{
+@AttributeOverrides(
+    {
+        @AttributeOverride(
+            name = "id", column = @Column(name = "typeSaleDoc_id")
+        ),
+        @AttributeOverride(
+            name = "description", column = @Column(name = "description")
+        ),}
+)
+public class TypeSaleDoc extends SimpleEntity implements Serializable {
 
     protected TypeSaleDoc() {
     }
-    public TypeSaleDoc(String description) {
-         this.description = description;
-    }
-    
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "typeSaleDoc_id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "description")
-    private String description;
 
-    public Long getId() {
-        return id;
+    public TypeSaleDoc(String description) {
+        super(description);
     }
-    public String getDescription() {
-        return description;
-    }
+
 }

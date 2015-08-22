@@ -23,7 +23,7 @@ import javax.persistence.Table;
             ),
         }
 )
-public class Store extends EntityModel implements Serializable {
+public class Store extends SimpleEntity implements Serializable {
 
     protected Store() {
     }

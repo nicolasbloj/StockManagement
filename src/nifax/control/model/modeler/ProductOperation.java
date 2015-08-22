@@ -10,6 +10,7 @@ import nifax.control.model.Product;
 import nifax.control.data.IQueries;
 import nifax.control.model.Iva;
 import nifax.control.model.Offer;
+import nifax.control.model.ProdRelEntity;
 import nifax.control.model.ProductMeasure;
 import nifax.control.model.Restoration;
 import nifax.control.model.Stock;
@@ -48,54 +49,20 @@ public class ProductOperation extends HQLOperation implements IQueries {
                 product = new Product(productDesc, cost, category, iva, active);
             }
 
-            //dubplicate code : 
             //measures
-            Set<ProductMeasure> productMeasures = new HashSet<>();
-            if (measures != null) {
-                measures.stream().map((ProductMeasure productMeasure) -> {
-                    productMeasure.setProduct(product);
-                    return productMeasure;
-                }).forEach((productMeasure) -> {
-                    productMeasures.add(productMeasure);
-                });
-            }
+            Set<ProductMeasure> productMeasures = (Set<ProductMeasure>) this.generateSet(measures, product);
             product.setProductMeasures(productMeasures);
 
             //offers
-            Set<Offer> productOffers = new HashSet<>();
-
-            if (offers != null) {
-                offers.stream().map((offer) -> {
-                    offer.setProduct(product);
-                    return offer;
-                }).forEach((offer) -> {
-                    productOffers.add(offer);
-                });
-            }
+            Set<Offer> productOffers = (Set<Offer>) this.generateSet(offers, product);
             product.setOffers(productOffers);
 
             //stocks
-            Set<Stock> productStocks = new HashSet<>();
-            if (stocks != null) {
-                stocks.stream().map((stock) -> {
-                    stock.setProduct(product);
-                    return stock;
-                }).forEach((stock) -> {
-                    productStocks.add(stock);
-                });
-            }
+            Set<Stock> productStocks = (Set<Stock>) this.generateSet(stocks, product);
             product.setStocks(productStocks);
 
             //restorations
-            Set<Restoration> productRestorations = new HashSet<>();
-            if (restorations != null) {
-                restorations.stream().map((restoration) -> {
-                    restoration.setProduct(product);
-                    return restoration;
-                }).forEach((restoration) -> {
-                    productRestorations.add(restoration);
-                });
-            }
+            Set<Restoration> productRestorations = (Set<Restoration>) this.generateSet(restorations, product);
             product.setRestorations(productRestorations);
 
             if (update) {
@@ -120,6 +87,21 @@ public class ProductOperation extends HQLOperation implements IQueries {
             map.put(ls.getDescription(), ls);
         });
         return map;
+    }
+
+    private Set generateSet(List list, Product product) {
+        List<ProdRelEntity> list1 = list;
+        Set<ProdRelEntity> listProdRelEntity = new HashSet<>();
+        if (list1 != null) {
+            list1.stream().map((obj) -> {
+                obj.setProduct(product);
+                return obj;
+            }).forEach((obj) -> {
+                listProdRelEntity.add(obj);
+            });
+        }
+        return listProdRelEntity;
+
     }
 
 }
