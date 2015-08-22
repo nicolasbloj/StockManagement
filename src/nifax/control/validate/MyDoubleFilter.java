@@ -14,7 +14,7 @@ public class MyDoubleFilter extends MyNumberFilter {
     @Override
     public boolean test(String text) {
         try {
-            Integer.parseInt(text);
+            Double.parseDouble(text);
             return true;
         } catch (NumberFormatException e) {
         return false;

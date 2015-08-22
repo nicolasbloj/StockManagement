@@ -8,6 +8,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
+import nifax.control.validate.MyAlphaNumericFilter;
+import nifax.control.validate.MyDoubleFilter;
 import nifax.control.view.event.tbl.Tbl_Listener;
 import nifax.control.view.util.Pnl;
 import nifax.control.view.util.Tbp;
@@ -100,11 +103,14 @@ public class PanelGeneralAdmin extends Pnl {
         pnl_principal.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
         txf_profitGral.setVisible(false);
+        ((PlainDocument) txf_profitGral.getDocument()).setDocumentFilter(new MyDoubleFilter());
 
         lbl_profitGral.setVisible(false);
         lbl_profitGral.setText("Rentabilidad :");
 
         lbl_descGral.setText("Descripcion : ");
+
+        ((PlainDocument) txf_descGral.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
 
         javax.swing.GroupLayout pnl_principalLayout = new javax.swing.GroupLayout(pnl_principal);
         pnl_principal.setLayout(pnl_principalLayout);
@@ -188,7 +194,6 @@ public class PanelGeneralAdmin extends Pnl {
         tbp_gral.addTab("Gral", pnl_loadGral);
 
         pnl_menuGral.setBackground(new java.awt.Color(51, 51, 51));
-        pnl_menuGral.setBorder(null);
 
         btn_save.setText("Guardar");
 

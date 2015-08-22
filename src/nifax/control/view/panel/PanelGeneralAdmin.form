@@ -127,7 +127,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="txf_profitGral">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txf_profitGral.setVisible(false);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txf_profitGral.setVisible(false);&#xa;((PlainDocument) txf_profitGral.getDocument()).setDocumentFilter(new MyDoubleFilter());"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_profitGral">
@@ -144,6 +144,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_descGral">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_descGral.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -206,9 +209,6 @@
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
         </Property>
       </Properties>
 

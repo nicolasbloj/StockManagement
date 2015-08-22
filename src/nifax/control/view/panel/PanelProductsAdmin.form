@@ -82,7 +82,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnl_principalProduct" pref="487" max="32767" attributes="0"/>
+                          <Component id="pnl_principalProduct" pref="493" max="32767" attributes="0"/>
                           <Component id="pnl_rulesProduct" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -168,9 +168,9 @@
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="pnl_codesProduct" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnl_codesProduct1" min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="pnl_codesProduct1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="pnl_stateProduct" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="pnl_stateProduct" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -178,6 +178,9 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="txf_cost">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_cost.getDocument()).setDocumentFilter(new MyDoubleFilter());"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_cost">
                   <Properties>
@@ -190,6 +193,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_descProduct">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_descProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_category">
                   <Properties>
@@ -267,7 +273,7 @@
                                       <Component id="txf_codeAlternative" min="-2" pref="208" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -317,6 +323,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_codeProduct">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_codeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_idProduct">
                       <Properties>
@@ -400,7 +409,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="chx_active" max="32767" attributes="0"/>
+                          <Component id="chx_active" pref="37" max="32767" attributes="0"/>
                           <Component id="lbl_active" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -517,6 +526,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_equivalent">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_equivalent.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_measure">
                   <Properties>
@@ -808,6 +820,9 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txf_descOffer">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_descOffer.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbx_measureOffer">
                       <Properties>
@@ -879,6 +894,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_quantityOffer">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_quantityOffer.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_quantityOffer">
                       <Properties>
@@ -891,6 +909,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_discount">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_discount.getDocument()).setDocumentFilter(new MyDoubleFilter());"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1229,6 +1250,9 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txf_descRestoration">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_descRestoration.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbx_measureRestoration">
                       <Properties>
@@ -1302,6 +1326,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_lowPoint">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_lowPoint.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_lowPoint">
                       <Properties>
@@ -1314,8 +1341,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_midPoint">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_midPoint.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_peak">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_peak.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_peak">
                       <Properties>
@@ -1654,6 +1687,9 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txf_descStock">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_descStock.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbx_measureStock">
                       <Properties>
@@ -1727,6 +1763,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txf_quantityStock">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_quantityStock.getDocument()).setDocumentFilter(new MyIntFilter());"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_quantityStock">
                       <Properties>
@@ -1887,9 +1926,6 @@
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
         </Property>
       </Properties>
 

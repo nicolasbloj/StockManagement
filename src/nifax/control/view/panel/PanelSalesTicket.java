@@ -8,8 +8,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
 import nifax.control.controller.Administration;
 import nifax.control.controller.Operation;
+import nifax.control.validate.MyAlphaNumericFilter;
+import nifax.control.validate.MyIntFilter;
 import nifax.control.view.event.btn.Btn_adminAction;
 import nifax.control.view.event.pnl.Pnl_panelSalesTicketListener;
 import nifax.control.view.event.txf.Txf_ticketCodeProductListener;
@@ -78,9 +81,11 @@ public class PanelSalesTicket extends Pnl{
         lbl_ticketDescProduct.setText("Descripcion :");
 
         txf_ticketCodeProduct.addKeyListener(new Txf_ticketCodeProductListener(this));
+        ((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
 
         lbl_ticketQuantityProduct.setText("Cantidad : ");
 
+        ((PlainDocument) txf_ticketQuantityProduct.getDocument()).setDocumentFilter(new MyIntFilter());
         txf_ticketQuantityProduct.setText("1");
 
         cbx_ticketDescProduct.setEditable(true);
@@ -350,7 +355,6 @@ public class PanelSalesTicket extends Pnl{
         tbp_containerTicket.addTab("Ticket ", pnl_ticket);
 
         pnl_menuTicket.setBackground(new java.awt.Color(51, 51, 51));
-        pnl_menuTicket.setBorder(null);
 
         btn_emitTicket.setText("Emitir");
 

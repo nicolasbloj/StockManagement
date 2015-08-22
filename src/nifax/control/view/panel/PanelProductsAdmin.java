@@ -9,7 +9,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
 import nifax.control.controller.PlusLess;
+import nifax.control.validate.MyAlphaNumericFilter;
+import nifax.control.validate.MyDoubleFilter;
+import nifax.control.validate.MyIntFilter;
 import nifax.control.view.cbx.Cbx_CategoryAction;
 import nifax.control.view.event.pnl.Pnl_panelProductsAdminListener;
 import nifax.control.view.event.tbl.Tbl_Listener;
@@ -637,9 +641,13 @@ public class PanelProductsAdmin extends Pnl {
         pnl_principalProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
         pnl_principalProduct.setPreferredSize(new java.awt.Dimension(460, 360));
 
+        ((PlainDocument) txf_cost.getDocument()).setDocumentFilter(new MyDoubleFilter());
+
         lbl_cost.setText("Costo : ");
 
         lbl_descProduct.setText("Descripcion :");
+
+        ((PlainDocument) txf_descProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
 
         lbl_category.setText("Categoria :");
 
@@ -672,6 +680,8 @@ public class PanelProductsAdmin extends Pnl {
 
         txf_codeAlternative.setEnabled(false);
 
+        ((PlainDocument) txf_codeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
+
         lbl_idProduct.setForeground(new java.awt.Color(0, 0, 0));
         lbl_idProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_idProduct.setEnabled(false);
@@ -690,7 +700,7 @@ public class PanelProductsAdmin extends Pnl {
                         .addComponent(lbl_codeAlternative, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txf_codeAlternative, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(0, 74, Short.MAX_VALUE))
             .addGroup(pnl_codesProductLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_idProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -756,7 +766,7 @@ public class PanelProductsAdmin extends Pnl {
         );
         pnl_stateProductLayout.setVerticalGroup(
             pnl_stateProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(chx_active, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(chx_active, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
             .addComponent(lbl_active, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -815,15 +825,17 @@ public class PanelProductsAdmin extends Pnl {
                 .addGap(6, 6, 6)
                 .addComponent(pnl_codesProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_codesProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_codesProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(pnl_stateProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_stateProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_rulesProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Reglas de Cantidad"));
 
         lbl_units.setText("unidades");
+
+        ((PlainDocument) txf_equivalent.getDocument()).setDocumentFilter(new MyIntFilter());
 
         btn_searchMeasure.setText("...");
         btn_searchMeasure.setEnabled(false);
@@ -947,7 +959,7 @@ public class PanelProductsAdmin extends Pnl {
             .addGroup(pnl_productLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_principalProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 487, Short.MAX_VALUE)
+                    .addComponent(pnl_principalProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                     .addComponent(pnl_rulesProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -958,6 +970,8 @@ public class PanelProductsAdmin extends Pnl {
         pnl_principalOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 
         pnl_branchesOffer.setBorder(javax.swing.BorderFactory.createTitledBorder("Por sucursal"));
+
+        ((PlainDocument) txf_descOffer.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
 
         lbl_measureOffer.setText("Medida : ");
 
@@ -982,9 +996,13 @@ public class PanelProductsAdmin extends Pnl {
         lbl_branchOffer.setText("Sucursal : ");
         lbl_branchOffer.setEnabled(false);
 
+        ((PlainDocument) txf_quantityOffer.getDocument()).setDocumentFilter(new MyIntFilter());
+
         lbl_quantityOffer.setText("Cantidad : ");
 
         lbl_discount2.setText("Descuento : ");
+
+        ((PlainDocument) txf_discount.getDocument()).setDocumentFilter(new MyDoubleFilter());
 
         javax.swing.GroupLayout pnl_branchesOfferLayout = new javax.swing.GroupLayout(pnl_branchesOffer);
         pnl_branchesOffer.setLayout(pnl_branchesOfferLayout);
@@ -1179,6 +1197,8 @@ public class PanelProductsAdmin extends Pnl {
 
         pnl_storesRestoration.setBorder(javax.swing.BorderFactory.createTitledBorder("Por deposito"));
 
+        ((PlainDocument) txf_descRestoration.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
+
         lbl_measureRestoration.setText("Medida : ");
 
         btn_searchMoneyRestoration.setText("...");
@@ -1201,9 +1221,15 @@ public class PanelProductsAdmin extends Pnl {
 
         lbl_storeRestoration.setText("Deposito ");
 
+        ((PlainDocument) txf_lowPoint.getDocument()).setDocumentFilter(new MyIntFilter());
+
         lbl_lowPoint.setText("Punto Min : ");
 
         lbl_midPoint.setText("Punto Rep  :");
+
+        ((PlainDocument) txf_midPoint.getDocument()).setDocumentFilter(new MyIntFilter());
+
+        ((PlainDocument) txf_peak.getDocument()).setDocumentFilter(new MyIntFilter());
 
         lbl_peak.setText("Punto Rep  :");
 
@@ -1405,6 +1431,8 @@ public class PanelProductsAdmin extends Pnl {
 
         pnl_storeStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Por deposito"));
 
+        ((PlainDocument) txf_descStock.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
+
         lbl_measureStock.setText("Medida : ");
 
         btn_searchMoneyStock.setText("...");
@@ -1426,6 +1454,8 @@ public class PanelProductsAdmin extends Pnl {
         lbl_descStock.setText("Descripcion :");
 
         lbl_storeStock.setText("Deposito :");
+
+        ((PlainDocument) txf_quantityStock.getDocument()).setDocumentFilter(new MyIntFilter());
 
         lbl_quantityStock.setText("Cantidad : ");
 
@@ -1609,7 +1639,6 @@ public class PanelProductsAdmin extends Pnl {
         tbp_containerProduct.addTab("Stock", pnl_stock);
 
         pnl_menuProduct.setBackground(new java.awt.Color(51, 51, 51));
-        pnl_menuProduct.setBorder(null);
 
         btn_save.setText("Guardar");
 

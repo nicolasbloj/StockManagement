@@ -2,7 +2,9 @@ package nifax.control.view.panel;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
 import nifax.control.controller.Reporting;
+import nifax.control.validate.MyIntFilter;
 import nifax.control.view.util.Pnl;
 import nifax.control.view.util.Tbp;
 
@@ -39,7 +41,6 @@ public class PanelReportProductStock extends Pnl {
         txf_stockMin = new javax.swing.JTextField();
 
         pnl_menuReportProductStock.setBackground(new java.awt.Color(51, 51, 51));
-        pnl_menuReportProductStock.setBorder(null);
 
         btn_generateReport.setText("Generar");
 
@@ -60,6 +61,8 @@ public class PanelReportProductStock extends Pnl {
         );
 
         lbl_stockMin.setText("Stock minimo");
+
+        ((PlainDocument) txf_stockMin.getDocument()).setDocumentFilter(new MyIntFilter());
 
         javax.swing.GroupLayout pnl_reportProductStockLayout = new javax.swing.GroupLayout(pnl_reportProductStock);
         pnl_reportProductStock.setLayout(pnl_reportProductStockLayout);
