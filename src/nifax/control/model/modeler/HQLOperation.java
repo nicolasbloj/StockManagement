@@ -132,7 +132,7 @@ public class HQLOperation implements IHQLOperation {
         StringBuilder sql = new StringBuilder();
         sql.append(String.format("select description from %s where %s like :searchKey group by description ", ATable, AField));
         return HQLSelect(sql.toString())
-            .setParameter("searchKey", "%" + ACondition + "%")
+            .setParameter("searchKey", ACondition + "%")
             .list();
     }
 

@@ -19,10 +19,10 @@ public class Cbx_CategoryAction extends Cbx_AutoCompleteSuggestionAction{
     @Override
     public void keyReleased(KeyEvent e) {
         db.clear();
-        List ls = HQLOperation.getInstance().SelectLike("Category", "Description", cbe.getItem().toString());
+        List ls = HQLOperation.getInstance().SelectLike("Category", "Description", cbe.getItem().toString().toUpperCase());
         ls.stream().forEach((l) -> {
             db.add((String) l);
-        });
-        getSuggestedWords(e);
+        });  
+        getSuggestedWords(e); 
     }
 }

@@ -14,6 +14,7 @@ import javax.swing.ComboBoxEditor;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import nifax.control.util.UpperCaseDocument;
 
 public class Cbx_AutoCompleteSuggestionAction extends AbstractListModel implements ComboBoxModel,
         KeyListener, ItemListener {
@@ -85,17 +86,18 @@ public class Cbx_AutoCompleteSuggestionAction extends AbstractListModel implemen
 
     @Override
     public void keyPressed(KeyEvent e) {
+        getSuggestedWords(e); 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public void getSuggestedWords(KeyEvent e) {
-        String str = cbe.getItem().toString();
-        JTextField jtf = (JTextField) cbe.getEditorComponent();
-        currPos = jtf.getCaretPosition();
+        String str = cbe.getItem().toString().toUpperCase();
+        JTextField jtf = (JTextField) cb.getEditor().getEditorComponent();
+        jtf.setDocument( new UpperCaseDocument() );
+        currPos = str.length();
         if (e.getKeyChar() == KeyEvent.CHAR_UNDEFINED) {
             if (e.getKeyCode() != KeyEvent.VK_ENTER) {
                 cbe.setItem(str);
@@ -115,5 +117,6 @@ public class Cbx_AutoCompleteSuggestionAction extends AbstractListModel implemen
         cbe.setItem(e.getItem().toString());
         cb.setSelectedItem(e.getItem());
     }
-
 }
+
+
