@@ -1,4 +1,4 @@
-package nifax.control.JRDataSource;
+package nifax.control.report.jrdatasource;
 
 import java.util.List;
 import net.sf.jasperreports.engine.JRDataSource;

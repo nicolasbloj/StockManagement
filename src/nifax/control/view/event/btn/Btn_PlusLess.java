@@ -1,53 +1,64 @@
 package nifax.control.view.event.btn;
 
 import java.awt.event.ActionEvent;
-import java.util.Vector;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
+import static javax.swing.Action.MNEMONIC_KEY;
+import static javax.swing.Action.SHORT_DESCRIPTION;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import nifax.control.util.Number;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+import nifax.control.controller.PlusLess;
 import nifax.control.util.Message;
-import nifax.control.util.Table;
-import nifax.control.view.panel.PanelProductsAdmin;
 
 /**
  *
  * @author NB
  */
-public class Btn_plusRule extends AbstractAction {
+public class Btn_PlusLess extends AbstractAction {
 
-    private final PanelProductsAdmin panelProductsAdmin;
+    private final int action;
+    private final JPanel panel;
 
-    public Btn_plusRule(PanelProductsAdmin panelProductsAdmin) {
-        this.panelProductsAdmin = panelProductsAdmin;
+    public Btn_PlusLess(JPanel panel, int action, String btnTitle) {
+        super(btnTitle);
+        this.panel = panel;
+        this.action = action;
+        DescAndKey(action);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            String measure = panelProductsAdmin.getCbx_measure().getSelectedItem().toString();
-            double equivalent = Double.parseDouble(panelProductsAdmin.getTxf_equivalent().getText());
-            if (!Table.InCellTable(measure, panelProductsAdmin.getTbl_rules(), "Medida")) {
+            JButton btn = (JButton) e.getSource();
+            String componentName = btn.getName();
+            if (componentName != null) {
+                if (!PlusLess.getInstance().operate(panel, componentName, action)) {
+                    JOptionPane.showMessageDialog(null, Message.FailuredOperation,
+                        Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
+                }
 
-                DefaultTableModel tableModel = (DefaultTableModel) panelProductsAdmin.getTbl_rules().getModel();
-
-                Vector vector = new Vector();
-                vector.add(tableModel.getRowCount() + 1);
-                vector.add("");
-                vector.add(measure);
-                vector.add(Double.parseDouble(Number.formateator.format(equivalent)));
-                vector.add(false);
-
-                tableModel.insertRow(tableModel.getRowCount(), vector);
-
-            } else {
-                JOptionPane.showMessageDialog(null,
-                    Message.MeasureAlreadyLoaded, "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, Message.NumberFormatException, Message.NumberFormatExceptionTitle, JOptionPane.ERROR_MESSAGE);
-
+        } catch (ClassCastException ex) {
+            JOptionPane.showMessageDialog(null, Message.FailuredOperation,
+                Message.ClassCastExceptionTitle, JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
+    private void DescAndKey(int action) {
+        String text = null;
+        switch (action) {
+            case PlusLess.PLUS:
+                text = Message.ShorDescriptionPlus;
+                putValue(MNEMONIC_KEY, KeyEvent.VK_PLUS);
+                break;
+            case PlusLess.LESS:
+                text = Message.ShorDescriptionLess;
+                putValue(MNEMONIC_KEY, KeyEvent.VK_LESS);
+                break;
+
+        }
+        putValue(SHORT_DESCRIPTION, text);
+    }
 }
