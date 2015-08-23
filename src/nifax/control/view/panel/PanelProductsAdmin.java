@@ -14,7 +14,7 @@ import nifax.control.controller.PlusLess;
 import nifax.control.validate.MyAlphaNumericFilter;
 import nifax.control.validate.MyDoubleFilter;
 import nifax.control.validate.MyIntFilter;
-import nifax.control.view.cbx.Cbx_CategoryAction;
+import nifax.control.view.event.cbx.Cbx_CategoryAction;
 import nifax.control.view.event.pnl.Pnl_panelProductsAdminListener;
 import nifax.control.view.event.tbl.Tbl_Listener;
 import nifax.control.view.util.Pnl;
@@ -655,6 +655,7 @@ public class PanelProductsAdmin extends Pnl {
         cbx_category.setModel(sbm);
         cbx_category.addItemListener(sbm);
         cbx_category.setEditable(true);
+        cbx_category.setNextFocusableComponent(txf_descProduct);
 
         lbl_money.setText("Moneda : ");
         lbl_money.setEnabled(false);

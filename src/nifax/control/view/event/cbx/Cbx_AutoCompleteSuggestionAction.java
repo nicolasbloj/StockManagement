@@ -1,4 +1,4 @@
-package nifax.control.view.cbx;
+package nifax.control.view.event.cbx;
 
 /**
  *
@@ -93,7 +93,7 @@ public class Cbx_AutoCompleteSuggestionAction extends AbstractListModel implemen
     public void keyReleased(KeyEvent e) {
     }
 
-    public void getSuggestedWords(KeyEvent e) {
+    public boolean getSuggestedWords(KeyEvent e) {
         String str = cbe.getItem().toString().toUpperCase();
         JTextField jtf = (JTextField) cb.getEditor().getEditorComponent();
         jtf.setDocument( new UpperCaseDocument() );
@@ -105,11 +105,13 @@ public class Cbx_AutoCompleteSuggestionAction extends AbstractListModel implemen
             }
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             cb.setSelectedIndex(cb.getSelectedIndex());
+            return true;
         } else {
             updateModel(cb.getEditor().getItem().toString());
             cbe.setItem(str);
             jtf.setCaretPosition(currPos);
         }
+        return false;
     }
 
     @Override

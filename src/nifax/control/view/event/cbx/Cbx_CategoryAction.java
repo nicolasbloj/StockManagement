@@ -1,4 +1,4 @@
-package nifax.control.view.cbx;
+package nifax.control.view.event.cbx;
 
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -19,10 +19,12 @@ public class Cbx_CategoryAction extends Cbx_AutoCompleteSuggestionAction{
     @Override
     public void keyReleased(KeyEvent e) {
         db.clear();
-        List ls = HQLOperation.getInstance().SelectLike("Category", "Description", cbe.getItem().toString().toUpperCase());
+        List ls = HQLOperation.getInstance().SelectLike("Category", "description", cbe.getItem().toString().toUpperCase());
         ls.stream().forEach((l) -> {
             db.add((String) l);
         });  
-        getSuggestedWords(e); 
+        boolean ret = getSuggestedWords(e); 
+        if (ret)
+            cb.transferFocus();
     }
 }
