@@ -5,6 +5,8 @@
  */
 package nifax.control.validate;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author faka
@@ -17,7 +19,8 @@ public class MyDoubleFilter extends MyNumberFilter {
             Double.parseDouble(text);
             return true;
         } catch (NumberFormatException e) {
-        return false;
+            Toolkit.getDefaultToolkit().beep();
+            return false;
         }
     }
 }

@@ -5,6 +5,7 @@
  */
 package nifax.control.validate;
 
+import java.awt.Toolkit;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 
@@ -19,10 +20,14 @@ public class MyAlphabeticFilter extends MyStringFilter{
         for (int n = string.length(); n > 0; n--) {//an inserted string may be more than a single character i.e a copy and paste of 'aaa123d', also we iterate from the back as super.XX implementation will put last insterted string first and so on thus 'aa123d' would be 'daa', but because we iterate from the back its 'aad' like we want
             char c = string.charAt(n - 1);//get a single character of the string
             if (Character.isAlphabetic(c) || c == ' ') {//if its an alphabetic character or white space
-                super.replace(fb, i, i1, String.valueOf(c).toUpperCase(), as);//allow update to take place for the given character
+                if(string.length()==1)
+                    super.replace(fb, i, i1, string.toUpperCase(), as);
             } else {
-                //it was not an alphabetic character or white space
+                Toolkit.getDefaultToolkit().beep();
             }
+        }
+        if(string.length()>1){
+            super.replace(fb, i, i1, string.toUpperCase(), as);
         }
     }
 
