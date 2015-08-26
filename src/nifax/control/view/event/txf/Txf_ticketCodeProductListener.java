@@ -49,7 +49,9 @@ public class Txf_ticketCodeProductListener extends Txf_Listener {
                 } else {
                     JOptionPane.showMessageDialog(null, Message.DialogProductNotActive, Message.DialogProductNotActiveTitle, JOptionPane.ERROR_MESSAGE);
                 }
-            }        JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+            }
 
         }
     }

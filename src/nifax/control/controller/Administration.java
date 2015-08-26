@@ -226,7 +226,6 @@ public class Administration implements ActionController {
         panelProductsAdmin.getCbx_category().setSelectedItem(product.getCategory().getDescription());
         panelProductsAdmin.getTxf_descProduct().setText(product.getDescription());
         panelProductsAdmin.getTxf_cost().setText(Double.toString(product.getCost()));
-        panelProductsAdmin.getTxf_codeProduct().setText(product.getCode());
         panelProductsAdmin.getCbx_iva().setSelectedItem(product.getIva().getIva());
         panelProductsAdmin.getChx_active().setSelected(product.getActive());
 
