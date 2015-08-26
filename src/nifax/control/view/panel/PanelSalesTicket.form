@@ -196,9 +196,15 @@
                 <Component class="javax.swing.JLabel" name="lbl_ticketDescProduct">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Descripcion :"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txf_ticketCodeProduct">
+                  <Properties>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txf_ticketQuantityProduct"/>
+                    </Property>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txf_ticketCodeProduct.addKeyListener(new Txf_ticketCodeProductListener(this));&#xa;((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
                   </AuxValues>
@@ -211,6 +217,9 @@
                 <Component class="javax.swing.JTextField" name="txf_ticketQuantityProduct">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="1"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txf_ticketCodeProduct"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((PlainDocument) txf_ticketQuantityProduct.getDocument()).setDocumentFilter(new MyIntFilter());"/>
@@ -222,6 +231,7 @@
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_ticketPriceProduct">

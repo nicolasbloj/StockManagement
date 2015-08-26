@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -200,13 +202,19 @@ public class Administration implements ActionController {
 
         Boolean active = panelProductsAdmin.getChx_active().isSelected();
 
-        if (ProductOperation.getInstance().AddOrUpdate(id, code, description, cost,
-            MapDb.getCategoryList().get(category), MapDb.getIvaList().get(iva), active, measures,
-            offers, stocks, restorations));
-        if (id.trim().length() > 0) {
-            JOptionPane.showMessageDialog(null, Message.Edit);
+        if (StringExistInCbx(panelProductsAdmin.getCbx_category(), category)) {
+            if (ProductOperation.getInstance().AddOrUpdate(id, code, description, cost,
+                MapDb.getCategoryList().get(category), MapDb.getIvaList().get(iva), active, measures,
+                offers, stocks, restorations));
+            if (id.trim().length() > 0) {
+                JOptionPane.showMessageDialog(null, Message.Edit);
+            } else {
+                JOptionPane.showMessageDialog(null, Message.Save);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, Message.Save);
+            JOptionPane.showMessageDialog(null,
+                Message.CategoryInvalid, Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
+            return Boolean.FALSE;
         }
 
         //Reload panel
@@ -223,6 +231,7 @@ public class Administration implements ActionController {
         Product product = ProductOperation.getInstance().Find(new Product(code, 1));
 
         panelProductsAdmin.getLbl_idProduct().setText(String.valueOf(product.getId()));
+        panelProductsAdmin.getCbx_category().setSelectedItem("");//Because when set category in cbx and cbx containts text, the cbx no refresh 
         panelProductsAdmin.getCbx_category().setSelectedItem(product.getCategory().getDescription());
         panelProductsAdmin.getTxf_descProduct().setText(product.getDescription());
         panelProductsAdmin.getTxf_cost().setText(Double.toString(product.getCost()));
@@ -357,7 +366,7 @@ public class Administration implements ActionController {
 
         } else {
             JOptionPane.showMessageDialog(null,
-                Message.FirstSearchProduct, "Advertencia", JOptionPane.WARNING_MESSAGE);
+                Message.FirstSearchProduct, Message.Warning, JOptionPane.WARNING_MESSAGE);
         }
         return Boolean.TRUE;
 
@@ -598,6 +607,19 @@ public class Administration implements ActionController {
         }
         );
 
+    }
+
+    private Boolean StringExistInCbx(JComboBox cbx_category, String category) {
+
+        ComboBoxModel model = cbx_category.getModel();
+
+        for (int i = 0 ; i < model.getSize() ; i++) {
+            if (model.getElementAt(i).equals(category)) {
+                return true;
+            }
+        }
+
+        return Boolean.FALSE;
     }
 
 }

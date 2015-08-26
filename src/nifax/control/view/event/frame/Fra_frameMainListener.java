@@ -1,7 +1,7 @@
 package nifax.control.view.event.frame;
 
 import java.awt.event.WindowEvent;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 import nifax.control.view.panel.PanelPresentation;
 
 /**

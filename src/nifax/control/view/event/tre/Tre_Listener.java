@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 import nifax.control.controller.Navigation;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 
 /**
  *

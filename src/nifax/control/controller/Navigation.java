@@ -2,7 +2,7 @@ package nifax.control.controller;
 
 import javax.swing.tree.TreePath;
 import nifax.control.util.Table;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
@@ -17,7 +17,7 @@ public class Navigation {
 
     private static Navigation instance = null;
 
-    static FrameMain frameMain = null;
+    private static FrameMain frameMain = null;
 
     private static TreePath lastSelected = null;
 
@@ -49,6 +49,7 @@ public class Navigation {
 
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
 
+                    panelProductsAdmin.getCbx_category().requestFocus();
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
                     showGralPanel("Category", "Categoria");
@@ -66,11 +67,13 @@ public class Navigation {
                     PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
                     panelSalesTicket.getPnl_ticket().setName("Ticket");
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
+                    panelSalesTicket.getTxf_ticketCodeProduct().requestFocus();
                     break;
                 case "[NiFax, Reportes, Productos, Stock]":
                     PanelReportProductStock panelReportProductStock = new PanelReportProductStock();
                     panelReportProductStock.getPnl_reportProductStock().setName("ProductStock");
                     frameMain.getScp_container().setViewportView(panelReportProductStock);
+                    panelReportProductStock.getTxf_StockMin().requestFocus();
                     break;
                 default:
                     PanelPresentation jPanelPresentation = new PanelPresentation();
@@ -100,6 +103,8 @@ public class Navigation {
             panelGeneralAdmin.getLbl_profitGral().setVisible(true);
             panelGeneralAdmin.getTxf_profitGral().setVisible(true);
         }
+        
+        panelGeneralAdmin.getTxf_descGral().requestFocus();
 
     }
 

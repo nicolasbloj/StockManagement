@@ -24,7 +24,7 @@ import nifax.control.model.modeler.OfferOperation;
 import nifax.control.model.modeler.RestorationOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 
 /**
  *
@@ -51,14 +51,17 @@ public class NifaxControl implements IQueries {
             modelOperation.Insert(usr);
             // the following lines will be added temporally til we have an UI to 
             // enter the required fields
-            Scanner in = new Scanner(System.in);
+           
+            //Scanner in = new Scanner(System.in);
             String user;
             String pass;
             do {
                 logger.info("Ingresar Usuario");
-                user = in.next();
+                //user = in.next();
+                user = "f4ka";
                 logger.info("Ingresar Password");
-                pass = in.next();
+                //pass = in.next();
+                pass="1234";
             } while (!auth.LogIn(new UserEmployee(user, pass)));
             logger.info("El Usuario fue logueado con éxito");
             modelOperation.Insert(auth.getSession());
