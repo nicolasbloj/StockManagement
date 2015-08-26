@@ -79,16 +79,20 @@ public class PanelSalesTicket extends Pnl{
         lbl_ticketCodeProduct.setText("Codigo :");
 
         lbl_ticketDescProduct.setText("Descripcion :");
+        lbl_ticketDescProduct.setEnabled(false);
 
         txf_ticketCodeProduct.addKeyListener(new Txf_ticketCodeProductListener(this));
         ((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
+        txf_ticketCodeProduct.setNextFocusableComponent(txf_ticketQuantityProduct);
 
         lbl_ticketQuantityProduct.setText("Cantidad : ");
 
         ((PlainDocument) txf_ticketQuantityProduct.getDocument()).setDocumentFilter(new MyIntFilter());
         txf_ticketQuantityProduct.setText("1");
+        txf_ticketQuantityProduct.setNextFocusableComponent(txf_ticketCodeProduct);
 
         cbx_ticketDescProduct.setEditable(true);
+        cbx_ticketDescProduct.setEnabled(false);
 
         lbl_ticketStoreProduct.setText("Deposito : ");
 

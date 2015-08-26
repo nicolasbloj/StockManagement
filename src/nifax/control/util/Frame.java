@@ -2,7 +2,7 @@ package nifax.control.util;
 
 import javax.swing.tree.TreePath;
 import nifax.control.controller.Navigation;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 
 /**
  *

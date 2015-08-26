@@ -48,7 +48,8 @@ public class Message {
     public static final String StoreAlreadyLoaded = "Este deposito ya se encuentra agregado";
     public static final String ProductNotHasRule = "El producto no tiene cargado una regla para esta medida";
     public static final String FirstSearchProduct = "Primero deberia buscar el producto";
-
+    public static String CategoryInvalid = "Ingrese una categoria correcta";
+    
     //Short descriptions
     public static String ShorDescriptionSave = "Presionando este boton guardara el elemento";
     public static String ShorDescriptionSearch = "Presionando este boton se buscara el elemento especificado";

@@ -5,7 +5,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
-import nifax.control.view.FrameMain;
+import nifax.control.view.frame.FrameMain;
 
 /**
  *

@@ -1,4 +1,4 @@
-package nifax.control.view;
+package nifax.control.view.frame;
 
 import java.awt.Color;
 import javax.swing.JFrame;

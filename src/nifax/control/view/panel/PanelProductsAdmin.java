@@ -655,7 +655,6 @@ public class PanelProductsAdmin extends Pnl {
         cbx_category.setModel(sbm);
         cbx_category.addItemListener(sbm);
         cbx_category.setEditable(true);
-        cbx_category.setNextFocusableComponent(txf_descProduct);
 
         lbl_money.setText("Moneda : ");
         lbl_money.setEnabled(false);
@@ -767,7 +766,7 @@ public class PanelProductsAdmin extends Pnl {
         );
         pnl_stateProductLayout.setVerticalGroup(
             pnl_stateProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(chx_active, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+            .addComponent(chx_active, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lbl_active, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -805,7 +804,7 @@ public class PanelProductsAdmin extends Pnl {
         pnl_principalProductLayout.setVerticalGroup(
             pnl_principalProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_principalProductLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
                 .addGroup(pnl_principalProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_category, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -827,8 +826,9 @@ public class PanelProductsAdmin extends Pnl {
                 .addComponent(pnl_codesProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnl_codesProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(pnl_stateProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_stateProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2))
         );
 
         pnl_rulesProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Reglas de Cantidad"));
@@ -959,7 +959,7 @@ public class PanelProductsAdmin extends Pnl {
             .addGroup(pnl_productLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_principalProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                    .addComponent(pnl_principalProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 487, Short.MAX_VALUE)
                     .addComponent(pnl_rulesProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1468,10 +1468,10 @@ public class PanelProductsAdmin extends Pnl {
                 .addContainerGap()
                 .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_storeStockLayout.createSequentialGroup()
-                        .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_measureStock, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_storeStock, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
+                        .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl_measureStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_storeStock, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
                         .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_storeStockLayout.createSequentialGroup()
                                 .addComponent(cbx_measureStock, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1490,14 +1490,15 @@ public class PanelProductsAdmin extends Pnl {
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(6, 6, 6))
                     .addGroup(pnl_storeStockLayout.createSequentialGroup()
+                        .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl_quantityStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_descStock, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
                         .addGroup(pnl_storeStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_storeStockLayout.createSequentialGroup()
-                                .addComponent(lbl_descStock, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txf_descStock, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_storeStockLayout.createSequentialGroup()
-                                .addComponent(lbl_quantityStock, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_storeStockLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
                                 .addComponent(txf_quantityStock, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -1624,7 +1625,7 @@ public class PanelProductsAdmin extends Pnl {
                 .addContainerGap()
                 .addComponent(pnl_principalStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scp_tblStoreStock, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(scp_tblStoreStock, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                 .addGap(219, 219, 219))
         );
         pnl_stockLayout.setVerticalGroup(
