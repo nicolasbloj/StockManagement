@@ -24,7 +24,7 @@ import nifax.control.view.panel.PanelSalesTicket;
  *
  * @author NB
  */
-public class Operation implements ActionController{
+public class Operation implements ActionController {
 
     private static Operation instance = null;
 
@@ -40,6 +40,7 @@ public class Operation implements ActionController{
 
     //Constants 
     public static final int EMIT = 0;
+    public static final int SALE = 1;//when product is introduced in the jtable
 
     // Panels name
     public static final String Ticket = "Ticket";
@@ -49,6 +50,8 @@ public class Operation implements ActionController{
         switch (ACTION) {
             case EMIT:
                 return emit(panel, panelName);
+            case SALE:
+                return sale((PanelSalesTicket) panel);
         }
         return Boolean.FALSE;
     }
@@ -64,6 +67,32 @@ public class Operation implements ActionController{
             }
 
         }
+        return Boolean.TRUE;
+    }
+
+    private Boolean sale(PanelSalesTicket panelSalesTicket) {
+        SaleController saleController = SaleController.getInstance();
+        saleController.setPanelSalesTicket(panelSalesTicket);
+        String codeProduct = panelSalesTicket.getTxf_ticketCodeProduct().getText().toUpperCase();
+        Product parcialProd = new Product(codeProduct, 1);
+        final ProductOperation productOperation = ProductOperation.getInstance();
+        Product product = productOperation.Find(parcialProd);
+
+        if (product != null) {
+            if (product.getActive()) {
+                if (!saleController.SaleProduct(product)) {
+                    JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+                    return Boolean.FALSE;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, Message.DialogProductNotActive, Message.DialogProductNotActiveTitle, JOptionPane.ERROR_MESSAGE);
+                return Boolean.FALSE;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, Message.DialogProductNotFound, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
+            return Boolean.FALSE;
+        }
+
         return Boolean.TRUE;
     }
 
