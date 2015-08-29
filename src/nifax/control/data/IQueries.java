@@ -38,6 +38,10 @@ public interface IQueries {
 
     final String Offer = "from Offer";
     
+    final String UserSession = "from UserSession";
+    
+    final String UserSessionInvalid = "from UserSession where user_id=:user_id";
+    
     final String Price = "from Price";
     
     final String Restoration = "from Restoration";

@@ -19,7 +19,7 @@ import org.hibernate.criterion.Projections;
 public class HQLOperation implements IHQLOperation {
 
     private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
-    private Session session = null;
+    public Session session = null;
     private static HQLOperation instance = null;
     
     protected HQLOperation() {
@@ -118,7 +118,29 @@ public class HQLOperation implements IHQLOperation {
         session.beginTransaction();   
         return ((Number) session.createCriteria(obj).setProjection(Projections.rowCount()).uniqueResult()).intValue();
     }
-
+    
+    @Override
+    public int SelectCount(String AQuery){   
+        return ((Number) HQLSelect(String.format("select count(*) %s", AQuery))
+            .uniqueResult()).intValue();
+    }
+    
+    /*public int SelectCount(Class obj, UserEmployee ue){
+        Criteria crit = session.createCriteria(obj);
+        Criterion price = Restrictions.gt("user_id", ue);
+        Criterion name = Restrictions.gt("open",false);
+        LogicalExpression orExp = Restrictions.or(price,name);
+        crit.add(orExp);
+        return ((Number) crit.uniqueResult()).intValue();
+    }*/
+    
+    @Override
+    public int SelectCount(String AQuery, String fieldName, Object valueName){   
+        return ((Number) HQLSelect(String.format("select count(*) %s", AQuery))
+            .setParameter(fieldName, valueName)
+            .uniqueResult()).intValue();
+    }
+    
     @Override
     public Object SelectUnique(String AQuery, Object obj) {
         return HQLSelect(AQuery)
