@@ -2,6 +2,7 @@
 package nifax.control.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,17 +26,21 @@ public class UserSession implements Serializable {
     private Long id;
     @Column(name = "open")
     private Boolean open;
+    @Column(name = "login_date")
+    private Timestamp login_date;    
+
     @JoinColumn(name = "user_id") 
     @OneToOne
     private UserEmployee user_id;
 
-    protected UserSession() {
+    public UserSession() {
     }
 
     public UserSession(Boolean status, UserEmployee user_id) throws IllegalArgumentException {
         if(user_id != null){
             this.open = status;
             this.user_id = user_id;
+            setLogin_date();
         } else {
             throw new IllegalArgumentException();
         }
@@ -51,6 +56,18 @@ public class UserSession implements Serializable {
 
     public UserEmployee getUser_id() {
         return user_id;
+    }
+
+    public void setUser_id(UserEmployee user_id) {
+        this.user_id = user_id;
+    }
+        
+    public Timestamp getLogin_date() {
+        return login_date;
+    }
+
+    private void setLogin_date() {
+        this.login_date = new Timestamp(System.currentTimeMillis());
     }
     
 }
