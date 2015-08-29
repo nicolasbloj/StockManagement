@@ -42,7 +42,7 @@ public final class FrameMain extends javax.swing.JFrame {
         mei_exit = new javax.swing.JMenuItem();
         men_help = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         scp_tree.setBackground(new java.awt.Color(229, 220, 220));
         scp_tree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -75,7 +75,6 @@ public final class FrameMain extends javax.swing.JFrame {
         );
 
         scp_container.setBackground(new java.awt.Color(51, 51, 51));
-        scp_container.setOpaque(true);
 
         men_system.setText("Sistema");
 
