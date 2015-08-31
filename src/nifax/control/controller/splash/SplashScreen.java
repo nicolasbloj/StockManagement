@@ -22,8 +22,8 @@ import javax.swing.Timer;
 public class SplashScreen extends JFrame {
     private static JProgressBar progressBar;
     private static int count = 1;
-    private static int TIMER_PAUSE = 100;
-    private static int PROGBAR_MAX = 105;
+    private static final int TIMER_PAUSE = 100;
+    private static final int PROGBAR_MAX = 105;
     private static Timer progressBarTimer;
     private boolean loadEnded = false;
 
