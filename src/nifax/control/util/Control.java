@@ -15,10 +15,10 @@ import javax.swing.JOptionPane;
 public class Control {
 
     //TMP file
-    private String appPath = System.getProperties().getProperty("user.dir");
-    private File file = new File( appPath + "/miApp.tmp");    
+    private final String appPath = System.getProperties().getProperty("java.io.tmpdir");
+    private final File file = new File( appPath + "/myApp.tmp");    
     //time required to update tmp file
-    private int seconds = 20;
+    private final int seconds = 20;
 
     public Control(){};
 
@@ -29,10 +29,13 @@ public class Control {
     public boolean check()
     {           
         if (file.exists()){           
-            long currentTime = read();//
+            long currentTime = read();//Time read of File
             long res = diffTime(currentTime );           
             if( res < seconds ){              
-                JOptionPane.showMessageDialog(null,"Error: La aplicacion ya esta en ejecución.");
+                JOptionPane.showMessageDialog(null,
+                    Message.DialogCheck,
+                    Message.FailuredOperation,
+                    JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             else{        
@@ -99,8 +102,8 @@ public class Control {
     }
 
     /**
- * Delete tmp file if it exists
- */
+    * Delete tmp file if it exists
+    */
     public void closeApp(){   
         if ( file.exists() ) { file.delete(); }
         System.exit(0);

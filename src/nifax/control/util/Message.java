@@ -33,6 +33,12 @@ public class Message {
     public static final String DialogProductNotFound = "Producto no encontrado";
     public static final String DialogProductNotActive = "El producto no se encuentra habilitado";
     public static final String DialogProductNotActiveTitle = "Estado del producto";
+    public static String DialogCheck="Posibles causas del problema\n"
+                    + "1 - La aplicacion ya esta en ejecución\n"
+                    + "2 - La sesion fue cerrada hace 20 segundos, espere 20 segundos por favor \n"
+                    + "y vuelva a ejecutar la aplicacion.";
+    public static String DialogExit="¿Esta seguro que desea salir?";
+    
 
     //Dialog's generic messages 
     public static final String DialogSave = "Esta seguro que desea guardar ?";
@@ -60,5 +66,5 @@ public class Message {
     public static String ShorDescriptionGenerate = "Presionando este boton se generara el documento especificado";
     public static String ShorDescriptionPlus = "Presionando este boton se generara agregara elemento a tabla";
     public static String ShorDescriptionLess = "Presionando este boton se eliminara el elemento seleccionado en la tabla";
-;
+
 }

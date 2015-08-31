@@ -64,7 +64,7 @@ public class SessionTest {
     public void testGetUser_id() {
         System.out.println("getUser");
         UserSession instance = new UserSession(true, usr);
-        UserEmployee result = instance.getUser_id();
+        UserEmployee result = instance.getUserEmployee();
         assertNotNull(result);
     }
     

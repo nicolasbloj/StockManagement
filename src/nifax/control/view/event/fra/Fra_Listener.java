@@ -1,4 +1,4 @@
-package nifax.control.view.event.frame;
+package nifax.control.view.event.fra;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -10,6 +10,7 @@ import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.hibernate.HibernateUtil;
 import nifax.control.util.Control;
+import nifax.control.util.Message;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Fra_Listener implements WindowListener{
 
     @Override
     public void windowClosing(WindowEvent e) {
-        if(JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro que desea salir?", "Aviso",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            if(JOptionPane.showConfirmDialog(new JFrame(),Message.DialogExit,Message.Warning,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             JFrame frame = (JFrame)e.getSource();
             frame.removeAll();
             try {
