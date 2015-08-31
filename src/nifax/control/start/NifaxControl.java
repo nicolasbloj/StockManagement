@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import nifax.control.controller.Authentication;
+import nifax.control.controller.splash.SplashScreen;
 import nifax.control.model.modeler.CategoryOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.MeasureOperation;
@@ -33,9 +33,21 @@ public class NifaxControl implements IQueries {
     private static final Logger logger = Logger.getLogger(NifaxControl.class.getName());
 
     public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {
+        SplashScreen sc = new SplashScreen();
         if(new Control().check()){
-            Authentication auth = Authentication.getInstance();
-            try {
+            new NifaxControl().createScenario();
+            sc.setloadEnded(true);
+            FrameMain.main(null);
+        }else {
+            System.exit(0);
+        }
+    }
+    
+    
+    
+    public void createScenario() throws InvalidCredentialsException, InitializeSessionException{
+           Authentication auth = Authentication.getInstance();
+
                 UserEmployee usr;
                 HQLOperation modelOperation = HQLOperation.getInstance();
                 usr = new UserEmployee(
@@ -64,7 +76,6 @@ public class NifaxControl implements IQueries {
                 } while (!auth.LogIn(new UserEmployee(user, pass)));
                 logger.info("El Usuario fue logueado con éxito");
                 modelOperation.Insert(auth.getSession());
-
                 //Loading scenario
                 //Add Iva
                 modelOperation.Insert(new Iva(21));
@@ -188,14 +199,5 @@ public class NifaxControl implements IQueries {
                     typeSaleDocList.get("TICKET"),
                     items
                 );
-
-                FrameMain.main(null);
-
-            }catch(InvalidCredentialsException | InitializeSessionException e){
-                JOptionPane.showMessageDialog(null, "Algo paso!");
-            }
-        }else {
-            System.exit(0);
-        }
     }
 }
