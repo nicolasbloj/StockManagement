@@ -10,12 +10,12 @@ import nifax.control.util.Message;
  *
  * @author NB
  */
-public class Txf_operationtListener extends Txf_Listener {
+public class Txf_operationListener extends Txf_Listener {
 
     private final JPanel panel;
     private final int action;
 
-    public Txf_operationtListener(JPanel panel, int action) {
+    public Txf_operationListener(JPanel panel, int action) {
         this.panel = panel;
         this.action = action;
 

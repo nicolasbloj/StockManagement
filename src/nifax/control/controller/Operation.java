@@ -146,7 +146,7 @@ public class Operation implements ActionController {
             }
 
             SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
-                Authentication.getInstance().getSession().getUser_id(),
+                Authentication.getInstance().getSession().getUserEmployee(),
                 TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("TICKET")),
                 items
             );

@@ -2,7 +2,6 @@ package nifax.control.controller;
 
 import java.sql.Timestamp;
 import java.util.List;
-import javax.swing.JOptionPane;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.model.UserSession;

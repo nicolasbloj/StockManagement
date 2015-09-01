@@ -206,7 +206,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txf_ticketCodeProduct.setName(&quot;txf_ticketCodeProduct&quot;);&#xa;txf_ticketCodeProduct.addKeyListener(new nifax.control.view.event.txf.Txf_operationtListener(this,Operation.SALE));&#xa;((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txf_ticketCodeProduct.setName(&quot;txf_ticketCodeProduct&quot;);&#xa;txf_ticketCodeProduct.addKeyListener(new nifax.control.view.event.txf.Txf_operationListener(this,Operation.SALE));&#xa;((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_ticketQuantityProduct">

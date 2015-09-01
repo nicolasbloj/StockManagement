@@ -31,7 +31,7 @@ public class UserSession implements Serializable {
 
     @JoinColumn(name = "user_id") 
     @OneToOne
-    private UserEmployee user_id;
+    private UserEmployee userEmployee;
 
     public UserSession() {
     }
@@ -39,7 +39,7 @@ public class UserSession implements Serializable {
     public UserSession(Boolean status, UserEmployee user_id) throws IllegalArgumentException {
         if(user_id != null){
             this.open = status;
-            this.user_id = user_id;
+            this.userEmployee = user_id;
             setLogin_date();
         } else {
             throw new IllegalArgumentException();
@@ -54,12 +54,12 @@ public class UserSession implements Serializable {
         this.open = open;
     }
 
-    public UserEmployee getUser_id() {
-        return user_id;
+    public UserEmployee getUserEmployee() {
+        return userEmployee;
     }
 
-    public void setUser_id(UserEmployee user_id) {
-        this.user_id = user_id;
+    public void setUserEmployee(UserEmployee userEmployee) {
+        this.userEmployee = userEmployee;
     }
         
     public Timestamp getLogin_date() {

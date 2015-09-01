@@ -4,7 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import nifax.control.view.event.frame.Fra_frameMainListener;
+import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
 
 /**

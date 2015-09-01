@@ -15,7 +15,6 @@ import nifax.control.validate.MyAlphaNumericFilter;
 import nifax.control.validate.MyIntFilter;
 import nifax.control.view.event.btn.Btn_adminAction;
 import nifax.control.view.event.pnl.Pnl_panelSalesTicketListener;
-import nifax.control.view.event.txf.Txf_operationtListener;
 import nifax.control.view.util.Pnl;
 
 /**
@@ -82,7 +81,7 @@ public class PanelSalesTicket extends Pnl{
         lbl_ticketDescProduct.setEnabled(false);
 
         txf_ticketCodeProduct.setName("txf_ticketCodeProduct");
-        txf_ticketCodeProduct.addKeyListener(new nifax.control.view.event.txf.Txf_operationtListener(this,Operation.SALE));
+        txf_ticketCodeProduct.addKeyListener(new nifax.control.view.event.txf.Txf_operationListener(this,Operation.SALE));
         ((PlainDocument) txf_ticketCodeProduct.getDocument()).setDocumentFilter(new MyAlphaNumericFilter());
         txf_ticketCodeProduct.setNextFocusableComponent(txf_ticketQuantityProduct);
 
