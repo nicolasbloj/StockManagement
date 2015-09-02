@@ -1,6 +1,7 @@
 package nifax.control.model.modeler.operation;
 
 import java.util.List;
+import org.hibernate.criterion.MatchMode;
 
 /**
  *
@@ -18,6 +19,7 @@ public interface IHQLOperation {
     Boolean Update(Object obj);
     Boolean Delete(Object obj);
     List SelectLike(String ATable,String AField,String ACondition);
+    List SelectLike(Class AClass,String parameter,String [] values,MatchMode matchMode);
     Object SelectUnique(String AQuery);
     List SelectCacheable(String AQuery, String parameter,Object value);
 }

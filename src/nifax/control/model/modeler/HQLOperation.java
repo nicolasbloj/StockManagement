@@ -7,10 +7,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.Product;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -21,7 +24,7 @@ public class HQLOperation implements IHQLOperation {
     private static final Logger logger = Logger.getLogger(HQLOperation.class.getName());
     public Session session = null;
     private static HQLOperation instance = null;
-    
+
     protected HQLOperation() {
     }
 
@@ -111,36 +114,34 @@ public class HQLOperation implements IHQLOperation {
         return HQLSelect(AQuery).setCacheable(true).setParameter(parameter, value).list();
     }
 
-    
     @Override
     public Integer SelectCount(Class obj) {
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();   
+        session.beginTransaction();
         return ((Number) session.createCriteria(obj).setProjection(Projections.rowCount()).uniqueResult()).intValue();
     }
-    
+
     @Override
-    public int SelectCount(String AQuery){   
+    public int SelectCount(String AQuery) {
         return ((Number) HQLSelect(String.format("select count(*) %s", AQuery))
             .uniqueResult()).intValue();
     }
-    
+
     /*public int SelectCount(Class obj, UserEmployee ue){
-        Criteria crit = session.createCriteria(obj);
-        Criterion price = Restrictions.gt("user_id", ue);
-        Criterion name = Restrictions.gt("open",false);
-        LogicalExpression orExp = Restrictions.or(price,name);
-        crit.add(orExp);
-        return ((Number) crit.uniqueResult()).intValue();
-    }*/
-    
+     Criteria crit = session.createCriteria(obj);
+     Criterion price = Restrictions.gt("user_id", ue);
+     Criterion name = Restrictions.gt("open",false);
+     LogicalExpression orExp = Restrictions.or(price,name);
+     crit.add(orExp);
+     return ((Number) crit.uniqueResult()).intValue();
+     }*/
     @Override
-    public int SelectCount(String AQuery, String fieldName, Object valueName){   
+    public int SelectCount(String AQuery, String fieldName, Object valueName) {
         return ((Number) HQLSelect(String.format("select count(*) %s", AQuery))
             .setParameter(fieldName, valueName)
             .uniqueResult()).intValue();
     }
-    
+
     @Override
     public Object SelectUnique(String AQuery, Object obj) {
         return HQLSelect(AQuery)
@@ -159,19 +160,30 @@ public class HQLOperation implements IHQLOperation {
     }
 
     @Override
+    public List SelectLike(Class c, String parameter, String[] values, MatchMode matchMode) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(c);
+        for (String value : values) {
+            criteria.add(Restrictions.like(parameter, value, matchMode));
+        }
+        return criteria.list();
+    }
+
+    @Override
     public Object SelectUnique(String AQuery) {
         return HQLSelect(AQuery)
-                .setMaxResults(1)
-                .uniqueResult();
+            .setMaxResults(1)
+            .uniqueResult();
     }
 
     public Integer getNextSequenceValue(final String SequenceName) {
         int result = getSequenceValue(SequenceName);
-        if (result != 1)
+        if (result != 1) {
             return result + 1;
-        else
-            if (SelectCount(Product.class) == 1)
-                return result + 1;
+        } else if (SelectCount(Product.class) == 1) {
+            return result + 1;
+        }
         return result;
     }
 
@@ -181,7 +193,7 @@ public class HQLOperation implements IHQLOperation {
 
     private Integer getSequenceValue(final String SequenceName) {
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();   
+        session.beginTransaction();
         Query query = session.createSQLQuery(String.format("select last_value from %s", SequenceName));
         return ((BigInteger) query.uniqueResult()).intValue();
     }

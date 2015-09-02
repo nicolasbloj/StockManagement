@@ -84,29 +84,30 @@ public final class MapDb {
     public static void setIvaList(Map<Double, Iva> ivaList) {
         MapDb.ivaList = ivaList;
     }
-    
-    public static void addCategory(Category category) {
+
+    public static void AddOrReplaceCategory(Category category) {
         if (MapDb.categoryList != null) {
-            MapDb.categoryList.put(category.getDescription(), category);
+            MapDb.categoryList.replace(category.getDescription(), category);
         }
     }
 
-    public static void addPrice(Price price) {
+    public static void AddOrReplacePrice(Price price) {
         if (MapDb.priceList != null) {
-            MapDb.priceList.put(price.getDescription(), price);
+            MapDb.priceList.replace(price.getDescription(), price);
         }
     }
 
-    public static void addMeasure(Measure measure) {
+    public static void AddOrReplaceMeasure(Measure measure) {
         if (MapDb.measureList != null) {
-            MapDb.measureList.put(measure.getDescription(), measure);
+            MapDb.measureList.replace(measure.getDescription(), measure);
         }
     }
 
-    public static void addStore(Store store) {
+    public static void AddOrReplaceStore(Store store) {
         if (MapDb.storeList != null) {
-            MapDb.storeList.put(store.getDescription(), store);
+            MapDb.storeList.replace(store.getDescription(), store);
         }
 
     }
+
 }

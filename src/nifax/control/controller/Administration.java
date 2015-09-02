@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -187,7 +185,7 @@ public class Administration implements ActionController {
 
         String id = panelProductsAdmin.getLbl_idProduct().getText();
         String code = panelProductsAdmin.getTxf_codeProduct().getText();
-        String category = panelProductsAdmin.getCbx_category().getSelectedItem().toString();
+        String categoryDesc = panelProductsAdmin.getCbx_category().getSelectedItem().toString();
         String description = panelProductsAdmin.getTxf_descProduct().getText();
         double cost = Double.parseDouble(panelProductsAdmin.getTxf_cost().getText());
         double iva = Double.parseDouble(panelProductsAdmin.getCbx_iva().getSelectedItem().toString());
@@ -202,9 +200,10 @@ public class Administration implements ActionController {
 
         Boolean active = panelProductsAdmin.getChx_active().isSelected();
 
-        if (StringExistInCbx(panelProductsAdmin.getCbx_category(), category)) {
+        Category category = MapDb.getCategoryList().get(categoryDesc);
+        if (category != null) {
             if (ProductOperation.getInstance().AddOrUpdate(id, code, description, cost,
-                MapDb.getCategoryList().get(category), MapDb.getIvaList().get(iva), active, measures,
+                category, MapDb.getIvaList().get(iva), active, measures,
                 offers, stocks, restorations));
             if (id.trim().length() > 0) {
                 JOptionPane.showMessageDialog(null, Message.Edit);
@@ -382,23 +381,23 @@ public class Administration implements ActionController {
             case Category:
                 Category category = new Category(desc);
                 hqlOperation.Insert(category);
-                MapDb.addCategory(category);
+                MapDb.AddOrReplaceCategory(category);
                 break;
             case Store:
                 Store store = new Store(desc);
                 hqlOperation.Insert(store);
-                MapDb.addStore(store);
+                MapDb.AddOrReplaceStore(store);
                 break;
             case Measure:
                 Measure measure = new Measure(desc);
                 hqlOperation.Insert(measure);
-                MapDb.addMeasure(measure);
+                MapDb.AddOrReplaceMeasure(measure);
                 break;
             case Price:
                 profit = Double.parseDouble(panelGeneralAdmin.getTxf_profitGral().getText());
                 Price price = new Price(desc, profit);
                 hqlOperation.Insert(price);
-                MapDb.addPrice(price);
+                MapDb.AddOrReplacePrice(price);
                 break;
 
         }
@@ -608,18 +607,4 @@ public class Administration implements ActionController {
         );
 
     }
-
-    private Boolean StringExistInCbx(JComboBox cbx_category, String category) {
-
-        ComboBoxModel model = cbx_category.getModel();
-
-        for (int i = 0 ; i < model.getSize() ; i++) {
-            if (model.getElementAt(i).equals(category)) {
-                return true;
-            }
-        }
-
-        return Boolean.FALSE;
-    }
-
 }
