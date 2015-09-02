@@ -41,12 +41,12 @@ public class SplashScreen extends JFrame {
     private void createSplash(){
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        JLabel splashImage = new JLabel(new ImageIcon(getClass().getResource("splash.png")));
+        JLabel splashImage = new JLabel(new ImageIcon(getClass().getResource("/nifax/control/image/nf.png")));
         panel.add(splashImage);
 
         progressBar = new JProgressBar();
         progressBar.setMaximum(PROGBAR_MAX);
-        progressBar.setForeground(new Color(2, 8, 54));
+        progressBar.setForeground(Color.BLACK);
         progressBar.setBorder(BorderFactory.createLineBorder(Color.black));
         panel.add(progressBar, BorderLayout.SOUTH);
 
