@@ -77,6 +77,8 @@ public final class FrameMain extends javax.swing.JFrame {
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("Usuario:");
 
+        pnl_clock.setOpaque(false);
+
         javax.swing.GroupLayout pnl_clockLayout = new javax.swing.GroupLayout(pnl_clock);
         pnl_clock.setLayout(pnl_clockLayout);
         pnl_clockLayout.setHorizontalGroup(
@@ -85,7 +87,7 @@ public final class FrameMain extends javax.swing.JFrame {
         );
         pnl_clockLayout.setVerticalGroup(
             pnl_clockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         lbl_usrname.setBackground(new java.awt.Color(226, 212, 246));
@@ -99,25 +101,22 @@ public final class FrameMain extends javax.swing.JFrame {
         pnl_titleLayout.setHorizontalGroup(
             pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_titleLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lbl_title)
+                .addContainerGap()
+                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_usrname, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addComponent(lbl_usrname, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
                 .addComponent(pnl_clock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnl_titleLayout.setVerticalGroup(
             pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnl_clock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnl_titleLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(0, 0, 0)
                 .addGroup(pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_usrname, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnl_clock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(lbl_usrname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         scp_container.setBackground(new java.awt.Color(51, 51, 51));
@@ -151,9 +150,9 @@ public final class FrameMain extends javax.swing.JFrame {
                 .addComponent(pnl_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                     .addComponent(scp_container))
-                .addGap(51, 51, 51))
+                .addGap(25, 25, 25))
         );
 
         pack();
