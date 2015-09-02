@@ -33,14 +33,14 @@ public class NifaxControl implements IQueries {
     private static final Logger logger = Logger.getLogger(NifaxControl.class.getName());
 
     public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {        
-        //if(new Control().check()){
+        if(new Control().check()){
             SplashScreen sc = new SplashScreen();
             new NifaxControl().createScenario();
             sc.setloadEnded(true);
             FrameMain.main(null);
-        /*}else {
+        }else {
             System.exit(0);
-        }*/
+        }
     }
     
     
