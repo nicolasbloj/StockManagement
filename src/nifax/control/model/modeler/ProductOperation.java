@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import nifax.control.util.Listing;
 import nifax.control.model.Category;
 import nifax.control.model.Product;
 import nifax.control.data.IQueries;
@@ -104,4 +105,17 @@ public class ProductOperation extends HQLOperation implements IQueries {
 
     }
 
+    public Map ListByParameter(String parameter, Object value) {
+        String ProductTilteredByParameter = null;
+        switch (parameter) {
+            case "code":
+                ProductTilteredByParameter = ProductFilteredByCode;
+                break;
+            case "category":
+                ProductTilteredByParameter = ProductFilteredByCategory;
+                break;
+        }
+        List<Product> lsp = Select(ProductTilteredByParameter, parameter, value);
+        return Listing.ListToMapKeyString(lsp);
+    }
 }
