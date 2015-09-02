@@ -23,7 +23,7 @@ public class PanelPresentation extends Pnl{
         lbl_presentation.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         lbl_presentation.setForeground(new java.awt.Color(102, 102, 102));
         lbl_presentation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_presentation.setText("Presentacion ...");
+        lbl_presentation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nifax/control/image/nf.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
