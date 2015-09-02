@@ -1,9 +1,11 @@
 package nifax.control.view.frame;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import nifax.control.util.ClockLabel;
 import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
 
@@ -15,7 +17,14 @@ public final class FrameMain extends javax.swing.JFrame {
 
     public FrameMain() {
         initComponents();
-
+        ClockLabel dateLable = new ClockLabel("date");
+        ClockLabel timeLable = new ClockLabel("time");
+        ClockLabel dayLable = new ClockLabel("day");
+ 
+        pnl_clock.add(dateLable);
+        pnl_clock.add(timeLable);
+        pnl_clock.add(dayLable);
+        pnl_clock.setLayout(new GridLayout(3, 1));
         this.addWindowListener(new Fra_frameMainListener());
 
         this.getContentPane().setBackground(new Color(226,212,246));
@@ -36,6 +45,7 @@ public final class FrameMain extends javax.swing.JFrame {
         tre_navigation = new nifax.control.view.util.Tre(this);
         pnl_title = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
+        pnl_clock = new javax.swing.JPanel();
         scp_container = new javax.swing.JScrollPane();
         mbr_main = new javax.swing.JMenuBar();
         men_system = new javax.swing.JMenu();
@@ -56,22 +66,39 @@ public final class FrameMain extends javax.swing.JFrame {
         lbl_title.setFont(new java.awt.Font("Century Gothic", 0, 23)); // NOI18N
         lbl_title.setForeground(new java.awt.Color(102, 102, 102));
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_title.setText("NiFax ");
+        lbl_title.setText("Usuario:");
+
+        javax.swing.GroupLayout pnl_clockLayout = new javax.swing.GroupLayout(pnl_clock);
+        pnl_clock.setLayout(pnl_clockLayout);
+        pnl_clockLayout.setHorizontalGroup(
+            pnl_clockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        pnl_clockLayout.setVerticalGroup(
+            pnl_clockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout pnl_titleLayout = new javax.swing.GroupLayout(pnl_title);
         pnl_title.setLayout(pnl_titleLayout);
         pnl_titleLayout.setHorizontalGroup(
             pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
-                .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_titleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
+                .addComponent(pnl_clock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnl_titleLayout.setVerticalGroup(
             pnl_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_titleLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnl_clock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         scp_container.setBackground(new java.awt.Color(51, 51, 51));
@@ -96,7 +123,7 @@ public final class FrameMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(scp_tree, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(scp_container, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
+                .addComponent(scp_container))
             .addComponent(pnl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -105,7 +132,7 @@ public final class FrameMain extends javax.swing.JFrame {
                 .addComponent(pnl_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addComponent(scp_container))
                 .addGap(51, 51, 51))
         );
@@ -153,6 +180,7 @@ public final class FrameMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mei_exit;
     private javax.swing.JMenu men_help;
     private javax.swing.JMenu men_system;
+    private javax.swing.JPanel pnl_clock;
     private javax.swing.JPanel pnl_title;
     private javax.swing.JScrollPane scp_container;
     private javax.swing.JScrollPane scp_tree;
