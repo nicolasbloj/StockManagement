@@ -10,7 +10,7 @@ import nifax.control.controller.Navigation;
 public class Frame {
 
     public static void reloadPanel() {
-        TreePath tp = Navigation.getInstance().getLastSelected();
+        TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
         Navigation.getInstance().showPanel(tp);
     }
 }

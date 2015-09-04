@@ -3,6 +3,8 @@ package nifax.control.controller;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import nifax.control.data.MapDb;
@@ -14,6 +16,8 @@ import nifax.control.model.modeler.ProductOperation;
 import nifax.control.util.Listing;
 import nifax.control.util.Table;
 import nifax.control.view.internalframe.IntFrameProductSearch;
+import nifax.control.view.panel.PanelProductsAdmin;
+import nifax.control.view.panel.PanelSalesTicket;
 import org.hibernate.criterion.MatchMode;
 
 /**
@@ -39,6 +43,7 @@ public class Searching {
     public static final int SHOW_OFFER = 0;
     public static final int SHOW_STOCK = 1;
 
+    //--SEARCH .
     public boolean search(JInternalFrame internalFrame, int searchBy, int search) {
 
         switch (search) {
@@ -50,6 +55,12 @@ public class Searching {
     }
 
     private boolean search(IntFrameProductSearch internalFrame, int searchBy) {
+
+        if (productList != null) {
+            if (productList.isEmpty()) {
+                productList.clear();
+            }
+        }
         switch (searchBy) {
             case CODE:
                 productList = this.select("code", internalFrame.getTxf_codeProduct().getText().toUpperCase());
@@ -116,6 +127,7 @@ public class Searching {
             v.add(product.getCategory().getDescription());
             v.add(product.getCost());
             v.add(product.getIva().getIva());
+            v.add(product.getActive());
             return v;
         }).forEach((v) -> {
             model.insertRow(model.getRowCount(), v);
@@ -123,6 +135,7 @@ public class Searching {
         return Boolean.TRUE;
     }
 
+    //-- SHOW OFFER , STOCK ... IN SIDE TABLES.
     public static void showInTable(IntFrameProductSearch internalFrame, int ATtable) {
 
         JTable table = null;
@@ -180,4 +193,35 @@ public class Searching {
             }
         }
     }
+
+    //- INSERT PRODUCT IN PanelProductsAdmin or PanelSalesTicket depending of witch node  selected.
+    public static void insertProductInForm(IntFrameProductSearch intFrame) {
+        JTable table = intFrame.getTbl_products();
+        int indexRowSelected = table.getSelectedRow();
+        if (indexRowSelected != -1) {
+            int indexColDesc = table.getColumnModel().getColumnIndex("Descripcion");
+            String productDesc = table.getValueAt(indexRowSelected, indexColDesc).toString();
+            Product product = productList.get(productDesc);
+
+            JPanel panelSelected = Navigation.getLasSelectedPanel();
+
+            switch (Navigation.nodeSelected) {
+                case Navigation.ADMINISTRATION_PRODUCT_MANAGEMENT:
+                    Administration.getInstance().fillPanelProductsAdmin(product, (PanelProductsAdmin) panelSelected);
+                    break;
+                case Navigation.OPERATION_SALE_TICKET:
+                    if (product.getActive()) {
+                        SaleController saleController = SaleController.getInstance();
+                        saleController.setPanelSalesTicket((PanelSalesTicket) panelSelected);
+                        saleController.SaleProduct(product);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El producto se encuentra inhabilitado", "Producto inhabilitado", JOptionPane.WARNING_MESSAGE);
+                    }
+
+            }
+
+        }
+
+    }
+
 }

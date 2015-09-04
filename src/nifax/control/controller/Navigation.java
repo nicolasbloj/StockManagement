@@ -1,5 +1,6 @@
 package nifax.control.controller;
 
+import javax.swing.JPanel;
 import javax.swing.tree.TreePath;
 import nifax.control.util.Table;
 import nifax.control.view.frame.FrameMain;
@@ -19,7 +20,13 @@ public class Navigation {
 
     private static FrameMain frameMain = null;
 
-    private static TreePath lastSelected = null;
+    public static TreePath lastSelectedTreePath = null;
+    public static String nodeSelected = null;
+    private static JPanel lastSelectedPanel = null;
+
+    //NODES
+    public static final String ADMINISTRATION_PRODUCT_MANAGEMENT = "[NiFax, Administracion, Productos, Gestion]";
+    public static final String OPERATION_SALE_TICKET = "[NiFax, Operacion, Ventas, Ticket]";
 
     protected Navigation() {
     }
@@ -36,10 +43,10 @@ public class Navigation {
     }
 
     public void showPanel(TreePath tp) {
-        lastSelected = tp;
+        lastSelectedTreePath = tp;
         if (tp != null) {
             switch (tp.toString()) {
-                case "[NiFax, Administracion, Productos, Gestion]":
+                case ADMINISTRATION_PRODUCT_MANAGEMENT:
                     PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
 
                     panelProductsAdmin.getPnl_product().setName("Product");
@@ -50,6 +57,10 @@ public class Navigation {
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
 
                     panelProductsAdmin.getCbx_category().requestFocus();
+
+                    nodeSelected = ADMINISTRATION_PRODUCT_MANAGEMENT;
+                    lastSelectedPanel = panelProductsAdmin;
+                    
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
                     showGralPanel("Category", "Categoria");
@@ -63,11 +74,16 @@ public class Navigation {
                 case "[NiFax, Administracion, Lista de precios, Gestion]":
                     showGralPanel("Price", "Lista de precio");
                     break;
-                case "[NiFax, Operacion, Ventas, Ticket]":
+                case OPERATION_SALE_TICKET:
                     PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
                     panelSalesTicket.getPnl_ticket().setName("Ticket");
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
                     panelSalesTicket.getTxf_ticketCodeProduct().requestFocus();
+                    
+                    
+                    nodeSelected = OPERATION_SALE_TICKET;
+                    lastSelectedPanel = panelSalesTicket;
+                    
                     break;
                 case "[NiFax, Reportes, Productos, Stock]":
                     PanelReportProductStock panelReportProductStock = new PanelReportProductStock();
@@ -103,7 +119,7 @@ public class Navigation {
             panelGeneralAdmin.getLbl_profitGral().setVisible(true);
             panelGeneralAdmin.getTxf_profitGral().setVisible(true);
         }
-        
+
         panelGeneralAdmin.getTxf_descGral().requestFocus();
 
     }
@@ -112,8 +128,14 @@ public class Navigation {
         return frameMain;
     }
 
-    public TreePath getLastSelected() {
-        return lastSelected;
+    public TreePath getLastSelectedTreePath() {
+        return lastSelectedTreePath;
     }
+
+    public static JPanel getLasSelectedPanel() {
+        return lastSelectedPanel;
+    }
+    
+    
 
 }
