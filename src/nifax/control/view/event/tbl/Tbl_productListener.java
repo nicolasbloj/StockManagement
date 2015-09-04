@@ -26,10 +26,18 @@ public class Tbl_productListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_O:
-                Searching.showInTable(intFrame,Searching.SHOW_OFFER);
+                Searching.showInTable(intFrame, Searching.SHOW_OFFER);
                 break;
             case KeyEvent.VK_S:
-                Searching.showInTable(intFrame,Searching.SHOW_STOCK);
+                Searching.showInTable(intFrame, Searching.SHOW_STOCK);
+                break;
+            case KeyEvent.VK_ENTER:
+                Searching.insertProductInForm(intFrame);
+                intFrame.dispose();
+                break;
+            case KeyEvent.VK_CONTROL:
+                Searching.insertProductInForm(intFrame);
+                break;
         }
     }
 

@@ -41,4 +41,13 @@ public final class Table {
         return false;
     }
 
+    public static void UpdateIt(JTable table) {
+        int indexIt = table.getColumnModel().getColumnIndex("IT"); //
+        for (int i = 0; i < table.getRowCount(); i++) {
+            if (table.getValueAt(i, indexIt) != null) {
+                table.setValueAt(i+1, i, indexIt);
+            }
+        }
+
+    }
 }

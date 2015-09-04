@@ -14,7 +14,9 @@ import nifax.control.controller.Operation;
 import nifax.control.validate.MyAlphaNumericFilter;
 import nifax.control.validate.MyIntFilter;
 import nifax.control.view.event.btn.Btn_adminAction;
+import nifax.control.view.event.btn.Btn_operationAction;
 import nifax.control.view.event.pnl.Pnl_panelSalesTicketListener;
+import nifax.control.view.event.tbl.Tbl_Listener;
 import nifax.control.view.util.Pnl;
 
 /**
@@ -50,10 +52,9 @@ public class PanelSalesTicket extends Pnl{
         lbl_ticketMeasureProduct = new javax.swing.JLabel();
         pnl_ticketSideMenu = new javax.swing.JPanel();
         btn_ticketProductSearch = new javax.swing.JButton
-        (new Btn_adminAction(this,Administration.LIST,"..."));
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        (new Btn_adminAction(this,Administration.LIST,""));
+        btn_ticketProductDelete = new javax.swing.JButton
+        (new Btn_operationAction(this,Operation.DELETEROW,""));
         pnl_ticketGral = new javax.swing.JPanel();
         lbl_ticketGralPrice = new javax.swing.JLabel();
         cbx_ticketGralStore = new javax.swing.JComboBox();
@@ -162,22 +163,19 @@ public class PanelSalesTicket extends Pnl{
 
         pnl_ticketSideMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btn_ticketProductSearch.setText("...");
+        btn_ticketProductSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nifax/control/image/search.png"))); // NOI18N
 
-        jButton3.setText("...");
-
-        jButton4.setText("...");
-
-        jButton5.setText("...");
+        btn_ticketProductDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nifax/control/image/delete.png"))); // NOI18N
 
         javax.swing.GroupLayout pnl_ticketSideMenuLayout = new javax.swing.GroupLayout(pnl_ticketSideMenu);
         pnl_ticketSideMenu.setLayout(pnl_ticketSideMenuLayout);
         pnl_ticketSideMenuLayout.setHorizontalGroup(
             pnl_ticketSideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_ticketProductSearch)
-            .addComponent(jButton3)
-            .addComponent(jButton4)
-            .addComponent(jButton5)
+            .addGroup(pnl_ticketSideMenuLayout.createSequentialGroup()
+                .addGroup(pnl_ticketSideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_ticketProductSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ticketProductDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_ticketSideMenuLayout.setVerticalGroup(
             pnl_ticketSideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,12 +183,8 @@ public class PanelSalesTicket extends Pnl{
                 .addGap(14, 14, 14)
                 .addComponent(btn_ticketProductSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(btn_ticketProductDelete)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pnl_ticketGral.setBorder(javax.swing.BorderFactory.createTitledBorder("En general"));
@@ -256,6 +250,7 @@ public class PanelSalesTicket extends Pnl{
         });
         tbl_ticket.getTableHeader().setReorderingAllowed(false);
         scp_tblTicket.setViewportView(tbl_ticket);
+        tbl_ticket.getTableHeader().addMouseListener(new Tbl_Listener(this.tbl_ticket));
 
         pnl_totalTicket.setBorder(javax.swing.BorderFactory.createTitledBorder("Totales"));
 
@@ -331,7 +326,7 @@ public class PanelSalesTicket extends Pnl{
                 .addComponent(pnl_ticketGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
             .addGroup(pnl_ticketLayout.createSequentialGroup()
-                .addComponent(pnl_ticketSideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_ticketSideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(scp_tblTicket)
                 .addContainerGap())
@@ -541,6 +536,7 @@ public class PanelSalesTicket extends Pnl{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_emitTicket;
+    private javax.swing.JButton btn_ticketProductDelete;
     private javax.swing.JButton btn_ticketProductSearch;
     private javax.swing.JComboBox cbx_ticketDescProduct;
     private javax.swing.JComboBox cbx_ticketGralPrice;
@@ -548,9 +544,6 @@ public class PanelSalesTicket extends Pnl{
     private javax.swing.JComboBox cbx_ticketMeasureProduct;
     private javax.swing.JComboBox cbx_ticketPriceProduct;
     private javax.swing.JComboBox cbx_ticketStoreProduct;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel lbl_TotalTicket;
     private javax.swing.JLabel lbl_iva105Ticket;
     private javax.swing.JLabel lbl_iva21Ticket;

@@ -68,7 +68,7 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="pnl_ticketSideMenu" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnl_ticketSideMenu" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="scp_tblTicket" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -284,10 +284,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btn_ticketProductSearch" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btn_ticketProductSearch" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="btn_ticketProductDelete" min="-2" pref="45" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -296,12 +299,8 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="btn_ticketProductSearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <Component id="btn_ticketProductDelete" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="90" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -309,26 +308,23 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btn_ticketProductSearch">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="..."/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/nifax/control/image/search.png"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_adminAction(this,Administration.LIST,&quot;...&quot;))"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_adminAction(this,Administration.LIST,&quot;&quot;))"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="btn_ticketProductDelete">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="..."/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/nifax/control/image/delete.png"/>
+                    </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="..."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton5">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="..."/>
-                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton&#xa;(new Btn_operationAction(this,Operation.DELETEROW,&quot;&quot;))"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -435,7 +431,7 @@
                         <Column editable="false" title="DEPO" type="java.lang.Object"/>
                       </Table>
                     </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="tbl_ticket.getTableHeader().addMouseListener(new Tbl_Listener(this.tbl_ticket));">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>

@@ -228,7 +228,11 @@ public class Administration implements ActionController {
         //Search by code
         String code = panelProductsAdmin.getTxf_codeProduct().getText();
         Product product = ProductOperation.getInstance().Find(new Product(code, 1));
+        fillPanelProductsAdmin(product, panelProductsAdmin);
+        return Boolean.TRUE;
+    }
 
+    public void fillPanelProductsAdmin(Product product, PanelProductsAdmin panelProductsAdmin) {
         panelProductsAdmin.getLbl_idProduct().setText(String.valueOf(product.getId()));
         panelProductsAdmin.getCbx_category().setSelectedItem("");//Because when set category in cbx and cbx containts text, the cbx no refresh 
         panelProductsAdmin.getCbx_category().setSelectedItem(product.getCategory().getDescription());
@@ -236,15 +240,12 @@ public class Administration implements ActionController {
         panelProductsAdmin.getTxf_cost().setText(Double.toString(product.getCost()));
         panelProductsAdmin.getCbx_iva().setSelectedItem(product.getIva().getIva());
         panelProductsAdmin.getChx_active().setSelected(product.getActive());
-
         panelProductsAdmin.getTxf_codeProduct().setEnabled(false);
-
+        panelProductsAdmin.getTxf_codeProduct().setText(product.getCode());//It's necesary when is called from InternalFrame
         panelProductsAdmin.getTxf_codeProductOffer().setText(product.getCode());
         panelProductsAdmin.getTxf_descProductOffer().setText(product.getDescription());
-
         panelProductsAdmin.getTxf_codeProductRestoration().setText(product.getCode());
         panelProductsAdmin.getTxf_descProductRestoration().setText(product.getDescription());
-
         panelProductsAdmin.getTxf_codeProductStock().setText(product.getCode());
         panelProductsAdmin.getTxf_descProductStock().setText(product.getDescription());
 
@@ -328,9 +329,6 @@ public class Administration implements ActionController {
             stockTableModel.insertRow(stockTableModel.getRowCount(), v);
         }
         );
-
-        return Boolean.TRUE;
-
     }
 
     private boolean deleteProduct(PanelProductsAdmin panelProductsAdmin) {

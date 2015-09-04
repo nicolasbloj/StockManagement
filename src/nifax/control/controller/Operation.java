@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Item;
 import nifax.control.model.Product;
@@ -17,6 +19,7 @@ import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
 import nifax.control.util.Frame;
 import nifax.control.util.Message;
+import nifax.control.util.Table;
 import nifax.control.view.event.btn.Btn_operationAction;
 import nifax.control.view.panel.PanelSalesTicket;
 
@@ -41,6 +44,7 @@ public class Operation implements ActionController {
     //Constants 
     public static final int EMIT = 0;
     public static final int SALE = 1;//when product is introduced in the jtable
+    public static final int DELETEROW = 3;
 
     // Panels name
     public static final String Ticket = "Ticket";
@@ -52,6 +56,8 @@ public class Operation implements ActionController {
                 return emit(panel, panelName);
             case SALE:
                 return sale((PanelSalesTicket) panel);
+            case DELETEROW:
+                return deleteRow((PanelSalesTicket) panel);
         }
         return Boolean.FALSE;
     }
@@ -167,6 +173,40 @@ public class Operation implements ActionController {
             return Boolean.FALSE;
         }
 
+    }
+
+    //Delete Item of grid
+    private Boolean deleteRow(PanelSalesTicket panelSalesTicket) {
+        JTable table = panelSalesTicket.getTbl_ticket();
+        int indexCheck = table.getColumnModel().getColumnIndex("");
+        Integer rowsToDelete[];
+        int c = 0;
+        for (int i = 0; i < table.getRowCount(); i++) {
+            if (table.getValueAt(i, indexCheck) != null) {
+                if (table.getValueAt(i, indexCheck).equals(true)) {
+                    c++;
+                }
+            }
+
+        }
+        rowsToDelete = new Integer[c];
+        c = 0;
+        for (int i = 0; i < table.getRowCount(); i++) {
+            if (table.getValueAt(i, indexCheck) != null) {
+                if (table.getValueAt(i, indexCheck).equals(true)) {
+                    rowsToDelete[c] = i;
+                    c++;
+                }
+            }
+
+        }
+        int d;
+        for (int i = 0; i < rowsToDelete.length; i++) {
+            d = rowsToDelete[i] - i;
+            ((DefaultTableModel) table.getModel()).removeRow(d);
+        }
+        Table.UpdateIt(table);
+        return Boolean.TRUE;
     }
 
 }
