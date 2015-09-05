@@ -24,6 +24,10 @@ public class Btn_operationAction extends Btn_action {
                 text = Message.ShorDescriptionEmit;
                 putValue(MNEMONIC_KEY, java.awt.event.KeyEvent.VK_G);
                 break;
+            case Operation.DELETEROW:
+                text = Message.ShorDescriptionEmit;
+                putValue(MNEMONIC_KEY, java.awt.event.KeyEvent.VK_D);
+                break;
         }
         putValue(SHORT_DESCRIPTION, text);
 

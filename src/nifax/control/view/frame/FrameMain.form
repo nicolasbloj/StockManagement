@@ -98,6 +98,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new nifax.control.view.util.Tre(this)"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tre_navigation.setCellRenderer(new TreeRenderer());"/>
           </AuxValues>
         </Component>
       </SubComponents>
