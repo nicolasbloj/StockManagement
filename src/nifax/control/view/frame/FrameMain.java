@@ -11,6 +11,7 @@ import javax.swing.JTree;
 import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.util.ClockLabel;
+import nifax.control.util.TreeRenderer;
 import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
 
@@ -67,6 +68,7 @@ public final class FrameMain extends javax.swing.JFrame {
         scp_tree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tre_navigation.setBackground(new java.awt.Color(226, 212, 246));
+        tre_navigation.setCellRenderer(new TreeRenderer());
         scp_tree.setViewportView(tre_navigation);
 
         pnl_title.setBackground(new java.awt.Color(226, 212, 246));

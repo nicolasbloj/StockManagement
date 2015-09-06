@@ -1,12 +1,19 @@
 package nifax.control.view.internalframe;
 
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import nifax.control.controller.Searching;
 import nifax.control.view.event.txf.Txf_searchProduct;
 
@@ -14,7 +21,7 @@ import nifax.control.view.event.txf.Txf_searchProduct;
  *
  * @author NB
  */
-public class IntFrameProductSearch extends javax.swing.JInternalFrame {
+public final class IntFrameProductSearch extends javax.swing.JInternalFrame {
 
     public IntFrameProductSearch(JLayeredPane layeredPane) {
         initComponents();
@@ -28,10 +35,29 @@ public class IntFrameProductSearch extends javax.swing.JInternalFrame {
         setResizable(true);
         setClosable(true);
         setVisible(true);
-        
+
         this.toFront();
         this.requestFocus();
         this.txf_codeProduct.requestFocus();
+
+        KeyStroke key_esc = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0);
+
+        for (Component component : this.getComponents()) {
+            JComponent c = (JComponent) component;
+            ActionMap mapaAccion = c.getActionMap();
+            InputMap map = c.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+            map.put(key_esc, "action");
+            mapaAccion.put("action", Accion());
+        }
+    }
+
+    public AbstractAction Accion() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        };
     }
 
     public JLabel getLbl_alternativeProduct() {
