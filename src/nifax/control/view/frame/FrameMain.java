@@ -57,15 +57,6 @@ public final class FrameMain extends javax.swing.JFrame {
         pnl_clock = new javax.swing.JPanel();
         lbl_usrname = new javax.swing.JLabel();
         scp_container = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         mbr_main = new javax.swing.JMenuBar();
         men_system = new javax.swing.JMenu();
         mei_exit = new javax.swing.JMenuItem();
@@ -132,33 +123,6 @@ public final class FrameMain extends javax.swing.JFrame {
 
         scp_container.setBackground(new java.awt.Color(51, 51, 51));
 
-        jPanel1.setLayout(new java.awt.GridLayout());
-
-        jButton1.setText("Productos");
-        jButton1.setPreferredSize(new java.awt.Dimension(146, 48));
-        jPanel1.add(jButton1);
-
-        jButton2.setText("Categorias");
-        jPanel1.add(jButton2);
-
-        jButton4.setText("Precios");
-        jPanel1.add(jButton4);
-
-        jButton5.setText("Depósitos");
-        jPanel1.add(jButton5);
-
-        jButton6.setText("Medidas");
-        jPanel1.add(jButton6);
-
-        jButton7.setText("Ticket");
-        jPanel1.add(jButton7);
-
-        jButton3.setText("Reportes");
-        jPanel1.add(jButton3);
-
-        jButton8.setText("Usuarios");
-        jPanel1.add(jButton8);
-
         men_system.setText("Sistema");
 
         mei_exit.addActionListener(new Mei_exitListener());
@@ -181,10 +145,6 @@ public final class FrameMain extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(scp_container))
             .addComponent(pnl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 313, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,13 +152,9 @@ public final class FrameMain extends javax.swing.JFrame {
                 .addComponent(pnl_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(scp_tree, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                     .addComponent(scp_container))
-                .addGap(45, 45, 45))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 339, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -243,15 +199,6 @@ public final class FrameMain extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_usrname;
     private javax.swing.JMenuBar mbr_main;
