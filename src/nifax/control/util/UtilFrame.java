@@ -7,7 +7,7 @@ import nifax.control.controller.Navigation;
  *
  * @author NB
  */
-public class Frame {
+public class UtilFrame {
 
     public static void reloadPanel() {
         TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
