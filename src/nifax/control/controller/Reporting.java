@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -15,8 +16,11 @@ import net.sf.jasperreports.view.JasperViewer;
 import nifax.control.report.jrdatasource.StockDataSource;
 import nifax.control.model.Stock;
 import nifax.control.model.modeler.StockOperation;
+import nifax.control.util.Message;
 import nifax.control.util.Path;
 import nifax.control.view.event.btn.Btn_reportAction;
+import nifax.control.view.panel.PanelGeneralAdmin;
+import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelReportProductStock;
 
 /**
@@ -28,6 +32,7 @@ public class Reporting implements ActionController {
     private static Reporting instance = null;
 
     public static final int GENERATE = 0;
+    public static final int CANCEL = 1;
 
     //Panels name - Reports
     public static final String ProductStock = "ProductStock";
@@ -47,6 +52,8 @@ public class Reporting implements ActionController {
         switch (ACTION) {
             case GENERATE:
                 return generate(panel, panelName);
+            case CANCEL:
+                return cancel(panelName);
 
         }
         return Boolean.FALSE;
@@ -91,6 +98,22 @@ public class Reporting implements ActionController {
             Logger.getLogger(Btn_reportAction.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
+
+    }
+
+    private Boolean cancel(String panelName) {
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+            Message.DialogCancel, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+
+            switch (panelName) {
+                case ProductStock:
+                    Navigation.getInstance().setPanelReportProductStock(new PanelReportProductStock());
+                    break;
+
+            }
+        }
+        return Boolean.TRUE;
 
     }
 

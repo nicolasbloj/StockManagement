@@ -33,12 +33,12 @@ public class Message {
     public static final String DialogProductNotFound = "Producto no encontrado";
     public static final String DialogProductNotActive = "El producto no se encuentra habilitado";
     public static final String DialogProductNotActiveTitle = "Estado del producto";
-    public static String DialogCheck="Posibles causas del problema\n"
-                    + "1 - La aplicacion ya esta en ejecución\n"
-                    + "2 - La sesion fue cerrada hace 20 segundos, espere 20 segundos por favor \n"
-                    + "y vuelva a ejecutar la aplicacion.";
-    public static String DialogExit="¿Esta seguro que desea salir?";
-    
+    public static final String DialogCheck = "Posibles causas del problema\n"
+        + "1 - La aplicacion ya esta en ejecución\n"
+        + "2 - La sesion fue cerrada hace 20 segundos, espere 20 segundos por favor \n"
+        + "y vuelva a ejecutar la aplicacion.";
+    public static final String DialogExit = "¿Esta seguro que desea salir?";
+    public static final String DialogCancel = "¿Esta seguro que desea cancelar este panel?";
 
     //Dialog's generic messages 
     public static final String DialogSave = "Esta seguro que desea guardar ?";
@@ -47,24 +47,24 @@ public class Message {
     public static final String DialogEmit = "Esta seguro que desea emitir este documento ?";
 
     //Ticket's dialog.
-    public static String DialogEmitTicket = "Esta seguro que desea emitir ticket ?";
+    public static final String DialogEmitTicket = "Esta seguro que desea emitir ticket ?";
 
     //Extras messages
     public static final String MeasureAlreadyLoaded = "Este tipo de medida ya se encuentra agregado";
     public static final String StoreAlreadyLoaded = "Este deposito ya se encuentra agregado";
     public static final String ProductNotHasRule = "El producto no tiene cargado una regla para esta medida";
     public static final String FirstSearchProduct = "Primero deberia buscar el producto";
-    public static String CategoryInvalid = "Ingrese una categoria correcta";
-    
+    public static final String CategoryInvalid = "Ingrese una categoria correcta";
+
     //Short descriptions
-    public static String ShorDescriptionSave = "Presionando este boton guardara el elemento";
-    public static String ShorDescriptionSearch = "Presionando este boton se buscara el elemento especificado";
-    public static String ShorDescriptionDelete = "Presionando este boton borrara el elemento especificado";
-    public static String ShorDescriptionListProduct = "Presionando este boton se abrira la pantalla de busqueda avanzada de listar";
-    public static String ShorDescriptionListGral = "Presionando este boton se listaran los elementos en la tabla derecha";
-    public static String ShorDescriptionEmit = "Presionando este boton se emitira el documento especificado";
-    public static String ShorDescriptionGenerate = "Presionando este boton se generara el documento especificado";
-    public static String ShorDescriptionPlus = "Presionando este boton se generara agregara elemento a tabla";
-    public static String ShorDescriptionLess = "Presionando este boton se eliminara el elemento seleccionado en la tabla";
+    public static final String ShorDescriptionSave = "Presionando este boton guardara el elemento";
+    public static final String ShorDescriptionSearch = "Presionando este boton se buscara el elemento especificado";
+    public static final String ShorDescriptionDelete = "Presionando este boton borrara el elemento especificado";
+    public static final String ShorDescriptionListProduct = "Presionando este boton se abrira la pantalla de busqueda avanzada de listar";
+    public static final String ShorDescriptionListGral = "Presionando este boton se listaran los elementos en la tabla derecha";
+    public static final String ShorDescriptionEmit = "Presionando este boton se emitira el documento especificado";
+    public static final String ShorDescriptionGenerate = "Presionando este boton se generara el documento especificado";
+    public static final String ShorDescriptionPlus = "Presionando este boton se generara agregara elemento a tabla";
+    public static final String ShorDescriptionLess = "Presionando este boton se eliminara el elemento seleccionado en la tabla";
 
 }

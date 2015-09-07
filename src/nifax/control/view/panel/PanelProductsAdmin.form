@@ -2003,7 +2003,7 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.CANCEL,&quot;Cancelar&quot;))"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -149,18 +149,22 @@ public class Navigation {
     //for cancel option
     public void setPanelProductsAdmin(PanelProductsAdmin panelProductsAdmin) {
         this.panelProductsAdmin = panelProductsAdmin;
+        this.showPanel(null);
     }
 
     public void setPanelSalesTicket(PanelSalesTicket panelSalesTicket) {
         this.panelSalesTicket = panelSalesTicket;
+        this.showPanel(null);
     }
 
     public void setPanelReportProductStock(PanelReportProductStock panelReportProductStock) {
         this.panelReportProductStock = panelReportProductStock;
+        this.showPanel(null);
     }
 
     public void setPanelGeneralAdmin(PanelGeneralAdmin panelGeneralAdmin) {
         this.panelGeneralAdmin = panelGeneralAdmin;
+        this.showPanel(null);
     }
 
 }

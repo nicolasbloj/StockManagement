@@ -26,7 +26,7 @@ import nifax.control.model.Store;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.util.ColumnSorter;
-import nifax.control.util.Frame;
+import nifax.control.util.UtilFrame;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.internalframe.IntFrameProductSearch;
@@ -56,6 +56,7 @@ public class Administration implements ActionController {
     public static final int SEARCH = 1;
     public static final int DELETE = 2;
     public static final int LIST = 3;
+    public static final int CANCEL = 4;
 
     // Panels name - GRAL
     public static final String Category = "Category";
@@ -87,6 +88,8 @@ public class Administration implements ActionController {
                 return list(panel, panelName);
             case DELETE:
                 return delete(panel, panelName);
+            case CANCEL:
+                return cancel(panelName);
         }
         return Boolean.FALSE;
     }
@@ -217,7 +220,7 @@ public class Administration implements ActionController {
         }
 
         //Reload panel
-        Frame.reloadPanel();
+        UtilFrame.reloadPanel();
         panelProductsAdmin.repaint();
 
         return Boolean.TRUE;
@@ -358,7 +361,7 @@ public class Administration implements ActionController {
             JOptionPane.showMessageDialog(null, Message.Delete);
 
             //Reload panel
-            Frame.reloadPanel();
+            UtilFrame.reloadPanel();
             panelProductsAdmin.repaint();
 
         } else {
@@ -401,7 +404,7 @@ public class Administration implements ActionController {
         }
 
         //Reload panel
-        Frame.reloadPanel();
+        UtilFrame.reloadPanel();
         panelGeneralAdmin.repaint();
 
         return Boolean.TRUE;
@@ -584,6 +587,23 @@ public class Administration implements ActionController {
         return Boolean.TRUE;
     }
 
+    private Boolean cancel(String panelName) {
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+            Message.DialogCancel, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            switch (panelName) {
+                case Product:
+                    Navigation.getInstance().setPanelProductsAdmin(new PanelProductsAdmin());
+                    break;
+                default:
+                    Navigation.getInstance().setPanelGeneralAdmin(new PanelGeneralAdmin());
+                    break;
+            }
+        }
+        return Boolean.TRUE;
+
+    }
+
     //Util.
     private void fillTable(Map<String, SimpleEntity> list, JTable table) {
         list.entrySet().stream().map((entry) -> entry.getValue()).forEach((SimpleEntity obj) -> {
@@ -605,4 +625,5 @@ public class Administration implements ActionController {
         );
 
     }
+
 }
