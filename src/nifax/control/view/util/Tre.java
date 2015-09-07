@@ -17,7 +17,7 @@ public class Tre extends JTree {
 
     public Tre(FrameMain jFrameMain) {
 
-        TreeListener = new Tre_Listener(jFrameMain);
+        TreeListener = new Tre_Listener();
 
         addMouseListener(TreeListener);
         addKeyListener(TreeListener);
