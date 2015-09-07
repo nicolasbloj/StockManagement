@@ -15,16 +15,10 @@ import nifax.control.view.frame.FrameMain;
  */
 public class Tre_Listener implements MouseListener, KeyListener {
 
-    private final FrameMain frameMain;
     private final Navigation navigation;
-    
-    public Tre_Listener(FrameMain jFrameMain) {
-        
-        this.frameMain = jFrameMain;
 
+    public Tre_Listener() {
         navigation = Navigation.getInstance();
-        Navigation.setFrameMain(jFrameMain);
-        
     }
 
     @Override

@@ -16,6 +16,12 @@ import nifax.control.view.panel.PanelSalesTicket;
  */
 public class Navigation {
 
+    private final PanelPresentation panelPresentation;
+    private PanelProductsAdmin panelProductsAdmin;
+    private PanelSalesTicket panelSalesTicket;
+    private PanelReportProductStock panelReportProductStock;
+    private PanelGeneralAdmin panelGeneralAdmin;
+
     private static Navigation instance = null;
 
     private static FrameMain frameMain = null;
@@ -29,6 +35,11 @@ public class Navigation {
     public static final String OPERATION_SALE_TICKET = "[NiFax, Operacion, Ventas, Ticket]";
 
     protected Navigation() {
+        panelPresentation = new PanelPresentation();
+        panelProductsAdmin = new PanelProductsAdmin();
+        panelSalesTicket = new PanelSalesTicket();
+        panelReportProductStock = new PanelReportProductStock();
+        panelGeneralAdmin = new PanelGeneralAdmin();
     }
 
     public static Navigation getInstance() {
@@ -40,6 +51,7 @@ public class Navigation {
 
     public static void setFrameMain(FrameMain frameMain) {
         Navigation.frameMain = frameMain;
+
     }
 
     public void showPanel(TreePath tp) {
@@ -47,7 +59,6 @@ public class Navigation {
         if (tp != null) {
             switch (tp.toString()) {
                 case ADMINISTRATION_PRODUCT_MANAGEMENT:
-                    PanelProductsAdmin panelProductsAdmin = new PanelProductsAdmin();
 
                     panelProductsAdmin.getPnl_product().setName("Product");
                     panelProductsAdmin.getPnl_offer().setName("Product");
@@ -60,7 +71,7 @@ public class Navigation {
 
                     nodeSelected = ADMINISTRATION_PRODUCT_MANAGEMENT;
                     lastSelectedPanel = panelProductsAdmin;
-                    
+
                     break;
                 case "[NiFax, Administracion, Categorias, Gestion]":
                     showGralPanel("Category", "Categoria");
@@ -75,34 +86,33 @@ public class Navigation {
                     showGralPanel("Price", "Lista de precio");
                     break;
                 case OPERATION_SALE_TICKET:
-                    PanelSalesTicket panelSalesTicket = new PanelSalesTicket();
+
                     panelSalesTicket.getPnl_ticket().setName("Ticket");
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
                     panelSalesTicket.getTxf_ticketCodeProduct().requestFocus();
-                    
-                    
+
                     nodeSelected = OPERATION_SALE_TICKET;
                     lastSelectedPanel = panelSalesTicket;
-                    
+
                     break;
                 case "[NiFax, Reportes, Productos, Stock]":
-                    PanelReportProductStock panelReportProductStock = new PanelReportProductStock();
+
                     panelReportProductStock.getPnl_reportProductStock().setName("ProductStock");
                     frameMain.getScp_container().setViewportView(panelReportProductStock);
                     panelReportProductStock.getTxf_StockMin().requestFocus();
                     break;
                 default:
-                    PanelPresentation jPanelPresentation = new PanelPresentation();
-                    frameMain.getScp_container().setViewportView(jPanelPresentation);
+                    frameMain.getScp_container().setViewportView(panelPresentation);
                     break;
             }
 
+        } else {
+            frameMain.getScp_container().setViewportView(panelPresentation);
         }
     }
 
     private void showGralPanel(String panelName, String tab) {
 
-        PanelGeneralAdmin panelGeneralAdmin = new PanelGeneralAdmin();
         frameMain.getScp_container().setViewportView(panelGeneralAdmin);
 
         panelGeneralAdmin.getPnl_loadGral().setName(panelName);
@@ -135,7 +145,22 @@ public class Navigation {
     public static JPanel getLasSelectedPanel() {
         return lastSelectedPanel;
     }
-    
-    
+
+    //for cancel option
+    public void setPanelProductsAdmin(PanelProductsAdmin panelProductsAdmin) {
+        this.panelProductsAdmin = panelProductsAdmin;
+    }
+
+    public void setPanelSalesTicket(PanelSalesTicket panelSalesTicket) {
+        this.panelSalesTicket = panelSalesTicket;
+    }
+
+    public void setPanelReportProductStock(PanelReportProductStock panelReportProductStock) {
+        this.panelReportProductStock = panelReportProductStock;
+    }
+
+    public void setPanelGeneralAdmin(PanelGeneralAdmin panelGeneralAdmin) {
+        this.panelGeneralAdmin = panelGeneralAdmin;
+    }
 
 }
