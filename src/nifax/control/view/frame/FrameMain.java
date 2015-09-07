@@ -1,6 +1,5 @@
 package nifax.control.view.frame;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,42 +11,42 @@ import nifax.control.controller.Authentication;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.util.ClockLabel;
 import nifax.control.util.TreeRenderer;
+import nifax.control.util.UtilColor;
 import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
+import nifax.control.view.util.Fra;
 
 /**
  *
  * @author NB
  */
-public final class FrameMain extends javax.swing.JFrame {
+public final class FrameMain extends Fra {
 
     public FrameMain() throws InitializeSessionException {
         initComponents();
-        
+
         lbl_usrname.setText(Authentication.getInstance().getSession().getUserEmployee().getUsername());
         ClockLabel dateLabel = new ClockLabel("date");
         ClockLabel timeLabel = new ClockLabel("time");
         ClockLabel dayLabel = new ClockLabel("day");
-        pnl_clock.add(dayLabel);        
+        pnl_clock.add(dayLabel);
         pnl_clock.add(dateLabel);
         pnl_clock.add(new JLabel(""));
         pnl_clock.add(timeLabel);
         pnl_clock.setLayout(new GridLayout(2, 2));
-        
+
         //this.pnl_main.setVisible(false);
         this.pnl_login.setVisible(false);
-        
+
         this.addWindowListener(new Fra_frameMainListener());
 
-        this.getContentPane().setBackground(new Color(226,212,246));
+        this.getContentPane().setBackground(UtilColor.FrameColor);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public JTree getTre_navigation() {
         return tre_navigation;
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,6 +74,7 @@ public final class FrameMain extends javax.swing.JFrame {
         men_help = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setIconImage(getIconImage());
 
         pnl_main.setBackground(new java.awt.Color(204, 102, 0));
 
@@ -304,8 +304,8 @@ public final class FrameMain extends javax.swing.JFrame {
         return scp_container;
     }
 
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login2;
     private javax.swing.JLabel lbl_pass2;

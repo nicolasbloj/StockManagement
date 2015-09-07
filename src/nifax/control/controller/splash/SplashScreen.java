@@ -9,17 +9,19 @@ package nifax.control.controller.splash;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRootPane;
 import javax.swing.Timer;
+import nifax.control.view.util.Fra;
 
-public class SplashScreen extends JFrame {
+public class SplashScreen extends Fra {
     private static JProgressBar progressBar;
     private static int count = 1;
     private static final int TIMER_PAUSE = 100;
@@ -79,4 +81,6 @@ public class SplashScreen extends JFrame {
         });
         progressBarTimer.start();
     }
+    
+    
 }

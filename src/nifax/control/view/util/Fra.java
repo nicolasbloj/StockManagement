@@ -1,16 +1,25 @@
-package nifax.control.util;
+package nifax.control.view.util;
 
-import javax.swing.tree.TreePath;
-import nifax.control.controller.Navigation;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
 
 /**
  *
  * @author NB
  */
-public class Frame {
+public class Fra extends JFrame {
 
-    public static void reloadPanel() {
-        TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
-        Navigation.getInstance().showPanel(tp);
+    public Fra() {
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/nifax/control/image/nf_icon.png"));
+        this.setIconImage(icon);
     }
+/*
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+            getImage(getClass().getResource("/nifax/control/image/nf.png"));
+
+        return retValue;
+    }*/
 }
