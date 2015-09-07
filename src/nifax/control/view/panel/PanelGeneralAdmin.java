@@ -98,7 +98,7 @@ public class PanelGeneralAdmin extends Pnl {
         btn_save = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.SAVE,"Guardar"));
         btn_delete = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.DELETE,"Eliminar"));
         btn_list = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.LIST,"Listar"));
-        btn_cancel = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.CANCEL,"Cancelar"));
 
         pnl_principal.setBorder(javax.swing.BorderFactory.createTitledBorder("Principal"));
 

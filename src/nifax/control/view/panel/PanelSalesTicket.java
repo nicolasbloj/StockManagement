@@ -73,6 +73,7 @@ public class PanelSalesTicket extends Pnl{
         lbl_TotalTicket = new javax.swing.JLabel();
         pnl_menuTicket = new javax.swing.JPanel();
         btn_emitTicket = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_operationAction(this,Operation.EMIT,"Emitir"));
+        btn_cancel = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_operationAction(this,Operation.CANCEL,"Cancelar"));
 
         pnl_ticketProduct.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
 
@@ -357,20 +358,26 @@ public class PanelSalesTicket extends Pnl{
 
         btn_emitTicket.setText("Emitir");
 
+        btn_cancel.setText("Cancelar");
+
         javax.swing.GroupLayout pnl_menuTicketLayout = new javax.swing.GroupLayout(pnl_menuTicket);
         pnl_menuTicket.setLayout(pnl_menuTicketLayout);
         pnl_menuTicketLayout.setHorizontalGroup(
             pnl_menuTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_menuTicketLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_emitTicket)
+                .addComponent(btn_cancel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_emitTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
         pnl_menuTicketLayout.setVerticalGroup(
             pnl_menuTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menuTicketLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_emitTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_menuTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_emitTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -535,6 +542,7 @@ public class PanelSalesTicket extends Pnl{
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_emitTicket;
     private javax.swing.JButton btn_ticketProductDelete;
     private javax.swing.JButton btn_ticketProductSearch;

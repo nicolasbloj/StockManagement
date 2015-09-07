@@ -633,7 +633,7 @@ public class PanelProductsAdmin extends Pnl {
         btn_search = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.SEARCH,"Buscar"));
         btn_delete = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.DELETE,"ELiminar"));
         btn_list = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.LIST,"Listar"));
-        btn_cancel = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_adminAction(this,nifax.control.controller.Administration.CANCEL,"Cancelar"));
 
         tbp_containerProduct.setBackground(new java.awt.Color(51, 51, 51));
         tbp_containerProduct.setOpaque(true);

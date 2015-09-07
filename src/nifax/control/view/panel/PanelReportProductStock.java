@@ -35,6 +35,7 @@ public class PanelReportProductStock extends Pnl {
 
         pnl_menuReportProductStock = new javax.swing.JPanel();
         btn_generateReport = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.GENERATE,"Generar"));
+        btn_cancel = new javax.swing.JButton(new nifax.control.view.event.btn.Btn_reportAction(this,Reporting.CANCEL,"Cancelar"));
         tbp_reportProductStock = new Tbp();
         pnl_reportProductStock = new javax.swing.JPanel();
         lbl_stockMin = new javax.swing.JLabel();
@@ -44,6 +45,8 @@ public class PanelReportProductStock extends Pnl {
 
         btn_generateReport.setText("Generar");
 
+        btn_cancel.setText("Cancelar");
+
         javax.swing.GroupLayout pnl_menuReportProductStockLayout = new javax.swing.GroupLayout(pnl_menuReportProductStock);
         pnl_menuReportProductStock.setLayout(pnl_menuReportProductStockLayout);
         pnl_menuReportProductStockLayout.setHorizontalGroup(
@@ -51,13 +54,17 @@ public class PanelReportProductStock extends Pnl {
             .addGroup(pnl_menuReportProductStockLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(btn_generateReport)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_cancel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_menuReportProductStockLayout.setVerticalGroup(
             pnl_menuReportProductStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_menuReportProductStockLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(btn_generateReport))
+                .addGroup(pnl_menuReportProductStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_generateReport)
+                    .addComponent(btn_cancel)))
         );
 
         lbl_stockMin.setText("Stock minimo");
@@ -106,6 +113,7 @@ public class PanelReportProductStock extends Pnl {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_generateReport;
     private javax.swing.JLabel lbl_stockMin;
     private javax.swing.JPanel pnl_menuReportProductStock;

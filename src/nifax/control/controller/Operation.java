@@ -17,10 +17,12 @@ import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
-import nifax.control.util.Frame;
+import nifax.control.util.UtilFrame;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.event.btn.Btn_operationAction;
+import nifax.control.view.panel.PanelGeneralAdmin;
+import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -45,6 +47,7 @@ public class Operation implements ActionController {
     public static final int EMIT = 0;
     public static final int SALE = 1;//when product is introduced in the jtable
     public static final int DELETEROW = 3;
+    public static final int CANCEL = 4;
 
     // Panels name
     public static final String Ticket = "Ticket";
@@ -58,6 +61,9 @@ public class Operation implements ActionController {
                 return sale((PanelSalesTicket) panel);
             case DELETEROW:
                 return deleteRow((PanelSalesTicket) panel);
+            case CANCEL:
+                return cancel(panelName);
+
         }
         return Boolean.FALSE;
     }
@@ -163,7 +169,7 @@ public class Operation implements ActionController {
                 .append(" generado correctamente"));
 
             //Reload panel
-            Frame.reloadPanel();
+            UtilFrame.reloadPanel();
             panelSalesTicket.repaint();
 
             return Boolean.TRUE;
@@ -207,6 +213,22 @@ public class Operation implements ActionController {
         }
         Table.UpdateIt(table);
         return Boolean.TRUE;
+    }
+
+    private Boolean cancel(String panelName) {
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+            Message.DialogCancel, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+
+            switch (panelName) {
+                case Ticket:
+                    Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket());
+                    break;
+
+            }
+        }
+        return Boolean.TRUE;
+
     }
 
 }
