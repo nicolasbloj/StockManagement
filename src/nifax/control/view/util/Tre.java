@@ -21,7 +21,7 @@ public class Tre extends JTree {
 
         addMouseListener(TreeListener);
         addKeyListener(TreeListener);
-        
+
         DefaultMutableTreeNode TreeRoot = new DefaultMutableTreeNode("NiFax");
         DefaultTreeModel TreeModel = new DefaultTreeModel(TreeRoot);
 
@@ -32,72 +32,78 @@ public class Tre extends JTree {
         DefaultMutableTreeNode DefaultMutableTreeNodeOperation = new DefaultMutableTreeNode("Operacion");
         DefaultMutableTreeNode DefaultMutableTreeNodeSystem = new DefaultMutableTreeNode("Sistema");
         DefaultMutableTreeNode defaultMutableTreeNodeReports = new DefaultMutableTreeNode("Reportes");
-            
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeAdministration, TreeRoot, 0);
         TreeModel.insertNodeInto(DefaultMutableTreeNodeOperation, TreeRoot, 1);
         TreeModel.insertNodeInto(defaultMutableTreeNodeReports, TreeRoot, 2);
-            TreeModel.insertNodeInto(DefaultMutableTreeNodeSystem, TreeRoot, 3);
-        
+        TreeModel.insertNodeInto(DefaultMutableTreeNodeSystem, TreeRoot, 3);
+
         // Administration
         DefaultMutableTreeNode defaultMutableTreeNodeProducts = new DefaultMutableTreeNode("Productos");
         DefaultMutableTreeNode defaultMutableTreeNodeProductsHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeProducts, defaultMutableTreeNodeAdministration, 0);
         TreeModel.insertNodeInto(defaultMutableTreeNodeProductsHlm, defaultMutableTreeNodeProducts, 0);
 
         //
         DefaultMutableTreeNode defaultMutableTreeNodeCategories = new DefaultMutableTreeNode("Categorias");
         DefaultMutableTreeNode defaultMutableTreeNodeCategoriessHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeCategories, defaultMutableTreeNodeAdministration, 1);
         TreeModel.insertNodeInto(defaultMutableTreeNodeCategoriessHlm, defaultMutableTreeNodeCategories, 0);
-        
+
         //
         DefaultMutableTreeNode defaultMutableTreeNodePrices = new DefaultMutableTreeNode("Lista de precios");
         DefaultMutableTreeNode defaultMutableTreeNodePricesHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodePrices, defaultMutableTreeNodeAdministration, 2);
         TreeModel.insertNodeInto(defaultMutableTreeNodePricesHlm, defaultMutableTreeNodePrices, 0);
 
         //
         DefaultMutableTreeNode defaultMutableTreeNodeStores = new DefaultMutableTreeNode("Depositos");
         DefaultMutableTreeNode defaultMutableTreeNodeStoresHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeStores, defaultMutableTreeNodeAdministration, 3);
         TreeModel.insertNodeInto(defaultMutableTreeNodeStoresHlm, defaultMutableTreeNodeStores, 0);
 
         //
         DefaultMutableTreeNode defaultMutableTreeNodeMeasures = new DefaultMutableTreeNode("Medidas");
         DefaultMutableTreeNode defaultMutableTreeNodeMeasuresHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeMeasures, defaultMutableTreeNodeAdministration, 4);
         TreeModel.insertNodeInto(defaultMutableTreeNodeMeasuresHlm, defaultMutableTreeNodeMeasures, 0);
 
         // Sales
         DefaultMutableTreeNode defaultMutableTreeNodeSales = new DefaultMutableTreeNode("Ventas");
         DefaultMutableTreeNode defaultMutableTreeNodeTicket = new DefaultMutableTreeNode("Ticket");
-                                                              
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeSales, DefaultMutableTreeNodeOperation, 0);
         TreeModel.insertNodeInto(defaultMutableTreeNodeTicket, defaultMutableTreeNodeSales, 0);
-        
+
         // Reports
-        
         DefaultMutableTreeNode defaultMutableTreeNodeReportProducts = new DefaultMutableTreeNode("Productos");
         DefaultMutableTreeNode defaultMutableTreeNodeProductsStock = new DefaultMutableTreeNode("Stock");
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeReportProducts, defaultMutableTreeNodeReports, 0);
         TreeModel.insertNodeInto(defaultMutableTreeNodeProductsStock, defaultMutableTreeNodeReportProducts, 0);
-  
-        
+
         // System
         DefaultMutableTreeNode defaultMutableTreeNodeUsers = new DefaultMutableTreeNode("Usuarios");
         DefaultMutableTreeNode defaultMutableTreeNodeUsersHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
-        
+
         TreeModel.insertNodeInto(defaultMutableTreeNodeUsers, DefaultMutableTreeNodeSystem, 0);
         TreeModel.insertNodeInto(defaultMutableTreeNodeUsersHlm, defaultMutableTreeNodeUsers, 0);
 
         getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
+    }
+
+    public static void expandAll(JTree tree) {
+        int row = 0;
+        while (row < tree.getRowCount()) {
+            tree.expandRow(row);
+            row++;
+        }
     }
 
 }

@@ -15,6 +15,7 @@ import nifax.control.util.UtilColor;
 import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
 import nifax.control.view.util.Fra;
+import nifax.control.view.util.Tre;
 
 /**
  *
@@ -133,6 +134,7 @@ public final class FrameMain extends Fra {
 
         tre_navigation.setBackground(new java.awt.Color(226, 212, 246));
         tre_navigation.setCellRenderer(new TreeRenderer());
+        Tre.expandAll(this.tre_navigation);
         scp_tree.setViewportView(tre_navigation);
 
         scp_container.setBackground(new java.awt.Color(51, 51, 51));
@@ -305,7 +307,7 @@ public final class FrameMain extends Fra {
     }
 
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login2;
     private javax.swing.JLabel lbl_pass2;
