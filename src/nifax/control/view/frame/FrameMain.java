@@ -12,8 +12,10 @@ import nifax.control.exception.InitializeSessionException;
 import nifax.control.util.ClockLabel;
 import nifax.control.util.TreeRenderer;
 import nifax.control.util.UtilColor;
+import nifax.control.view.event.btn.Btn_Login;
 import nifax.control.view.event.fra.Fra_frameMainListener;
 import nifax.control.view.event.mei.Mei_exitListener;
+import nifax.control.view.event.txf.Txf_Login;
 import nifax.control.view.util.Fra;
 import nifax.control.view.util.Tre;
 
@@ -26,7 +28,6 @@ public final class FrameMain extends Fra {
     public FrameMain() throws InitializeSessionException {
         initComponents();
 
-        lbl_usrname.setText(Authentication.getInstance().getSession().getUserEmployee().getUsername());
         ClockLabel dateLabel = new ClockLabel("date");
         ClockLabel timeLabel = new ClockLabel("time");
         ClockLabel dayLabel = new ClockLabel("day");
@@ -36,8 +37,8 @@ public final class FrameMain extends Fra {
         pnl_clock.add(timeLabel);
         pnl_clock.setLayout(new GridLayout(2, 2));
 
-        //this.pnl_main.setVisible(false);
-        this.pnl_login.setVisible(false);
+        this.pnl_main.setVisible(false);
+        this.pnl_login.setVisible(true);
 
         this.addWindowListener(new Fra_frameMainListener());
 
@@ -66,9 +67,9 @@ public final class FrameMain extends Fra {
         lbl_user2 = new javax.swing.JLabel();
         lbl_pass2 = new javax.swing.JLabel();
         txf_user2 = new javax.swing.JTextField();
-        pnl_btnLogin2 = new javax.swing.JPanel();
-        btn_login2 = new javax.swing.JButton();
         pss_pass = new javax.swing.JPasswordField();
+        pnl_btnLogin2 = new javax.swing.JPanel();
+        btn_login2 = new javax.swing.JButton(new Btn_Login(txf_user2, pss_pass, pnl_login, pnl_main, lbl_usrname));
         mbr_main = new javax.swing.JMenuBar();
         men_system = new javax.swing.JMenu();
         mei_exit = new javax.swing.JMenuItem();
@@ -169,6 +170,8 @@ public final class FrameMain extends Fra {
 
         lbl_pass2.setForeground(new java.awt.Color(204, 102, 0));
         lbl_pass2.setText("Contraseña");
+
+        pss_pass.addKeyListener(new Txf_Login(txf_user2, pss_pass, pnl_login, pnl_main, lbl_usrname));
 
         pnl_btnLogin2.setOpaque(false);
 

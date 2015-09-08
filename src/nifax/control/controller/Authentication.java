@@ -48,6 +48,7 @@ public class Authentication extends HQLOperation implements IUserOperation, IQue
             if (obj.getPassword().equals(usr.getPassword())) {
                 cleanInvalidSessions(obj);
                 SID = new UserSession(Boolean.TRUE, obj);
+                HQLOperation.getInstance().Insert(SID);
                 return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;

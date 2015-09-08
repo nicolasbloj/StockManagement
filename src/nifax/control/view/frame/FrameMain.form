@@ -317,6 +317,11 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txf_user2">
             </Component>
+            <Component class="javax.swing.JPasswordField" name="pss_pass">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="pss_pass.addKeyListener(new Txf_Login(txf_user2, pss_pass, pnl_login, pnl_main, lbl_usrname));"/>
+              </AuxValues>
+            </Component>
             <Container class="javax.swing.JPanel" name="pnl_btnLogin2">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
@@ -346,11 +351,12 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Login"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new Btn_Login(txf_user2, pss_pass, pnl_login, pnl_main, lbl_usrname))"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JPasswordField" name="pss_pass">
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

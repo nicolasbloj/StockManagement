@@ -64,18 +64,7 @@ public class NifaxControl implements IQueries {
                 // enter the required fields
 
                 //Scanner in = new Scanner(System.in);
-                String user;
-                String pass;
-                do {
-                    logger.info("Ingresar Usuario");
-                    //user = in.next();
-                    user = "f4ka";
-                    logger.info("Ingresar Password");
-                    //pass = in.next();
-                    pass="1234";
-                } while (!auth.LogIn(new UserEmployee(user, pass)));
-                logger.info("El Usuario fue logueado con éxito");
-                modelOperation.Insert(auth.getSession());
+               
                 //Loading scenario
                 //Add Iva
                 modelOperation.Insert(new Iva(21));

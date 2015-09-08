@@ -21,6 +21,7 @@ public class Message {
     //Failure's messages
     public static final String FailuredOperation = "Operacion fallida";
     public static final String FailuredOperationTitle = "Error";
+    public static final String invalidUserOrPassword = "Usuario o contraseña invalido";
 
     //Generic messages
     public static final String Save = "Elemento cargado correctamente";
