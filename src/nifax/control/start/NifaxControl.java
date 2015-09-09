@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import nifax.control.controller.Authentication;
 import nifax.control.controller.splash.SplashScreen;
 import nifax.control.model.modeler.CategoryOperation;
@@ -18,10 +19,12 @@ import nifax.control.exception.InvalidCredentialsException;
 import nifax.control.model.*;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.data.IQueries;
+import nifax.control.hibernate.HibernateUtil;
 import nifax.control.model.modeler.IvaOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
 import nifax.control.util.Control;
+import nifax.control.util.Message;
 import nifax.control.view.frame.FrameMain;
 
 /**
@@ -34,6 +37,14 @@ public class NifaxControl implements IQueries {
 
     public static void main(String[] args) throws InvalidCredentialsException, InitializeSessionException {        
         if(new Control().check()){
+            try{
+                HibernateUtil.getSessionFactory();
+            }
+            catch(ExceptionInInitializerError e){
+                JOptionPane.showMessageDialog(null, Message.dbConnectionFailed,
+                    Message.FailuredOperationTitle, JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            }
             SplashScreen sc = new SplashScreen();
             new NifaxControl().createScenario();
             sc.setloadEnded(true);

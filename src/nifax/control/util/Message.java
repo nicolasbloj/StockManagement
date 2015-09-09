@@ -22,7 +22,8 @@ public class Message {
     public static final String FailuredOperation = "Operacion fallida";
     public static final String FailuredOperationTitle = "Error";
     public static final String invalidUserOrPassword = "Usuario o contraseña invalido";
-
+    public static final String dbConnectionFailed = "No se pudo establecer conexión con Base de datos";
+    
     //Generic messages
     public static final String Save = "Elemento cargado correctamente";
     public static final String Edit = "Elemento editado correctamente";
