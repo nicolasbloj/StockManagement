@@ -72,7 +72,7 @@ public class Authentication extends HQLOperation implements IUserOperation, IQue
         int resultCount = SelectCount(UserSessionInvalid, "user_id", ue);
         if(resultCount > 0){
             long threeDays = 3 * 24 * 60 * 60 * 1000;
-            Criterion user = Restrictions.eq("user_id", ue);
+            Criterion user = Restrictions.eq("userEmployee", ue);
             Criterion open = Restrictions.eq("open",false);
             Criterion date = Restrictions.lt("login_date", new Timestamp(System.currentTimeMillis()-threeDays));
             LogicalExpression orExp = Restrictions.or(user, open);
