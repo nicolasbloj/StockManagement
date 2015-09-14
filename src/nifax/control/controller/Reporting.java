@@ -19,8 +19,6 @@ import nifax.control.model.modeler.StockOperation;
 import nifax.control.util.Message;
 import nifax.control.util.Path;
 import nifax.control.view.event.btn.Btn_reportAction;
-import nifax.control.view.panel.PanelGeneralAdmin;
-import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelReportProductStock;
 
 /**
@@ -108,7 +106,7 @@ public class Reporting implements ActionController {
 
             switch (panelName) {
                 case ProductStock:
-                    Navigation.getInstance().setPanelReportProductStock(new PanelReportProductStock());
+                    Navigation.getInstance().setPanelReportProductStock(new PanelReportProductStock(),null);
                     break;
 
             }

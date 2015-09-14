@@ -12,9 +12,9 @@ public class TreeRenderer extends DefaultTreeCellRenderer {
     private final ImageIcon sale;
 
     public TreeRenderer() {
-        manage = new ImageIcon("src/nifax/control/image/manage.png");
-        report = new ImageIcon("src/nifax/control/image/report.png");
-        sale = new ImageIcon("src/nifax/control/image/sale.png");
+        manage = new ImageIcon(getClass().getResource("/nifax/control/image/manage.png"));
+        report = new ImageIcon(getClass().getResource("/nifax/control/image/report.png"));
+        sale = new ImageIcon(getClass().getResource("/nifax/control/image/sale.png"));
     }
 
     @Override
