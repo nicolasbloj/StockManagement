@@ -11,6 +11,11 @@ public class Employee implements Serializable {
     protected Employee() {
     }
 
+    public Employee(Long id) {
+        this.id = id;
+    }
+
+    
     public Employee(String firstname, String lastname, String cellphone) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -42,6 +47,10 @@ public class Employee implements Serializable {
 
     public String getCellphone() {
         return cellphone;
+    }
+
+    public String getIdentifier() {
+        return new StringBuilder().append(firstname).append(" ").append(lastname).toString();
     }
 
 }
