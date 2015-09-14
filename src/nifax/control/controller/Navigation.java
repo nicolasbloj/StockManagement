@@ -2,13 +2,20 @@ package nifax.control.controller;
 
 import javax.swing.JPanel;
 import javax.swing.tree.TreePath;
-import nifax.control.util.Table;
+import nifax.control.util.ww.WWCategory;
+import nifax.control.util.ww.WWEmployee;
+import nifax.control.util.ww.WWMeasure;
+import nifax.control.util.ww.WWPrice;
+import nifax.control.util.ww.WWStore;
+import nifax.control.util.ww.WWUser;
+import nifax.control.view.event.btn.Btn_adminAction;
 import nifax.control.view.frame.FrameMain;
-import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelReportProductStock;
 import nifax.control.view.panel.PanelSalesTicket;
+import nifax.control.view.util.ww.WWPanel;
+import nifax.control.view.util.ww.WWTableModel;
 
 /**
  *
@@ -20,7 +27,6 @@ public class Navigation {
     private PanelProductsAdmin panelProductsAdmin;
     private PanelSalesTicket panelSalesTicket;
     private PanelReportProductStock panelReportProductStock;
-    private PanelGeneralAdmin panelGeneralAdmin;
 
     private static Navigation instance = null;
 
@@ -33,13 +39,18 @@ public class Navigation {
     //NODES
     public static final String ADMINISTRATION_PRODUCT_MANAGEMENT = "[NiFax, Administracion, Productos, Gestion]";
     public static final String OPERATION_SALE_TICKET = "[NiFax, Operacion, Ventas, Ticket]";
+    public static final String ADMINISTRATION_CATEGORY_MANAGEMENT = "[NiFax, Administracion, Categorias, Gestion]";
+    public static final String ADMINISTRATION_STORE_MANAGEMENT = "[NiFax, Administracion, Depositos, Gestion]";
+    public static final String ADMINISTRATION_MEASURE_MANAGEMENT = "[NiFax, Administracion, Medidas, Gestion]";
+    public static final String ADMINISTRATION_PRICE_MANAGEMENT = "[NiFax, Administracion, Lista de precios, Gestion]";
+    public static final String ADMINISTRATION_EMPLOYEE_MANAGEMENT = "[NiFax, Administracion, Empleados, Gestion]";
+    public static final String SYSTEM_USER_MANAGEMENT = "[NiFax, Sistema, Usuarios, Gestion]";
 
     protected Navigation() {
         panelPresentation = new PanelPresentation();
         panelProductsAdmin = new PanelProductsAdmin();
         panelSalesTicket = new PanelSalesTicket();
         panelReportProductStock = new PanelReportProductStock();
-        panelGeneralAdmin = new PanelGeneralAdmin();
     }
 
     public static Navigation getInstance() {
@@ -59,45 +70,42 @@ public class Navigation {
         if (tp != null) {
             switch (tp.toString()) {
                 case ADMINISTRATION_PRODUCT_MANAGEMENT:
-
-                    panelProductsAdmin.getPnl_product().setName("Product");
-                    panelProductsAdmin.getPnl_offer().setName("Product");
-                    panelProductsAdmin.getPnl_restoration().setName("Product");
-                    panelProductsAdmin.getPnl_stock().setName("Product");
-
+                    panelProductsAdmin.setName("Product");
                     frameMain.getScp_container().setViewportView(panelProductsAdmin);
-
                     panelProductsAdmin.getCbx_category().requestFocus();
-
                     nodeSelected = ADMINISTRATION_PRODUCT_MANAGEMENT;
                     lastSelectedPanel = panelProductsAdmin;
 
                     break;
-                case "[NiFax, Administracion, Categorias, Gestion]":
-                    showGralPanel("Category", "Categoria");
+                case ADMINISTRATION_CATEGORY_MANAGEMENT:
+                    showGralPanel_WW(Administration.Category);
                     break;
-                case "[NiFax, Administracion, Depositos, Gestion]":
-                    showGralPanel("Store", "Deposito");
+                case ADMINISTRATION_STORE_MANAGEMENT:
+                    showGralPanel_WW(Administration.Store);
                     break;
-                case "[NiFax, Administracion, Medidas, Gestion]":
-                    showGralPanel("Measure", "Medida");
+                case ADMINISTRATION_MEASURE_MANAGEMENT:
+                    showGralPanel_WW(Administration.Measure);
                     break;
-                case "[NiFax, Administracion, Lista de precios, Gestion]":
-                    showGralPanel("Price", "Lista de precio");
+                case ADMINISTRATION_PRICE_MANAGEMENT:
+                    showGralPanel_WW(Administration.Price);
                     break;
-                case OPERATION_SALE_TICKET:
+                case ADMINISTRATION_EMPLOYEE_MANAGEMENT:
+                    showGralPanel_WW(Administration.Employee);
+                    break;
+                case SYSTEM_USER_MANAGEMENT:
+                    showGralPanel_WW(Administration.User);
+                    break;
 
-                    panelSalesTicket.getPnl_ticket().setName("Ticket");
+                case OPERATION_SALE_TICKET:
+                    panelSalesTicket.setName("Ticket");
                     frameMain.getScp_container().setViewportView(panelSalesTicket);
                     panelSalesTicket.getTxf_ticketCodeProduct().requestFocus();
-
                     nodeSelected = OPERATION_SALE_TICKET;
                     lastSelectedPanel = panelSalesTicket;
 
                     break;
                 case "[NiFax, Reportes, Productos, Stock]":
-
-                    panelReportProductStock.getPnl_reportProductStock().setName("ProductStock");
+                    panelReportProductStock.setName("ProductStock");
                     frameMain.getScp_container().setViewportView(panelReportProductStock);
                     panelReportProductStock.getTxf_StockMin().requestFocus();
                     break;
@@ -109,29 +117,6 @@ public class Navigation {
         } else {
             frameMain.getScp_container().setViewportView(panelPresentation);
         }
-    }
-
-    private void showGralPanel(String panelName, String tab) {
-
-        frameMain.getScp_container().setViewportView(panelGeneralAdmin);
-
-        panelGeneralAdmin.getPnl_loadGral().setName(panelName);
-        panelGeneralAdmin.getTbp_gral().setTitleAt(0, tab);
-
-        if (!Administration.Price.equals(panelName)) {
-
-            panelGeneralAdmin.getLbl_profitGral().setVisible(false);
-            panelGeneralAdmin.getTxf_profitGral().setVisible(false);
-
-            int[] columnsHides = {3};
-            Table.hiddenColumns(panelGeneralAdmin.getTbl_gral(), columnsHides);
-        } else {
-            panelGeneralAdmin.getLbl_profitGral().setVisible(true);
-            panelGeneralAdmin.getTxf_profitGral().setVisible(true);
-        }
-
-        panelGeneralAdmin.getTxf_descGral().requestFocus();
-
     }
 
     public FrameMain getFrameMain() {
@@ -147,24 +132,63 @@ public class Navigation {
     }
 
     //for cancel option
-    public void setPanelProductsAdmin(PanelProductsAdmin panelProductsAdmin) {
+    public void setPanelProductsAdmin(PanelProductsAdmin panelProductsAdmin, TreePath tp) {
         this.panelProductsAdmin = panelProductsAdmin;
-        this.showPanel(null);
+        this.showPanel(tp);
     }
 
-    public void setPanelSalesTicket(PanelSalesTicket panelSalesTicket) {
+    public void setPanelSalesTicket(PanelSalesTicket panelSalesTicket, TreePath tp) {
         this.panelSalesTicket = panelSalesTicket;
-        this.showPanel(null);
+        this.showPanel(tp);
     }
 
-    public void setPanelReportProductStock(PanelReportProductStock panelReportProductStock) {
+    public void setPanelReportProductStock(PanelReportProductStock panelReportProductStock, TreePath tp) {
         this.panelReportProductStock = panelReportProductStock;
-        this.showPanel(null);
+        this.showPanel(tp);
     }
 
-    public void setPanelGeneralAdmin(PanelGeneralAdmin panelGeneralAdmin) {
-        this.panelGeneralAdmin = panelGeneralAdmin;
-        this.showPanel(null);
+    //WW ----
+    private void showGralPanel_WW(String s) {
+        WWPanel panel = null;
+        switch (s) {
+            case "Employee":
+                WWEmployee wwemployee = new WWEmployee();
+                panel = new WWPanel(wwemployee.getFilter(), new WWTableModel(wwemployee.getListTableColumns()), wwemployee.getPanelName());
+                break;
+            case "User":
+                WWUser wwuser = new WWUser();
+                panel = new WWPanel(wwuser.getFilter(), new WWTableModel(wwuser.getListTableColumns()), wwuser.getPanelName());
+                break;
+            case "Category":
+                WWCategory wwcategory = new WWCategory();
+                panel = new WWPanel(wwcategory.getFilter(), new WWTableModel(wwcategory.getListTableColumns()), wwcategory.getPanelName());
+                break;
+            case "Price":
+                WWPrice wwprice = new WWPrice();
+                panel = new WWPanel(wwprice.getFilter(), new WWTableModel(wwprice.getListTableColumns()), wwprice.getPanelName());
+                break;
+            case "Store":
+                WWStore wwstore = new WWStore();
+                panel = new WWPanel(wwstore.getFilter(), new WWTableModel(wwstore.getListTableColumns()), wwstore.getPanelName());
+                break;
+            case "Measure":
+                WWMeasure wwmeasure = new WWMeasure();
+                panel = new WWPanel(wwmeasure.getFilter(), new WWTableModel(wwmeasure.getListTableColumns()), wwmeasure.getPanelName());
+                break;
+
+        }
+        if (panel != null) {
+            panel.getBtn_save().setAction(new Btn_adminAction(panel, nifax.control.controller.Administration.SAVE, "Guardar"));
+            panel.getBtn_search().setAction(new Btn_adminAction(panel, nifax.control.controller.Administration.SEARCH, "Buscar"));
+            panel.getBtn_list().setAction(new Btn_adminAction(panel, nifax.control.controller.Administration.LIST, "Listar"));
+            panel.getBtn_delete().setAction(new Btn_adminAction(panel, nifax.control.controller.Administration.DELETE, "Eliminar"));
+            panel.getBtn_cancel().setAction(new Btn_adminAction(panel, nifax.control.controller.Administration.CANCEL, "Cancelar"));
+
+            panel.getBtn_search().setEnabled(false);
+
+            frameMain.getScp_container().setViewportView(panel);
+        }
+
     }
 
 }

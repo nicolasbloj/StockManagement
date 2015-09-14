@@ -15,7 +15,7 @@ public class Tre extends JTree {
 
     private final Tre_Listener TreeListener;
 
-    public Tre(FrameMain jFrameMain) {
+    public Tre(final FrameMain jFrameMain) {
 
         TreeListener = new Tre_Listener();
 
@@ -72,6 +72,13 @@ public class Tre extends JTree {
 
         TreeModel.insertNodeInto(defaultMutableTreeNodeMeasures, defaultMutableTreeNodeAdministration, 4);
         TreeModel.insertNodeInto(defaultMutableTreeNodeMeasuresHlm, defaultMutableTreeNodeMeasures, 0);
+        
+        //
+        DefaultMutableTreeNode defaultMutableTreeNodeEmployees = new DefaultMutableTreeNode("Empleados");
+        DefaultMutableTreeNode defaultMutableTreeNodeEmployeesHlm = new DefaultMutableTreeNode("Gestion");//this could be to used other nodes
+
+        TreeModel.insertNodeInto(defaultMutableTreeNodeEmployees, defaultMutableTreeNodeAdministration, 5);
+        TreeModel.insertNodeInto(defaultMutableTreeNodeEmployeesHlm, defaultMutableTreeNodeEmployees, 0);
 
         // Sales
         DefaultMutableTreeNode defaultMutableTreeNodeSales = new DefaultMutableTreeNode("Ventas");
@@ -98,7 +105,7 @@ public class Tre extends JTree {
 
     }
 
-    public static void expandAll(JTree tree) {
+    public static void expandAll(final JTree tree) {
         int row = 0;
         while (row < tree.getRowCount()) {
             tree.expandRow(row);

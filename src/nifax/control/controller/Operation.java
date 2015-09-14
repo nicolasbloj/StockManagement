@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.TreePath;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Item;
 import nifax.control.model.Product;
@@ -17,12 +18,9 @@ import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
-import nifax.control.util.UtilFrame;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.event.btn.Btn_operationAction;
-import nifax.control.view.panel.PanelGeneralAdmin;
-import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelSalesTicket;
 
 /**
@@ -169,8 +167,8 @@ public class Operation implements ActionController {
                 .append(" generado correctamente"));
 
             //Reload panel
-            UtilFrame.reloadPanel();
-            panelSalesTicket.repaint();
+            TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
+            Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket(), tp);
 
             return Boolean.TRUE;
 
@@ -222,7 +220,7 @@ public class Operation implements ActionController {
 
             switch (panelName) {
                 case Ticket:
-                    Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket());
+                    Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket(), null);
                     break;
 
             }
