@@ -3,16 +3,21 @@ package nifax.control.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.TreePath;
 import nifax.control.data.MapDb;
 import nifax.control.model.Category;
+import nifax.control.model.Employee;
 import nifax.control.model.SimpleEntity;
 import nifax.control.model.Measure;
 import nifax.control.model.Offer;
@@ -23,6 +28,8 @@ import nifax.control.model.ProductMeasure;
 import nifax.control.model.Restoration;
 import nifax.control.model.Stock;
 import nifax.control.model.Store;
+import nifax.control.model.UserEmployee;
+import nifax.control.model.modeler.EmployeeOperation;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
 import nifax.control.util.ColumnSorter;
@@ -30,8 +37,8 @@ import nifax.control.util.UtilFrame;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.internalframe.IntFrameProductSearch;
-import nifax.control.view.panel.PanelGeneralAdmin;
 import nifax.control.view.panel.PanelProductsAdmin;
+import nifax.control.view.util.ww.WWPanel;
 
 /**
  *
@@ -63,6 +70,8 @@ public class Administration implements ActionController {
     public static final String Store = "Store";
     public static final String Price = "Price";
     public static final String Measure = "Measure";
+    public static final String Employee = "Employee";
+    public static final String User = "User";
 
     //Panels name - PRODUCT
     private static final String Product = "Product";
@@ -107,7 +116,10 @@ public class Administration implements ActionController {
                     case Store:
                     case Price:
                     case Measure:
-                        return gralSave((PanelGeneralAdmin) panel, panelName);
+                    case Employee:
+                    case User:
+                        return gralSave_WW((WWPanel) panel, panelName);
+
                 }
             }
             return true;
@@ -129,11 +141,12 @@ public class Administration implements ActionController {
                 case Store:
                 case Price:
                 case Measure:
-                    return false;
+                    //Not implemented yet.
+                    return Boolean.FALSE;
             }
-            return true;
+            return Boolean.TRUE;
         } catch (NullPointerException ex1) {
-            return false;
+            return Boolean.FALSE;
         }
     }
 
@@ -147,17 +160,21 @@ public class Administration implements ActionController {
                 case Store:
                 case Price:
                 case Measure:
-                    return gralList((PanelGeneralAdmin) panel, panelName);
+                case Employee:
+                case User:
+                    return gralList_WW((WWPanel) panel, panelName);
             }
-            return true;
+            return Boolean.TRUE;
         } catch (NullPointerException ex1) {
-            return false;
+            return Boolean.FALSE;
         }
 
     }
 
     private Boolean delete(JPanel panel, String panelName) {
+        boolean graldelete = false;
         try {
+
             int dialogResult = JOptionPane.showConfirmDialog(null,
                 Message.DialogDelete, Message.DialogConfirmationTitle, JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) {
@@ -169,12 +186,18 @@ public class Administration implements ActionController {
                     case Store:
                     case Price:
                     case Measure:
-                        return gralDelete((PanelGeneralAdmin) panel, panelName);
+                    case Employee:
+                    case User:
+                        graldelete = true;
+                        return gralDelete_WW((WWPanel) panel, panelName);
                 }
             }
-            return true;
+            return Boolean.TRUE;
         } catch (org.hibernate.exception.ConstraintViolationException ex) {
             JOptionPane.showMessageDialog(null, Message.ConstraintViolationException, Message.ConstraintViolationExceptionTitle, JOptionPane.ERROR_MESSAGE);
+            if (graldelete) {
+                gralList_WW((WWPanel) panel, panelName);
+            }
             return Boolean.FALSE;
         } catch (NullPointerException ex2) {
             JOptionPane.showMessageDialog(null, Message.NullPointerException, Message.NullPointerExceptionTitle, JOptionPane.ERROR_MESSAGE);
@@ -220,8 +243,8 @@ public class Administration implements ActionController {
         }
 
         //Reload panel
-        UtilFrame.reloadPanel();
-        panelProductsAdmin.repaint();
+        TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
+        Navigation.getInstance().setPanelProductsAdmin(new PanelProductsAdmin(), tp);
 
         return Boolean.TRUE;
 
@@ -372,119 +395,9 @@ public class Administration implements ActionController {
 
     }
 
-    // Category,Store,Price,Measure.
-    public Boolean gralSave(PanelGeneralAdmin panelGeneralAdmin, String panelName) {
-
-        String desc = panelGeneralAdmin.getTxf_descGral().getText();
-        double profit;
-        HQLOperation hqlOperation = HQLOperation.getInstance();
-        switch (panelName) {
-            case Category:
-                Category category = new Category(desc);
-                hqlOperation.Insert(category);
-                MapDb.AddOrReplaceCategory(category);
-                break;
-            case Store:
-                Store store = new Store(desc);
-                hqlOperation.Insert(store);
-                MapDb.AddOrReplaceStore(store);
-                break;
-            case Measure:
-                Measure measure = new Measure(desc);
-                hqlOperation.Insert(measure);
-                MapDb.AddOrReplaceMeasure(measure);
-                break;
-            case Price:
-                profit = Double.parseDouble(panelGeneralAdmin.getTxf_profitGral().getText());
-                Price price = new Price(desc, profit);
-                hqlOperation.Insert(price);
-                MapDb.AddOrReplacePrice(price);
-                break;
-
-        }
-
-        //Reload panel
-        UtilFrame.reloadPanel();
-        panelGeneralAdmin.repaint();
-
-        return Boolean.TRUE;
-
-    }
-
-    public Boolean gralDelete(PanelGeneralAdmin panelGeneralAdmin, String panelName) {
-        HQLOperation op = HQLOperation.getInstance();
-
-        int indexCheck = panelGeneralAdmin.getTbl_gral().getColumnModel().getColumnIndex("");
-        int indexdescription = panelGeneralAdmin.getTbl_gral().getColumnModel().getColumnIndex("DESCRIPCION");
-
-        for (int i = 0; i < panelGeneralAdmin.getTbl_gral().getRowCount(); i++) {
-            if (panelGeneralAdmin.getTbl_gral().getValueAt(i, indexCheck).equals(true)) {
-                switch (panelName) {
-                    case Category:
-                        op.Delete(MapDb.getCategoryList().get(panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
-                        break;
-                    case Measure:
-                        op.Delete(MapDb.getMeasureList().get(panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
-                        break;
-                    case Store:
-                        op.Delete(MapDb.getStoreList().get(panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
-                        break;
-                    case Price:
-                        op.Delete(MapDb.getPriceList().get(panelGeneralAdmin.getTbl_gral().getValueAt(i, indexdescription).toString()));
-                        break;
-                }
-            }
-        }
-
-        gralList(panelGeneralAdmin, panelName);
-        return Boolean.TRUE;
-
-    }
-
-    private Boolean gralList(PanelGeneralAdmin panelGeneralAdmin, String panelName) {
-
-        Table.clear(panelGeneralAdmin.getTbl_gral());
-        Map map = null;
-        switch (panelName) {
-
-            case Category:
-                //Clean list and reset
-                MapDb.setCategoryList(null);
-                map = MapDb.getCategoryList();
-                break;
-            case Store:
-                //Clean list and reset
-                MapDb.setStoreList(null);
-                map = MapDb.getStoreList();
-                break;
-            case Measure:
-                //Clean list and reset
-                MapDb.setMeasureList(null);
-                map = MapDb.getMeasureList();
-                break;
-            case Price:
-                //Clean list and reset
-                MapDb.setPriceList(null);
-                map = MapDb.getPriceList();
-                break;
-        }
-
-        this.fillTable(map, panelGeneralAdmin.getTbl_gral());
-
-        panelGeneralAdmin.getTbl_gral().setAutoCreateColumnsFromModel(false);
-        DefaultTableModel model = (DefaultTableModel) panelGeneralAdmin.getTbl_gral().getModel();
-        Vector data = model.getDataVector();
-        Collections.sort(data, new ColumnSorter(1));
-        model.fireTableStructureChanged();
-
-        panelGeneralAdmin.repaint();
-        return Boolean.TRUE;
-
-    }
-
     private Boolean productListAndAdvancedSearch(JPanel panel) {
 
-        javax.swing.JLayeredPane layeredPane = (javax.swing.JLayeredPane) panel.getParent().getParent().getParent().getParent();
+        javax.swing.JLayeredPane layeredPane = (javax.swing.JLayeredPane) panel.getParent().getParent().getParent().getParent().getParent();
         IntFrameProductSearch intFrameProductSearch = new IntFrameProductSearch(layeredPane);
         layeredPane.add(intFrameProductSearch);
 
@@ -593,10 +506,10 @@ public class Administration implements ActionController {
         if (dialogResult == JOptionPane.YES_OPTION) {
             switch (panelName) {
                 case Product:
-                    Navigation.getInstance().setPanelProductsAdmin(new PanelProductsAdmin());
+                    Navigation.getInstance().setPanelProductsAdmin(new PanelProductsAdmin(), null);
                     break;
                 default:
-                    Navigation.getInstance().setPanelGeneralAdmin(new PanelGeneralAdmin());
+                    Navigation.getInstance().showPanel(null);
                     break;
             }
         }
@@ -605,7 +518,7 @@ public class Administration implements ActionController {
     }
 
     //Util.
-    private void fillTable(Map<String, SimpleEntity> list, JTable table) {
+    private void fillSimpleEntityTable(Map<String, SimpleEntity> list, JTable table) {
         list.entrySet().stream().map((entry) -> entry.getValue()).forEach((SimpleEntity obj) -> {
             DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
             Vector v = new Vector();
@@ -618,11 +531,269 @@ public class Administration implements ActionController {
                 Price p = (Price) obj;
                 v.add(p.getProfit());
             }
-
             modelTable.insertRow(0, v);
 
         }
         );
+
+    }
+
+    //WW -----------
+    public Boolean gralSave_WW(WWPanel panel, String panelName) {
+        JTextField txf_desc;
+        String desc;
+        switch (panelName) {
+            case Employee:
+                String name,
+                 lastname,
+                 phone;
+
+                JTextField txf_name = (JTextField) panel.getFilter().getMapFilterRow().get("name").getComponent();
+                name = txf_name.getText();
+                JTextField txf_lastname = (JTextField) panel.getFilter().getMapFilterRow().get("lastname").getComponent();
+                lastname = txf_lastname.getText();
+                JTextField txf_phone = (JTextField) panel.getFilter().getMapFilterRow().get("phone").getComponent();
+                phone = txf_phone.getText();
+
+                Employee employee = new Employee(name, lastname, phone);
+
+                if (employee.getIdentifier().trim().length() <= 0) {
+                    return Boolean.FALSE;
+                }
+
+                HQLOperation.getInstance().Insert(employee);
+
+                MapDb.AddOrReplaceEmployee(employee);
+                break;
+            case User:
+                String user,
+                 password,
+                 employee_id;
+
+                JTextField txf_user = (JTextField) panel.getFilter().getMapFilterRow().get("user").getComponent();
+                user = txf_user.getText();
+                JPasswordField pss_password = (JPasswordField) panel.getFilter().getMapFilterRow().get("password").getComponent();
+                password = pss_password.getText();
+                JTextField txf_employee_id = (JTextField) panel.getFilter().getMapFilterRow().get("employee_id").getComponent();
+                employee_id = txf_employee_id.getText();
+
+                Employee empl = EmployeeOperation.getInstance().Find(new Employee(Long.parseLong(employee_id)));
+
+                if (empl == null) {
+                    return Boolean.FALSE;
+                }
+
+                UserEmployee userEmployee = new UserEmployee(
+                    user,
+                    password,
+                    empl
+                );
+
+                HQLOperation.getInstance().Insert(userEmployee);
+
+                MapDb.AddOrReplaceUser(userEmployee);
+
+                break;
+            case Category:
+                txf_desc = (JTextField) panel.getFilter().getMapFilterRow().get("description").getComponent();
+                desc = txf_desc.getText();
+                if (desc != null) {
+                    if (desc.trim().length() <= 0) {
+                        return Boolean.FALSE;
+                    }
+                }
+                Category category = new Category(desc);
+                HQLOperation.getInstance().Insert(category);
+
+                MapDb.AddOrReplaceCategory(category);
+                break;
+            case Price:
+                txf_desc = (JTextField) panel.getFilter().getMapFilterRow().get("description").getComponent();
+                desc = txf_desc.getText();
+                JTextField txf_profit = (JTextField) panel.getFilter().getMapFilterRow().get("profit").getComponent();
+                String profit = txf_profit.getText();
+                if (desc != null) {
+                    if (desc.trim().length() <= 0) {
+                        return Boolean.FALSE;
+                    }
+                }
+                if (profit != null) {
+                    if (profit.trim().length() <= 0) {
+                        return Boolean.FALSE;
+                    }
+                }
+                Price price = new Price(desc, Double.parseDouble(profit));
+                HQLOperation.getInstance().Insert(price);
+
+                MapDb.AddOrReplacePrice(price);
+                break;
+            case Store:
+                txf_desc = (JTextField) panel.getFilter().getMapFilterRow().get("description").getComponent();
+                desc = txf_desc.getText();
+                if (desc != null) {
+                    if (desc.trim().length() <= 0) {
+                        return Boolean.FALSE;
+                    }
+                }
+
+                Store store = new Store(desc);
+                HQLOperation.getInstance().Insert(store);
+
+                MapDb.AddOrReplaceStore(store);
+                break;
+            case Measure:
+                txf_desc = (JTextField) panel.getFilter().getMapFilterRow().get("description").getComponent();
+                desc = txf_desc.getText();
+
+                if (desc != null) {
+                    if (desc.trim().length() <= 0) {
+                        return Boolean.FALSE;
+                    }
+                }
+
+                Measure measure = new Measure(desc);
+                HQLOperation.getInstance().Insert(measure);
+
+                MapDb.AddOrReplaceMeasure(measure);
+                break;
+        }
+
+        UtilFrame.reloadPanel();
+        panel.repaint();
+
+        return Boolean.TRUE;
+    }
+
+    private Boolean gralList_WW(WWPanel panel, String panelName) {
+        JTable table = panel.getTbl_gral();
+        Table.clear(table);
+        Map map;
+        switch (panelName) {
+
+            case Employee:
+                //Clean list and reset
+                MapDb.setEmployeeList(null);
+                map = MapDb.getEmployeeList();
+
+                for (Iterator it = map.values().iterator(); it.hasNext();) {
+                    Object o = it.next();
+                    Employee obj = (Employee) o;
+                    DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
+                    Vector v = new Vector();
+                    v.add(false);
+                    v.add(obj.getId());
+                    v.add(obj.getFirstname());
+                    v.add(obj.getLastname());
+                    v.add(obj.getCellphone());
+                    modelTable.insertRow(0, v);
+                }
+
+                //
+                break;
+            case User:
+                //Clean list and reset
+                MapDb.setUserList(null);
+                map = MapDb.getUserList();
+                for (Iterator it = map.values().iterator(); it.hasNext();) {
+                    Object o = it.next();
+                    UserEmployee obj = (UserEmployee) o;
+                    DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
+                    Vector v = new Vector();
+                    v.add(false);
+                    v.add(obj.getId());
+                    v.add(obj.getUsername());
+                    v.add(obj.getEmployee_id().getIdentifier());
+                    modelTable.insertRow(0, v);
+                }
+                break;
+            case Category:
+                //Clean list and reset
+                MapDb.setCategoryList(null);
+                map = MapDb.getCategoryList();
+                this.fillSimpleEntityTable(map, table);
+                break;
+            case Price:
+                //Clean list and reset
+                MapDb.setPriceList(null);
+                map = MapDb.getPriceList();
+                this.fillSimpleEntityTable(map, table);
+                break;
+            case Store:
+                //Clean list and reset
+                MapDb.setStoreList(null);
+                map = MapDb.getStoreList();
+                this.fillSimpleEntityTable(map, table);
+                break;
+            case Measure:
+                //Clean list and reset
+                MapDb.setMeasureList(null);
+                map = MapDb.getMeasureList();
+                this.fillSimpleEntityTable(map, table);
+                break;
+        }
+
+        table.setAutoCreateColumnsFromModel(false);
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        Vector data = model.getDataVector();
+        Collections.sort(data, new ColumnSorter(1));
+        model.fireTableStructureChanged();
+
+        panel.repaint();
+
+        return Boolean.TRUE;
+
+    }
+
+    public Boolean gralDelete_WW(WWPanel panel, String panelName) {
+        HQLOperation op = HQLOperation.getInstance();
+        JTable table = panel.getTbl_gral();
+        int indexDesc;
+        String desc;
+        int indexCheck = table.getColumnModel().getColumnIndex("");
+
+        for (int i = 0; i < table.getRowCount(); i++) {
+            if (table.getValueAt(i, indexCheck).equals(true)) {
+                switch (panelName) {
+                    case Employee:
+                        int indexFirstname = table.getColumnModel().getColumnIndex("Nombre");
+                        int indexLastname = table.getColumnModel().getColumnIndex("Apellido");
+                        String fn = table.getValueAt(i, indexFirstname).toString();
+                        String ln = table.getValueAt(i, indexLastname).toString();
+                        String identifier = new StringBuilder().append(fn).append(" ").append(ln).toString();
+                        op.Delete(MapDb.getEmployeeList().get(identifier));
+                        break;
+                    case User:
+                        int indexUsername = table.getColumnModel().getColumnIndex("Usuario");
+                        String usr = table.getValueAt(i, indexUsername).toString();
+                        op.Delete(MapDb.getUserList().get(usr));
+                        break;
+                    case Category:
+                        indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                        desc = table.getValueAt(i, indexDesc).toString();
+                        op.Delete(MapDb.getCategoryList().get(desc));
+                        break;
+                    case Price:
+                        indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                        desc = table.getValueAt(i, indexDesc).toString();
+                        op.Delete(MapDb.getPriceList().get(desc));
+                        break;
+                    case Store:
+                        indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                        desc = table.getValueAt(i, indexDesc).toString();
+                        op.Delete(MapDb.getStoreList().get(desc));
+                        break;
+                    case Measure:
+                        indexDesc = table.getColumnModel().getColumnIndex("Descripcion");
+                        desc = table.getValueAt(i, indexDesc).toString();
+                        op.Delete(MapDb.getMeasureList().get(desc));
+                        break;
+
+                }
+            }
+        }
+
+        gralList_WW(panel, panelName);
+        return Boolean.TRUE;
 
     }
 
