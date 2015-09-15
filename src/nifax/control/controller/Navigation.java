@@ -14,8 +14,8 @@ import nifax.control.view.panel.PanelPresentation;
 import nifax.control.view.panel.PanelProductsAdmin;
 import nifax.control.view.panel.PanelReportProductStock;
 import nifax.control.view.panel.PanelSalesTicket;
-import nifax.control.view.util.ww.WWPanel;
-import nifax.control.view.util.ww.WWTableModel;
+import ww.WWPanel;
+import ww.WWTableModel;
 
 /**
  *

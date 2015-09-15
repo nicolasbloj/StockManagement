@@ -38,7 +38,7 @@ import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.internalframe.IntFrameProductSearch;
 import nifax.control.view.panel.PanelProductsAdmin;
-import nifax.control.view.util.ww.WWPanel;
+import ww.WWPanel;
 
 /**
  *

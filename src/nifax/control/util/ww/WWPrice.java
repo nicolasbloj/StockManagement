@@ -4,9 +4,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.PlainDocument;
 import nifax.control.controller.Administration;
-import nifax.control.validate.MyDoubleFilter;
-import nifax.control.view.util.ww.WWFilterRow;
-import nifax.control.view.util.ww.WWTableColumn;
+import ww.WWFilterRow;
+import ww.WWTableColumn;
+import validate.MyDoubleFilter;
 
 /**
  *

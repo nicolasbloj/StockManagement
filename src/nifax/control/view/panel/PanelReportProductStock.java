@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.PlainDocument;
 import nifax.control.controller.Reporting;
-import nifax.control.validate.MyIntFilter;
+import validate.MyIntFilter;
 import nifax.control.view.util.Pnl;
 import nifax.control.view.util.Tbp;
 

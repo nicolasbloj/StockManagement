@@ -9,11 +9,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.PlainDocument;
-import nifax.control.validate.MyAlphaNumericFilter;
-import nifax.control.validate.MyDoubleFilter;
 import nifax.control.view.event.tbl.Tbl_Listener;
 import nifax.control.view.util.Pnl;
 import nifax.control.view.util.Tbp;
+import validate.MyAlphaNumericFilter;
+import validate.MyDoubleFilter;
 
 /**
  *

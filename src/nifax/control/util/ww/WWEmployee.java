@@ -7,12 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.PlainDocument;
 import nifax.control.controller.Administration;
-import nifax.control.validate.MyAlphaNumericFilter;
-import nifax.control.validate.MyDoubleFilter;
-import nifax.control.validate.MyIntegerFilter;
-import nifax.control.view.util.ww.WWFilter;
-import nifax.control.view.util.ww.WWFilterRow;
-import nifax.control.view.util.ww.WWTableColumn;
+import ww.WWFilter;
+import ww.WWFilterRow;
+import ww.WWTableColumn;
+import validate.MyAlphaNumericFilter;
+import validate.MyIntegerFilter;
 
 /**
  *
