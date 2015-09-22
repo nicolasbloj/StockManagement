@@ -18,6 +18,19 @@ public class Message {
 
     public static final String ClassCastExceptionTitle = "Excepcion - Casting de elementos ";
 
+    public static final String FileNotFoundException = "No se encuentra la ruta para guardar el archivo";
+    public static final String FileNotFoundExceptionTitle = "Excepcion - Ruta de archivo";
+    
+    public static final String IOException = "No se encuentra el elemento";
+    public static final String IOExceptionTitle = "Excepcion - Elemento de entrada";
+    
+    public static final String DocumentException = "No se puede generar el archivo pdf";
+    public static final String DocumentExceptionTitle = "Excepcion - Generacion de archivo pdf";
+    
+    
+    
+    
+    
     //Failure's messages
     public static final String FailuredOperation = "Operacion fallida";
     public static final String FailuredOperationTitle = "Error";
@@ -35,10 +48,10 @@ public class Message {
     public static final String DialogProductNotFound = "Producto no encontrado";
     public static final String DialogProductNotActive = "El producto no se encuentra habilitado";
     public static final String DialogProductNotActiveTitle = "Estado del producto";
-    public static final String DialogCheck = "Posibles causas del problema\n"
-        + "1 - La aplicacion ya esta en ejecución\n"
-        + "2 - La sesion fue cerrada hace 20 segundos, espere 20 segundos por favor \n"
-        + "y vuelva a ejecutar la aplicacion.";
+    public static final String DialogCheck = new StringBuilder().append("Posibles causas del problema\n")
+        .append("1 - La aplicacion ya esta en ejecución\n")
+        .append("2 - La sesion fue cerrada hace 20 segundos, espere 20 segundos por favor \n")
+        .append("y vuelva a ejecutar la aplicacion.").toString();
     public static final String DialogExit = "¿Esta seguro que desea salir?";
     public static final String DialogCancel = "¿Esta seguro que desea cancelar este panel?";
 
