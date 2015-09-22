@@ -38,8 +38,8 @@ public class Offer extends ProdRelEntity implements Serializable {
     public Offer(String description, double discount, double quantity,
         Measure measure) {
         super.description = description;
-        this.discount = discount;
-        this.quantity = quantity;
+        this.discount = nifax.control.util.Number.round(discount);
+        this.quantity = nifax.control.util.Number.round(quantity);
         super.measure = measure;
     }
 

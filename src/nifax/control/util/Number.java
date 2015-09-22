@@ -3,14 +3,13 @@ package nifax.control.util;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-
 /**
  *
  * @author NB
  */
 public class Number {
 
-    public static DecimalFormat formateator;
+    private static DecimalFormat formateator;
 
     static {
         try {
@@ -21,6 +20,10 @@ public class Number {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
+    }
+
+    public static double round(double number) {
+        return Double.parseDouble(formateator.format(number));
     }
 
     public static Long stringToLong(String s) {

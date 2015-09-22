@@ -27,16 +27,16 @@ public class Item implements Serializable {
     }
 
     public Item(double quantity, double price, SaleDoc saleDoc, Product product,int it) {
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = nifax.control.util.Number.round(quantity);
+        this.price = nifax.control.util.Number.round(price);
         this.saleDoc = saleDoc;
         this.product = product;
         this.it=it;
     }
 
     public Item(double quantity, double price, Product product,int it) {
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = nifax.control.util.Number.round(quantity);
+        this.price = nifax.control.util.Number.round(price);
         this.product = product;
         this.it=it;
     }

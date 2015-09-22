@@ -13,6 +13,7 @@ import javax.swing.tree.TreePath;
 import nifax.control.exception.InitializeSessionException;
 import nifax.control.model.Item;
 import nifax.control.model.Product;
+import nifax.control.model.SaleDoc;
 import nifax.control.model.TypeSaleDoc;
 import nifax.control.model.modeler.HQLOperation;
 import nifax.control.model.modeler.ProductOperation;
@@ -155,21 +156,26 @@ public class Operation implements ActionController {
                 );
             }
 
-            SaleDocOperation.getInstance().add(Calendar.getInstance().getTime(),
+            SaleDoc saleDoc = new SaleDoc(
+                Calendar.getInstance().getTime(),
                 Authentication.getInstance().getSession().getUserEmployee(),
                 TypeSaleDocOperation.getInstance().Find(new TypeSaleDoc("TICKET")),
-                items
-            );
+                items);
+
+            SaleDocOperation.getInstance().add(saleDoc);
 
             JOptionPane.showMessageDialog(null, new StringBuilder()
                 .append("Ticket ").append(HQLOperation.getInstance()
                     .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
                 .append(" generado correctamente"));
 
+            
             //Reload panel
             TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
             Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket(), tp);
-
+            SaleController.getInstance().resetTotals();
+            
+            
             return Boolean.TRUE;
 
         } catch (InitializeSessionException ex) {
@@ -205,12 +211,38 @@ public class Operation implements ActionController {
 
         }
         int d;
+
         for (int i = 0; i < rowsToDelete.length; i++) {
             d = rowsToDelete[i] - i;
+
+            lessTotals(d, table);
+
             ((DefaultTableModel) table.getModel()).removeRow(d);
+
         }
+
         Table.UpdateIt(table);
+        SaleController.getInstance().loadTotalsInPanel();
+
         return Boolean.TRUE;
+    }
+
+    private void lessTotals(int d, JTable table) {
+        SaleController saleController = SaleController.getInstance();
+
+        int indexAmount = table.getColumnModel().getColumnIndex("IMPORTE");
+        double amount = Double.parseDouble(table.getValueAt(d, indexAmount).toString());
+        saleController.reCalculateSubTotal(-amount);
+
+        int indexAmountWithIva = table.getColumnModel().getColumnIndex("IMPORTE C/IVA");
+        double amountWithIva = Double.parseDouble(table.getValueAt(d, indexAmountWithIva).toString());
+        saleController.reCalculateTotal(-amountWithIva);
+
+        int indexIvaPercent = table.getColumnModel().getColumnIndex("IVA(%)");
+        int indexIva = table.getColumnModel().getColumnIndex("IVA");
+        double ivaPercent = Double.parseDouble(table.getValueAt(d, indexIvaPercent).toString());
+        double iva = Double.parseDouble(table.getValueAt(d, indexIva).toString());
+        saleController.reCalculateIva(-iva, ivaPercent);
     }
 
     private Boolean cancel(String panelName) {

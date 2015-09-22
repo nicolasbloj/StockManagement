@@ -1,5 +1,6 @@
 package nifax.control.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -16,6 +17,7 @@ import nifax.control.model.modeler.HQLOperation;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
 import nifax.control.view.panel.PanelProductsAdmin;
+import nifax.control.util.Number;
 
 /**
  *
@@ -116,7 +118,7 @@ public class PlusLess implements ActionController {
             vector.add(tableModel.getRowCount() + 1);
             vector.add("");
             vector.add(measure);
-            vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(equivalent)));
+            vector.add((Number.round(equivalent)));
             vector.add(false);
 
             tableModel.insertRow(tableModel.getRowCount(), vector);
@@ -149,8 +151,8 @@ public class PlusLess implements ActionController {
             vector.add("");
             vector.add(description);
 
-            vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(discount)));
-            vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(quantity)));
+            vector.add(Number.round(discount));
+            vector.add(Number.round(quantity));
 
             vector.add(measureSelected);
 
@@ -188,9 +190,9 @@ public class PlusLess implements ActionController {
                 vector.add(tableModel.getRowCount() + 1);
                 vector.add("");
                 vector.add(description);
-                vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(peak)));
-                vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(midPoint)));
-                vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(lowPoint)));
+                vector.add(Number.round(peak));
+                vector.add(Number.round(midPoint));
+                vector.add(Number.round(lowPoint));
                 vector.add(measureSelected);
                 vector.add(storeSelected);
 
@@ -228,7 +230,7 @@ public class PlusLess implements ActionController {
                 vector.add(tableModel.getRowCount() + 1);
                 vector.add("");
                 vector.add(description);
-                vector.add(Double.parseDouble(nifax.control.util.Number.formateator.format(quantity)));
+                vector.add(Number.round(quantity));
                 vector.add(storeSelected);
                 vector.add(measureSelected);
 

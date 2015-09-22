@@ -43,11 +43,11 @@ public class Restoration extends ProdRelEntity implements Serializable {
     public Restoration(Long id, String description, double peak, double midpoint,
         double lowpoint, Measure measure,
         Store store) {
-        super.id=id;
+        super.id = id;
         super.description = description;
-        this.peak = peak;
-        this.midpoint = midpoint;
-        this.lowpoint = lowpoint;
+        this.peak = nifax.control.util.Number.round(peak);
+        this.midpoint = nifax.control.util.Number.round(midpoint);
+        this.lowpoint = nifax.control.util.Number.round(lowpoint);
         super.measure = measure;
         this.store = store;
     }
@@ -56,9 +56,9 @@ public class Restoration extends ProdRelEntity implements Serializable {
         double lowpoint, Measure measure,
         Store store) {
         super.description = description;
-        this.peak = peak;
-        this.midpoint = midpoint;
-        this.lowpoint = lowpoint;
+        this.peak = nifax.control.util.Number.round(peak);
+        this.midpoint = nifax.control.util.Number.round(midpoint);
+        this.lowpoint = nifax.control.util.Number.round(lowpoint);
         super.measure = measure;
         this.store = store;
     }

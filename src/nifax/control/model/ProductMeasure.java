@@ -35,19 +35,19 @@ public class ProductMeasure extends ProdRelEntity implements Serializable {
     }
 
     public ProductMeasure(double quantity, Product product, Measure measure) {
-        this.quantity = quantity;
+        this.quantity = nifax.control.util.Number.round(quantity);
         this.product = product;
         this.measure = measure;
     }
 
     public ProductMeasure(Long id, double quantity, Measure measure) {
         super.id = id;
-        this.quantity = quantity;
+        this.quantity = nifax.control.util.Number.round(quantity);
         super.measure = measure;
     }
 
     public ProductMeasure(double quantity, Measure measure) {
-        this.quantity = quantity;
+        this.quantity = nifax.control.util.Number.round(quantity);
         super.measure = measure;
     }
 
