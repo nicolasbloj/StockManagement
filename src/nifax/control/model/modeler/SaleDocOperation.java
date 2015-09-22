@@ -33,4 +33,13 @@ public class SaleDocOperation extends HQLOperation implements IQueries {
             return Boolean.FALSE;
         }
     }
+
+    public Boolean add(SaleDoc saleDoc) {
+        try {
+            return Insert(saleDoc);
+        } catch (NullPointerException ex) {
+            return Boolean.FALSE;
+        }
+    }
+
 }

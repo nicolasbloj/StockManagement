@@ -74,13 +74,13 @@ public class SaleController {
 
             if (productMeasure != null) {
                 quantityXunit = Double.parseDouble(panelSalesTicket.getTxf_ticketQuantityProduct().getText())
-                        * productMeasure.getQuantity();
+                    * productMeasure.getQuantity();
             } else {
                 logger.info("No existe regla de medida para producto - calculo de cantidad en grilla");
             }
 
             //Offer
-            double discount = this.discount(product,quantityXunit);
+            double discount = this.discount(product, quantityXunit);
 
             double price = (priceList.getProfit() / 100) * product.getCost() + product.getCost();
 
@@ -89,11 +89,11 @@ public class SaleController {
 
             double amount = price * quantityXunit;
 
-            double iva = product.getIva().getIva();
+            double ivaPercent = product.getIva().getIva();
 
-            double percentageOfIvaInPrice = (iva / 100) * price;
+            double IvaInPrice = (ivaPercent / 100) * price;
 
-            double priceWithIva = price + percentageOfIvaInPrice;
+            double priceWithIva = price + IvaInPrice;
 
             double amountWithIva = priceWithIva * quantityXunit;
 
@@ -105,30 +105,32 @@ public class SaleController {
             rowData.add(tableModel.getRowCount() + 1);
             rowData.add(product.getCode());
             rowData.add(product.getDescription());
-            rowData.add(Number.formateator.format(price));
-            rowData.add(Number.formateator.format(priceWithIva));
+            rowData.add(Number.round(price));
+            rowData.add(Number.round(priceWithIva));
             rowData.add(priceList.getId());
-            rowData.add(Number.formateator.format(quantityXunit));
-            rowData.add(Number.formateator.format(quantityReal));
+            rowData.add(Number.round(quantityXunit));
+            rowData.add(Number.round(quantityReal));
             rowData.add(measure.getDescription());
             rowData.add(discount);
-            rowData.add(Number.formateator.format(product.getCost()));
-            rowData.add(Number.formateator.format(priceList.getProfit()));
-            rowData.add(iva);
-            rowData.add(Number.formateator.format(amount));
-            rowData.add(Number.formateator.format(amountWithIva));
+            rowData.add(Number.round(product.getCost()));
+            rowData.add(Number.round(priceList.getProfit()));
+            rowData.add(ivaPercent);
+            rowData.add(Number.round(IvaInPrice));
+            rowData.add(Number.round(amount));
+            rowData.add(Number.round(amountWithIva));
             rowData.add((store.getId()));
 
             tableModel.insertRow(tableModel.getRowCount(), rowData);
 
-            this.reCalculateSubTotal(amount);
-            this.reCalculateTotal(amountWithIva);
-            this.reCalculateIva(percentageOfIvaInPrice, iva);
+            this.reCalculateSubTotal(Number.round(amount));
+            this.reCalculateTotal(Number.round(amountWithIva));
+            this.reCalculateIva(Number.round(IvaInPrice), ivaPercent);
 
             this.loadTotalsInPanel();
 
             this.calculateStocks(product, store.getId(), quantityXunit, SUM_STOCKCOMMITTED);
 
+            //panelSalesTicket.getTxf_ticketCodeProduct().setText("");
             return true;
 
         } catch (NullPointerException ex) {
@@ -139,13 +141,13 @@ public class SaleController {
 
     public void loadTotalsInPanel() {
         panelSalesTicket.getLbl_subTotalTicket().setText(
-                new StringBuilder().append("$ ").append(Number.formateator.format(subtotal)).toString());
+            new StringBuilder().append("$ ").append(Number.round(subtotal)).toString());
         panelSalesTicket.getLbl_TotalTicket().setText(
-                new StringBuilder().append("$ ").append(Number.formateator.format(total)).toString());
+            new StringBuilder().append("$ ").append(Number.round(total)).toString());
         panelSalesTicket.getLbl_iva21Ticket().setText(
-                new StringBuilder().append("$ ").append(Number.formateator.format(iva21)).toString());
+            new StringBuilder().append("$ ").append(Number.round(iva21)).toString());
         panelSalesTicket.getLbl_iva105Ticket().setText(
-                new StringBuilder().append("$ ").append(Number.formateator.format(iva105)).toString());
+            new StringBuilder().append("$ ").append(Number.round(iva105)).toString());
     }
 
     public void calculateStocks(Product product, long store_id, double quantity, int op) {
@@ -168,7 +170,7 @@ public class SaleController {
                 quantity = quantity / productMeasure.getQuantity();
             }
 
-            quantity = Double.parseDouble(Number.formateator.format(quantity));
+            quantity = Number.round(quantity);
 
             double quantityStock;
             double quantityCommitted;
@@ -222,7 +224,7 @@ public class SaleController {
     }
 
     public void reCalculateIva(double iva, double ivaPercentage) {
-        if (ivaPercentage == 21) {
+        if (ivaPercentage == 21 || ivaPercentage == 21.0) {
             iva21 = iva21 + iva;
         } else if (ivaPercentage == 10.5) {
             iva105 = iva105 + iva;
@@ -251,9 +253,9 @@ public class SaleController {
     private double discount(Product product, double quantityXunit) {
         double discount = 0;
         double AUX = 0;
-        
+
         for (Offer offer : product.getOffers()) {
-             
+
             long measure_id = offer.getMeasure().getId();
             double offerQuantity = offer.getQuantity();
 
@@ -272,6 +274,29 @@ public class SaleController {
 
         }
         return discount;
+    }
+
+    public double getIva21() {
+        return iva21;
+    }
+
+    public double getIva105() {
+        return iva105;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void resetTotals() {
+        iva21 = 0;
+        iva105 = 0;
+        subtotal = 0;
+        total = 0;
     }
 
 }
