@@ -37,7 +37,7 @@ public class Stock extends ProdRelEntity implements Serializable {
         Store store) {
         super.id = id;
         super.description = description;
-        this.quantity = quantity;
+        this.quantity = nifax.control.util.Number.round(quantity);
         this.quantityCommitted = 0.0;
         super.measure = measure;
         this.store = store;
@@ -46,8 +46,8 @@ public class Stock extends ProdRelEntity implements Serializable {
     public Stock(String description, double quantity, double quantityCommitted, Measure measure,
         Store store) {
         super.description = description;
-        this.quantity = quantity;
-        this.quantityCommitted = quantityCommitted;
+        this.quantity = nifax.control.util.Number.round(quantity);
+        this.quantityCommitted = nifax.control.util.Number.round(quantityCommitted);
         super.measure = measure;
         this.store = store;
     }

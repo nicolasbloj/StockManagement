@@ -26,7 +26,7 @@ public class Price extends SimpleEntity implements Serializable {
 
     public Price(String description, double profit) {
         super(description);
-        this.profit = profit;
+        this.profit = nifax.control.util.Number.round(profit);
     }
 
     public Price(Long id) {

@@ -3,7 +3,6 @@ package nifax.control.model;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
 import nifax.control.controller.CodeGenerator;
 
 /**
@@ -33,7 +32,7 @@ public class Product extends SimpleEntity implements Serializable {
 
     public Product(String description, double cost, Category categoryProduct, Iva iva,Boolean active) {
         this.description = description.toUpperCase();
-        this.cost = cost;
+        this.cost = nifax.control.util.Number.round(cost);
         this.category = categoryProduct;
         this.iva = iva;
         this.active=active;
@@ -45,7 +44,7 @@ public class Product extends SimpleEntity implements Serializable {
 
     public Product(Long id, String code, String description, double cost, Category categoryProduct, Iva iva,Boolean active) {
         this.description = description.toUpperCase();
-        this.cost = cost;
+        this.cost = nifax.control.util.Number.round(cost);
         this.category = categoryProduct;
         this.iva = iva;
         this.active=active;

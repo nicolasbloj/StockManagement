@@ -16,7 +16,7 @@ public class Iva implements Serializable{
     }
     
     public Iva(double iva) {
-         this.iva = iva;
+         this.iva = nifax.control.util.Number.round(iva);
     }
     
     @Id
