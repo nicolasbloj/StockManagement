@@ -47,6 +47,10 @@ public class StockDataSource implements JRDataSource {
                 case "cost":
                     valor = listStock.get(indexStock).getProduct().getCost();
                     break;
+                case "store":
+                    valor = listStock.get(indexStock).getStore().getId();
+                    break;
+
             }
         }
 
