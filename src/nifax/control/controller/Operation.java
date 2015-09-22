@@ -21,6 +21,7 @@ import nifax.control.model.modeler.SaleDocOperation;
 import nifax.control.model.modeler.TypeSaleDocOperation;
 import nifax.control.util.Message;
 import nifax.control.util.Table;
+import nifax.control.util.UtilPdf;
 import nifax.control.view.event.btn.Btn_operationAction;
 import nifax.control.view.panel.PanelSalesTicket;
 
@@ -169,13 +170,15 @@ public class Operation implements ActionController {
                     .getCurrSequenceValue("saledoc_saledoc_id_seq").toString())
                 .append(" generado correctamente"));
 
-            
+            if (panelSalesTicket.getChb_pdf().isSelected()) {
+                UtilPdf.generateSalePdf(saleDoc, panelSalesTicket);
+            }
+
             //Reload panel
             TreePath tp = Navigation.getInstance().getLastSelectedTreePath();
             Navigation.getInstance().setPanelSalesTicket(new PanelSalesTicket(), tp);
             SaleController.getInstance().resetTotals();
-            
-            
+
             return Boolean.TRUE;
 
         } catch (InitializeSessionException ex) {
